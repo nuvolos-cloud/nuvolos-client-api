@@ -1,0 +1,174 @@
+# nuvolos_client_api.SpacesV1Api
+
+All URIs are relative to *http://localhost*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**list_space_options**](SpacesV1Api.md#list_space_options) | **OPTIONS** /spaces/v1/org/{slug} | 
+[**list_spaces**](SpacesV1Api.md#list_spaces) | **GET** /spaces/v1/org/{slug} | 
+
+
+# **list_space_options**
+> List[Space] list_space_options(slug)
+
+
+
+Returns the spaces the user is affiliated with in the selected org. 
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+```python
+import time
+import os
+import nuvolos_client_api
+from nuvolos_client_api.models.space import Space
+from nuvolos_client_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = nuvolos_client_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with nuvolos_client_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = nuvolos_client_api.SpacesV1Api(api_client)
+    slug = 'slug_example' # str | 
+
+    try:
+        api_response = api_instance.list_space_options(slug)
+        print("The response of SpacesV1Api->list_space_options:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SpacesV1Api->list_space_options: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **slug** | **str**|  | 
+
+### Return type
+
+[**List[Space]**](Space.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Operation succeeded |  -  |
+**400** | Bad request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Access to Nuvolos resource is forbidden |  -  |
+**404** | Nuvolos object not found |  -  |
+**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_spaces**
+> List[Space] list_spaces(slug)
+
+
+
+Returns the spaces the user is affiliated with in the selected org. 
+
+### Example
+
+* Api Key Authentication (ApiKeyAuth):
+```python
+import time
+import os
+import nuvolos_client_api
+from nuvolos_client_api.models.space import Space
+from nuvolos_client_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost
+# See configuration.py for a list of all supported configuration parameters.
+configuration = nuvolos_client_api.Configuration(
+    host = "http://localhost"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with nuvolos_client_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = nuvolos_client_api.SpacesV1Api(api_client)
+    slug = 'slug_example' # str | 
+
+    try:
+        api_response = api_instance.list_spaces(slug)
+        print("The response of SpacesV1Api->list_spaces:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SpacesV1Api->list_spaces: %s\n" % e)
+```
+
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **slug** | **str**|  | 
+
+### Return type
+
+[**List[Space]**](Space.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Operation succeeded |  -  |
+**400** | Bad request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Access to Nuvolos resource is forbidden |  -  |
+**404** | Nuvolos object not found |  -  |
+**500** | Internal server error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
