@@ -26,14 +26,8 @@ class TestOrganizationsV1Api(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_list_org_options(self) -> None:
-        """Test case for list_org_options
-
-        """
-        pass
-
-    def test_list_orgs(self) -> None:
-        """Test case for list_orgs
+    def test_get_orgs(self) -> None:
+        """Test case for get_orgs
 
         """
         pass

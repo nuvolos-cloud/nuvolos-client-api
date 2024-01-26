@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
 try:
     from typing import Self
@@ -29,15 +29,16 @@ class ClientApiError(BaseModel):
     """
     ClientApiError
     """ # noqa: E501
-    incident_id: Optional[Union[str, Any]] = None
-    ctxid: Optional[Union[str, Any]] = None
-    err: Optional[Union[str, Any]] = None
-    msg: Optional[Union[str, Any]] = None
+    incident_id: Optional[Dict[str, Any]] = None
+    ctxid: Optional[Dict[str, Any]] = None
+    err: Optional[Dict[str, Any]] = None
+    msg: Optional[Dict[str, Any]] = None
     __properties: ClassVar[List[str]] = ["incident_id", "ctxid", "err", "msg"]
 
     model_config = {
         "populate_by_name": True,
-        "validate_assignment": True
+        "validate_assignment": True,
+        "protected_namespaces": (),
     }
 
 

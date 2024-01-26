@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.4.0"
+__version__ = "0.0.1"
 
 # import apis into sdk package
 from nuvolos_client_api.api.apps_v1_api import AppsV1Api
@@ -36,8 +36,10 @@ from nuvolos_client_api.exceptions import ApiAttributeError
 from nuvolos_client_api.exceptions import ApiException
 
 # import models into sdk package
+from nuvolos_client_api.models.api_node_pool import APINodePool
 from nuvolos_client_api.models.application import Application
 from nuvolos_client_api.models.client_api_error import ClientApiError
+from nuvolos_client_api.models.execute_command import ExecuteCommand
 from nuvolos_client_api.models.instance import Instance
 from nuvolos_client_api.models.org import Org
 from nuvolos_client_api.models.snapshot import Snapshot

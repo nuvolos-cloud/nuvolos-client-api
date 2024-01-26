@@ -48,10 +48,10 @@ class SnapshotsV1Api:
 
 
     @validate_call
-    def list_snapshots(
+    def get_snapshots(
         self,
-        org_slug: StrictStr,
         space_slug: StrictStr,
+        org_slug: StrictStr,
         instance_slug: StrictStr,
         _request_timeout: Union[
             None,
@@ -66,14 +66,14 @@ class SnapshotsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Snapshot]:
-        """list_snapshots
+        """get_snapshots
 
         Returns the snapshots the user has access to in the specified org, space and instance.
 
-        :param org_slug: (required)
-        :type org_slug: str
         :param space_slug: (required)
         :type space_slug: str
+        :param org_slug: (required)
+        :type org_slug: str
         :param instance_slug: (required)
         :type instance_slug: str
         :param _request_timeout: timeout setting for this request. If one
@@ -98,9 +98,9 @@ class SnapshotsV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_snapshots_serialize(
-            org_slug=org_slug,
+        _param = self._get_snapshots_serialize(
             space_slug=space_slug,
+            org_slug=org_slug,
             instance_slug=instance_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -109,13 +109,14 @@ class SnapshotsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Snapshot]",
             '400': "ClientApiError",
             '401': None,
             '403': "ClientApiError",
+            '500': "ClientApiError",
             '404': "ClientApiError",
-            '500': "ClientApiError"
-            
+            '200': "List[Snapshot]",
+            '409': "ClientApiError",
+            '410': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -129,10 +130,10 @@ class SnapshotsV1Api:
 
 
     @validate_call
-    def list_snapshots_with_http_info(
+    def get_snapshots_with_http_info(
         self,
-        org_slug: StrictStr,
         space_slug: StrictStr,
+        org_slug: StrictStr,
         instance_slug: StrictStr,
         _request_timeout: Union[
             None,
@@ -147,14 +148,14 @@ class SnapshotsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Snapshot]]:
-        """list_snapshots
+        """get_snapshots
 
         Returns the snapshots the user has access to in the specified org, space and instance.
 
-        :param org_slug: (required)
-        :type org_slug: str
         :param space_slug: (required)
         :type space_slug: str
+        :param org_slug: (required)
+        :type org_slug: str
         :param instance_slug: (required)
         :type instance_slug: str
         :param _request_timeout: timeout setting for this request. If one
@@ -179,9 +180,9 @@ class SnapshotsV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_snapshots_serialize(
-            org_slug=org_slug,
+        _param = self._get_snapshots_serialize(
             space_slug=space_slug,
+            org_slug=org_slug,
             instance_slug=instance_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -190,13 +191,14 @@ class SnapshotsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Snapshot]",
             '400': "ClientApiError",
             '401': None,
             '403': "ClientApiError",
+            '500': "ClientApiError",
             '404': "ClientApiError",
-            '500': "ClientApiError"
-            
+            '200': "List[Snapshot]",
+            '409': "ClientApiError",
+            '410': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -210,10 +212,10 @@ class SnapshotsV1Api:
 
 
     @validate_call
-    def list_snapshots_without_preload_content(
+    def get_snapshots_without_preload_content(
         self,
-        org_slug: StrictStr,
         space_slug: StrictStr,
+        org_slug: StrictStr,
         instance_slug: StrictStr,
         _request_timeout: Union[
             None,
@@ -228,14 +230,14 @@ class SnapshotsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list_snapshots
+        """get_snapshots
 
         Returns the snapshots the user has access to in the specified org, space and instance.
 
-        :param org_slug: (required)
-        :type org_slug: str
         :param space_slug: (required)
         :type space_slug: str
+        :param org_slug: (required)
+        :type org_slug: str
         :param instance_slug: (required)
         :type instance_slug: str
         :param _request_timeout: timeout setting for this request. If one
@@ -260,9 +262,9 @@ class SnapshotsV1Api:
         :return: Returns the result object.
         """ # noqa: E501
 
-        _param = self._list_snapshots_serialize(
-            org_slug=org_slug,
+        _param = self._get_snapshots_serialize(
             space_slug=space_slug,
+            org_slug=org_slug,
             instance_slug=instance_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -271,13 +273,14 @@ class SnapshotsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Snapshot]",
             '400': "ClientApiError",
             '401': None,
             '403': "ClientApiError",
+            '500': "ClientApiError",
             '404': "ClientApiError",
-            '500': "ClientApiError"
-            
+            '200': "List[Snapshot]",
+            '409': "ClientApiError",
+            '410': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -286,10 +289,10 @@ class SnapshotsV1Api:
         return response_data.response
 
 
-    def _list_snapshots_serialize(
+    def _get_snapshots_serialize(
         self,
-        org_slug,
         space_slug,
+        org_slug,
         instance_slug,
         _request_auth,
         _content_type,
@@ -300,7 +303,6 @@ class SnapshotsV1Api:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            
         }
 
         _path_params: Dict[str, str] = {}
@@ -311,10 +313,10 @@ class SnapshotsV1Api:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if org_slug is not None:
-            _path_params['org_slug'] = org_slug
         if space_slug is not None:
             _path_params['space_slug'] = space_slug
+        if org_slug is not None:
+            _path_params['org_slug'] = org_slug
         if instance_slug is not None:
             _path_params['instance_slug'] = instance_slug
         # process the query parameters
@@ -338,313 +340,6 @@ class SnapshotsV1Api:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/snapshots/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def list_snapshots_options(
-        self,
-        org_slug: StrictStr,
-        space_slug: StrictStr,
-        instance_slug: StrictStr,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[Snapshot]:
-        """list_snapshots_options
-
-        Returns the snapshots the user has access to in the specified org, space and instance.
-
-        :param org_slug: (required)
-        :type org_slug: str
-        :param space_slug: (required)
-        :type space_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._list_snapshots_options_serialize(
-            org_slug=org_slug,
-            space_slug=space_slug,
-            instance_slug=instance_slug,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Snapshot]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
-            '404': "ClientApiError",
-            '500': "ClientApiError"
-            
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def list_snapshots_options_with_http_info(
-        self,
-        org_slug: StrictStr,
-        space_slug: StrictStr,
-        instance_slug: StrictStr,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[Snapshot]]:
-        """list_snapshots_options
-
-        Returns the snapshots the user has access to in the specified org, space and instance.
-
-        :param org_slug: (required)
-        :type org_slug: str
-        :param space_slug: (required)
-        :type space_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._list_snapshots_options_serialize(
-            org_slug=org_slug,
-            space_slug=space_slug,
-            instance_slug=instance_slug,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Snapshot]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
-            '404': "ClientApiError",
-            '500': "ClientApiError"
-            
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def list_snapshots_options_without_preload_content(
-        self,
-        org_slug: StrictStr,
-        space_slug: StrictStr,
-        instance_slug: StrictStr,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """list_snapshots_options
-
-        Returns the snapshots the user has access to in the specified org, space and instance.
-
-        :param org_slug: (required)
-        :type org_slug: str
-        :param space_slug: (required)
-        :type space_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._list_snapshots_options_serialize(
-            org_slug=org_slug,
-            space_slug=space_slug,
-            instance_slug=instance_slug,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "List[Snapshot]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
-            '404': "ClientApiError",
-            '500': "ClientApiError"
-            
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _list_snapshots_options_serialize(
-        self,
-        org_slug,
-        space_slug,
-        instance_slug,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> Tuple:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-            
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if org_slug is not None:
-            _path_params['org_slug'] = org_slug
-        if space_slug is not None:
-            _path_params['space_slug'] = space_slug
-        if instance_slug is not None:
-            _path_params['instance_slug'] = instance_slug
-        # process the query parameters
-        # process the header parameters
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        _header_params['Accept'] = self.api_client.select_header_accept(
-            [
-                '*/*'
-            ]
-        )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'ApiKeyAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='OPTIONS',
             resource_path='/snapshots/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}',
             path_params=_path_params,
             query_params=_query_params,

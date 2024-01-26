@@ -4,9 +4,11 @@
 .openapi-generator-ignore
 .travis.yml
 README.md
+docs/APINodePool.md
 docs/Application.md
 docs/AppsV1Api.md
 docs/ClientApiError.md
+docs/ExecuteCommand.md
 docs/Instance.md
 docs/InstancesV1Api.md
 docs/Org.md
@@ -33,8 +35,10 @@ nuvolos_client_api/api_response.py
 nuvolos_client_api/configuration.py
 nuvolos_client_api/exceptions.py
 nuvolos_client_api/models/__init__.py
+nuvolos_client_api/models/api_node_pool.py
 nuvolos_client_api/models/application.py
 nuvolos_client_api/models/client_api_error.py
+nuvolos_client_api/models/execute_command.py
 nuvolos_client_api/models/instance.py
 nuvolos_client_api/models/org.py
 nuvolos_client_api/models/snapshot.py
@@ -50,9 +54,11 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_api_node_pool.py
 test/test_application.py
 test/test_apps_v1_api.py
 test/test_client_api_error.py
+test/test_execute_command.py
 test/test_instance.py
 test/test_instances_v1_api.py
 test/test_org.py

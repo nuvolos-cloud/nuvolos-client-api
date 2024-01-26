@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
 try:
     from typing import Self
@@ -29,18 +29,19 @@ class Application(BaseModel):
     """
     Application
     """ # noqa: E501
-    slug: Optional[StrictStr] = None
-    name: Optional[StrictStr] = None
-    description: Optional[StrictStr] = None
-    storage_used: Optional[StrictInt] = None
-    shared: Optional[StrictBool] = None
-    exportable: Optional[StrictBool] = None
-    status: Optional[StrictStr] = None
+    slug: StrictStr
+    name: StrictStr
+    description: StrictStr
+    storage_used: StrictInt
+    shared: StrictBool
+    exportable: StrictBool
+    status: StrictStr
     __properties: ClassVar[List[str]] = ["slug", "name", "description", "storage_used", "shared", "exportable", "status"]
 
     model_config = {
         "populate_by_name": True,
-        "validate_assignment": True
+        "validate_assignment": True,
+        "protected_namespaces": (),
     }
 
 

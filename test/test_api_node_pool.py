@@ -15,10 +15,10 @@
 import unittest
 import datetime
 
-from nuvolos_client_api.models.application import Application
+from nuvolos_client_api.models.api_node_pool import APINodePool
 
-class TestApplication(unittest.TestCase):
-    """Application unit test stubs"""
+class TestAPINodePool(unittest.TestCase):
+    """APINodePool unit test stubs"""
 
     def setUp(self):
         pass
@@ -26,38 +26,33 @@ class TestApplication(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Application:
-        """Test Application
+    def make_instance(self, include_optional) -> APINodePool:
+        """Test APINodePool
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Application`
+        # uncomment below to create an instance of `APINodePool`
         """
-        model = Application()
+        model = APINodePool()
         if include_optional:
-            return Application(
+            return APINodePool(
                 slug = '',
-                name = '',
                 description = '',
-                storage_used = 56,
-                shared = True,
-                exportable = True,
-                status = ''
+                credits_per_hour = 1.337,
+                cpu = 56,
+                memory = 56,
+                ssd = 56,
+                vram = 56,
+                gpu_type = '',
+                available_in_teaching_spaces = True
             )
         else:
-            return Application(
-                slug = '',
-                name = '',
-                description = '',
-                storage_used = 56,
-                shared = True,
-                exportable = True,
-                status = '',
+            return APINodePool(
         )
         """
 
-    def testApplication(self):
-        """Test Application"""
+    def testAPINodePool(self):
+        """Test APINodePool"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

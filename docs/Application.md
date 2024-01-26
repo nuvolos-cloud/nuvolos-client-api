@@ -2,15 +2,16 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**slug** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
-**storage_used** | **int** |  | [optional] 
-**shared** | **bool** |  | [optional] 
-**exportable** | **bool** |  | [optional] 
-**status** | **str** |  | [optional] 
+**slug** | **str** |  | 
+**name** | **str** |  | 
+**description** | **str** |  | 
+**storage_used** | **int** |  | 
+**shared** | **bool** |  | 
+**exportable** | **bool** |  | 
+**status** | **str** |  | 
 
 ## Example
 

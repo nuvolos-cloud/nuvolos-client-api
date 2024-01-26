@@ -2,12 +2,13 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **dpi** | **int** |  | [optional] 
 **screen_width** | **int** |  | [optional] 
 **screen_height** | **int** |  | [optional] 
-**node_pool** | **str** |  | [optional] [default to '']
+**node_pool** | **str** |  | [optional] 
 
 ## Example
 

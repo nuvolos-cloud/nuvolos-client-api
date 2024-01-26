@@ -26,14 +26,8 @@ class TestInstancesV1Api(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_list_instances(self) -> None:
-        """Test case for list_instances
-
-        """
-        pass
-
-    def test_list_instances_options(self) -> None:
-        """Test case for list_instances_options
+    def test_get_instances(self) -> None:
+        """Test case for get_instances
 
         """
         pass

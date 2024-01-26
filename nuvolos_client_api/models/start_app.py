@@ -32,12 +32,13 @@ class StartApp(BaseModel):
     dpi: Optional[StrictInt] = None
     screen_width: Optional[StrictInt] = None
     screen_height: Optional[StrictInt] = None
-    node_pool: Optional[StrictStr] = ''
+    node_pool: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["dpi", "screen_width", "screen_height", "node_pool"]
 
     model_config = {
         "populate_by_name": True,
-        "validate_assignment": True
+        "validate_assignment": True,
+        "protected_namespaces": (),
     }
 
 
@@ -86,7 +87,7 @@ class StartApp(BaseModel):
             "dpi": obj.get("dpi"),
             "screen_width": obj.get("screen_width"),
             "screen_height": obj.get("screen_height"),
-            "node_pool": obj.get("node_pool") if obj.get("node_pool") is not None else ''
+            "node_pool": obj.get("node_pool")
         })
         return _obj
 

@@ -26,14 +26,8 @@ class TestAppsV1Api(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_list_apps(self) -> None:
-        """Test case for list_apps
-
-        """
-        pass
-
-    def test_list_apps_options(self) -> None:
-        """Test case for list_apps_options
+    def test_get_apps(self) -> None:
+        """Test case for get_apps
 
         """
         pass

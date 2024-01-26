@@ -26,14 +26,8 @@ class TestSpacesV1Api(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_list_space_options(self) -> None:
-        """Test case for list_space_options
-
-        """
-        pass
-
-    def test_list_spaces(self) -> None:
-        """Test case for list_spaces
+    def test_get_spaces(self) -> None:
+        """Test case for get_spaces
 
         """
         pass

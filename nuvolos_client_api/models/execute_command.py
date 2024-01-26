@@ -17,27 +17,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
-from typing import Any, ClassVar, Dict, List, Optional
-from pydantic import BaseModel, StrictBool, StrictStr
+
+from typing import Any, ClassVar, Dict, List
+from pydantic import BaseModel, StrictStr
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-class Org(BaseModel):
+class ExecuteCommand(BaseModel):
     """
-    Org
+    ExecuteCommand
     """ # noqa: E501
-    slug: StrictStr
-    name: StrictStr
-    role: Optional[StrictStr] = None
-    description: Optional[StrictStr] = None
-    tables_enabled: Optional[StrictBool] = None
-    hpc_enabled: Optional[StrictBool] = None
-    creation_timestamp: Optional[datetime] = None
-    video_library_enabled: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = ["slug", "name", "role", "description", "tables_enabled", "hpc_enabled", "creation_timestamp", "video_library_enabled"]
+    command: StrictStr
+    __properties: ClassVar[List[str]] = ["command"]
 
     model_config = {
         "populate_by_name": True,
@@ -57,7 +50,7 @@ class Org(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of Org from a JSON string"""
+        """Create an instance of ExecuteCommand from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -80,7 +73,7 @@ class Org(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of Org from a dict"""
+        """Create an instance of ExecuteCommand from a dict"""
         if obj is None:
             return None
 
@@ -88,14 +81,7 @@ class Org(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "slug": obj.get("slug"),
-            "name": obj.get("name"),
-            "role": obj.get("role"),
-            "description": obj.get("description"),
-            "tables_enabled": obj.get("tables_enabled"),
-            "hpc_enabled": obj.get("hpc_enabled"),
-            "creation_timestamp": obj.get("creation_timestamp"),
-            "video_library_enabled": obj.get("video_library_enabled")
+            "command": obj.get("command")
         })
         return _obj
 

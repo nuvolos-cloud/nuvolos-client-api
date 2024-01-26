@@ -26,14 +26,8 @@ class TestSnapshotsV1Api(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_list_snapshots(self) -> None:
-        """Test case for list_snapshots
-
-        """
-        pass
-
-    def test_list_snapshots_options(self) -> None:
-        """Test case for list_snapshots_options
+    def test_get_snapshots(self) -> None:
+        """Test case for get_snapshots
 
         """
         pass

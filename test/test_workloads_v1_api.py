@@ -32,8 +32,20 @@ class TestWorkloadsV1Api(unittest.TestCase):
         """
         pass
 
-    def test_delete_workload_options(self) -> None:
-        """Test case for delete_workload_options
+    def test_delete_workload(self) -> None:
+        """Test case for delete_workload
+
+        """
+        pass
+
+    def test_execute_command(self) -> None:
+        """Test case for execute_command
+
+        """
+        pass
+
+    def test_get_nodepools(self) -> None:
+        """Test case for get_nodepools
 
         """
         pass
@@ -44,14 +56,8 @@ class TestWorkloadsV1Api(unittest.TestCase):
         """
         pass
 
-    def test_get_workloads_options(self) -> None:
-        """Test case for get_workloads_options
-
-        """
-        pass
-
-    def test_stop_workload(self) -> None:
-        """Test case for stop_workload
+    def test_get_workloads_for_app(self) -> None:
+        """Test case for get_workloads_for_app
 
         """
         pass
