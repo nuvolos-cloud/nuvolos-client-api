@@ -17,7 +17,7 @@ def debug_requests_on():
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuvolos_client_api.Configuration(
-    host="https://az-api.nuvolos.cloud",
+    host="https://api.nuvolos.cloud/",
     api_key={"ApiKeyAuth": os.getenv("NUVOLOS_API_KEY")},
     api_key_prefix={"ApiKeyAuth": "basic"},
 )
@@ -30,7 +30,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     debug_requests_on()
 
     try:
-        api_response = api_instance.list_orgs()
+        api_response = api_instance.get_orgs()
         print("The response of OrganizationsApi->orgs_v1_get:\n")
         pprint(api_response)
     except ApiException as e:
