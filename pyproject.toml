@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nuvolos_client_api"
-version = "0.0.1"
+version = "0.9.0"
 description = "Nuvolos"
 authors = ["OpenAPI Generator Community <team@openapitools.org>"]
 license = "NoLicense"

@@ -9,6 +9,7 @@ docs/Application.md
 docs/AppsV1Api.md
 docs/ClientApiError.md
 docs/ExecuteCommand.md
+docs/ExecuteCommandResponse.md
 docs/Instance.md
 docs/InstancesV1Api.md
 docs/Org.md
@@ -39,6 +40,7 @@ nuvolos_client_api/models/api_node_pool.py
 nuvolos_client_api/models/application.py
 nuvolos_client_api/models/client_api_error.py
 nuvolos_client_api/models/execute_command.py
+nuvolos_client_api/models/execute_command_response.py
 nuvolos_client_api/models/instance.py
 nuvolos_client_api/models/org.py
 nuvolos_client_api/models/snapshot.py
@@ -59,6 +61,7 @@ test/test_application.py
 test/test_apps_v1_api.py
 test/test_client_api_error.py
 test/test_execute_command.py
+test/test_execute_command_response.py
 test/test_instance.py
 test/test_instances_v1_api.py
 test/test_org.py
