@@ -57,8 +57,8 @@ class WorkloadsV1Api:
         self,
         app_slug: StrictStr,
         space_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        instance_slug: StrictStr,
         body: Optional[StartApp] = None,
         _request_timeout: Union[
             None,
@@ -81,10 +81,10 @@ class WorkloadsV1Api:
         :type app_slug: str
         :param space_slug: (required)
         :type space_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
         :param body:
         :type body: StartApp
         :param _request_timeout: timeout setting for this request. If one
@@ -112,8 +112,8 @@ class WorkloadsV1Api:
         _param = self._create_workload_serialize(
             app_slug=app_slug,
             space_slug=space_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            instance_slug=instance_slug,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -147,8 +147,8 @@ class WorkloadsV1Api:
         self,
         app_slug: StrictStr,
         space_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        instance_slug: StrictStr,
         body: Optional[StartApp] = None,
         _request_timeout: Union[
             None,
@@ -171,10 +171,10 @@ class WorkloadsV1Api:
         :type app_slug: str
         :param space_slug: (required)
         :type space_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
         :param body:
         :type body: StartApp
         :param _request_timeout: timeout setting for this request. If one
@@ -202,8 +202,8 @@ class WorkloadsV1Api:
         _param = self._create_workload_serialize(
             app_slug=app_slug,
             space_slug=space_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            instance_slug=instance_slug,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -237,8 +237,8 @@ class WorkloadsV1Api:
         self,
         app_slug: StrictStr,
         space_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        instance_slug: StrictStr,
         body: Optional[StartApp] = None,
         _request_timeout: Union[
             None,
@@ -261,10 +261,10 @@ class WorkloadsV1Api:
         :type app_slug: str
         :param space_slug: (required)
         :type space_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
         :param body:
         :type body: StartApp
         :param _request_timeout: timeout setting for this request. If one
@@ -292,8 +292,8 @@ class WorkloadsV1Api:
         _param = self._create_workload_serialize(
             app_slug=app_slug,
             space_slug=space_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            instance_slug=instance_slug,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -322,8 +322,8 @@ class WorkloadsV1Api:
         self,
         app_slug,
         space_slug,
-        instance_slug,
         org_slug,
+        instance_slug,
         body,
         _request_auth,
         _content_type,
@@ -348,10 +348,10 @@ class WorkloadsV1Api:
             _path_params['app_slug'] = app_slug
         if space_slug is not None:
             _path_params['space_slug'] = space_slug
-        if instance_slug is not None:
-            _path_params['instance_slug'] = instance_slug
         if org_slug is not None:
             _path_params['org_slug'] = org_slug
+        if instance_slug is not None:
+            _path_params['instance_slug'] = instance_slug
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -396,8 +396,8 @@ class WorkloadsV1Api:
         self,
         app_slug: StrictStr,
         space_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        instance_slug: StrictStr,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -419,10 +419,10 @@ class WorkloadsV1Api:
         :type app_slug: str
         :param space_slug: (required)
         :type space_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -448,8 +448,8 @@ class WorkloadsV1Api:
         _param = self._delete_workload_serialize(
             app_slug=app_slug,
             space_slug=space_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            instance_slug=instance_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -482,8 +482,8 @@ class WorkloadsV1Api:
         self,
         app_slug: StrictStr,
         space_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        instance_slug: StrictStr,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -505,10 +505,10 @@ class WorkloadsV1Api:
         :type app_slug: str
         :param space_slug: (required)
         :type space_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -534,8 +534,8 @@ class WorkloadsV1Api:
         _param = self._delete_workload_serialize(
             app_slug=app_slug,
             space_slug=space_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            instance_slug=instance_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -568,8 +568,8 @@ class WorkloadsV1Api:
         self,
         app_slug: StrictStr,
         space_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        instance_slug: StrictStr,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -591,10 +591,10 @@ class WorkloadsV1Api:
         :type app_slug: str
         :param space_slug: (required)
         :type space_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -620,8 +620,8 @@ class WorkloadsV1Api:
         _param = self._delete_workload_serialize(
             app_slug=app_slug,
             space_slug=space_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            instance_slug=instance_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -649,8 +649,8 @@ class WorkloadsV1Api:
         self,
         app_slug,
         space_slug,
-        instance_slug,
         org_slug,
+        instance_slug,
         _request_auth,
         _content_type,
         _headers,
@@ -674,10 +674,10 @@ class WorkloadsV1Api:
             _path_params['app_slug'] = app_slug
         if space_slug is not None:
             _path_params['space_slug'] = space_slug
-        if instance_slug is not None:
-            _path_params['instance_slug'] = instance_slug
         if org_slug is not None:
             _path_params['org_slug'] = org_slug
+        if instance_slug is not None:
+            _path_params['instance_slug'] = instance_slug
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -720,8 +720,8 @@ class WorkloadsV1Api:
         self,
         app_slug: StrictStr,
         space_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        instance_slug: StrictStr,
         body: Optional[ExecuteCommand] = None,
         _request_timeout: Union[
             None,
@@ -744,10 +744,10 @@ class WorkloadsV1Api:
         :type app_slug: str
         :param space_slug: (required)
         :type space_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
         :param body:
         :type body: ExecuteCommand
         :param _request_timeout: timeout setting for this request. If one
@@ -775,8 +775,8 @@ class WorkloadsV1Api:
         _param = self._execute_command_serialize(
             app_slug=app_slug,
             space_slug=space_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            instance_slug=instance_slug,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -810,8 +810,8 @@ class WorkloadsV1Api:
         self,
         app_slug: StrictStr,
         space_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        instance_slug: StrictStr,
         body: Optional[ExecuteCommand] = None,
         _request_timeout: Union[
             None,
@@ -834,10 +834,10 @@ class WorkloadsV1Api:
         :type app_slug: str
         :param space_slug: (required)
         :type space_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
         :param body:
         :type body: ExecuteCommand
         :param _request_timeout: timeout setting for this request. If one
@@ -865,8 +865,8 @@ class WorkloadsV1Api:
         _param = self._execute_command_serialize(
             app_slug=app_slug,
             space_slug=space_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            instance_slug=instance_slug,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -900,8 +900,8 @@ class WorkloadsV1Api:
         self,
         app_slug: StrictStr,
         space_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        instance_slug: StrictStr,
         body: Optional[ExecuteCommand] = None,
         _request_timeout: Union[
             None,
@@ -924,10 +924,10 @@ class WorkloadsV1Api:
         :type app_slug: str
         :param space_slug: (required)
         :type space_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
         :param body:
         :type body: ExecuteCommand
         :param _request_timeout: timeout setting for this request. If one
@@ -955,8 +955,8 @@ class WorkloadsV1Api:
         _param = self._execute_command_serialize(
             app_slug=app_slug,
             space_slug=space_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            instance_slug=instance_slug,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -985,8 +985,8 @@ class WorkloadsV1Api:
         self,
         app_slug,
         space_slug,
-        instance_slug,
         org_slug,
+        instance_slug,
         body,
         _request_auth,
         _content_type,
@@ -1011,10 +1011,10 @@ class WorkloadsV1Api:
             _path_params['app_slug'] = app_slug
         if space_slug is not None:
             _path_params['space_slug'] = space_slug
-        if instance_slug is not None:
-            _path_params['instance_slug'] = instance_slug
         if org_slug is not None:
             _path_params['org_slug'] = org_slug
+        if instance_slug is not None:
+            _path_params['instance_slug'] = instance_slug
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -1584,8 +1584,8 @@ class WorkloadsV1Api:
         self,
         app_slug: StrictStr,
         space_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        instance_slug: StrictStr,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1607,10 +1607,10 @@ class WorkloadsV1Api:
         :type app_slug: str
         :param space_slug: (required)
         :type space_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1636,8 +1636,8 @@ class WorkloadsV1Api:
         _param = self._get_workloads_for_app_serialize(
             app_slug=app_slug,
             space_slug=space_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            instance_slug=instance_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1670,8 +1670,8 @@ class WorkloadsV1Api:
         self,
         app_slug: StrictStr,
         space_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        instance_slug: StrictStr,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1693,10 +1693,10 @@ class WorkloadsV1Api:
         :type app_slug: str
         :param space_slug: (required)
         :type space_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1722,8 +1722,8 @@ class WorkloadsV1Api:
         _param = self._get_workloads_for_app_serialize(
             app_slug=app_slug,
             space_slug=space_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            instance_slug=instance_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1756,8 +1756,8 @@ class WorkloadsV1Api:
         self,
         app_slug: StrictStr,
         space_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        instance_slug: StrictStr,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1779,10 +1779,10 @@ class WorkloadsV1Api:
         :type app_slug: str
         :param space_slug: (required)
         :type space_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1808,8 +1808,8 @@ class WorkloadsV1Api:
         _param = self._get_workloads_for_app_serialize(
             app_slug=app_slug,
             space_slug=space_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            instance_slug=instance_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1837,8 +1837,8 @@ class WorkloadsV1Api:
         self,
         app_slug,
         space_slug,
-        instance_slug,
         org_slug,
+        instance_slug,
         _request_auth,
         _content_type,
         _headers,
@@ -1862,10 +1862,10 @@ class WorkloadsV1Api:
             _path_params['app_slug'] = app_slug
         if space_slug is not None:
             _path_params['space_slug'] = space_slug
-        if instance_slug is not None:
-            _path_params['instance_slug'] = instance_slug
         if org_slug is not None:
             _path_params['org_slug'] = org_slug
+        if instance_slug is not None:
+            _path_params['instance_slug'] = instance_slug
         # process the query parameters
         # process the header parameters
         # process the form parameters

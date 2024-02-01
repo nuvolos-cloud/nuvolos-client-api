@@ -19,6 +19,9 @@ Name | Type | Description | Notes
 **gpu** | **str** |  | [optional] 
 **current_cpu** | **str** |  | [optional] 
 **current_memory** | **str** |  | [optional] 
+**node_pool** | **str** |  | [optional] 
+**max_cpu** | **str** |  | [optional] 
+**max_memory** | **str** |  | [optional] 
 
 ## Example
 

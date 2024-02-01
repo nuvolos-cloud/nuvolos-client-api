@@ -43,7 +43,10 @@ class WorkloadDetailed(BaseModel):
     gpu: Optional[StrictStr] = None
     current_cpu: Optional[StrictStr] = None
     current_memory: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["slug", "name", "status", "org_slug", "space_slug", "instance_slug", "session_id", "creation_timestamp", "shared", "compute_units", "addons_compute_units", "gpu", "current_cpu", "current_memory"]
+    node_pool: Optional[StrictStr] = None
+    max_cpu: Optional[StrictStr] = None
+    max_memory: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["slug", "name", "status", "org_slug", "space_slug", "instance_slug", "session_id", "creation_timestamp", "shared", "compute_units", "addons_compute_units", "gpu", "current_cpu", "current_memory", "node_pool", "max_cpu", "max_memory"]
 
     model_config = {
         "populate_by_name": True,
@@ -107,7 +110,10 @@ class WorkloadDetailed(BaseModel):
             "addons_compute_units": obj.get("addons_compute_units"),
             "gpu": obj.get("gpu"),
             "current_cpu": obj.get("current_cpu"),
-            "current_memory": obj.get("current_memory")
+            "current_memory": obj.get("current_memory"),
+            "node_pool": obj.get("node_pool"),
+            "max_cpu": obj.get("max_cpu"),
+            "max_memory": obj.get("max_memory")
         })
         return _obj
 

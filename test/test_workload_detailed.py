@@ -49,7 +49,10 @@ class TestWorkloadDetailed(unittest.TestCase):
                 addons_compute_units = '',
                 gpu = '',
                 current_cpu = '',
-                current_memory = ''
+                current_memory = '',
+                node_pool = '',
+                max_cpu = '',
+                max_memory = ''
             )
         else:
             return WorkloadDetailed(

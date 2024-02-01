@@ -52,8 +52,8 @@ class AppsV1Api:
         self,
         snapshot_slug: StrictStr,
         space_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        instance_slug: StrictStr,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -75,10 +75,10 @@ class AppsV1Api:
         :type snapshot_slug: str
         :param space_slug: (required)
         :type space_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -104,8 +104,8 @@ class AppsV1Api:
         _param = self._get_apps_serialize(
             snapshot_slug=snapshot_slug,
             space_slug=space_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            instance_slug=instance_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -138,8 +138,8 @@ class AppsV1Api:
         self,
         snapshot_slug: StrictStr,
         space_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        instance_slug: StrictStr,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -161,10 +161,10 @@ class AppsV1Api:
         :type snapshot_slug: str
         :param space_slug: (required)
         :type space_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -190,8 +190,8 @@ class AppsV1Api:
         _param = self._get_apps_serialize(
             snapshot_slug=snapshot_slug,
             space_slug=space_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            instance_slug=instance_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -224,8 +224,8 @@ class AppsV1Api:
         self,
         snapshot_slug: StrictStr,
         space_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        instance_slug: StrictStr,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -247,10 +247,10 @@ class AppsV1Api:
         :type snapshot_slug: str
         :param space_slug: (required)
         :type space_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -276,8 +276,8 @@ class AppsV1Api:
         _param = self._get_apps_serialize(
             snapshot_slug=snapshot_slug,
             space_slug=space_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            instance_slug=instance_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -305,8 +305,8 @@ class AppsV1Api:
         self,
         snapshot_slug,
         space_slug,
-        instance_slug,
         org_slug,
+        instance_slug,
         _request_auth,
         _content_type,
         _headers,
@@ -330,10 +330,10 @@ class AppsV1Api:
             _path_params['snapshot_slug'] = snapshot_slug
         if space_slug is not None:
             _path_params['space_slug'] = space_slug
-        if instance_slug is not None:
-            _path_params['instance_slug'] = instance_slug
         if org_slug is not None:
             _path_params['org_slug'] = org_slug
+        if instance_slug is not None:
+            _path_params['instance_slug'] = instance_slug
         # process the query parameters
         # process the header parameters
         # process the form parameters

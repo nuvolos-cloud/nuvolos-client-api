@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **create_workload**
-> Task create_workload(app_slug, space_slug, instance_slug, org_slug, body=body)
+> Task create_workload(app_slug, space_slug, org_slug, instance_slug, body=body)
 
 
 
@@ -55,12 +55,12 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     api_instance = nuvolos_client_api.WorkloadsV1Api(api_client)
     app_slug = 'app_slug_example' # str | 
     space_slug = 'space_slug_example' # str | 
-    instance_slug = 'instance_slug_example' # str | 
     org_slug = 'org_slug_example' # str | 
+    instance_slug = 'instance_slug_example' # str | 
     body = nuvolos_client_api.StartApp() # StartApp |  (optional)
 
     try:
-        api_response = api_instance.create_workload(app_slug, space_slug, instance_slug, org_slug, body=body)
+        api_response = api_instance.create_workload(app_slug, space_slug, org_slug, instance_slug, body=body)
         print("The response of WorkloadsV1Api->create_workload:\n")
         pprint(api_response)
     except Exception as e:
@@ -76,8 +76,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **app_slug** | **str**|  | 
  **space_slug** | **str**|  | 
- **instance_slug** | **str**|  | 
  **org_slug** | **str**|  | 
+ **instance_slug** | **str**|  | 
  **body** | [**StartApp**](StartApp.md)|  | [optional] 
 
 ### Return type
@@ -109,7 +109,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_workload**
-> delete_workload(app_slug, space_slug, instance_slug, org_slug)
+> delete_workload(app_slug, space_slug, org_slug, instance_slug)
 
 
 
@@ -149,11 +149,11 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     api_instance = nuvolos_client_api.WorkloadsV1Api(api_client)
     app_slug = 'app_slug_example' # str | 
     space_slug = 'space_slug_example' # str | 
-    instance_slug = 'instance_slug_example' # str | 
     org_slug = 'org_slug_example' # str | 
+    instance_slug = 'instance_slug_example' # str | 
 
     try:
-        api_instance.delete_workload(app_slug, space_slug, instance_slug, org_slug)
+        api_instance.delete_workload(app_slug, space_slug, org_slug, instance_slug)
     except Exception as e:
         print("Exception when calling WorkloadsV1Api->delete_workload: %s\n" % e)
 ```
@@ -167,8 +167,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **app_slug** | **str**|  | 
  **space_slug** | **str**|  | 
- **instance_slug** | **str**|  | 
  **org_slug** | **str**|  | 
+ **instance_slug** | **str**|  | 
 
 ### Return type
 
@@ -199,7 +199,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **execute_command**
-> ExecuteCommandResponse execute_command(app_slug, space_slug, instance_slug, org_slug, body=body)
+> ExecuteCommandResponse execute_command(app_slug, space_slug, org_slug, instance_slug, body=body)
 
 
 
@@ -241,12 +241,12 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     api_instance = nuvolos_client_api.WorkloadsV1Api(api_client)
     app_slug = 'app_slug_example' # str | 
     space_slug = 'space_slug_example' # str | 
-    instance_slug = 'instance_slug_example' # str | 
     org_slug = 'org_slug_example' # str | 
+    instance_slug = 'instance_slug_example' # str | 
     body = nuvolos_client_api.ExecuteCommand() # ExecuteCommand |  (optional)
 
     try:
-        api_response = api_instance.execute_command(app_slug, space_slug, instance_slug, org_slug, body=body)
+        api_response = api_instance.execute_command(app_slug, space_slug, org_slug, instance_slug, body=body)
         print("The response of WorkloadsV1Api->execute_command:\n")
         pprint(api_response)
     except Exception as e:
@@ -262,8 +262,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **app_slug** | **str**|  | 
  **space_slug** | **str**|  | 
- **instance_slug** | **str**|  | 
  **org_slug** | **str**|  | 
+ **instance_slug** | **str**|  | 
  **body** | [**ExecuteCommand**](ExecuteCommand.md)|  | [optional] 
 
 ### Return type
@@ -460,7 +460,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_workloads_for_app**
-> List[WorkloadDetailed] get_workloads_for_app(app_slug, space_slug, instance_slug, org_slug)
+> List[WorkloadDetailed] get_workloads_for_app(app_slug, space_slug, org_slug, instance_slug)
 
 
 
@@ -501,11 +501,11 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     api_instance = nuvolos_client_api.WorkloadsV1Api(api_client)
     app_slug = 'app_slug_example' # str | 
     space_slug = 'space_slug_example' # str | 
-    instance_slug = 'instance_slug_example' # str | 
     org_slug = 'org_slug_example' # str | 
+    instance_slug = 'instance_slug_example' # str | 
 
     try:
-        api_response = api_instance.get_workloads_for_app(app_slug, space_slug, instance_slug, org_slug)
+        api_response = api_instance.get_workloads_for_app(app_slug, space_slug, org_slug, instance_slug)
         print("The response of WorkloadsV1Api->get_workloads_for_app:\n")
         pprint(api_response)
     except Exception as e:
@@ -521,8 +521,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **app_slug** | **str**|  | 
  **space_slug** | **str**|  | 
- **instance_slug** | **str**|  | 
  **org_slug** | **str**|  | 
+ **instance_slug** | **str**|  | 
 
 ### Return type
 
