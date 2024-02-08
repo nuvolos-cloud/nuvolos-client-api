@@ -11,14 +11,16 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
+    - name: Install python
+      uses: conda-incubator/setup-miniconda@v2
       with:
-        python-version: 3.7
+        auto-update-conda: false
+        python-version: 3.8
 
     - name: Install Poetry
       run: |
         curl -sSL https://install.python-poetry.org | python3 -
+        export PATH="/home/runner/.local/bin:$PATH"
 
     - name: Install dependencies
       run: poetry install
