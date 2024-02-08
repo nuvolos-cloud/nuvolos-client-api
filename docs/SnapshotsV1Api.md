@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **get_snapshots**
-> List[Snapshot] get_snapshots(space_slug, org_slug, instance_slug)
+> List[Snapshot] get_snapshots(org_slug, instance_slug, space_slug)
 
 
 
@@ -47,12 +47,12 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with nuvolos_client_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nuvolos_client_api.SnapshotsV1Api(api_client)
-    space_slug = 'space_slug_example' # str | 
     org_slug = 'org_slug_example' # str | 
     instance_slug = 'instance_slug_example' # str | 
+    space_slug = 'space_slug_example' # str | 
 
     try:
-        api_response = api_instance.get_snapshots(space_slug, org_slug, instance_slug)
+        api_response = api_instance.get_snapshots(org_slug, instance_slug, space_slug)
         print("The response of SnapshotsV1Api->get_snapshots:\n")
         pprint(api_response)
     except Exception as e:
@@ -66,9 +66,9 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **space_slug** | **str**|  | 
  **org_slug** | **str**|  | 
  **instance_slug** | **str**|  | 
+ **space_slug** | **str**|  | 
 
 ### Return type
 
