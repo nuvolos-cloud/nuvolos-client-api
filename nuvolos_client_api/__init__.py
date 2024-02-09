@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.0.0"
+__version__ = "1.0.2"
 
 # import apis into sdk package
 from nuvolos_client_api.api.apps_v1_api import AppsV1Api
