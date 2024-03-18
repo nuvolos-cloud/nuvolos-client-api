@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 **name** | **str** |  | 
 **role** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
-**creation_timestamp** | **datetime** |  | [optional] 
-**archival_timestamp** | **datetime** |  | [optional] 
-**rearchive_after_timestamp** | **datetime** |  | [optional] 
+**creation_timestamp** | **none_type** |  | [optional] 
+**archival_timestamp** | **none_type** |  | [optional] 
+**rearchive_after_timestamp** | **none_type** |  | [optional] 
 
 ## Example
 
@@ -23,7 +23,7 @@ json = "{}"
 # create an instance of Instance from a JSON string
 instance_instance = Instance.from_json(json)
 # print the JSON string representation of the object
-print Instance.to_json()
+print(Instance.to_json())
 
 # convert the object into a dict
 instance_dict = instance_instance.to_dict()

@@ -12,11 +12,11 @@ Name | Type | Description | Notes
 **visibility_type** | **str** |  | 
 **description** | **str** |  | [optional] 
 **database_tables_enabled** | **bool** |  | [optional] 
-**archival_timestamp** | **datetime** |  | [optional] 
+**archival_timestamp** | **none_type** |  | [optional] 
 **archive_by_date** | **date** |  | [optional] 
-**creation_timestamp** | **datetime** |  | [optional] 
+**creation_timestamp** | **none_type** |  | [optional] 
 **video_library_enabled** | **bool** |  | 
-**last_modified_timestamp** | **datetime** |  | [optional] 
+**last_modified_timestamp** | **none_type** |  | [optional] 
 
 ## Example
 
@@ -28,7 +28,7 @@ json = "{}"
 # create an instance of Space from a JSON string
 space_instance = Space.from_json(json)
 # print the JSON string representation of the object
-print Space.to_json()
+print(Space.to_json())
 
 # convert the object into a dict
 space_dict = space_instance.to_dict()

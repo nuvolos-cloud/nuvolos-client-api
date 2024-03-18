@@ -20,7 +20,7 @@ json = "{}"
 # create an instance of ClientApiError from a JSON string
 client_api_error_instance = ClientApiError.from_json(json)
 # print the JSON string representation of the object
-print ClientApiError.to_json()
+print(ClientApiError.to_json())
 
 # convert the object into a dict
 client_api_error_dict = client_api_error_instance.to_dict()

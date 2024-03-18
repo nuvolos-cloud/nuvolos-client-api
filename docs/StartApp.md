@@ -20,7 +20,7 @@ json = "{}"
 # create an instance of StartApp from a JSON string
 start_app_instance = StartApp.from_json(json)
 # print the JSON string representation of the object
-print StartApp.to_json()
+print(StartApp.to_json())
 
 # convert the object into a dict
 start_app_dict = start_app_instance.to_dict()

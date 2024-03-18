@@ -19,8 +19,6 @@ Returns the spaces the user is affiliated with in the selected org.
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import time
-import os
 import nuvolos_client_api
 from nuvolos_client_api.models.space import Space
 from nuvolos_client_api.rest import ApiException
@@ -83,14 +81,14 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | Operation succeeded |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Access to Nuvolos resource is forbidden |  -  |
-**500** | Internal server error |  -  |
 **404** | Nuvolos object not found |  -  |
-**200** | Operation succeeded |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
+**500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

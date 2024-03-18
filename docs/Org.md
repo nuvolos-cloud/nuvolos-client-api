@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **description** | **str** |  | [optional] 
 **tables_enabled** | **bool** |  | [optional] 
 **hpc_enabled** | **bool** |  | [optional] 
-**creation_timestamp** | **datetime** |  | [optional] 
+**creation_timestamp** | **none_type** |  | [optional] 
 **video_library_enabled** | **bool** |  | [optional] 
 
 ## Example
@@ -24,7 +24,7 @@ json = "{}"
 # create an instance of Org from a JSON string
 org_instance = Org.from_json(json)
 # print the JSON string representation of the object
-print Org.to_json()
+print(Org.to_json())
 
 # convert the object into a dict
 org_dict = org_instance.to_dict()

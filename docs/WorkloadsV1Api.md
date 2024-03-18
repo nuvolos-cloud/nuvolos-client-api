@@ -24,8 +24,6 @@ Creates a new workload by starting a Nuvolos application.
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import time
-import os
 import nuvolos_client_api
 from nuvolos_client_api.models.start_app import StartApp
 from nuvolos_client_api.models.task import Task
@@ -97,14 +95,14 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**202** | Request accepted |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Access to Nuvolos resource is forbidden |  -  |
 **404** | Nuvolos object not found |  -  |
-**500** | Internal server error |  -  |
 **409** | Conflict with Nuvolos object |  -  |
-**202** | Request accepted |  -  |
 **410** | Nuvolos object no longer available |  -  |
+**500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -120,8 +118,6 @@ Deletes a workload by stopping a Nuvolos application.
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import time
-import os
 import nuvolos_client_api
 from nuvolos_client_api.rest import ApiException
 from pprint import pprint
@@ -187,14 +183,14 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**204** | Deletion succeeded |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Access to Nuvolos resource is forbidden |  -  |
 **404** | Nuvolos object not found |  -  |
-**500** | Internal server error |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
-**204** | Deletion succeeded |  -  |
+**500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -210,8 +206,6 @@ Executes a custom command in a selected workload.
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import time
-import os
 import nuvolos_client_api
 from nuvolos_client_api.models.execute_command import ExecuteCommand
 from nuvolos_client_api.models.execute_command_response import ExecuteCommandResponse
@@ -283,14 +277,14 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**202** | Request accepted |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Access to Nuvolos resource is forbidden |  -  |
 **404** | Nuvolos object not found |  -  |
-**500** | Internal server error |  -  |
 **409** | Conflict with Nuvolos object |  -  |
-**202** | Request accepted |  -  |
 **410** | Nuvolos object no longer available |  -  |
+**500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -306,8 +300,6 @@ Returns the available Virtual Machines for scaled workloads
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import time
-import os
 import nuvolos_client_api
 from nuvolos_client_api.models.api_node_pool import APINodePool
 from nuvolos_client_api.rest import ApiException
@@ -366,13 +358,13 @@ This endpoint does not need any parameter.
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | Operation succeeded |  -  |
 **400** | Bad request |  -  |
 **403** | Access to Nuvolos resource is forbidden |  -  |
-**500** | Internal server error |  -  |
 **404** | Nuvolos object not found |  -  |
-**200** | Operation succeeded |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
+**500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -388,8 +380,6 @@ Returns the workloads currently run by the user.
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import time
-import os
 import nuvolos_client_api
 from nuvolos_client_api.models.workload_detailed import WorkloadDetailed
 from nuvolos_client_api.rest import ApiException
@@ -448,14 +438,14 @@ This endpoint does not need any parameter.
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | Operation succeeded |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Access to Nuvolos resource is forbidden |  -  |
-**500** | Internal server error |  -  |
 **404** | Nuvolos object not found |  -  |
-**200** | Operation succeeded |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
+**500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -471,8 +461,6 @@ Returns the workloads available for the user of a given Nuvolos application.
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
-import time
-import os
 import nuvolos_client_api
 from nuvolos_client_api.models.workload_detailed import WorkloadDetailed
 from nuvolos_client_api.rest import ApiException
@@ -541,14 +529,14 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | Operation succeeded |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Access to Nuvolos resource is forbidden |  -  |
-**500** | Internal server error |  -  |
 **404** | Nuvolos object not found |  -  |
-**200** | Operation succeeded |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
+**500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

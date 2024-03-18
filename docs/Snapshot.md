@@ -23,7 +23,7 @@ json = "{}"
 # create an instance of Snapshot from a JSON string
 snapshot_instance = Snapshot.from_json(json)
 # print the JSON string representation of the object
-print Snapshot.to_json()
+print(Snapshot.to_json())
 
 # convert the object into a dict
 snapshot_dict = snapshot_instance.to_dict()
