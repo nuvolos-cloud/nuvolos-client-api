@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **get_apps**
-> List[Application] get_apps(org_slug, snapshot_slug, instance_slug, space_slug)
+> List[Application] get_apps(org_slug, instance_slug, space_slug, snapshot_slug)
 
 
 
@@ -19,6 +19,8 @@ Returns the apps in the given snapshot.
 * Api Key Authentication (ApiKeyAuth):
 
 ```python
+import time
+import os
 import nuvolos_client_api
 from nuvolos_client_api.models.application import Application
 from nuvolos_client_api.rest import ApiException
@@ -46,12 +48,12 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nuvolos_client_api.AppsV1Api(api_client)
     org_slug = 'org_slug_example' # str | 
-    snapshot_slug = 'snapshot_slug_example' # str | 
     instance_slug = 'instance_slug_example' # str | 
     space_slug = 'space_slug_example' # str | 
+    snapshot_slug = 'snapshot_slug_example' # str | 
 
     try:
-        api_response = api_instance.get_apps(org_slug, snapshot_slug, instance_slug, space_slug)
+        api_response = api_instance.get_apps(org_slug, instance_slug, space_slug, snapshot_slug)
         print("The response of AppsV1Api->get_apps:\n")
         pprint(api_response)
     except Exception as e:
@@ -66,9 +68,9 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **org_slug** | **str**|  | 
- **snapshot_slug** | **str**|  | 
  **instance_slug** | **str**|  | 
  **space_slug** | **str**|  | 
+ **snapshot_slug** | **str**|  | 
 
 ### Return type
 
@@ -87,14 +89,14 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Operation succeeded |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Access to Nuvolos resource is forbidden |  -  |
+**500** | Internal server error |  -  |
 **404** | Nuvolos object not found |  -  |
+**200** | Operation succeeded |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
-**500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

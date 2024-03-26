@@ -33,7 +33,7 @@ json = "{}"
 # create an instance of WorkloadDetailed from a JSON string
 workload_detailed_instance = WorkloadDetailed.from_json(json)
 # print the JSON string representation of the object
-print(WorkloadDetailed.to_json())
+print WorkloadDetailed.to_json()
 
 # convert the object into a dict
 workload_detailed_dict = workload_detailed_instance.to_dict()

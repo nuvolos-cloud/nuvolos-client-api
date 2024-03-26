@@ -17,7 +17,7 @@ json = "{}"
 # create an instance of ExecuteCommand from a JSON string
 execute_command_instance = ExecuteCommand.from_json(json)
 # print the JSON string representation of the object
-print(ExecuteCommand.to_json())
+print ExecuteCommand.to_json()
 
 # convert the object into a dict
 execute_command_dict = execute_command_instance.to_dict()

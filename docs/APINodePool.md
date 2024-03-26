@@ -25,7 +25,7 @@ json = "{}"
 # create an instance of APINodePool from a JSON string
 api_node_pool_instance = APINodePool.from_json(json)
 # print the JSON string representation of the object
-print(APINodePool.to_json())
+print APINodePool.to_json()
 
 # convert the object into a dict
 api_node_pool_dict = api_node_pool_instance.to_dict()
