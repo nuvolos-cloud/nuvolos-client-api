@@ -14,10 +14,10 @@
 
 import unittest
 
-from nuvolos_client_api.models.execute_command import ExecuteCommand
+from nuvolos_client_api.models.snapshot_create_request import SnapshotCreateRequest
 
-class TestExecuteCommand(unittest.TestCase):
-    """ExecuteCommand unit test stubs"""
+class TestSnapshotCreateRequest(unittest.TestCase):
+    """SnapshotCreateRequest unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,26 +25,30 @@ class TestExecuteCommand(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> ExecuteCommand:
-        """Test ExecuteCommand
+    def make_instance(self, include_optional) -> SnapshotCreateRequest:
+        """Test SnapshotCreateRequest
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `ExecuteCommand`
+        # uncomment below to create an instance of `SnapshotCreateRequest`
         """
-        model = ExecuteCommand()
+        model = SnapshotCreateRequest()
         if include_optional:
-            return ExecuteCommand(
-                command = ''
+            return SnapshotCreateRequest(
+                description = '',
+                email_once_finished = True,
+                name = '',
+                slug = ''
             )
         else:
-            return ExecuteCommand(
-                command = '',
+            return SnapshotCreateRequest(
+                name = '',
+                slug = '',
         )
         """
 
-    def testExecuteCommand(self):
-        """Test ExecuteCommand"""
+    def testSnapshotCreateRequest(self):
+        """Test SnapshotCreateRequest"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

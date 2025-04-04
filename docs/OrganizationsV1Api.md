@@ -10,17 +10,12 @@ Method | HTTP request | Description
 # **get_orgs**
 > List[Org] get_orgs()
 
-
-
 Lists all the Nuvolos organizations the user is affiliated with
 
 ### Example
 
-* Api Key Authentication (ApiKeyAuth):
 
 ```python
-import time
-import os
 import nuvolos_client_api
 from nuvolos_client_api.models.org import Org
 from nuvolos_client_api.rest import ApiException
@@ -32,16 +27,6 @@ configuration = nuvolos_client_api.Configuration(
     host = "http://localhost"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKeyAuth
-configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with nuvolos_client_api.ApiClient(configuration) as api_client:
@@ -68,7 +53,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -79,14 +64,14 @@ This endpoint does not need any parameter.
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | Operation succeeded |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Access to Nuvolos resource is forbidden |  -  |
-**500** | Internal server error |  -  |
 **404** | Nuvolos object not found |  -  |
-**200** | Operation succeeded |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
+**500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -17,20 +17,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class ClientApiError(BaseModel):
+class SnapshotCreateRequest(BaseModel):
     """
-    ClientApiError
+    SnapshotCreateRequest
     """ # noqa: E501
-    ctxid: Optional[Dict[str, Any]] = None
-    err: Optional[Dict[str, Any]] = None
-    incident_id: Optional[Dict[str, Any]] = None
-    msg: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["ctxid", "err", "incident_id", "msg"]
+    description: Optional[StrictStr] = None
+    email_once_finished: Optional[StrictBool] = False
+    name: StrictStr
+    slug: StrictStr
+    __properties: ClassVar[List[str]] = ["description", "email_once_finished", "name", "slug"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +50,7 @@ class ClientApiError(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ClientApiError from a JSON string"""
+        """Create an instance of SnapshotCreateRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,7 +75,7 @@ class ClientApiError(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ClientApiError from a dict"""
+        """Create an instance of SnapshotCreateRequest from a dict"""
         if obj is None:
             return None
 
@@ -83,10 +83,10 @@ class ClientApiError(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "ctxid": obj.get("ctxid"),
-            "err": obj.get("err"),
-            "incident_id": obj.get("incident_id"),
-            "msg": obj.get("msg")
+            "description": obj.get("description"),
+            "email_once_finished": obj.get("email_once_finished") if obj.get("email_once_finished") is not None else False,
+            "name": obj.get("name"),
+            "slug": obj.get("slug")
         })
         return _obj
 

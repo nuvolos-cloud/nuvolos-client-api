@@ -5,18 +5,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**slug** | **str** |  | 
+**archival_timestamp** | **none_type** |  | [optional] 
+**archive_by_date** | **date** |  | [optional] 
+**creation_timestamp** | **none_type** |  | [optional] 
+**database_tables_enabled** | **bool** |  | [optional] 
+**description** | **str** |  | [optional] 
+**last_modified_timestamp** | **none_type** |  | [optional] 
 **name** | **str** |  | 
 **role** | **str** |  | [optional] 
+**slug** | **str** |  | 
 **type** | **str** |  | 
-**visibility_type** | **str** |  | 
-**description** | **str** |  | [optional] 
-**database_tables_enabled** | **bool** |  | [optional] 
-**archival_timestamp** | **datetime** |  | [optional] 
-**archive_by_date** | **date** |  | [optional] 
-**creation_timestamp** | **datetime** |  | [optional] 
 **video_library_enabled** | **bool** |  | 
-**last_modified_timestamp** | **datetime** |  | [optional] 
+**visibility_type** | **str** |  | 
 
 ## Example
 
@@ -28,12 +28,12 @@ json = "{}"
 # create an instance of Space from a JSON string
 space_instance = Space.from_json(json)
 # print the JSON string representation of the object
-print Space.to_json()
+print(Space.to_json())
 
 # convert the object into a dict
 space_dict = space_instance.to_dict()
 # create an instance of Space from a dict
-space_form_dict = space.from_dict(space_dict)
+space_from_dict = Space.from_dict(space_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
