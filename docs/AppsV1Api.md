@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **get_apps**
-> List[Application] get_apps(snapshot_slug, space_slug, instance_slug, org_slug)
+> List[Application] get_apps(org_slug, space_slug, instance_slug, snapshot_slug)
 
 Returns the apps in the given snapshot.
 
@@ -32,13 +32,13 @@ configuration = nuvolos_client_api.Configuration(
 with nuvolos_client_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nuvolos_client_api.AppsV1Api(api_client)
-    snapshot_slug = 'snapshot_slug_example' # str | 
+    org_slug = 'org_slug_example' # str | 
     space_slug = 'space_slug_example' # str | 
     instance_slug = 'instance_slug_example' # str | 
-    org_slug = 'org_slug_example' # str | 
+    snapshot_slug = 'snapshot_slug_example' # str | 
 
     try:
-        api_response = api_instance.get_apps(snapshot_slug, space_slug, instance_slug, org_slug)
+        api_response = api_instance.get_apps(org_slug, space_slug, instance_slug, snapshot_slug)
         print("The response of AppsV1Api->get_apps:\n")
         pprint(api_response)
     except Exception as e:
@@ -52,10 +52,10 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **snapshot_slug** | **str**|  | 
+ **org_slug** | **str**|  | 
  **space_slug** | **str**|  | 
  **instance_slug** | **str**|  | 
- **org_slug** | **str**|  | 
+ **snapshot_slug** | **str**|  | 
 
 ### Return type
 

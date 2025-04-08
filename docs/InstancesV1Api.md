@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **create_snapshot**
-> Task create_snapshot(space_slug, instance_slug, org_slug, body=body)
+> Task create_snapshot(org_slug, space_slug, instance_slug, body=body)
 
 Creates a snapshot in the specified instance asynchronously
 
@@ -34,13 +34,13 @@ configuration = nuvolos_client_api.Configuration(
 with nuvolos_client_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nuvolos_client_api.InstancesV1Api(api_client)
+    org_slug = 'org_slug_example' # str | 
     space_slug = 'space_slug_example' # str | 
     instance_slug = 'instance_slug_example' # str | 
-    org_slug = 'org_slug_example' # str | 
     body = nuvolos_client_api.SnapshotCreateRequest() # SnapshotCreateRequest |  (optional)
 
     try:
-        api_response = api_instance.create_snapshot(space_slug, instance_slug, org_slug, body=body)
+        api_response = api_instance.create_snapshot(org_slug, space_slug, instance_slug, body=body)
         print("The response of InstancesV1Api->create_snapshot:\n")
         pprint(api_response)
     except Exception as e:
@@ -54,9 +54,9 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **org_slug** | **str**|  | 
  **space_slug** | **str**|  | 
  **instance_slug** | **str**|  | 
- **org_slug** | **str**|  | 
  **body** | [**SnapshotCreateRequest**](SnapshotCreateRequest.md)|  | [optional] 
 
 ### Return type
@@ -88,7 +88,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_instances**
-> List[Instance] get_instances(space_slug, org_slug)
+> List[Instance] get_instances(org_slug, space_slug)
 
 Returns the instances the user has access to in the selected org and space.
 
@@ -112,11 +112,11 @@ configuration = nuvolos_client_api.Configuration(
 with nuvolos_client_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nuvolos_client_api.InstancesV1Api(api_client)
-    space_slug = 'space_slug_example' # str | 
     org_slug = 'org_slug_example' # str | 
+    space_slug = 'space_slug_example' # str | 
 
     try:
-        api_response = api_instance.get_instances(space_slug, org_slug)
+        api_response = api_instance.get_instances(org_slug, space_slug)
         print("The response of InstancesV1Api->get_instances:\n")
         pprint(api_response)
     except Exception as e:
@@ -130,8 +130,8 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **space_slug** | **str**|  | 
  **org_slug** | **str**|  | 
+ **space_slug** | **str**|  | 
 
 ### Return type
 

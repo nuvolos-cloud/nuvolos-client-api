@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **create_workload**
-> Task create_workload(space_slug, app_slug, instance_slug, org_slug, body=body)
+> Task create_workload(org_slug, space_slug, instance_slug, app_slug, body=body)
 
 Creates a new workload by starting a Nuvolos application.
 
@@ -38,14 +38,14 @@ configuration = nuvolos_client_api.Configuration(
 with nuvolos_client_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nuvolos_client_api.WorkloadsV1Api(api_client)
-    space_slug = 'space_slug_example' # str | 
-    app_slug = 'app_slug_example' # str | 
-    instance_slug = 'instance_slug_example' # str | 
     org_slug = 'org_slug_example' # str | 
+    space_slug = 'space_slug_example' # str | 
+    instance_slug = 'instance_slug_example' # str | 
+    app_slug = 'app_slug_example' # str | 
     body = nuvolos_client_api.StartApp() # StartApp |  (optional)
 
     try:
-        api_response = api_instance.create_workload(space_slug, app_slug, instance_slug, org_slug, body=body)
+        api_response = api_instance.create_workload(org_slug, space_slug, instance_slug, app_slug, body=body)
         print("The response of WorkloadsV1Api->create_workload:\n")
         pprint(api_response)
     except Exception as e:
@@ -59,10 +59,10 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **space_slug** | **str**|  | 
- **app_slug** | **str**|  | 
- **instance_slug** | **str**|  | 
  **org_slug** | **str**|  | 
+ **space_slug** | **str**|  | 
+ **instance_slug** | **str**|  | 
+ **app_slug** | **str**|  | 
  **body** | [**StartApp**](StartApp.md)|  | [optional] 
 
 ### Return type
@@ -94,7 +94,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_workload**
-> delete_workload(space_slug, app_slug, instance_slug, org_slug)
+> delete_workload(org_slug, space_slug, instance_slug, app_slug)
 
 Deletes a workload by stopping a Nuvolos application.
 
@@ -117,13 +117,13 @@ configuration = nuvolos_client_api.Configuration(
 with nuvolos_client_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nuvolos_client_api.WorkloadsV1Api(api_client)
-    space_slug = 'space_slug_example' # str | 
-    app_slug = 'app_slug_example' # str | 
-    instance_slug = 'instance_slug_example' # str | 
     org_slug = 'org_slug_example' # str | 
+    space_slug = 'space_slug_example' # str | 
+    instance_slug = 'instance_slug_example' # str | 
+    app_slug = 'app_slug_example' # str | 
 
     try:
-        api_instance.delete_workload(space_slug, app_slug, instance_slug, org_slug)
+        api_instance.delete_workload(org_slug, space_slug, instance_slug, app_slug)
     except Exception as e:
         print("Exception when calling WorkloadsV1Api->delete_workload: %s\n" % e)
 ```
@@ -135,10 +135,10 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **space_slug** | **str**|  | 
- **app_slug** | **str**|  | 
- **instance_slug** | **str**|  | 
  **org_slug** | **str**|  | 
+ **space_slug** | **str**|  | 
+ **instance_slug** | **str**|  | 
+ **app_slug** | **str**|  | 
 
 ### Return type
 
@@ -169,7 +169,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **execute_command**
-> ExecuteCommandResponse execute_command(space_slug, app_slug, instance_slug, org_slug, body=body)
+> ExecuteCommandResponse execute_command(org_slug, space_slug, instance_slug, app_slug, body=body)
 
 Executes a custom command in a selected workload.
 
@@ -194,14 +194,14 @@ configuration = nuvolos_client_api.Configuration(
 with nuvolos_client_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nuvolos_client_api.WorkloadsV1Api(api_client)
-    space_slug = 'space_slug_example' # str | 
-    app_slug = 'app_slug_example' # str | 
-    instance_slug = 'instance_slug_example' # str | 
     org_slug = 'org_slug_example' # str | 
+    space_slug = 'space_slug_example' # str | 
+    instance_slug = 'instance_slug_example' # str | 
+    app_slug = 'app_slug_example' # str | 
     body = nuvolos_client_api.ExecuteCommand() # ExecuteCommand |  (optional)
 
     try:
-        api_response = api_instance.execute_command(space_slug, app_slug, instance_slug, org_slug, body=body)
+        api_response = api_instance.execute_command(org_slug, space_slug, instance_slug, app_slug, body=body)
         print("The response of WorkloadsV1Api->execute_command:\n")
         pprint(api_response)
     except Exception as e:
@@ -215,10 +215,10 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **space_slug** | **str**|  | 
- **app_slug** | **str**|  | 
- **instance_slug** | **str**|  | 
  **org_slug** | **str**|  | 
+ **space_slug** | **str**|  | 
+ **instance_slug** | **str**|  | 
+ **app_slug** | **str**|  | 
  **body** | [**ExecuteCommand**](ExecuteCommand.md)|  | [optional] 
 
 ### Return type
@@ -385,7 +385,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_workloads_for_app**
-> List[WorkloadDetailed] get_workloads_for_app(space_slug, app_slug, instance_slug, org_slug)
+> List[WorkloadDetailed] get_workloads_for_app(org_slug, space_slug, instance_slug, app_slug)
 
 Returns the workloads available for the user of a given Nuvolos application.
 
@@ -409,13 +409,13 @@ configuration = nuvolos_client_api.Configuration(
 with nuvolos_client_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nuvolos_client_api.WorkloadsV1Api(api_client)
-    space_slug = 'space_slug_example' # str | 
-    app_slug = 'app_slug_example' # str | 
-    instance_slug = 'instance_slug_example' # str | 
     org_slug = 'org_slug_example' # str | 
+    space_slug = 'space_slug_example' # str | 
+    instance_slug = 'instance_slug_example' # str | 
+    app_slug = 'app_slug_example' # str | 
 
     try:
-        api_response = api_instance.get_workloads_for_app(space_slug, app_slug, instance_slug, org_slug)
+        api_response = api_instance.get_workloads_for_app(org_slug, space_slug, instance_slug, app_slug)
         print("The response of WorkloadsV1Api->get_workloads_for_app:\n")
         pprint(api_response)
     except Exception as e:
@@ -429,10 +429,10 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **space_slug** | **str**|  | 
- **app_slug** | **str**|  | 
- **instance_slug** | **str**|  | 
  **org_slug** | **str**|  | 
+ **space_slug** | **str**|  | 
+ **instance_slug** | **str**|  | 
+ **app_slug** | **str**|  | 
 
 ### Return type
 

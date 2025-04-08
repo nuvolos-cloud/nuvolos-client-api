@@ -46,10 +46,10 @@ class WorkloadsV1Api:
     @validate_call
     def create_workload(
         self,
-        space_slug: StrictStr,
-        app_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        space_slug: StrictStr,
+        instance_slug: StrictStr,
+        app_slug: StrictStr,
         body: Optional[StartApp] = None,
         _request_timeout: Union[
             None,
@@ -68,14 +68,14 @@ class WorkloadsV1Api:
 
         Creates a new workload by starting a Nuvolos application.
 
-        :param space_slug: (required)
-        :type space_slug: str
-        :param app_slug: (required)
-        :type app_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param space_slug: (required)
+        :type space_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
+        :param app_slug: (required)
+        :type app_slug: str
         :param body:
         :type body: StartApp
         :param _request_timeout: timeout setting for this request. If one
@@ -101,10 +101,10 @@ class WorkloadsV1Api:
         """ # noqa: E501
 
         _param = self._create_workload_serialize(
-            space_slug=space_slug,
-            app_slug=app_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            space_slug=space_slug,
+            instance_slug=instance_slug,
+            app_slug=app_slug,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -136,10 +136,10 @@ class WorkloadsV1Api:
     @validate_call
     def create_workload_with_http_info(
         self,
-        space_slug: StrictStr,
-        app_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        space_slug: StrictStr,
+        instance_slug: StrictStr,
+        app_slug: StrictStr,
         body: Optional[StartApp] = None,
         _request_timeout: Union[
             None,
@@ -158,14 +158,14 @@ class WorkloadsV1Api:
 
         Creates a new workload by starting a Nuvolos application.
 
-        :param space_slug: (required)
-        :type space_slug: str
-        :param app_slug: (required)
-        :type app_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param space_slug: (required)
+        :type space_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
+        :param app_slug: (required)
+        :type app_slug: str
         :param body:
         :type body: StartApp
         :param _request_timeout: timeout setting for this request. If one
@@ -191,10 +191,10 @@ class WorkloadsV1Api:
         """ # noqa: E501
 
         _param = self._create_workload_serialize(
-            space_slug=space_slug,
-            app_slug=app_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            space_slug=space_slug,
+            instance_slug=instance_slug,
+            app_slug=app_slug,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -226,10 +226,10 @@ class WorkloadsV1Api:
     @validate_call
     def create_workload_without_preload_content(
         self,
-        space_slug: StrictStr,
-        app_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        space_slug: StrictStr,
+        instance_slug: StrictStr,
+        app_slug: StrictStr,
         body: Optional[StartApp] = None,
         _request_timeout: Union[
             None,
@@ -248,14 +248,14 @@ class WorkloadsV1Api:
 
         Creates a new workload by starting a Nuvolos application.
 
-        :param space_slug: (required)
-        :type space_slug: str
-        :param app_slug: (required)
-        :type app_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param space_slug: (required)
+        :type space_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
+        :param app_slug: (required)
+        :type app_slug: str
         :param body:
         :type body: StartApp
         :param _request_timeout: timeout setting for this request. If one
@@ -281,10 +281,10 @@ class WorkloadsV1Api:
         """ # noqa: E501
 
         _param = self._create_workload_serialize(
-            space_slug=space_slug,
-            app_slug=app_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            space_slug=space_slug,
+            instance_slug=instance_slug,
+            app_slug=app_slug,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -311,10 +311,10 @@ class WorkloadsV1Api:
 
     def _create_workload_serialize(
         self,
-        space_slug,
-        app_slug,
-        instance_slug,
         org_slug,
+        space_slug,
+        instance_slug,
+        app_slug,
         body,
         _request_auth,
         _content_type,
@@ -337,14 +337,14 @@ class WorkloadsV1Api:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if space_slug is not None:
-            _path_params['space_slug'] = space_slug
-        if app_slug is not None:
-            _path_params['app_slug'] = app_slug
-        if instance_slug is not None:
-            _path_params['instance_slug'] = instance_slug
         if org_slug is not None:
             _path_params['org_slug'] = org_slug
+        if space_slug is not None:
+            _path_params['space_slug'] = space_slug
+        if instance_slug is not None:
+            _path_params['instance_slug'] = instance_slug
+        if app_slug is not None:
+            _path_params['app_slug'] = app_slug
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -387,10 +387,10 @@ class WorkloadsV1Api:
     @validate_call
     def delete_workload(
         self,
-        space_slug: StrictStr,
-        app_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        space_slug: StrictStr,
+        instance_slug: StrictStr,
+        app_slug: StrictStr,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -408,14 +408,14 @@ class WorkloadsV1Api:
 
         Deletes a workload by stopping a Nuvolos application.
 
-        :param space_slug: (required)
-        :type space_slug: str
-        :param app_slug: (required)
-        :type app_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param space_slug: (required)
+        :type space_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
+        :param app_slug: (required)
+        :type app_slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -439,10 +439,10 @@ class WorkloadsV1Api:
         """ # noqa: E501
 
         _param = self._delete_workload_serialize(
-            space_slug=space_slug,
-            app_slug=app_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            space_slug=space_slug,
+            instance_slug=instance_slug,
+            app_slug=app_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -473,10 +473,10 @@ class WorkloadsV1Api:
     @validate_call
     def delete_workload_with_http_info(
         self,
-        space_slug: StrictStr,
-        app_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        space_slug: StrictStr,
+        instance_slug: StrictStr,
+        app_slug: StrictStr,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -494,14 +494,14 @@ class WorkloadsV1Api:
 
         Deletes a workload by stopping a Nuvolos application.
 
-        :param space_slug: (required)
-        :type space_slug: str
-        :param app_slug: (required)
-        :type app_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param space_slug: (required)
+        :type space_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
+        :param app_slug: (required)
+        :type app_slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -525,10 +525,10 @@ class WorkloadsV1Api:
         """ # noqa: E501
 
         _param = self._delete_workload_serialize(
-            space_slug=space_slug,
-            app_slug=app_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            space_slug=space_slug,
+            instance_slug=instance_slug,
+            app_slug=app_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -559,10 +559,10 @@ class WorkloadsV1Api:
     @validate_call
     def delete_workload_without_preload_content(
         self,
-        space_slug: StrictStr,
-        app_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        space_slug: StrictStr,
+        instance_slug: StrictStr,
+        app_slug: StrictStr,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -580,14 +580,14 @@ class WorkloadsV1Api:
 
         Deletes a workload by stopping a Nuvolos application.
 
-        :param space_slug: (required)
-        :type space_slug: str
-        :param app_slug: (required)
-        :type app_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param space_slug: (required)
+        :type space_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
+        :param app_slug: (required)
+        :type app_slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -611,10 +611,10 @@ class WorkloadsV1Api:
         """ # noqa: E501
 
         _param = self._delete_workload_serialize(
-            space_slug=space_slug,
-            app_slug=app_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            space_slug=space_slug,
+            instance_slug=instance_slug,
+            app_slug=app_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -640,10 +640,10 @@ class WorkloadsV1Api:
 
     def _delete_workload_serialize(
         self,
-        space_slug,
-        app_slug,
-        instance_slug,
         org_slug,
+        space_slug,
+        instance_slug,
+        app_slug,
         _request_auth,
         _content_type,
         _headers,
@@ -665,14 +665,14 @@ class WorkloadsV1Api:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if space_slug is not None:
-            _path_params['space_slug'] = space_slug
-        if app_slug is not None:
-            _path_params['app_slug'] = app_slug
-        if instance_slug is not None:
-            _path_params['instance_slug'] = instance_slug
         if org_slug is not None:
             _path_params['org_slug'] = org_slug
+        if space_slug is not None:
+            _path_params['space_slug'] = space_slug
+        if instance_slug is not None:
+            _path_params['instance_slug'] = instance_slug
+        if app_slug is not None:
+            _path_params['app_slug'] = app_slug
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -713,10 +713,10 @@ class WorkloadsV1Api:
     @validate_call
     def execute_command(
         self,
-        space_slug: StrictStr,
-        app_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        space_slug: StrictStr,
+        instance_slug: StrictStr,
+        app_slug: StrictStr,
         body: Optional[ExecuteCommand] = None,
         _request_timeout: Union[
             None,
@@ -735,14 +735,14 @@ class WorkloadsV1Api:
 
         Executes a custom command in a selected workload.
 
-        :param space_slug: (required)
-        :type space_slug: str
-        :param app_slug: (required)
-        :type app_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param space_slug: (required)
+        :type space_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
+        :param app_slug: (required)
+        :type app_slug: str
         :param body:
         :type body: ExecuteCommand
         :param _request_timeout: timeout setting for this request. If one
@@ -768,10 +768,10 @@ class WorkloadsV1Api:
         """ # noqa: E501
 
         _param = self._execute_command_serialize(
-            space_slug=space_slug,
-            app_slug=app_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            space_slug=space_slug,
+            instance_slug=instance_slug,
+            app_slug=app_slug,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -803,10 +803,10 @@ class WorkloadsV1Api:
     @validate_call
     def execute_command_with_http_info(
         self,
-        space_slug: StrictStr,
-        app_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        space_slug: StrictStr,
+        instance_slug: StrictStr,
+        app_slug: StrictStr,
         body: Optional[ExecuteCommand] = None,
         _request_timeout: Union[
             None,
@@ -825,14 +825,14 @@ class WorkloadsV1Api:
 
         Executes a custom command in a selected workload.
 
-        :param space_slug: (required)
-        :type space_slug: str
-        :param app_slug: (required)
-        :type app_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param space_slug: (required)
+        :type space_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
+        :param app_slug: (required)
+        :type app_slug: str
         :param body:
         :type body: ExecuteCommand
         :param _request_timeout: timeout setting for this request. If one
@@ -858,10 +858,10 @@ class WorkloadsV1Api:
         """ # noqa: E501
 
         _param = self._execute_command_serialize(
-            space_slug=space_slug,
-            app_slug=app_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            space_slug=space_slug,
+            instance_slug=instance_slug,
+            app_slug=app_slug,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -893,10 +893,10 @@ class WorkloadsV1Api:
     @validate_call
     def execute_command_without_preload_content(
         self,
-        space_slug: StrictStr,
-        app_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        space_slug: StrictStr,
+        instance_slug: StrictStr,
+        app_slug: StrictStr,
         body: Optional[ExecuteCommand] = None,
         _request_timeout: Union[
             None,
@@ -915,14 +915,14 @@ class WorkloadsV1Api:
 
         Executes a custom command in a selected workload.
 
-        :param space_slug: (required)
-        :type space_slug: str
-        :param app_slug: (required)
-        :type app_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param space_slug: (required)
+        :type space_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
+        :param app_slug: (required)
+        :type app_slug: str
         :param body:
         :type body: ExecuteCommand
         :param _request_timeout: timeout setting for this request. If one
@@ -948,10 +948,10 @@ class WorkloadsV1Api:
         """ # noqa: E501
 
         _param = self._execute_command_serialize(
-            space_slug=space_slug,
-            app_slug=app_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            space_slug=space_slug,
+            instance_slug=instance_slug,
+            app_slug=app_slug,
             body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -978,10 +978,10 @@ class WorkloadsV1Api:
 
     def _execute_command_serialize(
         self,
-        space_slug,
-        app_slug,
-        instance_slug,
         org_slug,
+        space_slug,
+        instance_slug,
+        app_slug,
         body,
         _request_auth,
         _content_type,
@@ -1004,14 +1004,14 @@ class WorkloadsV1Api:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if space_slug is not None:
-            _path_params['space_slug'] = space_slug
-        if app_slug is not None:
-            _path_params['app_slug'] = app_slug
-        if instance_slug is not None:
-            _path_params['instance_slug'] = instance_slug
         if org_slug is not None:
             _path_params['org_slug'] = org_slug
+        if space_slug is not None:
+            _path_params['space_slug'] = space_slug
+        if instance_slug is not None:
+            _path_params['instance_slug'] = instance_slug
+        if app_slug is not None:
+            _path_params['app_slug'] = app_slug
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -1583,10 +1583,10 @@ class WorkloadsV1Api:
     @validate_call
     def get_workloads_for_app(
         self,
-        space_slug: StrictStr,
-        app_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        space_slug: StrictStr,
+        instance_slug: StrictStr,
+        app_slug: StrictStr,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1604,14 +1604,14 @@ class WorkloadsV1Api:
 
         Returns the workloads available for the user of a given Nuvolos application.
 
-        :param space_slug: (required)
-        :type space_slug: str
-        :param app_slug: (required)
-        :type app_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param space_slug: (required)
+        :type space_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
+        :param app_slug: (required)
+        :type app_slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1635,10 +1635,10 @@ class WorkloadsV1Api:
         """ # noqa: E501
 
         _param = self._get_workloads_for_app_serialize(
-            space_slug=space_slug,
-            app_slug=app_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            space_slug=space_slug,
+            instance_slug=instance_slug,
+            app_slug=app_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1669,10 +1669,10 @@ class WorkloadsV1Api:
     @validate_call
     def get_workloads_for_app_with_http_info(
         self,
-        space_slug: StrictStr,
-        app_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        space_slug: StrictStr,
+        instance_slug: StrictStr,
+        app_slug: StrictStr,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1690,14 +1690,14 @@ class WorkloadsV1Api:
 
         Returns the workloads available for the user of a given Nuvolos application.
 
-        :param space_slug: (required)
-        :type space_slug: str
-        :param app_slug: (required)
-        :type app_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param space_slug: (required)
+        :type space_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
+        :param app_slug: (required)
+        :type app_slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1721,10 +1721,10 @@ class WorkloadsV1Api:
         """ # noqa: E501
 
         _param = self._get_workloads_for_app_serialize(
-            space_slug=space_slug,
-            app_slug=app_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            space_slug=space_slug,
+            instance_slug=instance_slug,
+            app_slug=app_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1755,10 +1755,10 @@ class WorkloadsV1Api:
     @validate_call
     def get_workloads_for_app_without_preload_content(
         self,
-        space_slug: StrictStr,
-        app_slug: StrictStr,
-        instance_slug: StrictStr,
         org_slug: StrictStr,
+        space_slug: StrictStr,
+        instance_slug: StrictStr,
+        app_slug: StrictStr,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1776,14 +1776,14 @@ class WorkloadsV1Api:
 
         Returns the workloads available for the user of a given Nuvolos application.
 
-        :param space_slug: (required)
-        :type space_slug: str
-        :param app_slug: (required)
-        :type app_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param org_slug: (required)
         :type org_slug: str
+        :param space_slug: (required)
+        :type space_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
+        :param app_slug: (required)
+        :type app_slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1807,10 +1807,10 @@ class WorkloadsV1Api:
         """ # noqa: E501
 
         _param = self._get_workloads_for_app_serialize(
-            space_slug=space_slug,
-            app_slug=app_slug,
-            instance_slug=instance_slug,
             org_slug=org_slug,
+            space_slug=space_slug,
+            instance_slug=instance_slug,
+            app_slug=app_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1836,10 +1836,10 @@ class WorkloadsV1Api:
 
     def _get_workloads_for_app_serialize(
         self,
-        space_slug,
-        app_slug,
-        instance_slug,
         org_slug,
+        space_slug,
+        instance_slug,
+        app_slug,
         _request_auth,
         _content_type,
         _headers,
@@ -1861,14 +1861,14 @@ class WorkloadsV1Api:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
-        if space_slug is not None:
-            _path_params['space_slug'] = space_slug
-        if app_slug is not None:
-            _path_params['app_slug'] = app_slug
-        if instance_slug is not None:
-            _path_params['instance_slug'] = instance_slug
         if org_slug is not None:
             _path_params['org_slug'] = org_slug
+        if space_slug is not None:
+            _path_params['space_slug'] = space_slug
+        if instance_slug is not None:
+            _path_params['instance_slug'] = instance_slug
+        if app_slug is not None:
+            _path_params['app_slug'] = app_slug
         # process the query parameters
         # process the header parameters
         # process the form parameters

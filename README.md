@@ -67,13 +67,13 @@ configuration = nuvolos_client_api.Configuration(
 with nuvolos_client_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nuvolos_client_api.AppsV1Api(api_client)
-    snapshot_slug = 'snapshot_slug_example' # str | 
+    org_slug = 'org_slug_example' # str | 
     space_slug = 'space_slug_example' # str | 
     instance_slug = 'instance_slug_example' # str | 
-    org_slug = 'org_slug_example' # str | 
+    snapshot_slug = 'snapshot_slug_example' # str | 
 
     try:
-        api_response = api_instance.get_apps(snapshot_slug, space_slug, instance_slug, org_slug)
+        api_response = api_instance.get_apps(org_slug, space_slug, instance_slug, snapshot_slug)
         print("The response of AppsV1Api->get_apps:\n")
         pprint(api_response)
     except ApiException as e:
