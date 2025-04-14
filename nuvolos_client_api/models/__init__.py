@@ -26,4 +26,5 @@ from nuvolos_client_api.models.snapshot_create_request import SnapshotCreateRequ
 from nuvolos_client_api.models.space import Space
 from nuvolos_client_api.models.start_app import StartApp
 from nuvolos_client_api.models.task import Task
+from nuvolos_client_api.models.task1 import Task1
 from nuvolos_client_api.models.workload_detailed import WorkloadDetailed

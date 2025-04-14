@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.1.0"
+__version__ = "1.2.0"
 
 # import apis into sdk package
 from nuvolos_client_api.api.apps_v1_api import AppsV1Api
@@ -22,6 +22,7 @@ from nuvolos_client_api.api.instances_v1_api import InstancesV1Api
 from nuvolos_client_api.api.organizations_v1_api import OrganizationsV1Api
 from nuvolos_client_api.api.snapshots_v1_api import SnapshotsV1Api
 from nuvolos_client_api.api.spaces_v1_api import SpacesV1Api
+from nuvolos_client_api.api.tasks_v1_api import TasksV1Api
 from nuvolos_client_api.api.workloads_v1_api import WorkloadsV1Api
 
 # import ApiClient
@@ -48,4 +49,5 @@ from nuvolos_client_api.models.snapshot_create_request import SnapshotCreateRequ
 from nuvolos_client_api.models.space import Space
 from nuvolos_client_api.models.start_app import StartApp
 from nuvolos_client_api.models.task import Task
+from nuvolos_client_api.models.task1 import Task1
 from nuvolos_client_api.models.workload_detailed import WorkloadDetailed

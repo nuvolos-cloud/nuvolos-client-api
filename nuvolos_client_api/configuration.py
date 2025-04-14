@@ -531,7 +531,7 @@ conf = nuvolos_client_api.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: dev\n"\
-               "SDK Package Version: 1.1.0".\
+               "SDK Package Version: 1.2.0".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self) -> List[HostSetting]:
