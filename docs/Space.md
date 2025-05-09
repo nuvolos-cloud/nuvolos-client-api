@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**archival_timestamp** | **none_type** |  | [optional] 
+**archival_timestamp** | **datetime** |  | [optional] 
 **archive_by_date** | **date** |  | [optional] 
-**creation_timestamp** | **none_type** |  | [optional] 
+**creation_timestamp** | **datetime** |  | [optional] 
 **database_tables_enabled** | **bool** |  | [optional] 
 **description** | **str** |  | [optional] 
-**last_modified_timestamp** | **none_type** |  | [optional] 
+**last_modified_timestamp** | **datetime** |  | [optional] 
 **name** | **str** |  | 
 **role** | **str** |  | [optional] 
 **slug** | **str** |  | 

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**creation_timestamp** | **none_type** |  | [optional] 
+**creation_timestamp** | **datetime** |  | [optional] 
 **description** | **str** |  | [optional] 
 **hpc_enabled** | **bool** |  | [optional] 
 **name** | **str** |  | 

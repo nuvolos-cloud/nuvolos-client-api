@@ -1,6 +1,6 @@
 # nuvolos_client_api.SnapshotsV1Api
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api.nuvolos.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -15,6 +15,7 @@ Deletes a snapshot in the specified instance asynchronously
 
 ### Example
 
+* Api Key Authentication (ApiKeyAuth):
 
 ```python
 import nuvolos_client_api
@@ -22,12 +23,22 @@ from nuvolos_client_api.models.task import Task
 from nuvolos_client_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.nuvolos.cloud
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuvolos_client_api.Configuration(
-    host = "http://localhost"
+    host = "https://api.nuvolos.cloud"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with nuvolos_client_api.ApiClient(configuration) as api_client:
@@ -64,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -92,6 +103,7 @@ Returns the snapshots the user has access to in the specified org, space and ins
 
 ### Example
 
+* Api Key Authentication (ApiKeyAuth):
 
 ```python
 import nuvolos_client_api
@@ -99,12 +111,22 @@ from nuvolos_client_api.models.snapshot import Snapshot
 from nuvolos_client_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to http://localhost
+# Defining the host is optional and defaults to https://api.nuvolos.cloud
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuvolos_client_api.Configuration(
-    host = "http://localhost"
+    host = "https://api.nuvolos.cloud"
 )
 
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKeyAuth
+configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKeyAuth'] = 'Bearer'
 
 # Enter a context with an instance of the API client
 with nuvolos_client_api.ApiClient(configuration) as api_client:
@@ -139,7 +161,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

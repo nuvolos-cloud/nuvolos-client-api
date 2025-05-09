@@ -5,12 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created** | **none_type** |  | [optional] 
+**created** | **datetime** |  | [optional] 
 **description** | **str** |  | [optional] 
-**finished** | **none_type** |  | [optional] 
+**finished** | **datetime** |  | [optional] 
 **id** | **int** |  | [optional] 
 **result** | **str** |  | [optional] 
-**started** | **none_type** |  | [optional] 
+**started** | **datetime** |  | [optional] 
 **status** | **str** |  | [optional] 
 
 ## Example
