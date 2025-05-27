@@ -5,14 +5,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**creation_timestamp** | **datetime** |  | [optional] 
-**description** | **str** |  | [optional] 
-**hpc_enabled** | **bool** |  | [optional] 
-**name** | **str** |  | 
-**role** | **str** |  | [optional] 
 **slug** | **str** |  | 
+**name** | **str** |  | 
+**description** | **str** |  | [optional] 
+**role** | **str** |  | [optional] 
+**hpc_enabled** | **bool** |  | [optional] 
 **tables_enabled** | **bool** |  | [optional] 
 **video_library_enabled** | **bool** |  | [optional] 
+**creation_timestamp** | **datetime** |  | [optional] 
 
 ## Example
 

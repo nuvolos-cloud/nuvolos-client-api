@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **str** |  | 
-**exportable** | **bool** |  | 
-**name** | **str** |  | 
-**shared** | **bool** |  | 
 **slug** | **str** |  | 
+**name** | **str** |  | 
+**description** | **str** |  | 
 **status** | **str** |  | 
 **storage_used** | **int** |  | 
+**shared** | **bool** |  | 
+**exportable** | **bool** |  | 
 
 ## Example
 

@@ -27,19 +27,19 @@ class Space(BaseModel):
     """
     Space
     """ # noqa: E501
-    archival_timestamp: Optional[datetime] = None
+    slug: StrictStr
+    name: StrictStr
+    description: Optional[StrictStr] = None
+    type: StrictStr
+    role: Optional[StrictStr] = None
+    visibility_type: StrictStr
+    database_tables_enabled: Optional[StrictBool] = None
+    video_library_enabled: StrictBool
     archive_by_date: Optional[date] = None
     creation_timestamp: Optional[datetime] = None
-    database_tables_enabled: Optional[StrictBool] = None
-    description: Optional[StrictStr] = None
     last_modified_timestamp: Optional[datetime] = None
-    name: StrictStr
-    role: Optional[StrictStr] = None
-    slug: StrictStr
-    type: StrictStr
-    video_library_enabled: StrictBool
-    visibility_type: StrictStr
-    __properties: ClassVar[List[str]] = ["archival_timestamp", "archive_by_date", "creation_timestamp", "database_tables_enabled", "description", "last_modified_timestamp", "name", "role", "slug", "type", "video_library_enabled", "visibility_type"]
+    archival_timestamp: Optional[datetime] = None
+    __properties: ClassVar[List[str]] = ["slug", "name", "description", "type", "role", "visibility_type", "database_tables_enabled", "video_library_enabled", "archive_by_date", "creation_timestamp", "last_modified_timestamp", "archival_timestamp"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,10 +80,15 @@ class Space(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if archival_timestamp (nullable) is None
+        # set to None if description (nullable) is None
         # and model_fields_set contains the field
-        if self.archival_timestamp is None and "archival_timestamp" in self.model_fields_set:
-            _dict['archival_timestamp'] = None
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
+        # set to None if database_tables_enabled (nullable) is None
+        # and model_fields_set contains the field
+        if self.database_tables_enabled is None and "database_tables_enabled" in self.model_fields_set:
+            _dict['database_tables_enabled'] = None
 
         # set to None if archive_by_date (nullable) is None
         # and model_fields_set contains the field
@@ -95,20 +100,15 @@ class Space(BaseModel):
         if self.creation_timestamp is None and "creation_timestamp" in self.model_fields_set:
             _dict['creation_timestamp'] = None
 
-        # set to None if database_tables_enabled (nullable) is None
-        # and model_fields_set contains the field
-        if self.database_tables_enabled is None and "database_tables_enabled" in self.model_fields_set:
-            _dict['database_tables_enabled'] = None
-
-        # set to None if description (nullable) is None
-        # and model_fields_set contains the field
-        if self.description is None and "description" in self.model_fields_set:
-            _dict['description'] = None
-
         # set to None if last_modified_timestamp (nullable) is None
         # and model_fields_set contains the field
         if self.last_modified_timestamp is None and "last_modified_timestamp" in self.model_fields_set:
             _dict['last_modified_timestamp'] = None
+
+        # set to None if archival_timestamp (nullable) is None
+        # and model_fields_set contains the field
+        if self.archival_timestamp is None and "archival_timestamp" in self.model_fields_set:
+            _dict['archival_timestamp'] = None
 
         return _dict
 
@@ -122,18 +122,18 @@ class Space(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "archival_timestamp": obj.get("archival_timestamp"),
+            "slug": obj.get("slug"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "type": obj.get("type"),
+            "role": obj.get("role"),
+            "visibility_type": obj.get("visibility_type"),
+            "database_tables_enabled": obj.get("database_tables_enabled"),
+            "video_library_enabled": obj.get("video_library_enabled"),
             "archive_by_date": obj.get("archive_by_date"),
             "creation_timestamp": obj.get("creation_timestamp"),
-            "database_tables_enabled": obj.get("database_tables_enabled"),
-            "description": obj.get("description"),
             "last_modified_timestamp": obj.get("last_modified_timestamp"),
-            "name": obj.get("name"),
-            "role": obj.get("role"),
-            "slug": obj.get("slug"),
-            "type": obj.get("type"),
-            "video_library_enabled": obj.get("video_library_enabled"),
-            "visibility_type": obj.get("visibility_type")
+            "archival_timestamp": obj.get("archival_timestamp")
         })
         return _obj
 

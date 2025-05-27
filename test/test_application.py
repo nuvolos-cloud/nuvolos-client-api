@@ -35,23 +35,23 @@ class TestApplication(unittest.TestCase):
         model = Application()
         if include_optional:
             return Application(
-                description = '',
-                exportable = True,
-                name = '',
-                shared = True,
                 slug = '',
+                name = '',
+                description = '',
                 status = '',
-                storage_used = 56
+                storage_used = 56,
+                shared = True,
+                exportable = True
             )
         else:
             return Application(
-                description = '',
-                exportable = True,
-                name = '',
-                shared = True,
                 slug = '',
+                name = '',
+                description = '',
                 status = '',
                 storage_used = 56,
+                shared = True,
+                exportable = True,
         )
         """
 

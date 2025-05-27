@@ -5,23 +5,23 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**addons_compute_units** | **str** |  | [optional] 
-**compute_units** | **str** |  | [optional] 
-**creation_timestamp** | **str** |  | [optional] 
+**session_id** | **str** |  | [optional] 
+**slug** | **str** |  | [optional] 
+**name** | **str** |  | [optional] 
+**status** | **str** |  | [optional] 
+**shared** | **str** |  | [optional] 
+**org_slug** | **str** |  | [optional] 
+**space_slug** | **str** |  | [optional] 
+**instance_slug** | **str** |  | [optional] 
+**node_pool** | **str** |  | [optional] 
 **current_cpu** | **str** |  | [optional] 
 **current_memory** | **str** |  | [optional] 
+**compute_units** | **str** |  | [optional] 
 **gpu** | **str** |  | [optional] 
-**instance_slug** | **str** |  | [optional] 
 **max_cpu** | **str** |  | [optional] 
 **max_memory** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**node_pool** | **str** |  | [optional] 
-**org_slug** | **str** |  | [optional] 
-**session_id** | **str** |  | [optional] 
-**shared** | **str** |  | [optional] 
-**slug** | **str** |  | [optional] 
-**space_slug** | **str** |  | [optional] 
-**status** | **str** |  | [optional] 
+**addons_compute_units** | **str** |  | [optional] 
+**creation_timestamp** | **str** |  | [optional] 
 
 ## Example
 

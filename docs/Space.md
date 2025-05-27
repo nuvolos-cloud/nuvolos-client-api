@@ -5,18 +5,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**archival_timestamp** | **datetime** |  | [optional] 
+**slug** | **str** |  | 
+**name** | **str** |  | 
+**description** | **str** |  | [optional] 
+**type** | **str** |  | 
+**role** | **str** |  | [optional] 
+**visibility_type** | **str** |  | 
+**database_tables_enabled** | **bool** |  | [optional] 
+**video_library_enabled** | **bool** |  | 
 **archive_by_date** | **date** |  | [optional] 
 **creation_timestamp** | **datetime** |  | [optional] 
-**database_tables_enabled** | **bool** |  | [optional] 
-**description** | **str** |  | [optional] 
 **last_modified_timestamp** | **datetime** |  | [optional] 
-**name** | **str** |  | 
-**role** | **str** |  | [optional] 
-**slug** | **str** |  | 
-**type** | **str** |  | 
-**video_library_enabled** | **bool** |  | 
-**visibility_type** | **str** |  | 
+**archival_timestamp** | **datetime** |  | [optional] 
 
 ## Example
 

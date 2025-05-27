@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**created** | **datetime** |  | [optional] 
-**description** | **str** |  | [optional] 
-**finished** | **datetime** |  | [optional] 
 **id** | **int** |  | [optional] 
-**result** | **str** |  | [optional] 
-**started** | **datetime** |  | [optional] 
+**description** | **str** |  | [optional] 
 **status** | **str** |  | [optional] 
+**result** | **str** |  | [optional] 
+**created** | **datetime** |  | [optional] 
+**started** | **datetime** |  | [optional] 
+**finished** | **datetime** |  | [optional] 
 
 ## Example
 

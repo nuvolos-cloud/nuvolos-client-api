@@ -35,15 +35,15 @@ class TestSnapshotCreateRequest(unittest.TestCase):
         model = SnapshotCreateRequest()
         if include_optional:
             return SnapshotCreateRequest(
-                description = '',
-                email_once_finished = True,
+                slug = '',
                 name = '',
-                slug = ''
+                description = '',
+                email_once_finished = True
             )
         else:
             return SnapshotCreateRequest(
-                name = '',
                 slug = '',
+                name = '',
         )
         """
 

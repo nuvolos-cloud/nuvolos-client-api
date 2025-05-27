@@ -35,18 +35,18 @@ class TestSnapshot(unittest.TestCase):
         model = Snapshot()
         if include_optional:
             return Snapshot(
-                archival_timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                database_tables_enabled = True,
-                description = '',
-                name = '',
                 slug = '',
+                name = '',
+                description = '',
+                snapshot_type = '',
+                database_tables_enabled = True,
                 snapshot_timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                snapshot_type = ''
+                archival_timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
             )
         else:
             return Snapshot(
-                name = '',
                 slug = '',
+                name = '',
         )
         """
 

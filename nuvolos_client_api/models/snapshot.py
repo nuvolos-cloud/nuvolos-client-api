@@ -27,14 +27,14 @@ class Snapshot(BaseModel):
     """
     Snapshot
     """ # noqa: E501
-    archival_timestamp: Optional[datetime] = None
-    database_tables_enabled: Optional[StrictBool] = None
-    description: Optional[StrictStr] = None
-    name: StrictStr
     slug: StrictStr
-    snapshot_timestamp: Optional[datetime] = None
+    name: StrictStr
+    description: Optional[StrictStr] = None
     snapshot_type: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["archival_timestamp", "database_tables_enabled", "description", "name", "slug", "snapshot_timestamp", "snapshot_type"]
+    database_tables_enabled: Optional[StrictBool] = None
+    snapshot_timestamp: Optional[datetime] = None
+    archival_timestamp: Optional[datetime] = None
+    __properties: ClassVar[List[str]] = ["slug", "name", "description", "snapshot_type", "database_tables_enabled", "snapshot_timestamp", "archival_timestamp"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,13 +87,13 @@ class Snapshot(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "archival_timestamp": obj.get("archival_timestamp"),
-            "database_tables_enabled": obj.get("database_tables_enabled"),
-            "description": obj.get("description"),
-            "name": obj.get("name"),
             "slug": obj.get("slug"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "snapshot_type": obj.get("snapshot_type"),
+            "database_tables_enabled": obj.get("database_tables_enabled"),
             "snapshot_timestamp": obj.get("snapshot_timestamp"),
-            "snapshot_type": obj.get("snapshot_type")
+            "archival_timestamp": obj.get("archival_timestamp")
         })
         return _obj
 

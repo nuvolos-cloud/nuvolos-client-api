@@ -26,11 +26,11 @@ class ExecuteCommandResponse(BaseModel):
     """
     ExecuteCommandResponse
     """ # noqa: E501
+    reqid: Optional[StrictStr] = None
+    output_path: Optional[StrictStr] = None
     error_path: Optional[StrictStr] = None
     metadata_path: Optional[StrictStr] = None
-    output_path: Optional[StrictStr] = None
-    reqid: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["error_path", "metadata_path", "output_path", "reqid"]
+    __properties: ClassVar[List[str]] = ["reqid", "output_path", "error_path", "metadata_path"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -83,10 +83,10 @@ class ExecuteCommandResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "error_path": obj.get("error_path"),
-            "metadata_path": obj.get("metadata_path"),
+            "reqid": obj.get("reqid"),
             "output_path": obj.get("output_path"),
-            "reqid": obj.get("reqid")
+            "error_path": obj.get("error_path"),
+            "metadata_path": obj.get("metadata_path")
         })
         return _obj
 

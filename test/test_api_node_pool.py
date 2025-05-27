@@ -35,15 +35,15 @@ class TestAPINodePool(unittest.TestCase):
         model = APINodePool()
         if include_optional:
             return APINodePool(
-                available_in_teaching_spaces = True,
-                cpu = 56,
-                credits_per_hour = 1.337,
-                description = '',
-                gpu_type = '',
-                memory = 56,
                 slug = '',
+                description = '',
+                credits_per_hour = 1.337,
+                cpu = 56,
+                memory = 56,
                 ssd = 56,
-                vram = 56
+                gpu_type = '',
+                vram = 56,
+                available_in_teaching_spaces = True
             )
         else:
             return APINodePool(

@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**slug** | **str** |  | 
+**name** | **str** |  | 
 **description** | **str** |  | [optional] 
 **email_once_finished** | **bool** |  | [optional] [default to False]
-**name** | **str** |  | 
-**slug** | **str** |  | 
 
 ## Example
 

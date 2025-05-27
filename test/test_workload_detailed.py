@@ -35,23 +35,23 @@ class TestWorkloadDetailed(unittest.TestCase):
         model = WorkloadDetailed()
         if include_optional:
             return WorkloadDetailed(
-                addons_compute_units = '',
-                compute_units = '',
-                creation_timestamp = '',
+                session_id = '',
+                slug = '',
+                name = '',
+                status = '',
+                shared = '',
+                org_slug = '',
+                space_slug = '',
+                instance_slug = '',
+                node_pool = '',
                 current_cpu = '',
                 current_memory = '',
+                compute_units = '',
                 gpu = '',
-                instance_slug = '',
                 max_cpu = '',
                 max_memory = '',
-                name = '',
-                node_pool = '',
-                org_slug = '',
-                session_id = '',
-                shared = '',
-                slug = '',
-                space_slug = '',
-                status = ''
+                addons_compute_units = '',
+                creation_timestamp = ''
             )
         else:
             return WorkloadDetailed(

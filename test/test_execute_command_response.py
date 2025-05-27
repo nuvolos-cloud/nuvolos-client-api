@@ -35,10 +35,10 @@ class TestExecuteCommandResponse(unittest.TestCase):
         model = ExecuteCommandResponse()
         if include_optional:
             return ExecuteCommandResponse(
-                error_path = '',
-                metadata_path = '',
+                reqid = '',
                 output_path = '',
-                reqid = ''
+                error_path = '',
+                metadata_path = ''
             )
         else:
             return ExecuteCommandResponse(

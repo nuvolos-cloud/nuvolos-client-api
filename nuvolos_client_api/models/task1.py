@@ -27,14 +27,14 @@ class Task1(BaseModel):
     """
     Task1
     """ # noqa: E501
-    created: Optional[datetime] = None
-    description: Optional[StrictStr] = None
-    finished: Optional[datetime] = None
     id: Optional[StrictInt] = None
-    result: Optional[StrictStr] = None
-    started: Optional[datetime] = None
+    description: Optional[StrictStr] = None
     status: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["created", "description", "finished", "id", "result", "started", "status"]
+    result: Optional[StrictStr] = None
+    created: Optional[datetime] = None
+    started: Optional[datetime] = None
+    finished: Optional[datetime] = None
+    __properties: ClassVar[List[str]] = ["id", "description", "status", "result", "created", "started", "finished"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,13 +87,13 @@ class Task1(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "created": obj.get("created"),
-            "description": obj.get("description"),
-            "finished": obj.get("finished"),
             "id": obj.get("id"),
+            "description": obj.get("description"),
+            "status": obj.get("status"),
             "result": obj.get("result"),
+            "created": obj.get("created"),
             "started": obj.get("started"),
-            "status": obj.get("status")
+            "finished": obj.get("finished")
         })
         return _obj
 

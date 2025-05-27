@@ -35,19 +35,19 @@ class TestOrg(unittest.TestCase):
         model = Org()
         if include_optional:
             return Org(
-                creation_timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                description = '',
-                hpc_enabled = True,
-                name = '',
-                role = '',
                 slug = '',
+                name = '',
+                description = '',
+                role = '',
+                hpc_enabled = True,
                 tables_enabled = True,
-                video_library_enabled = True
+                video_library_enabled = True,
+                creation_timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
             )
         else:
             return Org(
-                name = '',
                 slug = '',
+                name = '',
         )
         """
 

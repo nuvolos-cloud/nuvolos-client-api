@@ -26,14 +26,14 @@ class Application(BaseModel):
     """
     Application
     """ # noqa: E501
-    description: StrictStr
-    exportable: StrictBool
-    name: StrictStr
-    shared: StrictBool
     slug: StrictStr
+    name: StrictStr
+    description: StrictStr
     status: StrictStr
     storage_used: StrictInt
-    __properties: ClassVar[List[str]] = ["description", "exportable", "name", "shared", "slug", "status", "storage_used"]
+    shared: StrictBool
+    exportable: StrictBool
+    __properties: ClassVar[List[str]] = ["slug", "name", "description", "status", "storage_used", "shared", "exportable"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -86,13 +86,13 @@ class Application(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "description": obj.get("description"),
-            "exportable": obj.get("exportable"),
-            "name": obj.get("name"),
-            "shared": obj.get("shared"),
             "slug": obj.get("slug"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
             "status": obj.get("status"),
-            "storage_used": obj.get("storage_used")
+            "storage_used": obj.get("storage_used"),
+            "shared": obj.get("shared"),
+            "exportable": obj.get("exportable")
         })
         return _obj
 

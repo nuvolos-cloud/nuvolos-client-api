@@ -5,15 +5,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**available_in_teaching_spaces** | **bool** |  | [optional] 
-**cpu** | **int** |  | [optional] 
-**credits_per_hour** | **float** |  | [optional] 
-**description** | **str** |  | [optional] 
-**gpu_type** | **str** |  | [optional] 
-**memory** | **int** |  | [optional] 
 **slug** | **str** |  | [optional] 
+**description** | **str** |  | [optional] 
+**credits_per_hour** | **float** |  | [optional] 
+**cpu** | **int** |  | [optional] 
+**memory** | **int** |  | [optional] 
 **ssd** | **int** |  | [optional] 
+**gpu_type** | **str** |  | [optional] 
 **vram** | **int** |  | [optional] 
+**available_in_teaching_spaces** | **bool** |  | [optional] 
 
 ## Example
 

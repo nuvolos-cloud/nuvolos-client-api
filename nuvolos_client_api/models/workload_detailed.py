@@ -26,24 +26,24 @@ class WorkloadDetailed(BaseModel):
     """
     WorkloadDetailed
     """ # noqa: E501
-    addons_compute_units: Optional[StrictStr] = None
-    compute_units: Optional[StrictStr] = None
-    creation_timestamp: Optional[StrictStr] = None
+    session_id: Optional[StrictStr] = None
+    slug: Optional[StrictStr] = None
+    name: Optional[StrictStr] = None
+    status: Optional[StrictStr] = None
+    shared: Optional[StrictStr] = None
+    org_slug: Optional[StrictStr] = None
+    space_slug: Optional[StrictStr] = None
+    instance_slug: Optional[StrictStr] = None
+    node_pool: Optional[StrictStr] = None
     current_cpu: Optional[StrictStr] = None
     current_memory: Optional[StrictStr] = None
+    compute_units: Optional[StrictStr] = None
     gpu: Optional[StrictStr] = None
-    instance_slug: Optional[StrictStr] = None
     max_cpu: Optional[StrictStr] = None
     max_memory: Optional[StrictStr] = None
-    name: Optional[StrictStr] = None
-    node_pool: Optional[StrictStr] = None
-    org_slug: Optional[StrictStr] = None
-    session_id: Optional[StrictStr] = None
-    shared: Optional[StrictStr] = None
-    slug: Optional[StrictStr] = None
-    space_slug: Optional[StrictStr] = None
-    status: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["addons_compute_units", "compute_units", "creation_timestamp", "current_cpu", "current_memory", "gpu", "instance_slug", "max_cpu", "max_memory", "name", "node_pool", "org_slug", "session_id", "shared", "slug", "space_slug", "status"]
+    addons_compute_units: Optional[StrictStr] = None
+    creation_timestamp: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["session_id", "slug", "name", "status", "shared", "org_slug", "space_slug", "instance_slug", "node_pool", "current_cpu", "current_memory", "compute_units", "gpu", "max_cpu", "max_memory", "addons_compute_units", "creation_timestamp"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -96,23 +96,23 @@ class WorkloadDetailed(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "addons_compute_units": obj.get("addons_compute_units"),
-            "compute_units": obj.get("compute_units"),
-            "creation_timestamp": obj.get("creation_timestamp"),
+            "session_id": obj.get("session_id"),
+            "slug": obj.get("slug"),
+            "name": obj.get("name"),
+            "status": obj.get("status"),
+            "shared": obj.get("shared"),
+            "org_slug": obj.get("org_slug"),
+            "space_slug": obj.get("space_slug"),
+            "instance_slug": obj.get("instance_slug"),
+            "node_pool": obj.get("node_pool"),
             "current_cpu": obj.get("current_cpu"),
             "current_memory": obj.get("current_memory"),
+            "compute_units": obj.get("compute_units"),
             "gpu": obj.get("gpu"),
-            "instance_slug": obj.get("instance_slug"),
             "max_cpu": obj.get("max_cpu"),
             "max_memory": obj.get("max_memory"),
-            "name": obj.get("name"),
-            "node_pool": obj.get("node_pool"),
-            "org_slug": obj.get("org_slug"),
-            "session_id": obj.get("session_id"),
-            "shared": obj.get("shared"),
-            "slug": obj.get("slug"),
-            "space_slug": obj.get("space_slug"),
-            "status": obj.get("status")
+            "addons_compute_units": obj.get("addons_compute_units"),
+            "creation_timestamp": obj.get("creation_timestamp")
         })
         return _obj
 

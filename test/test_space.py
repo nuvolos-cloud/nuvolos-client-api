@@ -35,26 +35,26 @@ class TestSpace(unittest.TestCase):
         model = Space()
         if include_optional:
             return Space(
-                archival_timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
+                slug = '',
+                name = '',
+                description = '',
+                type = '',
+                role = '',
+                visibility_type = '',
+                database_tables_enabled = True,
+                video_library_enabled = True,
                 archive_by_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(),
                 creation_timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                database_tables_enabled = True,
-                description = '',
                 last_modified_timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                name = '',
-                role = '',
-                slug = '',
-                type = '',
-                video_library_enabled = True,
-                visibility_type = ''
+                archival_timestamp = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
             )
         else:
             return Space(
-                name = '',
                 slug = '',
+                name = '',
                 type = '',
-                video_library_enabled = True,
                 visibility_type = '',
+                video_library_enabled = True,
         )
         """
 

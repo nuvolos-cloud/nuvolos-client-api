@@ -26,16 +26,16 @@ class APINodePool(BaseModel):
     """
     APINodePool
     """ # noqa: E501
-    available_in_teaching_spaces: Optional[StrictBool] = None
-    cpu: Optional[StrictInt] = None
-    credits_per_hour: Optional[Union[StrictFloat, StrictInt]] = None
-    description: Optional[StrictStr] = None
-    gpu_type: Optional[StrictStr] = None
-    memory: Optional[StrictInt] = None
     slug: Optional[StrictStr] = None
+    description: Optional[StrictStr] = None
+    credits_per_hour: Optional[Union[StrictFloat, StrictInt]] = None
+    cpu: Optional[StrictInt] = None
+    memory: Optional[StrictInt] = None
     ssd: Optional[StrictInt] = None
+    gpu_type: Optional[StrictStr] = None
     vram: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["available_in_teaching_spaces", "cpu", "credits_per_hour", "description", "gpu_type", "memory", "slug", "ssd", "vram"]
+    available_in_teaching_spaces: Optional[StrictBool] = None
+    __properties: ClassVar[List[str]] = ["slug", "description", "credits_per_hour", "cpu", "memory", "ssd", "gpu_type", "vram", "available_in_teaching_spaces"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -88,15 +88,15 @@ class APINodePool(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "available_in_teaching_spaces": obj.get("available_in_teaching_spaces"),
-            "cpu": obj.get("cpu"),
-            "credits_per_hour": obj.get("credits_per_hour"),
-            "description": obj.get("description"),
-            "gpu_type": obj.get("gpu_type"),
-            "memory": obj.get("memory"),
             "slug": obj.get("slug"),
+            "description": obj.get("description"),
+            "credits_per_hour": obj.get("credits_per_hour"),
+            "cpu": obj.get("cpu"),
+            "memory": obj.get("memory"),
             "ssd": obj.get("ssd"),
-            "vram": obj.get("vram")
+            "gpu_type": obj.get("gpu_type"),
+            "vram": obj.get("vram"),
+            "available_in_teaching_spaces": obj.get("available_in_teaching_spaces")
         })
         return _obj
 
