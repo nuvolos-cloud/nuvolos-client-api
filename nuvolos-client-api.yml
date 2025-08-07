@@ -1,957 +1,1781 @@
-openapi: 3.0.1
+openapi: 3.0.0
 info:
   title: Nuvolos
   version: prod
 servers:
-- url: https://api.nuvolos.cloud
+  - url: https://api.nuvolos.cloud
 paths:
-  /apps/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}:
+  "/apps/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}":
     get:
-      tags:
-      - Apps V1
       description: Returns the apps in the given snapshot.
       operationId: get_apps
       parameters:
-      - name: org_slug
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: space_slug
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: instance_slug
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: snapshot_slug
-        in: path
-        required: true
-        schema:
-          type: string
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: instance_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: snapshot_slug
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: Operation succeeded
           content:
-            '*/*':
+            "*/*":
               schema:
-                type: array
                 items:
-                  $ref: '#/components/schemas/Application'
+                  $ref: "#/components/schemas/Application"
+                type: array
         "400":
           description: Bad request
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "401":
           description: Unauthorized
-          content: {}
         "403":
           description: Access to Nuvolos resource is forbidden
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "404":
           description: Nuvolos object not found
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "409":
           description: Conflict with Nuvolos object
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "410":
           description: Nuvolos object no longer available
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "500":
           description: Internal server error
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
-  /instances/v1/org/{org_slug}/space/{space_slug}:
-    get:
+                $ref: "#/components/schemas/ClientApiError"
       tags:
-      - Instances V1
+        - Apps V1
+  "/distribution/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}":
+    post:
+      description: Distribute (copy) selected files, applications, and tables from a snapshot
+        to the development snapshot of the target instances.
+      operationId: distribute_content
+      parameters:
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: instance_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: snapshot_slug
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DistributionRequest"
+      responses:
+        "202":
+          description: Distribution task created successfully
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/Task"
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Distribution V1
+  "/files/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/files":
+    get:
+      description: Returns all files from the files area (shared with all users of the
+        instance) at the specified location in the specified snapshot. Performs
+        a file system rescan upon invocation.
+      operationId: get_files_in_files_area
+      parameters:
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: instance_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: snapshot_slug
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Operation succeeded
+          content:
+            "*/*":
+              schema:
+                items:
+                  $ref: "#/components/schemas/FilePublic"
+                type: array
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Files V1
+  "/files/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/files/{local_path}":
+    get:
+      description: Returns all files from a path in the files area (shared with all users of the
+        instance) at the specified location in the specified snapshot. Performs
+        a file system rescan upon invocation.
+      operationId: get_files_in_files_area
+      parameters:
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: instance_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: snapshot_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: local_path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Operation succeeded
+          content:
+            "*/*":
+              schema:
+                items:
+                  $ref: "#/components/schemas/FilePublic"
+                type: array
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Files V1
+  "/files/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/home":
+    get:
+      description: Returns all files from the personal area (home folder) of the current user in the
+        specified folder in the specified snapshot. Performs a file system
+        rescan upon invocation.
+      operationId: get_files_in_home_area
+      parameters:
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: instance_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: snapshot_slug
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Operation succeeded
+          content:
+            "*/*":
+              schema:
+                items:
+                  $ref: "#/components/schemas/FilePublic"
+                type: array
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Files V1
+  "/files/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/home/{local_path}":
+    get:
+      description: Returns all files from a path in the personal area (home folder) of the current user in the
+        specified folder in the specified snapshot. Performs a file system
+        rescan upon invocation.
+      operationId: get_files_in_home_area
+      parameters:
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: instance_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: snapshot_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: local_path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Operation succeeded
+          content:
+            "*/*":
+              schema:
+                items:
+                  $ref: "#/components/schemas/FilePublic"
+                type: array
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Files V1
+  "/instances/v1/org/{org_slug}/space/{space_slug}":
+    get:
       description: Returns the instances the user has access to in the selected org
         and space.
       operationId: get_instances
       parameters:
-      - name: org_slug
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: space_slug
-        in: path
-        required: true
-        schema:
-          type: string
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: Operation succeeded
           content:
-            '*/*':
+            "*/*":
               schema:
-                type: array
                 items:
-                  $ref: '#/components/schemas/Instance'
+                  $ref: "#/components/schemas/Instance"
+                type: array
         "400":
           description: Bad request
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "401":
           description: Unauthorized
-          content: {}
         "403":
           description: Access to Nuvolos resource is forbidden
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "404":
           description: Nuvolos object not found
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "409":
           description: Conflict with Nuvolos object
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "410":
           description: Nuvolos object no longer available
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "500":
           description: Internal server error
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
-  /instances/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshots:
-    post:
+                $ref: "#/components/schemas/ClientApiError"
       tags:
-      - Instances V1
+        - Instances V1
+  "/instances/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshots":
+    post:
       description: Creates a snapshot in the specified instance asynchronously
       operationId: create_snapshot
       parameters:
-      - name: org_slug
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: space_slug
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: instance_slug
-        in: path
-        required: true
-        schema:
-          type: string
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: instance_slug
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
-          '*/*':
+          application/json:
             schema:
-              $ref: '#/components/schemas/SnapshotCreateRequest'
-        required: false
+              $ref: "#/components/schemas/SnapshotCreateRequest"
       responses:
         "201":
           description: Creation succeeded
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/Task'
+                $ref: "#/components/schemas/Task"
         "400":
           description: Bad request
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "401":
           description: Unauthorized
-          content: {}
         "403":
           description: Access to Nuvolos resource is forbidden
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "404":
           description: Nuvolos object not found
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "409":
           description: Conflict with Nuvolos object
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "410":
           description: Nuvolos object no longer available
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "500":
           description: Internal server error
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
-      x-codegen-request-body-name: body
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Instances V1
   /orgs/v1:
     get:
-      tags:
-      - Organizations V1
       description: Lists all the Nuvolos organizations the user is affiliated with
       operationId: get_orgs
       responses:
         "200":
           description: Operation succeeded
           content:
-            '*/*':
+            "*/*":
               schema:
-                type: array
                 items:
-                  $ref: '#/components/schemas/Org'
+                  $ref: "#/components/schemas/Org"
+                type: array
         "400":
           description: Bad request
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "401":
           description: Unauthorized
-          content: {}
         "403":
           description: Access to Nuvolos resource is forbidden
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "404":
           description: Nuvolos object not found
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "409":
           description: Conflict with Nuvolos object
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "410":
           description: Nuvolos object no longer available
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "500":
           description: Internal server error
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
-  /snapshots/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}:
-    get:
+                $ref: "#/components/schemas/ClientApiError"
       tags:
-      - Snapshots V1
-      description: "Returns the snapshots the user has access to in the specified\
-        \ org, space and instance."
+        - Organizations V1
+  "/snapshots/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}":
+    get:
+      description: Returns the snapshots the user has access to in the specified org,
+        space and instance.
       operationId: get_snapshots
       parameters:
-      - name: org_slug
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: space_slug
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: instance_slug
-        in: path
-        required: true
-        schema:
-          type: string
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: instance_slug
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: Operation succeeded
           content:
-            '*/*':
+            "*/*":
               schema:
-                type: array
                 items:
-                  $ref: '#/components/schemas/Snapshot'
+                  $ref: "#/components/schemas/Snapshot"
+                type: array
         "400":
           description: Bad request
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "401":
           description: Unauthorized
-          content: {}
         "403":
           description: Access to Nuvolos resource is forbidden
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "404":
           description: Nuvolos object not found
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "409":
           description: Conflict with Nuvolos object
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "410":
           description: Nuvolos object no longer available
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "500":
           description: Internal server error
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
-  /snapshots/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}:
-    delete:
+                $ref: "#/components/schemas/ClientApiError"
       tags:
-      - Snapshots V1
+        - Snapshots V1
+  "/snapshots/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}":
+    delete:
       description: Deletes a snapshot in the specified instance asynchronously
       operationId: delete_snapshot
       parameters:
-      - name: org_slug
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: space_slug
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: instance_slug
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: snapshot_slug
-        in: path
-        required: true
-        schema:
-          type: string
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: instance_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: snapshot_slug
+          required: true
+          schema:
+            type: string
       responses:
         "201":
           description: Deletion initiated
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/Task'
+                $ref: "#/components/schemas/Task"
         "400":
           description: Bad request
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "403":
           description: Access to Nuvolos resource is forbidden
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "404":
           description: Nuvolos object not found
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "409":
           description: Conflict with Nuvolos object
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "410":
           description: Nuvolos object no longer available
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "500":
           description: Internal server error
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
-  /spaces/v1/org/{slug}:
-    get:
+                $ref: "#/components/schemas/ClientApiError"
       tags:
-      - Spaces V1
-      description: 'Returns the spaces the user is affiliated with in the selected
-        org. '
+        - Snapshots V1
+  "/spaces/v1/org/{slug}":
+    get:
+      description: Returns the spaces the user is affiliated with in the selected org
       operationId: get_spaces
       parameters:
-      - name: slug
-        in: path
-        required: true
-        schema:
-          type: string
+        - in: path
+          name: slug
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: Operation succeeded
           content:
-            '*/*':
+            "*/*":
               schema:
-                type: array
                 items:
-                  $ref: '#/components/schemas/Space'
+                  $ref: "#/components/schemas/Space"
+                type: array
         "400":
           description: Bad request
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "401":
           description: Unauthorized
-          content: {}
         "403":
           description: Access to Nuvolos resource is forbidden
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "404":
           description: Nuvolos object not found
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "409":
           description: Conflict with Nuvolos object
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "410":
           description: Nuvolos object no longer available
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "500":
           description: Internal server error
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
-  /tasks/v1/{tkid}:
-    get:
+                $ref: "#/components/schemas/ClientApiError"
       tags:
-      - Tasks V1
-      description: Returns the task object with the specified id. Only callable by
-        the task submitter.
-      operationId: get_task
+        - Spaces V1
+  "/tables/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}":
+    get:
+      description: Returns the tables in the specified snapshot.
+      operationId: get_tables
       parameters:
-      - name: tkid
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int32
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: instance_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: snapshot_slug
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: Operation succeeded
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/Task1'
+                items:
+                  $ref: "#/components/schemas/Table"
+                type: array
         "400":
           description: Bad request
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
         "403":
           description: Access to Nuvolos resource is forbidden
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "404":
           description: Nuvolos object not found
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
-        "408":
-          description: Request Timeout - task not finished yet and only_finished=true
-            was specified
-          content: {}
+                $ref: "#/components/schemas/ClientApiError"
         "409":
           description: Conflict with Nuvolos object
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "410":
           description: Nuvolos object no longer available
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
-        "418":
-          description: I'm a teapot - task failed
-          content: {}
+                $ref: "#/components/schemas/ClientApiError"
         "500":
           description: Internal server error
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Tables V1
+  "/tables/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/get_ddl":
+    get:
+      description: Returns the DDL of the database schema corresponding to the
+        specified snapshot in Nuvolos.
+      operationId: get_schema_ddl
+      parameters:
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: instance_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: snapshot_slug
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Operation succeeded
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/DDL"
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Tables V1
+  "/tables/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/table/{table_slug}":
+    delete:
+      description: Deletes a table in the specified snapshot.
+      operationId: delete_table
+      parameters:
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: instance_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: snapshot_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: table_slug
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Deletion succeeded
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Tables V1
+    patch:
+      description: Renames a table in the specified snapshot.
+      operationId: rename_table
+      parameters:
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: instance_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: snapshot_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: table_slug
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TableUpdate"
+      responses:
+        "200":
+          description: Update succeeded
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/Table"
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Tables V1
+  "/tables/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/table/{table_slug}/columns":
+    get:
+      description: Returns the columns of a table in the specified snapshot.
+      operationId: get_table_columns
+      parameters:
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: instance_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: snapshot_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: table_slug
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Operation succeeded
+          content:
+            "*/*":
+              schema:
+                items:
+                  $ref: "#/components/schemas/ColumnPublic"
+                type: array
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Tables V1
+  "/tables/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/table/{table_slug}/get_ddl":
+    get:
+      description: Returns the DDL of a table in the specified snapshot.
+      operationId: get_table_ddl
+      parameters:
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: instance_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: snapshot_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: table_slug
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Operation succeeded
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/DDL"
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Tables V1
+  "/tasks/v1/{tkid}":
+    get:
+      description: Returns the task object with the specified id. Only callable by the
+        task submitter.
+      operationId: get_task
+      parameters:
+        - in: path
+          name: tkid
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        "200":
+          description: Operation succeeded
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/Task1"
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "408":
+          description: Request Timeout - task not finished yet and only_finished=true was
+            specified
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "418":
+          description: I'm a teapot - task failed
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Tasks V1
   /workloads/v1:
     get:
-      tags:
-      - Workloads V1
       description: Returns the workloads currently run by the user.
       operationId: get_workloads
       responses:
         "200":
           description: Operation succeeded
           content:
-            '*/*':
+            "*/*":
               schema:
-                type: array
                 items:
-                  $ref: '#/components/schemas/WorkloadDetailed'
+                  $ref: "#/components/schemas/WorkloadDetailed"
+                type: array
         "400":
           description: Bad request
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "401":
           description: Unauthorized
-          content: {}
         "403":
           description: Access to Nuvolos resource is forbidden
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "404":
           description: Nuvolos object not found
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "409":
           description: Conflict with Nuvolos object
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "410":
           description: Nuvolos object no longer available
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "500":
           description: Internal server error
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Workloads V1
   /workloads/v1/nodepools:
     get:
-      tags:
-      - Workloads V1
       description: Returns the available Virtual Machines for scaled workloads
       operationId: get_nodepools
       responses:
         "200":
           description: Operation succeeded
           content:
-            '*/*':
+            "*/*":
               schema:
-                type: array
                 items:
-                  $ref: '#/components/schemas/APINodePool'
+                  $ref: "#/components/schemas/APINodePool"
+                type: array
         "400":
           description: Bad request
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "403":
           description: Access to Nuvolos resource is forbidden
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "404":
           description: Nuvolos object not found
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "409":
           description: Conflict with Nuvolos object
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "410":
           description: Nuvolos object no longer available
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "500":
           description: Internal server error
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
-  /workloads/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/app/{app_slug}:
-    get:
+                $ref: "#/components/schemas/ClientApiError"
       tags:
-      - Workloads V1
+        - Workloads V1
+  "/workloads/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/app/{app_slug}":
+    delete:
+      description: Deletes a workload by stopping a Nuvolos application.
+      operationId: delete_workload
+      parameters:
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: instance_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: app_slug
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Deletion succeeded
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Workloads V1
+    get:
       description: Returns the workloads available for the user of a given Nuvolos
         application.
       operationId: get_workloads_for_app
       parameters:
-      - name: org_slug
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: space_slug
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: instance_slug
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: app_slug
-        in: path
-        required: true
-        schema:
-          type: string
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: instance_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: app_slug
+          required: true
+          schema:
+            type: string
       responses:
         "200":
           description: Operation succeeded
           content:
-            '*/*':
+            "*/*":
               schema:
-                type: array
                 items:
-                  $ref: '#/components/schemas/WorkloadDetailed'
+                  $ref: "#/components/schemas/WorkloadDetailed"
+                type: array
         "400":
           description: Bad request
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "401":
           description: Unauthorized
-          content: {}
         "403":
           description: Access to Nuvolos resource is forbidden
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "404":
           description: Nuvolos object not found
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "409":
           description: Conflict with Nuvolos object
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "410":
           description: Nuvolos object no longer available
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "500":
           description: Internal server error
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
-    post:
+                $ref: "#/components/schemas/ClientApiError"
       tags:
-      - Workloads V1
+        - Workloads V1
+    post:
       description: Creates a new workload by starting a Nuvolos application.
       operationId: create_workload
       parameters:
-      - name: org_slug
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: space_slug
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: instance_slug
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: app_slug
-        in: path
-        required: true
-        schema:
-          type: string
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: instance_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: app_slug
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
-          '*/*':
+          application/json:
             schema:
-              $ref: '#/components/schemas/StartApp'
-        required: false
+              $ref: "#/components/schemas/StartApp"
       responses:
         "202":
           description: Request accepted
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/Task'
+                $ref: "#/components/schemas/Task"
         "400":
           description: Bad request
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "401":
           description: Unauthorized
-          content: {}
         "403":
           description: Access to Nuvolos resource is forbidden
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "404":
           description: Nuvolos object not found
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "409":
           description: Conflict with Nuvolos object
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "410":
           description: Nuvolos object no longer available
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "500":
           description: Internal server error
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
-      x-codegen-request-body-name: body
-    delete:
+                $ref: "#/components/schemas/ClientApiError"
       tags:
-      - Workloads V1
-      description: Deletes a workload by stopping a Nuvolos application.
-      operationId: delete_workload
-      parameters:
-      - name: org_slug
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: space_slug
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: instance_slug
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: app_slug
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        "204":
-          description: Deletion succeeded
-          content: {}
-        "400":
-          description: Bad request
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ClientApiError'
-        "401":
-          description: Unauthorized
-          content: {}
-        "403":
-          description: Access to Nuvolos resource is forbidden
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ClientApiError'
-        "404":
-          description: Nuvolos object not found
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ClientApiError'
-        "409":
-          description: Conflict with Nuvolos object
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ClientApiError'
-        "410":
-          description: Nuvolos object no longer available
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ClientApiError'
-        "500":
-          description: Internal server error
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/ClientApiError'
-  /workloads/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/app/{app_slug}/execute:
+        - Workloads V1
+  "/workloads/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/app/{app_slug}/execute":
     post:
-      tags:
-      - Workloads V1
       description: Executes a custom command in a selected workload.
       operationId: execute_command
       parameters:
-      - name: org_slug
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: space_slug
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: instance_slug
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: app_slug
-        in: path
-        required: true
-        schema:
-          type: string
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: instance_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: app_slug
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
-          '*/*':
+          application/json:
             schema:
-              $ref: '#/components/schemas/ExecuteCommand'
-        required: false
+              $ref: "#/components/schemas/ExecuteCommand"
       responses:
         "202":
           description: Request accepted
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ExecuteCommandResponse'
+                $ref: "#/components/schemas/ExecuteCommandResponse"
         "400":
           description: Bad request
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "401":
           description: Unauthorized
-          content: {}
         "403":
           description: Access to Nuvolos resource is forbidden
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "404":
           description: Nuvolos object not found
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "409":
           description: Conflict with Nuvolos object
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "410":
           description: Nuvolos object no longer available
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
+                $ref: "#/components/schemas/ClientApiError"
         "500":
           description: Internal server error
           content:
-            '*/*':
+            "*/*":
               schema:
-                $ref: '#/components/schemas/ClientApiError'
-      x-codegen-request-body-name: body
-security:
-- ApiKeyAuth: []
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Workloads V1
 components:
   securitySchemes:
       ApiKeyAuth:        
@@ -975,7 +1799,7 @@ components:
         memory:
           type: integer
         ssd:
-          type: integer 
+          type: integer
         gpu_type:
           type: string
         vram:
@@ -984,13 +1808,14 @@ components:
           type: boolean
     Application:
       required:
-      - description
-      - exportable
-      - name
-      - shared
-      - slug
-      - status
-      - storage_used
+        - aoid
+        - description
+        - exportable
+        - name
+        - shared
+        - slug
+        - status
+        - storage_used
       type: object
       properties:
         slug:
@@ -1007,6 +1832,8 @@ components:
           type: boolean
         exportable:
           type: boolean
+        aoid:
+          type: integer
     ClientApiError:
       type: object
       properties:
@@ -1018,9 +1845,81 @@ components:
           type: object
         msg:
           type: object
+    ColumnPublic:
+      required:
+        - coltype
+        - long_id
+        - short_id
+      type: object
+      properties:
+        table_slug:
+          type: string
+        short_id:
+          maxLength: 255
+          type: string
+        long_id:
+          maxLength: 1023
+          type: string
+        coltype:
+          maxLength: 1023
+          type: string
+        description:
+          maxLength: 32768
+          type: string
+          nullable: true
+    DDL:
+      type: object
+      properties:
+        ddl:
+          type: string
+    DistributionRequest:
+      required:
+        - target_instances
+      type: object
+      properties:
+        target_instances:
+          description: List of target instances with org_slug, space_slug, instance_slug.
+            Objects will be distributed to the development snapshot of the
+            target instance.
+          items:
+            additionalProperties: {}
+            type: object
+          type: array
+        source_applications:
+          default: []
+          description: List of application slugs to distribute.
+          items:
+            type: string
+          type: array
+        source_files:
+          default: []
+          description: List of file OS paths to distribute. These are the actual paths in
+            the file system, not slugs.
+          items:
+            type: string
+          type: array
+        source_tables:
+          default: []
+          description: List of table names to distribute. These are the actual table
+            names, not slugs.
+          items:
+            type: string
+          type: array
+        auto_snapshot:
+          default: false
+          description: Whether to create a snapshot of the target instance before
+            distributing.
+          type: boolean
+        notify_target_users:
+          default: false
+          description: Whether to notify target users when the distribution is complete.
+          type: boolean
+        custom_email_message:
+          description: Message to send when the distribution is complete.
+          type: string
     ExecuteCommand:
       required:
-      - command
+        - command
       type: object
       properties:
         command:
@@ -1036,10 +1935,47 @@ components:
           type: string
         metadata_path:
           type: string
+    FilePublic:
+      required:
+        - area
+        - fid
+        - local_path
+        - short_id
+        - type
+      type: object
+      properties:
+        fid:
+          type: string
+        short_id:
+          type: string
+        local_path:
+          type: string
+        os_path:
+          type: string
+        area:
+          type: string
+        type:
+          type: string
+        size:
+          type: integer
+        is_video:
+          type: boolean
+        snapshot_slug:
+          type: string
+        creation_timestamp:
+          type: string
+        last_modified_timestamp:
+          type: string
+        status:
+          additionalProperties: {}
+          type: object
+        history:
+          additionalProperties: {}
+          type: object
     Instance:
       required:
-      - name
-      - slug
+        - name
+        - slug
       type: object
       properties:
         slug:
@@ -1051,18 +1987,18 @@ components:
         role:
           type: string
         creation_timestamp:
-          type: string
           format: date-time
+          type: string
         archival_timestamp:
-          type: string
           format: date-time
+          type: string
         rearchive_after_timestamp:
-          type: string
           format: date-time
+          type: string
     Org:
       required:
-      - name
-      - slug
+        - name
+        - slug
       type: object
       properties:
         slug:
@@ -1080,12 +2016,12 @@ components:
         video_library_enabled:
           type: boolean
         creation_timestamp:
-          type: string
           format: date-time
+          type: string
     Snapshot:
       required:
-      - name
-      - slug
+        - name
+        - slug
       type: object
       properties:
         slug:
@@ -1099,15 +2035,15 @@ components:
         database_tables_enabled:
           type: boolean
         snapshot_timestamp:
-          type: string
           format: date-time
+          type: string
         archival_timestamp:
-          type: string
           format: date-time
+          type: string
     SnapshotCreateRequest:
       required:
-      - name
-      - slug
+        - name
+        - slug
       type: object
       properties:
         slug:
@@ -1117,15 +2053,15 @@ components:
         description:
           type: string
         email_once_finished:
-          type: boolean
           default: false
+          type: boolean
     Space:
       required:
-      - name
-      - slug
-      - type
-      - video_library_enabled
-      - visibility_type
+        - name
+        - slug
+        - type
+        - video_library_enabled
+        - visibility_type
       type: object
       properties:
         slug:
@@ -1147,35 +2083,81 @@ components:
         video_library_enabled:
           type: boolean
         archive_by_date:
-          type: string
           format: date
+          type: string
           nullable: true
         creation_timestamp:
-          type: string
           format: date-time
+          type: string
           nullable: true
         last_modified_timestamp:
-          type: string
           format: date-time
+          type: string
           nullable: true
         archival_timestamp:
-          type: string
           format: date-time
+          type: string
           nullable: true
     StartApp:
       type: object
       properties:
         dpi:
+          default: 96
           type: integer
         node_pool:
           type: string
         screen_height:
+          default: 768
           type: integer
         screen_width:
+          default: 1024
           type: integer
+    Table:
+      required:
+        - bytes
+        - row_count
+      type: object
+      properties:
+        slug:
+          type: string
+        name:
+          type: string
+        description:
+          maxLength: 32768
+          type: string
+          nullable: true
+        database:
+          type: string
+        schema:
+          type: string
+        bytes:
+          type: integer
+        row_count:
+          type: integer
+        delete_timestamp:
+          type: string
+          nullable: true
+    TableUpdate:
+      type: object
+      properties:
+        slug:
+          type: string
+        name:
+          type: string
+        description:
+          maxLength: 32768
+          type: string
+          nullable: true
+        bytes:
+          type: integer
+        row_count:
+          type: integer
+        delete_timestamp:
+          type: string
+          nullable: true
     Task:
       required:
-      - tkid
+        - tkid
       type: object
       properties:
         operation:
@@ -1194,14 +2176,14 @@ components:
         result:
           type: string
         created:
-          type: string
           format: date-time
+          type: string
         started:
-          type: string
           format: date-time
+          type: string
         finished:
-          type: string
           format: date-time
+          type: string
     WorkloadDetailed:
       type: object
       properties:
@@ -1239,4 +2221,5 @@ components:
           type: string
         creation_timestamp:
           type: string
-x-original-swagger-version: "2.0"
+security:
+  - ApiKeyAuth: []
