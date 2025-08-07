@@ -1,16 +1,16 @@
-# nuvolos_client_api.SpacesV1Api
+# nuvolos_client_api.DistributionV1Api
 
 All URIs are relative to *https://api.nuvolos.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_spaces**](SpacesV1Api.md#get_spaces) | **GET** /spaces/v1/org/{slug} | 
+[**distribute_content**](DistributionV1Api.md#distribute_content) | **POST** /distribution/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug} | 
 
 
-# **get_spaces**
-> List[Space] get_spaces(slug)
+# **distribute_content**
+> Task distribute_content(org_slug, space_slug, instance_slug, snapshot_slug, distribution_request=distribution_request)
 
-Returns the spaces the user is affiliated with in the selected org
+Distribute (copy) selected files, applications, and tables from a snapshot to the development snapshot of the target instances.
 
 ### Example
 
@@ -18,7 +18,8 @@ Returns the spaces the user is affiliated with in the selected org
 
 ```python
 import nuvolos_client_api
-from nuvolos_client_api.models.space import Space
+from nuvolos_client_api.models.distribution_request import DistributionRequest
+from nuvolos_client_api.models.task import Task
 from nuvolos_client_api.rest import ApiException
 from pprint import pprint
 
@@ -42,15 +43,19 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 # Enter a context with an instance of the API client
 with nuvolos_client_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = nuvolos_client_api.SpacesV1Api(api_client)
-    slug = 'slug_example' # str | 
+    api_instance = nuvolos_client_api.DistributionV1Api(api_client)
+    org_slug = 'org_slug_example' # str | 
+    space_slug = 'space_slug_example' # str | 
+    instance_slug = 'instance_slug_example' # str | 
+    snapshot_slug = 'snapshot_slug_example' # str | 
+    distribution_request = nuvolos_client_api.DistributionRequest() # DistributionRequest |  (optional)
 
     try:
-        api_response = api_instance.get_spaces(slug)
-        print("The response of SpacesV1Api->get_spaces:\n")
+        api_response = api_instance.distribute_content(org_slug, space_slug, instance_slug, snapshot_slug, distribution_request=distribution_request)
+        print("The response of DistributionV1Api->distribute_content:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling SpacesV1Api->get_spaces: %s\n" % e)
+        print("Exception when calling DistributionV1Api->distribute_content: %s\n" % e)
 ```
 
 
@@ -60,11 +65,15 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **slug** | **str**|  | 
+ **org_slug** | **str**|  | 
+ **space_slug** | **str**|  | 
+ **instance_slug** | **str**|  | 
+ **snapshot_slug** | **str**|  | 
+ **distribution_request** | [**DistributionRequest**](DistributionRequest.md)|  | [optional] 
 
 ### Return type
 
-[**List[Space]**](Space.md)
+[**Task**](Task.md)
 
 ### Authorization
 
@@ -72,14 +81,14 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: */*
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Operation succeeded |  -  |
+**202** | Distribution task created successfully |  -  |
 **400** | Bad request |  -  |
 **401** | Unauthorized |  -  |
 **403** | Access to Nuvolos resource is forbidden |  -  |

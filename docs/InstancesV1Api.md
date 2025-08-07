@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **create_snapshot**
-> Task create_snapshot(org_slug, space_slug, instance_slug, body=body)
+> Task create_snapshot(org_slug, space_slug, instance_slug, snapshot_create_request=snapshot_create_request)
 
 Creates a snapshot in the specified instance asynchronously
 
@@ -48,10 +48,10 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     org_slug = 'org_slug_example' # str | 
     space_slug = 'space_slug_example' # str | 
     instance_slug = 'instance_slug_example' # str | 
-    body = nuvolos_client_api.SnapshotCreateRequest() # SnapshotCreateRequest |  (optional)
+    snapshot_create_request = nuvolos_client_api.SnapshotCreateRequest() # SnapshotCreateRequest |  (optional)
 
     try:
-        api_response = api_instance.create_snapshot(org_slug, space_slug, instance_slug, body=body)
+        api_response = api_instance.create_snapshot(org_slug, space_slug, instance_slug, snapshot_create_request=snapshot_create_request)
         print("The response of InstancesV1Api->create_snapshot:\n")
         pprint(api_response)
     except Exception as e:
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
  **org_slug** | **str**|  | 
  **space_slug** | **str**|  | 
  **instance_slug** | **str**|  | 
- **body** | [**SnapshotCreateRequest**](SnapshotCreateRequest.md)|  | [optional] 
+ **snapshot_create_request** | [**SnapshotCreateRequest**](SnapshotCreateRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: */*
 
 ### HTTP response details

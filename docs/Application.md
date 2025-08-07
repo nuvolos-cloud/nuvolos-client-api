@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **storage_used** | **int** |  | 
 **shared** | **bool** |  | 
 **exportable** | **bool** |  | 
+**aoid** | **int** |  | 
 
 ## Example
 

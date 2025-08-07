@@ -46,7 +46,7 @@ class InstancesV1Api:
         org_slug: StrictStr,
         space_slug: StrictStr,
         instance_slug: StrictStr,
-        body: Optional[SnapshotCreateRequest] = None,
+        snapshot_create_request: Optional[SnapshotCreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -70,8 +70,8 @@ class InstancesV1Api:
         :type space_slug: str
         :param instance_slug: (required)
         :type instance_slug: str
-        :param body:
-        :type body: SnapshotCreateRequest
+        :param snapshot_create_request:
+        :type snapshot_create_request: SnapshotCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -98,7 +98,7 @@ class InstancesV1Api:
             org_slug=org_slug,
             space_slug=space_slug,
             instance_slug=instance_slug,
-            body=body,
+            snapshot_create_request=snapshot_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -132,7 +132,7 @@ class InstancesV1Api:
         org_slug: StrictStr,
         space_slug: StrictStr,
         instance_slug: StrictStr,
-        body: Optional[SnapshotCreateRequest] = None,
+        snapshot_create_request: Optional[SnapshotCreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -156,8 +156,8 @@ class InstancesV1Api:
         :type space_slug: str
         :param instance_slug: (required)
         :type instance_slug: str
-        :param body:
-        :type body: SnapshotCreateRequest
+        :param snapshot_create_request:
+        :type snapshot_create_request: SnapshotCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -184,7 +184,7 @@ class InstancesV1Api:
             org_slug=org_slug,
             space_slug=space_slug,
             instance_slug=instance_slug,
-            body=body,
+            snapshot_create_request=snapshot_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -218,7 +218,7 @@ class InstancesV1Api:
         org_slug: StrictStr,
         space_slug: StrictStr,
         instance_slug: StrictStr,
-        body: Optional[SnapshotCreateRequest] = None,
+        snapshot_create_request: Optional[SnapshotCreateRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -242,8 +242,8 @@ class InstancesV1Api:
         :type space_slug: str
         :param instance_slug: (required)
         :type instance_slug: str
-        :param body:
-        :type body: SnapshotCreateRequest
+        :param snapshot_create_request:
+        :type snapshot_create_request: SnapshotCreateRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -270,7 +270,7 @@ class InstancesV1Api:
             org_slug=org_slug,
             space_slug=space_slug,
             instance_slug=instance_slug,
-            body=body,
+            snapshot_create_request=snapshot_create_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -299,7 +299,7 @@ class InstancesV1Api:
         org_slug,
         space_slug,
         instance_slug,
-        body,
+        snapshot_create_request,
         _request_auth,
         _content_type,
         _headers,
@@ -331,8 +331,8 @@ class InstancesV1Api:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if body is not None:
-            _body_params = body
+        if snapshot_create_request is not None:
+            _body_params = snapshot_create_request
 
 
         # set the HTTP header `Accept`
@@ -343,6 +343,19 @@ class InstancesV1Api:
                 ]
             )
 
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [

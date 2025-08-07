@@ -17,20 +17,29 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class StartApp(BaseModel):
+class FilePublic(BaseModel):
     """
-    StartApp
+    FilePublic
     """ # noqa: E501
-    dpi: Optional[StrictInt] = 96
-    node_pool: Optional[StrictStr] = None
-    screen_height: Optional[StrictInt] = 768
-    screen_width: Optional[StrictInt] = 1024
-    __properties: ClassVar[List[str]] = ["dpi", "node_pool", "screen_height", "screen_width"]
+    fid: StrictStr
+    short_id: StrictStr
+    local_path: StrictStr
+    os_path: Optional[StrictStr] = None
+    area: StrictStr
+    type: StrictStr
+    size: Optional[StrictInt] = None
+    is_video: Optional[StrictBool] = None
+    snapshot_slug: Optional[StrictStr] = None
+    creation_timestamp: Optional[StrictStr] = None
+    last_modified_timestamp: Optional[StrictStr] = None
+    status: Optional[Dict[str, Any]] = None
+    history: Optional[Dict[str, Any]] = None
+    __properties: ClassVar[List[str]] = ["fid", "short_id", "local_path", "os_path", "area", "type", "size", "is_video", "snapshot_slug", "creation_timestamp", "last_modified_timestamp", "status", "history"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +59,7 @@ class StartApp(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of StartApp from a JSON string"""
+        """Create an instance of FilePublic from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,7 +84,7 @@ class StartApp(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of StartApp from a dict"""
+        """Create an instance of FilePublic from a dict"""
         if obj is None:
             return None
 
@@ -83,10 +92,19 @@ class StartApp(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "dpi": obj.get("dpi") if obj.get("dpi") is not None else 96,
-            "node_pool": obj.get("node_pool"),
-            "screen_height": obj.get("screen_height") if obj.get("screen_height") is not None else 768,
-            "screen_width": obj.get("screen_width") if obj.get("screen_width") is not None else 1024
+            "fid": obj.get("fid"),
+            "short_id": obj.get("short_id"),
+            "local_path": obj.get("local_path"),
+            "os_path": obj.get("os_path"),
+            "area": obj.get("area"),
+            "type": obj.get("type"),
+            "size": obj.get("size"),
+            "is_video": obj.get("is_video"),
+            "snapshot_slug": obj.get("snapshot_slug"),
+            "creation_timestamp": obj.get("creation_timestamp"),
+            "last_modified_timestamp": obj.get("last_modified_timestamp"),
+            "status": obj.get("status"),
+            "history": obj.get("history")
         })
         return _obj
 
