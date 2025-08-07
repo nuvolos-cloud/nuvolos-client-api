@@ -7,6 +7,9 @@ name: nuvolos_client_api Python package
 
 on: [push, pull_request]
 
+permissions:
+  contents: read
+
 jobs:
   build:
 

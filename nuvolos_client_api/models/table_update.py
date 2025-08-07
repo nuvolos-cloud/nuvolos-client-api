@@ -17,20 +17,23 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
-class StartApp(BaseModel):
+class TableUpdate(BaseModel):
     """
-    StartApp
+    TableUpdate
     """ # noqa: E501
-    dpi: Optional[StrictInt] = 96
-    node_pool: Optional[StrictStr] = None
-    screen_height: Optional[StrictInt] = 768
-    screen_width: Optional[StrictInt] = 1024
-    __properties: ClassVar[List[str]] = ["dpi", "node_pool", "screen_height", "screen_width"]
+    slug: Optional[StrictStr] = None
+    name: Optional[StrictStr] = None
+    description: Optional[Annotated[str, Field(strict=True, max_length=32768)]] = None
+    bytes: Optional[StrictInt] = None
+    row_count: Optional[StrictInt] = None
+    delete_timestamp: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["slug", "name", "description", "bytes", "row_count", "delete_timestamp"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +53,7 @@ class StartApp(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of StartApp from a JSON string"""
+        """Create an instance of TableUpdate from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,11 +74,21 @@ class StartApp(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
+        # set to None if delete_timestamp (nullable) is None
+        # and model_fields_set contains the field
+        if self.delete_timestamp is None and "delete_timestamp" in self.model_fields_set:
+            _dict['delete_timestamp'] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of StartApp from a dict"""
+        """Create an instance of TableUpdate from a dict"""
         if obj is None:
             return None
 
@@ -83,10 +96,12 @@ class StartApp(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "dpi": obj.get("dpi") if obj.get("dpi") is not None else 96,
-            "node_pool": obj.get("node_pool"),
-            "screen_height": obj.get("screen_height") if obj.get("screen_height") is not None else 768,
-            "screen_width": obj.get("screen_width") if obj.get("screen_width") is not None else 1024
+            "slug": obj.get("slug"),
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "bytes": obj.get("bytes"),
+            "row_count": obj.get("row_count"),
+            "delete_timestamp": obj.get("delete_timestamp")
         })
         return _obj
 

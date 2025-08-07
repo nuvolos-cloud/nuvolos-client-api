@@ -14,10 +14,10 @@
 
 import unittest
 
-from nuvolos_client_api.models.application import Application
+from nuvolos_client_api.models.table_update import TableUpdate
 
-class TestApplication(unittest.TestCase):
-    """Application unit test stubs"""
+class TestTableUpdate(unittest.TestCase):
+    """TableUpdate unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,40 +25,30 @@ class TestApplication(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> Application:
-        """Test Application
+    def make_instance(self, include_optional) -> TableUpdate:
+        """Test TableUpdate
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `Application`
+        # uncomment below to create an instance of `TableUpdate`
         """
-        model = Application()
+        model = TableUpdate()
         if include_optional:
-            return Application(
+            return TableUpdate(
                 slug = '',
                 name = '',
                 description = '',
-                status = '',
-                storage_used = 56,
-                shared = True,
-                exportable = True,
-                aoid = 56
+                bytes = 56,
+                row_count = 56,
+                delete_timestamp = ''
             )
         else:
-            return Application(
-                slug = '',
-                name = '',
-                description = '',
-                status = '',
-                storage_used = 56,
-                shared = True,
-                exportable = True,
-                aoid = 56,
+            return TableUpdate(
         )
         """
 
-    def testApplication(self):
-        """Test Application"""
+    def testTableUpdate(self):
+        """Test TableUpdate"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

@@ -17,20 +17,23 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class StartApp(BaseModel):
+class DistributionRequest(BaseModel):
     """
-    StartApp
+    DistributionRequest
     """ # noqa: E501
-    dpi: Optional[StrictInt] = 96
-    node_pool: Optional[StrictStr] = None
-    screen_height: Optional[StrictInt] = 768
-    screen_width: Optional[StrictInt] = 1024
-    __properties: ClassVar[List[str]] = ["dpi", "node_pool", "screen_height", "screen_width"]
+    target_instances: List[Dict[str, Any]] = Field(description="List of target instances with org_slug, space_slug, instance_slug. Objects will be distributed to the development snapshot of the target instance.")
+    source_applications: Optional[List[StrictStr]] = Field(default=None, description="List of application slugs to distribute.")
+    source_files: Optional[List[StrictStr]] = Field(default=None, description="List of file OS paths to distribute. These are the actual paths in the file system, not slugs.")
+    source_tables: Optional[List[StrictStr]] = Field(default=None, description="List of table names to distribute. These are the actual table names, not slugs.")
+    auto_snapshot: Optional[StrictBool] = Field(default=False, description="Whether to create a snapshot of the target instance before distributing.")
+    notify_target_users: Optional[StrictBool] = Field(default=False, description="Whether to notify target users when the distribution is complete.")
+    custom_email_message: Optional[StrictStr] = Field(default=None, description="Message to send when the distribution is complete.")
+    __properties: ClassVar[List[str]] = ["target_instances", "source_applications", "source_files", "source_tables", "auto_snapshot", "notify_target_users", "custom_email_message"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +53,7 @@ class StartApp(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of StartApp from a JSON string"""
+        """Create an instance of DistributionRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,7 +78,7 @@ class StartApp(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of StartApp from a dict"""
+        """Create an instance of DistributionRequest from a dict"""
         if obj is None:
             return None
 
@@ -83,10 +86,13 @@ class StartApp(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "dpi": obj.get("dpi") if obj.get("dpi") is not None else 96,
-            "node_pool": obj.get("node_pool"),
-            "screen_height": obj.get("screen_height") if obj.get("screen_height") is not None else 768,
-            "screen_width": obj.get("screen_width") if obj.get("screen_width") is not None else 1024
+            "target_instances": obj.get("target_instances"),
+            "source_applications": obj.get("source_applications"),
+            "source_files": obj.get("source_files"),
+            "source_tables": obj.get("source_tables"),
+            "auto_snapshot": obj.get("auto_snapshot") if obj.get("auto_snapshot") is not None else False,
+            "notify_target_users": obj.get("notify_target_users") if obj.get("notify_target_users") is not None else False,
+            "custom_email_message": obj.get("custom_email_message")
         })
         return _obj
 

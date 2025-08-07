@@ -17,20 +17,17 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
-class StartApp(BaseModel):
+class DDL(BaseModel):
     """
-    StartApp
+    DDL
     """ # noqa: E501
-    dpi: Optional[StrictInt] = 96
-    node_pool: Optional[StrictStr] = None
-    screen_height: Optional[StrictInt] = 768
-    screen_width: Optional[StrictInt] = 1024
-    __properties: ClassVar[List[str]] = ["dpi", "node_pool", "screen_height", "screen_width"]
+    ddl: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["ddl"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +47,7 @@ class StartApp(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of StartApp from a JSON string"""
+        """Create an instance of DDL from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,7 +72,7 @@ class StartApp(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of StartApp from a dict"""
+        """Create an instance of DDL from a dict"""
         if obj is None:
             return None
 
@@ -83,10 +80,7 @@ class StartApp(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "dpi": obj.get("dpi") if obj.get("dpi") is not None else 96,
-            "node_pool": obj.get("node_pool"),
-            "screen_height": obj.get("screen_height") if obj.get("screen_height") is not None else 768,
-            "screen_width": obj.get("screen_width") if obj.get("screen_width") is not None else 1024
+            "ddl": obj.get("ddl")
         })
         return _obj
 

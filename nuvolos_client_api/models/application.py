@@ -33,7 +33,8 @@ class Application(BaseModel):
     storage_used: StrictInt
     shared: StrictBool
     exportable: StrictBool
-    __properties: ClassVar[List[str]] = ["slug", "name", "description", "status", "storage_used", "shared", "exportable"]
+    aoid: StrictInt
+    __properties: ClassVar[List[str]] = ["slug", "name", "description", "status", "storage_used", "shared", "exportable", "aoid"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -92,7 +93,8 @@ class Application(BaseModel):
             "status": obj.get("status"),
             "storage_used": obj.get("storage_used"),
             "shared": obj.get("shared"),
-            "exportable": obj.get("exportable")
+            "exportable": obj.get("exportable"),
+            "aoid": obj.get("aoid")
         })
         return _obj
 

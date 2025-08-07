@@ -1,5 +1,5 @@
 additionalProperties:
   packageName: nuvolos_client_api
   packageUrl: https://www.nuvolos.cloud
-  packageVersion: 1.2.1
+  packageVersion: 1.3.0
   projectName: "nuvolos-client-api"
