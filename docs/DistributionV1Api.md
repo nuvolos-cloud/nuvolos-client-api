@@ -1,6 +1,6 @@
 # nuvolos_client_api.DistributionV1Api
 
-All URIs are relative to *https://api.nuvolos.cloud*
+All URIs are relative to *https://api.eu1.nuvolos.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -8,9 +8,9 @@ Method | HTTP request | Description
 
 
 # **distribute_content**
-> Task distribute_content(org_slug, space_slug, instance_slug, snapshot_slug, distribution_request=distribution_request)
+> Task distribute_content(org_slug, space_slug, snapshot_slug, instance_slug, distribution_request=distribution_request)
 
-Distribute (copy) selected files, applications, and tables from a snapshot to the development snapshot of the target instances.
+Distribute selected files, applications, and tables from a snapshot to target instances.
 
 ### Example
 
@@ -23,10 +23,10 @@ from nuvolos_client_api.models.task import Task
 from nuvolos_client_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuvolos.cloud
+# Defining the host is optional and defaults to https://api.eu1.nuvolos.cloud
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuvolos_client_api.Configuration(
-    host = "https://api.nuvolos.cloud"
+    host = "https://api.eu1.nuvolos.cloud"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -46,12 +46,12 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     api_instance = nuvolos_client_api.DistributionV1Api(api_client)
     org_slug = 'org_slug_example' # str | 
     space_slug = 'space_slug_example' # str | 
-    instance_slug = 'instance_slug_example' # str | 
     snapshot_slug = 'snapshot_slug_example' # str | 
+    instance_slug = 'instance_slug_example' # str | 
     distribution_request = nuvolos_client_api.DistributionRequest() # DistributionRequest |  (optional)
 
     try:
-        api_response = api_instance.distribute_content(org_slug, space_slug, instance_slug, snapshot_slug, distribution_request=distribution_request)
+        api_response = api_instance.distribute_content(org_slug, space_slug, snapshot_slug, instance_slug, distribution_request=distribution_request)
         print("The response of DistributionV1Api->distribute_content:\n")
         pprint(api_response)
     except Exception as e:
@@ -67,8 +67,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **org_slug** | **str**|  | 
  **space_slug** | **str**|  | 
- **instance_slug** | **str**|  | 
  **snapshot_slug** | **str**|  | 
+ **instance_slug** | **str**|  | 
  **distribution_request** | [**DistributionRequest**](DistributionRequest.md)|  | [optional] 
 
 ### Return type

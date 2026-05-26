@@ -21,6 +21,7 @@ from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class FilePublic(BaseModel):
     """
@@ -39,10 +40,12 @@ class FilePublic(BaseModel):
     last_modified_timestamp: Optional[StrictStr] = None
     status: Optional[Dict[str, Any]] = None
     history: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["fid", "short_id", "local_path", "os_path", "area", "type", "size", "is_video", "snapshot_slug", "creation_timestamp", "last_modified_timestamp", "status", "history"]
+    collision_info: Optional[Dict[str, Any]] = None
+    __properties: ClassVar[List[str]] = ["fid", "short_id", "local_path", "os_path", "area", "type", "size", "is_video", "snapshot_slug", "creation_timestamp", "last_modified_timestamp", "status", "history", "collision_info"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -54,8 +57,7 @@ class FilePublic(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -104,7 +106,8 @@ class FilePublic(BaseModel):
             "creation_timestamp": obj.get("creation_timestamp"),
             "last_modified_timestamp": obj.get("last_modified_timestamp"),
             "status": obj.get("status"),
-            "history": obj.get("history")
+            "history": obj.get("history"),
+            "collision_info": obj.get("collision_info")
         })
         return _obj
 

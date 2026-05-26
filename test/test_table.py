@@ -42,12 +42,11 @@ class TestTable(unittest.TestCase):
                 var_schema = '',
                 bytes = 56,
                 row_count = 56,
-                delete_timestamp = ''
+                delete_timestamp = '',
+                is_external = True
             )
         else:
             return Table(
-                bytes = 56,
-                row_count = 56,
         )
         """
 

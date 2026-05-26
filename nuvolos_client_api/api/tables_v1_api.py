@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Nuvolos
 
@@ -10,6 +8,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
@@ -402,7 +401,7 @@ class TablesV1Api:
     ) -> DDL:
         """get_schema_ddl
 
-        Returns the DDL of the database schema corresponding to the specified snapshot in Nuvolos.
+        Returns the DDL of the database schema corresponding to the specified snapshot.
 
         :param org_slug: (required)
         :type org_slug: str
@@ -488,7 +487,7 @@ class TablesV1Api:
     ) -> ApiResponse[DDL]:
         """get_schema_ddl
 
-        Returns the DDL of the database schema corresponding to the specified snapshot in Nuvolos.
+        Returns the DDL of the database schema corresponding to the specified snapshot.
 
         :param org_slug: (required)
         :type org_slug: str
@@ -574,7 +573,7 @@ class TablesV1Api:
     ) -> RESTResponseType:
         """get_schema_ddl
 
-        Returns the DDL of the database schema corresponding to the specified snapshot in Nuvolos.
+        Returns the DDL of the database schema corresponding to the specified snapshot.
 
         :param org_slug: (required)
         :type org_slug: str

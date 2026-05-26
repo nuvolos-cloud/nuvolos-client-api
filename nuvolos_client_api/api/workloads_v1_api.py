@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Nuvolos
 
@@ -10,6 +8,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
@@ -1083,6 +1082,8 @@ class WorkloadsV1Api:
     @validate_call
     def get_nodepools(
         self,
+        org_slug: StrictStr,
+        space_slug: StrictStr,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1098,8 +1099,12 @@ class WorkloadsV1Api:
     ) -> List[APINodePool]:
         """get_nodepools
 
-        Returns the available Virtual Machines for scaled workloads
+        Returns the Virtual Machines available for scaled workloads in the given org/space context.
 
+        :param org_slug: (required)
+        :type org_slug: str
+        :param space_slug: (required)
+        :type space_slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1123,6 +1128,8 @@ class WorkloadsV1Api:
         """ # noqa: E501
 
         _param = self._get_nodepools_serialize(
+            org_slug=org_slug,
+            space_slug=space_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1152,6 +1159,8 @@ class WorkloadsV1Api:
     @validate_call
     def get_nodepools_with_http_info(
         self,
+        org_slug: StrictStr,
+        space_slug: StrictStr,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1167,8 +1176,12 @@ class WorkloadsV1Api:
     ) -> ApiResponse[List[APINodePool]]:
         """get_nodepools
 
-        Returns the available Virtual Machines for scaled workloads
+        Returns the Virtual Machines available for scaled workloads in the given org/space context.
 
+        :param org_slug: (required)
+        :type org_slug: str
+        :param space_slug: (required)
+        :type space_slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1192,6 +1205,8 @@ class WorkloadsV1Api:
         """ # noqa: E501
 
         _param = self._get_nodepools_serialize(
+            org_slug=org_slug,
+            space_slug=space_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1221,6 +1236,8 @@ class WorkloadsV1Api:
     @validate_call
     def get_nodepools_without_preload_content(
         self,
+        org_slug: StrictStr,
+        space_slug: StrictStr,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1236,8 +1253,12 @@ class WorkloadsV1Api:
     ) -> RESTResponseType:
         """get_nodepools
 
-        Returns the available Virtual Machines for scaled workloads
+        Returns the Virtual Machines available for scaled workloads in the given org/space context.
 
+        :param org_slug: (required)
+        :type org_slug: str
+        :param space_slug: (required)
+        :type space_slug: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1261,6 +1282,8 @@ class WorkloadsV1Api:
         """ # noqa: E501
 
         _param = self._get_nodepools_serialize(
+            org_slug=org_slug,
+            space_slug=space_slug,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1285,6 +1308,8 @@ class WorkloadsV1Api:
 
     def _get_nodepools_serialize(
         self,
+        org_slug,
+        space_slug,
         _request_auth,
         _content_type,
         _headers,
@@ -1306,6 +1331,10 @@ class WorkloadsV1Api:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
+        if org_slug is not None:
+            _path_params['org_slug'] = org_slug
+        if space_slug is not None:
+            _path_params['space_slug'] = space_slug
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -1328,7 +1357,7 @@ class WorkloadsV1Api:
 
         return self.api_client.param_serialize(
             method='GET',
-            resource_path='/workloads/v1/nodepools',
+            resource_path='/workloads/v1/org/{org_slug}/space/{space_slug}/nodepools',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

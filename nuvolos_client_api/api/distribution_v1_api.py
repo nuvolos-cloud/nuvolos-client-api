@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Nuvolos
 
@@ -10,6 +8,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
@@ -44,8 +43,8 @@ class DistributionV1Api:
         self,
         org_slug: StrictStr,
         space_slug: StrictStr,
-        instance_slug: StrictStr,
         snapshot_slug: StrictStr,
+        instance_slug: StrictStr,
         distribution_request: Optional[DistributionRequest] = None,
         _request_timeout: Union[
             None,
@@ -62,16 +61,16 @@ class DistributionV1Api:
     ) -> Task:
         """distribute_content
 
-        Distribute (copy) selected files, applications, and tables from a snapshot to the development snapshot of the target instances.
+        Distribute selected files, applications, and tables from a snapshot to target instances.
 
         :param org_slug: (required)
         :type org_slug: str
         :param space_slug: (required)
         :type space_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param snapshot_slug: (required)
         :type snapshot_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
         :param distribution_request:
         :type distribution_request: DistributionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -99,8 +98,8 @@ class DistributionV1Api:
         _param = self._distribute_content_serialize(
             org_slug=org_slug,
             space_slug=space_slug,
-            instance_slug=instance_slug,
             snapshot_slug=snapshot_slug,
+            instance_slug=instance_slug,
             distribution_request=distribution_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -134,8 +133,8 @@ class DistributionV1Api:
         self,
         org_slug: StrictStr,
         space_slug: StrictStr,
-        instance_slug: StrictStr,
         snapshot_slug: StrictStr,
+        instance_slug: StrictStr,
         distribution_request: Optional[DistributionRequest] = None,
         _request_timeout: Union[
             None,
@@ -152,16 +151,16 @@ class DistributionV1Api:
     ) -> ApiResponse[Task]:
         """distribute_content
 
-        Distribute (copy) selected files, applications, and tables from a snapshot to the development snapshot of the target instances.
+        Distribute selected files, applications, and tables from a snapshot to target instances.
 
         :param org_slug: (required)
         :type org_slug: str
         :param space_slug: (required)
         :type space_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param snapshot_slug: (required)
         :type snapshot_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
         :param distribution_request:
         :type distribution_request: DistributionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -189,8 +188,8 @@ class DistributionV1Api:
         _param = self._distribute_content_serialize(
             org_slug=org_slug,
             space_slug=space_slug,
-            instance_slug=instance_slug,
             snapshot_slug=snapshot_slug,
+            instance_slug=instance_slug,
             distribution_request=distribution_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -224,8 +223,8 @@ class DistributionV1Api:
         self,
         org_slug: StrictStr,
         space_slug: StrictStr,
-        instance_slug: StrictStr,
         snapshot_slug: StrictStr,
+        instance_slug: StrictStr,
         distribution_request: Optional[DistributionRequest] = None,
         _request_timeout: Union[
             None,
@@ -242,16 +241,16 @@ class DistributionV1Api:
     ) -> RESTResponseType:
         """distribute_content
 
-        Distribute (copy) selected files, applications, and tables from a snapshot to the development snapshot of the target instances.
+        Distribute selected files, applications, and tables from a snapshot to target instances.
 
         :param org_slug: (required)
         :type org_slug: str
         :param space_slug: (required)
         :type space_slug: str
-        :param instance_slug: (required)
-        :type instance_slug: str
         :param snapshot_slug: (required)
         :type snapshot_slug: str
+        :param instance_slug: (required)
+        :type instance_slug: str
         :param distribution_request:
         :type distribution_request: DistributionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -279,8 +278,8 @@ class DistributionV1Api:
         _param = self._distribute_content_serialize(
             org_slug=org_slug,
             space_slug=space_slug,
-            instance_slug=instance_slug,
             snapshot_slug=snapshot_slug,
+            instance_slug=instance_slug,
             distribution_request=distribution_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -309,8 +308,8 @@ class DistributionV1Api:
         self,
         org_slug,
         space_slug,
-        instance_slug,
         snapshot_slug,
+        instance_slug,
         distribution_request,
         _request_auth,
         _content_type,
@@ -337,10 +336,10 @@ class DistributionV1Api:
             _path_params['org_slug'] = org_slug
         if space_slug is not None:
             _path_params['space_slug'] = space_slug
-        if instance_slug is not None:
-            _path_params['instance_slug'] = instance_slug
         if snapshot_slug is not None:
             _path_params['snapshot_slug'] = snapshot_slug
+        if instance_slug is not None:
+            _path_params['instance_slug'] = instance_slug
         # process the query parameters
         # process the header parameters
         # process the form parameters

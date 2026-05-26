@@ -1,6 +1,6 @@
 # nuvolos_client_api.OrganizationsV1Api
 
-All URIs are relative to *https://api.nuvolos.cloud*
+All URIs are relative to *https://api.eu1.nuvolos.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -22,10 +22,10 @@ from nuvolos_client_api.models.org import Org
 from nuvolos_client_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuvolos.cloud
+# Defining the host is optional and defaults to https://api.eu1.nuvolos.cloud
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuvolos_client_api.Configuration(
-    host = "https://api.nuvolos.cloud"
+    host = "https://api.eu1.nuvolos.cloud"
 )
 
 # The client must configure the authentication and authorization parameters

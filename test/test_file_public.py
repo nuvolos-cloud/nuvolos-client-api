@@ -51,6 +51,9 @@ class TestFilePublic(unittest.TestCase):
                     },
                 history = {
                     'key' : null
+                    },
+                collision_info = {
+                    'key' : null
                     }
             )
         else:

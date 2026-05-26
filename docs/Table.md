@@ -10,9 +10,10 @@ Name | Type | Description | Notes
 **description** | **str** |  | [optional] 
 **database** | **str** |  | [optional] 
 **var_schema** | **str** |  | [optional] 
-**bytes** | **int** |  | 
-**row_count** | **int** |  | 
+**bytes** | **int** |  | [optional] 
+**row_count** | **int** |  | [optional] 
 **delete_timestamp** | **str** |  | [optional] 
+**is_external** | **bool** |  | [optional] 
 
 ## Example
 

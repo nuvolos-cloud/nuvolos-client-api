@@ -1,13 +1,13 @@
 # nuvolos_client_api.WorkloadsV1Api
 
-All URIs are relative to *https://api.nuvolos.cloud*
+All URIs are relative to *https://api.eu1.nuvolos.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_workload**](WorkloadsV1Api.md#create_workload) | **POST** /workloads/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/app/{app_slug} | 
 [**delete_workload**](WorkloadsV1Api.md#delete_workload) | **DELETE** /workloads/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/app/{app_slug} | 
 [**execute_command**](WorkloadsV1Api.md#execute_command) | **POST** /workloads/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/app/{app_slug}/execute | 
-[**get_nodepools**](WorkloadsV1Api.md#get_nodepools) | **GET** /workloads/v1/nodepools | 
+[**get_nodepools**](WorkloadsV1Api.md#get_nodepools) | **GET** /workloads/v1/org/{org_slug}/space/{space_slug}/nodepools | 
 [**get_workloads**](WorkloadsV1Api.md#get_workloads) | **GET** /workloads/v1 | 
 [**get_workloads_for_app**](WorkloadsV1Api.md#get_workloads_for_app) | **GET** /workloads/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/app/{app_slug} | 
 
@@ -28,10 +28,10 @@ from nuvolos_client_api.models.task import Task
 from nuvolos_client_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuvolos.cloud
+# Defining the host is optional and defaults to https://api.eu1.nuvolos.cloud
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuvolos_client_api.Configuration(
-    host = "https://api.nuvolos.cloud"
+    host = "https://api.eu1.nuvolos.cloud"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -118,10 +118,10 @@ import nuvolos_client_api
 from nuvolos_client_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuvolos.cloud
+# Defining the host is optional and defaults to https://api.eu1.nuvolos.cloud
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuvolos_client_api.Configuration(
-    host = "https://api.nuvolos.cloud"
+    host = "https://api.eu1.nuvolos.cloud"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -206,10 +206,10 @@ from nuvolos_client_api.models.execute_command_response import ExecuteCommandRes
 from nuvolos_client_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuvolos.cloud
+# Defining the host is optional and defaults to https://api.eu1.nuvolos.cloud
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuvolos_client_api.Configuration(
-    host = "https://api.nuvolos.cloud"
+    host = "https://api.eu1.nuvolos.cloud"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -283,9 +283,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_nodepools**
-> List[APINodePool] get_nodepools()
+> List[APINodePool] get_nodepools(org_slug, space_slug)
 
-Returns the available Virtual Machines for scaled workloads
+Returns the Virtual Machines available for scaled workloads in the given org/space context.
 
 ### Example
 
@@ -297,10 +297,10 @@ from nuvolos_client_api.models.api_node_pool import APINodePool
 from nuvolos_client_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuvolos.cloud
+# Defining the host is optional and defaults to https://api.eu1.nuvolos.cloud
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuvolos_client_api.Configuration(
-    host = "https://api.nuvolos.cloud"
+    host = "https://api.eu1.nuvolos.cloud"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -318,9 +318,11 @@ configuration.api_key['ApiKeyAuth'] = os.environ["API_KEY"]
 with nuvolos_client_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = nuvolos_client_api.WorkloadsV1Api(api_client)
+    org_slug = 'org_slug_example' # str | 
+    space_slug = 'space_slug_example' # str | 
 
     try:
-        api_response = api_instance.get_nodepools()
+        api_response = api_instance.get_nodepools(org_slug, space_slug)
         print("The response of WorkloadsV1Api->get_nodepools:\n")
         pprint(api_response)
     except Exception as e:
@@ -331,7 +333,11 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_slug** | **str**|  | 
+ **space_slug** | **str**|  | 
 
 ### Return type
 
@@ -375,10 +381,10 @@ from nuvolos_client_api.models.workload_detailed import WorkloadDetailed
 from nuvolos_client_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuvolos.cloud
+# Defining the host is optional and defaults to https://api.eu1.nuvolos.cloud
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuvolos_client_api.Configuration(
-    host = "https://api.nuvolos.cloud"
+    host = "https://api.eu1.nuvolos.cloud"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -454,10 +460,10 @@ from nuvolos_client_api.models.workload_detailed import WorkloadDetailed
 from nuvolos_client_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuvolos.cloud
+# Defining the host is optional and defaults to https://api.eu1.nuvolos.cloud
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuvolos_client_api.Configuration(
-    host = "https://api.nuvolos.cloud"
+    host = "https://api.eu1.nuvolos.cloud"
 )
 
 # The client must configure the authentication and authorization parameters

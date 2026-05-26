@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Nuvolos
 
@@ -10,6 +8,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
@@ -57,7 +56,7 @@ class SpacesV1Api:
     ) -> List[Space]:
         """get_spaces
 
-        Returns the spaces the user is affiliated with in the selected org
+        Returns the spaces the user is affiliated with in the selected org. 
 
         :param slug: (required)
         :type slug: str
@@ -131,7 +130,7 @@ class SpacesV1Api:
     ) -> ApiResponse[List[Space]]:
         """get_spaces
 
-        Returns the spaces the user is affiliated with in the selected org
+        Returns the spaces the user is affiliated with in the selected org. 
 
         :param slug: (required)
         :type slug: str
@@ -205,7 +204,7 @@ class SpacesV1Api:
     ) -> RESTResponseType:
         """get_spaces
 
-        Returns the spaces the user is affiliated with in the selected org
+        Returns the spaces the user is affiliated with in the selected org. 
 
         :param slug: (required)
         :type slug: str
