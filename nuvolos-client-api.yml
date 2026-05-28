@@ -3,8 +3,158 @@ info:
   title: Nuvolos
   version: prod
 servers:
-  - url: https://api.nuvolos.cloud
+  - url: https://api.eu1.nuvolos.cloud
 paths:
+  "/apps/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/app/{app_slug}/derived_images":
+    post:
+      description: Creates a derived image from an existing Nuvolos application
+      operationId: derive_app
+      parameters:
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: instance_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: app_slug
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DeriveApp"
+      responses:
+        "202":
+          description: Request accepted
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/Task"
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Apps V1
+  "/apps/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/applications":
+    post:
+      description: Creates a new application in the development snapshot of the
+        specified instance.
+      operationId: create_app
+      parameters:
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: instance_slug
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AppCreate"
+      responses:
+        "201":
+          description: Application created
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/AppCreated"
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Apps V1
   "/apps/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}":
     get:
       description: Returns the apps in the given snapshot.
@@ -81,8 +231,8 @@ paths:
         - Apps V1
   "/distribution/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}":
     post:
-      description: Distribute (copy) selected files, applications, and tables from a snapshot
-        to the development snapshot of the target instances.
+      description: Distribute selected files, applications, and tables from a snapshot
+        to target instances.
       operationId: distribute_content
       parameters:
         - in: path
@@ -96,12 +246,12 @@ paths:
           schema:
             type: string
         - in: path
-          name: instance_slug
+          name: snapshot_slug
           required: true
           schema:
             type: string
         - in: path
-          name: snapshot_slug
+          name: instance_slug
           required: true
           schema:
             type: string
@@ -235,7 +385,7 @@ paths:
         - Files V1
   "/files/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/files/{local_path}":
     get:
-      description: Returns all files from a path in the files area (shared with all users of the
+      description: Returns all files from the files area (shared with all users of the
         instance) at the specified location in the specified snapshot. Performs
         a file system rescan upon invocation.
       operationId: get_files_in_files_area
@@ -316,7 +466,7 @@ paths:
         - Files V1
   "/files/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/home":
     get:
-      description: Returns all files from the personal area (home folder) of the current user in the
+      description: Returns all files from the home area of the current user in the
         specified folder in the specified snapshot. Performs a file system
         rescan upon invocation.
       operationId: get_files_in_home_area
@@ -392,7 +542,7 @@ paths:
         - Files V1
   "/files/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/home/{local_path}":
     get:
-      description: Returns all files from a path in the personal area (home folder) of the current user in the
+      description: Returns all files from the home area of the current user in the
         specified folder in the specified snapshot. Performs a file system
         rescan upon invocation.
       operationId: get_files_in_home_area
@@ -471,6 +621,351 @@ paths:
                 $ref: "#/components/schemas/ClientApiError"
       tags:
         - Files V1
+  /image_families/v1:
+    get:
+      description: Lists all image family records.
+      operationId: get_image_families
+      responses:
+        "200":
+          description: Operation succeeded
+          content:
+            "*/*":
+              schema:
+                items:
+                  $ref: "#/components/schemas/ImageFamily"
+                type: array
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Image Families V1
+    put:
+      description: Creates a new image family record. Priority is automatically set to
+        max existing priority + 1.
+      operationId: create_image_family
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ImageFamilyCreate"
+      responses:
+        "201":
+          description: Image family created
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ImageFamilyResponse"
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Image Families V1
+  /image_links/v1:
+    get:
+      description: Lists image_link records accessible to the authenticated user.
+        Returns records where oid and sid are both NULL (globally available), or
+        the user has an active org_role for the org, or the user has an active
+        space_role for the space.
+      operationId: get_image_links
+      responses:
+        "200":
+          description: Operation succeeded
+          content:
+            "*/*":
+              schema:
+                items:
+                  $ref: "#/components/schemas/ImageLink"
+                type: array
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Image Links V1
+  /images/v1:
+    get:
+      description: Lists image records accessible to the authenticated user.
+      operationId: get_images
+      responses:
+        "200":
+          description: Operation succeeded
+          content:
+            "*/*":
+              schema:
+                items:
+                  $ref: "#/components/schemas/Image"
+                type: array
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Images V1
+    put:
+      description: Creates a new image record along with image_link and
+        image_family_link records. org_slug and space_slug can be omitted only
+        for account managers (globally available image). If both are specified,
+        the space must belong to the org and the user must be a Space Admin. If
+        only org_slug is specified, the user must be an Org Admin for that org.
+      operationId: create_image
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ImageCreate"
+      responses:
+        "201":
+          description: Image created
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ImageResponse"
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Images V1
+  "/images/v1/{imid}":
+    patch:
+      description: "Updates fields of an existing image record accessible to the
+        authenticated user. All fields are optional; only provided fields are
+        updated. release_date is always set to the current date on a successful
+        update. Updatable fields: name, description, docker_image_url,
+        configuration, app_type, description_md, complexity, tags, public,
+        public_description."
+      operationId: update_image
+      parameters:
+        - in: path
+          name: imid
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ImageUpdate"
+      responses:
+        "200":
+          description: Image updated
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/Image"
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Images V1
   "/instances/v1/org/{org_slug}/space/{space_slug}":
     get:
       description: Returns the instances the user has access to in the selected org
@@ -496,6 +991,72 @@ paths:
                 items:
                   $ref: "#/components/schemas/Instance"
                 type: array
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Instances V1
+    post:
+      description: Creates a new instance in the specified org and space.
+      operationId: create_instance
+      parameters:
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InstanceCreateRequest"
+      responses:
+        "201":
+          description: Creation succeeded
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/InstanceCreated"
         "400":
           description: Bad request
           content:
@@ -661,6 +1222,191 @@ paths:
                 $ref: "#/components/schemas/ClientApiError"
       tags:
         - Organizations V1
+  "/sessions/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/app/{app_slug}":
+    get:
+      description: Returns sessions for the given Nuvolos application.
+      operationId: get_sessions
+      parameters:
+        - in: query
+          name: page
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - in: query
+          name: per_page
+          required: false
+          schema:
+            type: integer
+            default: 100
+        - in: query
+          name: metadata
+          required: false
+          schema:
+            type: boolean
+            default: false
+        - in: query
+          name: order_by
+          required: false
+          schema:
+            type: string
+            enum:
+              - ""
+        - in: query
+          name: session_id
+          required: false
+          x-nullable: true
+          schema:
+            type: string
+            default: null
+        - in: query
+          name: sort
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+            default: desc
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: instance_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: app_slug
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Operation succeeded
+          content:
+            "*/*":
+              schema:
+                items:
+                  $ref: "#/components/schemas/Session"
+                type: array
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Sessions V1
+  "/sessions/v1/{session_id}/container/{container_name}/logs":
+    get:
+      description: Returns logs for the given session and container.
+      operationId: get_session_logs
+      parameters:
+        - in: query
+          name: max_lines
+          required: false
+          schema:
+            type: integer
+            default: 100
+        - in: query
+          name: from_start
+          required: false
+          x-nullable: true
+          schema:
+            type: string
+            format: date-time
+            default: null
+        - in: path
+          name: session_id
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: container_name
+          required: true
+          schema:
+            type: string
+      responses:
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Sessions V1
   "/snapshots/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}":
     get:
       description: Returns the snapshots the user has access to in the specified org,
@@ -803,7 +1549,7 @@ paths:
         - Snapshots V1
   "/spaces/v1/org/{slug}":
     get:
-      description: Returns the spaces the user is affiliated with in the selected org
+      description: "Returns the spaces the user is affiliated with in the selected org. "
       operationId: get_spaces
       parameters:
         - in: path
@@ -937,7 +1683,7 @@ paths:
   "/tables/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/get_ddl":
     get:
       description: Returns the DDL of the database schema corresponding to the
-        specified snapshot in Nuvolos.
+        specified snapshot.
       operationId: get_schema_ddl
       parameters:
         - in: path
@@ -1430,57 +2176,6 @@ paths:
                 $ref: "#/components/schemas/ClientApiError"
       tags:
         - Workloads V1
-  /workloads/v1/nodepools:
-    get:
-      description: Returns the available Virtual Machines for scaled workloads
-      operationId: get_nodepools
-      responses:
-        "200":
-          description: Operation succeeded
-          content:
-            "*/*":
-              schema:
-                items:
-                  $ref: "#/components/schemas/APINodePool"
-                type: array
-        "400":
-          description: Bad request
-          content:
-            "*/*":
-              schema:
-                $ref: "#/components/schemas/ClientApiError"
-        "403":
-          description: Access to Nuvolos resource is forbidden
-          content:
-            "*/*":
-              schema:
-                $ref: "#/components/schemas/ClientApiError"
-        "404":
-          description: Nuvolos object not found
-          content:
-            "*/*":
-              schema:
-                $ref: "#/components/schemas/ClientApiError"
-        "409":
-          description: Conflict with Nuvolos object
-          content:
-            "*/*":
-              schema:
-                $ref: "#/components/schemas/ClientApiError"
-        "410":
-          description: Nuvolos object no longer available
-          content:
-            "*/*":
-              schema:
-                $ref: "#/components/schemas/ClientApiError"
-        "500":
-          description: Internal server error
-          content:
-            "*/*":
-              schema:
-                $ref: "#/components/schemas/ClientApiError"
-      tags:
-        - Workloads V1
   "/workloads/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/app/{app_slug}":
     delete:
       description: Deletes a workload by stopping a Nuvolos application.
@@ -1776,17 +2471,83 @@ paths:
                 $ref: "#/components/schemas/ClientApiError"
       tags:
         - Workloads V1
+  "/workloads/v1/org/{org_slug}/space/{space_slug}/nodepools":
+    get:
+      description: Returns the Virtual Machines available for scaled workloads in the
+        given org/space context.
+      get_swagger_responses:
+        "401":
+          description: Unauthorized
+      operationId: get_nodepools
+      parameters:
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Operation succeeded
+          content:
+            "*/*":
+              schema:
+                items:
+                  $ref: "#/components/schemas/APINodePool"
+                type: array
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Workloads V1
 components:
   securitySchemes:
-      ApiKeyAuth:        
-        type: apiKey
-        in: header       
-        name: Authorization
-        scheme: bearer
-        bearerFormat: basic
+    ApiKeyAuth:
+      bearerFormat: basic
+      in: header
+      name: Authorization
+      scheme: bearer
+      type: apiKey
   schemas:
     APINodePool:
-      type: object
+      additionalProperties: false
       properties:
         slug:
           type: string
@@ -1806,17 +2567,35 @@ components:
           type: integer
         available_in_teaching_spaces:
           type: boolean
-    Application:
-      required:
-        - aoid
-        - description
-        - exportable
-        - name
-        - shared
-        - slug
-        - status
-        - storage_used
       type: object
+    AppCreate:
+      additionalProperties: false
+      properties:
+        imid:
+          type: integer
+        long_id:
+          type: string
+        description:
+          default: null
+          type: string
+          nullable: true
+        pars:
+          default: "{}"
+          type: string
+      required:
+        - imid
+        - long_id
+      type: object
+    AppCreated:
+      additionalProperties: false
+      properties:
+        slug:
+          type: string
+      required:
+        - slug
+      type: object
+    Application:
+      additionalProperties: false
       properties:
         slug:
           type: string
@@ -1834,8 +2613,18 @@ components:
           type: boolean
         aoid:
           type: integer
-    ClientApiError:
+      required:
+        - aoid
+        - description
+        - exportable
+        - name
+        - shared
+        - slug
+        - status
+        - storage_used
       type: object
+    ClientApiError:
+      additionalProperties: false
       properties:
         ctxid:
           type: object
@@ -1845,12 +2634,9 @@ components:
           type: object
         msg:
           type: object
-    ColumnPublic:
-      required:
-        - coltype
-        - long_id
-        - short_id
       type: object
+    ColumnPublic:
+      additionalProperties: false
       properties:
         table_slug:
           type: string
@@ -1867,15 +2653,30 @@ components:
           maxLength: 32768
           type: string
           nullable: true
-    DDL:
+      required:
+        - coltype
+        - long_id
+        - short_id
       type: object
+    DDL:
+      additionalProperties: false
       properties:
         ddl:
           type: string
-    DistributionRequest:
-      required:
-        - target_instances
       type: object
+    DeriveApp:
+      additionalProperties: false
+      properties:
+        image_tag:
+          default: null
+          type: string
+          nullable: true
+        email_once_finished:
+          default: true
+          type: boolean
+      type: object
+    DistributionRequest:
+      additionalProperties: false
       properties:
         target_instances:
           description: List of target instances with org_slug, space_slug, instance_slug.
@@ -1917,15 +2718,19 @@ components:
         custom_email_message:
           description: Message to send when the distribution is complete.
           type: string
-    ExecuteCommand:
       required:
-        - command
+        - target_instances
       type: object
+    ExecuteCommand:
+      additionalProperties: false
       properties:
         command:
           type: string
-    ExecuteCommandResponse:
+      required:
+        - command
       type: object
+    ExecuteCommandResponse:
+      additionalProperties: false
       properties:
         reqid:
           type: string
@@ -1935,14 +2740,9 @@ components:
           type: string
         metadata_path:
           type: string
-    FilePublic:
-      required:
-        - area
-        - fid
-        - local_path
-        - short_id
-        - type
       type: object
+    FilePublic:
+      additionalProperties: false
       properties:
         fid:
           type: string
@@ -1972,11 +2772,260 @@ components:
         history:
           additionalProperties: {}
           type: object
-    Instance:
+        collision_info:
+          additionalProperties: {}
+          type: object
       required:
-        - name
-        - slug
+        - area
+        - fid
+        - local_path
+        - short_id
+        - type
       type: object
+    Image:
+      additionalProperties: false
+      properties:
+        imid:
+          type: integer
+        name:
+          type: string
+          nullable: true
+        docker_image_url:
+          type: string
+        description:
+          type: string
+          nullable: true
+        description_md:
+          type: string
+          nullable: true
+        public:
+          type: boolean
+        public_description:
+          type: string
+          nullable: true
+        app_type:
+          type: string
+          nullable: true
+        configuration:
+          type: string
+          nullable: true
+        has_tables:
+          type: boolean
+          nullable: true
+        complexity:
+          type: integer
+          nullable: true
+        tags:
+          additionalProperties: {}
+          type: object
+          nullable: true
+        release_date:
+          format: date
+          type: string
+          nullable: true
+        disabled_reason:
+          type: integer
+          nullable: true
+      required:
+        - docker_image_url
+        - imid
+        - public
+      type: object
+    ImageCreate:
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        docker_image_url:
+          type: string
+        description_md:
+          type: string
+        ifid:
+          type: integer
+        description:
+          default: null
+          type: string
+          nullable: true
+        public:
+          default: false
+          type: boolean
+        public_description:
+          default: null
+          type: string
+          nullable: true
+        org_slug:
+          default: null
+          type: string
+          nullable: true
+        space_slug:
+          default: null
+          type: string
+          nullable: true
+        app_type:
+          default: null
+          type: string
+          nullable: true
+        configuration:
+          additionalProperties: {}
+          default: null
+          type: object
+          nullable: true
+        has_tables:
+          default: null
+          type: boolean
+          nullable: true
+        complexity:
+          default: null
+          type: integer
+          nullable: true
+        tags:
+          additionalProperties: {}
+          default: null
+          type: object
+          nullable: true
+      required:
+        - description_md
+        - docker_image_url
+        - ifid
+        - name
+      type: object
+    ImageFamily:
+      additionalProperties: false
+      properties:
+        ifid:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        icon_url:
+          type: string
+          nullable: true
+        groups:
+          items:
+            type: string
+          type: array
+          nullable: true
+        priority:
+          type: number
+          nullable: true
+        disabled_reason:
+          type: integer
+          nullable: true
+      required:
+        - ifid
+        - name
+      type: object
+    ImageFamilyCreate:
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+        icon_url:
+          type: string
+        description:
+          default: null
+          type: string
+          nullable: true
+        groups:
+          default: null
+          items:
+            type: string
+          type: array
+          nullable: true
+      required:
+        - icon_url
+        - name
+      type: object
+    ImageFamilyResponse:
+      additionalProperties: false
+      properties:
+        ifid:
+          type: integer
+      required:
+        - ifid
+      type: object
+    ImageLink:
+      additionalProperties: false
+      properties:
+        imid:
+          type: integer
+        linkid:
+          type: integer
+        org_slug:
+          type: string
+          nullable: true
+        space_slug:
+          type: string
+          nullable: true
+        priority:
+          type: integer
+          nullable: true
+        space_type:
+          type: integer
+          nullable: true
+        comment:
+          type: string
+          nullable: true
+      required:
+        - imid
+        - linkid
+      type: object
+    ImageResponse:
+      additionalProperties: false
+      properties:
+        imid:
+          type: integer
+      required:
+        - imid
+      type: object
+    ImageUpdate:
+      additionalProperties: false
+      properties:
+        name:
+          default: null
+          type: string
+          nullable: true
+        docker_image_url:
+          default: null
+          type: string
+        description:
+          default: null
+          type: string
+          nullable: true
+        description_md:
+          default: null
+          type: string
+          nullable: true
+        public:
+          default: null
+          type: boolean
+        public_description:
+          default: null
+          type: string
+          nullable: true
+        app_type:
+          default: null
+          type: string
+          nullable: true
+        configuration:
+          additionalProperties: {}
+          default: null
+          type: object
+          nullable: true
+        complexity:
+          default: null
+          type: integer
+          nullable: true
+        tags:
+          additionalProperties: {}
+          default: null
+          type: object
+          nullable: true
+      type: object
+    Instance:
+      additionalProperties: false
       properties:
         slug:
           type: string
@@ -1995,11 +3044,49 @@ components:
         rearchive_after_timestamp:
           format: date-time
           type: string
-    Org:
       required:
         - name
         - slug
       type: object
+    InstanceCreateRequest:
+      additionalProperties: false
+      properties:
+        slug:
+          type: string
+        name:
+          type: string
+        description:
+          default: null
+          type: string
+          nullable: true
+      required:
+        - name
+        - slug
+      type: object
+    InstanceCreated:
+      additionalProperties: false
+      properties:
+        slug:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        creation_timestamp:
+          format: date-time
+          type: string
+        archival_timestamp:
+          format: date-time
+          type: string
+        rearchive_after_timestamp:
+          format: date-time
+          type: string
+      required:
+        - name
+        - slug
+      type: object
+    Org:
+      additionalProperties: false
       properties:
         slug:
           type: string
@@ -2018,11 +3105,69 @@ components:
         creation_timestamp:
           format: date-time
           type: string
-    Snapshot:
       required:
         - name
         - slug
       type: object
+    Session:
+      additionalProperties: false
+      properties:
+        session_id:
+          type: string
+        start_time:
+          format: date-time
+          type: string
+        stop_time:
+          format: date-time
+          type: string
+          nullable: true
+        start_uid:
+          type: integer
+        start_uid_full_name:
+          type: string
+        stop_uid:
+          type: integer
+          nullable: true
+        stop_uid_full_name:
+          type: string
+          nullable: true
+        runtime_seconds:
+          type: integer
+          nullable: true
+        ncu:
+          type: integer
+          nullable: true
+        ncu_hours_used:
+          type: number
+          nullable: true
+        ncu_sidecars_total:
+          type: number
+          nullable: true
+        credits_spent:
+          type: number
+          nullable: true
+        node_pool:
+          type: string
+          nullable: true
+        active_resource:
+          type: string
+          nullable: true
+        can_read_logs:
+          type: boolean
+          nullable: true
+        logging_containers:
+          items:
+            type: string
+          type: array
+          nullable: true
+      required:
+        - session_id
+        - start_time
+        - start_uid
+        - start_uid_full_name
+      type: object
+    Snapshot:
+      additionalProperties: false
       properties:
         slug:
           type: string
@@ -2040,11 +3185,12 @@ components:
         archival_timestamp:
           format: date-time
           type: string
-    SnapshotCreateRequest:
       required:
         - name
         - slug
       type: object
+    SnapshotCreateRequest:
+      additionalProperties: false
       properties:
         slug:
           type: string
@@ -2055,14 +3201,12 @@ components:
         email_once_finished:
           default: false
           type: boolean
-    Space:
       required:
         - name
         - slug
-        - type
-        - video_library_enabled
-        - visibility_type
       type: object
+    Space:
+      additionalProperties: false
       properties:
         slug:
           type: string
@@ -2098,8 +3242,15 @@ components:
           format: date-time
           type: string
           nullable: true
-    StartApp:
+      required:
+        - name
+        - slug
+        - type
+        - video_library_enabled
+        - visibility_type
       type: object
+    StartApp:
+      additionalProperties: false
       properties:
         dpi:
           default: 96
@@ -2112,11 +3263,9 @@ components:
         screen_width:
           default: 1024
           type: integer
-    Table:
-      required:
-        - bytes
-        - row_count
       type: object
+    Table:
+      additionalProperties: false
       properties:
         slug:
           type: string
@@ -2132,13 +3281,19 @@ components:
           type: string
         bytes:
           type: integer
+          nullable: true
         row_count:
           type: integer
+          nullable: true
         delete_timestamp:
           type: string
           nullable: true
-    TableUpdate:
+        is_external:
+          type: boolean
+          nullable: true
       type: object
+    TableUpdate:
+      additionalProperties: false
       properties:
         slug:
           type: string
@@ -2150,22 +3305,26 @@ components:
           nullable: true
         bytes:
           type: integer
+          nullable: true
         row_count:
           type: integer
+          nullable: true
         delete_timestamp:
           type: string
           nullable: true
-    Task:
-      required:
-        - tkid
       type: object
+    Task:
+      additionalProperties: false
       properties:
         operation:
           type: string
         tkid:
           type: integer
-    Task1:
+      required:
+        - tkid
       type: object
+    Task1:
+      additionalProperties: false
       properties:
         id:
           type: integer
@@ -2184,8 +3343,9 @@ components:
         finished:
           format: date-time
           type: string
-    WorkloadDetailed:
       type: object
+    WorkloadDetailed:
+      additionalProperties: false
       properties:
         session_id:
           type: string

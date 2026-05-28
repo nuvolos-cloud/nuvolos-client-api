@@ -22,6 +22,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class TableUpdate(BaseModel):
     """
@@ -36,7 +37,8 @@ class TableUpdate(BaseModel):
     __properties: ClassVar[List[str]] = ["slug", "name", "description", "bytes", "row_count", "delete_timestamp"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,8 +50,7 @@ class TableUpdate(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -78,6 +79,16 @@ class TableUpdate(BaseModel):
         # and model_fields_set contains the field
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
+
+        # set to None if bytes (nullable) is None
+        # and model_fields_set contains the field
+        if self.bytes is None and "bytes" in self.model_fields_set:
+            _dict['bytes'] = None
+
+        # set to None if row_count (nullable) is None
+        # and model_fields_set contains the field
+        if self.row_count is None and "row_count" in self.model_fields_set:
+            _dict['row_count'] = None
 
         # set to None if delete_timestamp (nullable) is None
         # and model_fields_set contains the field

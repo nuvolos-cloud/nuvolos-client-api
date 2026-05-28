@@ -14,15 +14,19 @@
 """  # noqa: E501
 
 
-__version__ = "1.3.0"
+__version__ = "1.4.0"
 
 # Define package exports
 __all__ = [
     "AppsV1Api",
     "DistributionV1Api",
     "FilesV1Api",
+    "ImageFamiliesV1Api",
+    "ImageLinksV1Api",
+    "ImagesV1Api",
     "InstancesV1Api",
     "OrganizationsV1Api",
+    "SessionsV1Api",
     "SnapshotsV1Api",
     "SpacesV1Api",
     "TablesV1Api",
@@ -38,16 +42,30 @@ __all__ = [
     "ApiAttributeError",
     "ApiException",
     "APINodePool",
+    "AppCreate",
+    "AppCreated",
     "Application",
     "ClientApiError",
     "ColumnPublic",
     "DDL",
+    "DeriveApp",
     "DistributionRequest",
     "ExecuteCommand",
     "ExecuteCommandResponse",
     "FilePublic",
+    "Image",
+    "ImageCreate",
+    "ImageFamily",
+    "ImageFamilyCreate",
+    "ImageFamilyResponse",
+    "ImageLink",
+    "ImageResponse",
+    "ImageUpdate",
     "Instance",
+    "InstanceCreateRequest",
+    "InstanceCreated",
     "Org",
+    "Session",
     "Snapshot",
     "SnapshotCreateRequest",
     "Space",
@@ -63,8 +81,12 @@ __all__ = [
 from nuvolos_client_api.api.apps_v1_api import AppsV1Api as AppsV1Api
 from nuvolos_client_api.api.distribution_v1_api import DistributionV1Api as DistributionV1Api
 from nuvolos_client_api.api.files_v1_api import FilesV1Api as FilesV1Api
+from nuvolos_client_api.api.image_families_v1_api import ImageFamiliesV1Api as ImageFamiliesV1Api
+from nuvolos_client_api.api.image_links_v1_api import ImageLinksV1Api as ImageLinksV1Api
+from nuvolos_client_api.api.images_v1_api import ImagesV1Api as ImagesV1Api
 from nuvolos_client_api.api.instances_v1_api import InstancesV1Api as InstancesV1Api
 from nuvolos_client_api.api.organizations_v1_api import OrganizationsV1Api as OrganizationsV1Api
+from nuvolos_client_api.api.sessions_v1_api import SessionsV1Api as SessionsV1Api
 from nuvolos_client_api.api.snapshots_v1_api import SnapshotsV1Api as SnapshotsV1Api
 from nuvolos_client_api.api.spaces_v1_api import SpacesV1Api as SpacesV1Api
 from nuvolos_client_api.api.tables_v1_api import TablesV1Api as TablesV1Api
@@ -84,16 +106,30 @@ from nuvolos_client_api.exceptions import ApiException as ApiException
 
 # import models into sdk package
 from nuvolos_client_api.models.api_node_pool import APINodePool as APINodePool
+from nuvolos_client_api.models.app_create import AppCreate as AppCreate
+from nuvolos_client_api.models.app_created import AppCreated as AppCreated
 from nuvolos_client_api.models.application import Application as Application
 from nuvolos_client_api.models.client_api_error import ClientApiError as ClientApiError
 from nuvolos_client_api.models.column_public import ColumnPublic as ColumnPublic
 from nuvolos_client_api.models.ddl import DDL as DDL
+from nuvolos_client_api.models.derive_app import DeriveApp as DeriveApp
 from nuvolos_client_api.models.distribution_request import DistributionRequest as DistributionRequest
 from nuvolos_client_api.models.execute_command import ExecuteCommand as ExecuteCommand
 from nuvolos_client_api.models.execute_command_response import ExecuteCommandResponse as ExecuteCommandResponse
 from nuvolos_client_api.models.file_public import FilePublic as FilePublic
+from nuvolos_client_api.models.image import Image as Image
+from nuvolos_client_api.models.image_create import ImageCreate as ImageCreate
+from nuvolos_client_api.models.image_family import ImageFamily as ImageFamily
+from nuvolos_client_api.models.image_family_create import ImageFamilyCreate as ImageFamilyCreate
+from nuvolos_client_api.models.image_family_response import ImageFamilyResponse as ImageFamilyResponse
+from nuvolos_client_api.models.image_link import ImageLink as ImageLink
+from nuvolos_client_api.models.image_response import ImageResponse as ImageResponse
+from nuvolos_client_api.models.image_update import ImageUpdate as ImageUpdate
 from nuvolos_client_api.models.instance import Instance as Instance
+from nuvolos_client_api.models.instance_create_request import InstanceCreateRequest as InstanceCreateRequest
+from nuvolos_client_api.models.instance_created import InstanceCreated as InstanceCreated
 from nuvolos_client_api.models.org import Org as Org
+from nuvolos_client_api.models.session import Session as Session
 from nuvolos_client_api.models.snapshot import Snapshot as Snapshot
 from nuvolos_client_api.models.snapshot_create_request import SnapshotCreateRequest as SnapshotCreateRequest
 from nuvolos_client_api.models.space import Space as Space
@@ -103,3 +139,4 @@ from nuvolos_client_api.models.table_update import TableUpdate as TableUpdate
 from nuvolos_client_api.models.task import Task as Task
 from nuvolos_client_api.models.task1 import Task1 as Task1
 from nuvolos_client_api.models.workload_detailed import WorkloadDetailed as WorkloadDetailed
+

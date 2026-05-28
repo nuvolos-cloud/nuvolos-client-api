@@ -1,5 +1,3 @@
-# coding: utf-8
-
 """
     Nuvolos
 
@@ -10,6 +8,7 @@
 
     Do not edit the class manually.
 """  # noqa: E501
+
 
 import warnings
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
@@ -388,7 +387,7 @@ class FilesV1Api:
     ) -> List[FilePublic]:
         """get_files_in_files_area_0
 
-        Returns all files from a path in the files area (shared with all users of the instance) at the specified location in the specified snapshot. Performs a file system rescan upon invocation.
+        Returns all files from the files area (shared with all users of the instance) at the specified location in the specified snapshot. Performs a file system rescan upon invocation.
 
         :param org_slug: (required)
         :type org_slug: str
@@ -478,7 +477,7 @@ class FilesV1Api:
     ) -> ApiResponse[List[FilePublic]]:
         """get_files_in_files_area_0
 
-        Returns all files from a path in the files area (shared with all users of the instance) at the specified location in the specified snapshot. Performs a file system rescan upon invocation.
+        Returns all files from the files area (shared with all users of the instance) at the specified location in the specified snapshot. Performs a file system rescan upon invocation.
 
         :param org_slug: (required)
         :type org_slug: str
@@ -568,7 +567,7 @@ class FilesV1Api:
     ) -> RESTResponseType:
         """get_files_in_files_area_0
 
-        Returns all files from a path in the files area (shared with all users of the instance) at the specified location in the specified snapshot. Performs a file system rescan upon invocation.
+        Returns all files from the files area (shared with all users of the instance) at the specified location in the specified snapshot. Performs a file system rescan upon invocation.
 
         :param org_slug: (required)
         :type org_slug: str
@@ -729,7 +728,7 @@ class FilesV1Api:
     ) -> List[FilePublic]:
         """get_files_in_home_area
 
-        Returns all files from the personal area (home folder) of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
+        Returns all files from the home area of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
 
         :param org_slug: (required)
         :type org_slug: str
@@ -815,7 +814,7 @@ class FilesV1Api:
     ) -> ApiResponse[List[FilePublic]]:
         """get_files_in_home_area
 
-        Returns all files from the personal area (home folder) of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
+        Returns all files from the home area of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
 
         :param org_slug: (required)
         :type org_slug: str
@@ -901,7 +900,7 @@ class FilesV1Api:
     ) -> RESTResponseType:
         """get_files_in_home_area
 
-        Returns all files from the personal area (home folder) of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
+        Returns all files from the home area of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
 
         :param org_slug: (required)
         :type org_slug: str
@@ -1057,7 +1056,7 @@ class FilesV1Api:
     ) -> List[FilePublic]:
         """get_files_in_home_area_0
 
-        Returns all files from a path in the personal area (home folder) of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
+        Returns all files from the home area of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
 
         :param org_slug: (required)
         :type org_slug: str
@@ -1147,7 +1146,7 @@ class FilesV1Api:
     ) -> ApiResponse[List[FilePublic]]:
         """get_files_in_home_area_0
 
-        Returns all files from a path in the personal area (home folder) of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
+        Returns all files from the home area of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
 
         :param org_slug: (required)
         :type org_slug: str
@@ -1237,7 +1236,7 @@ class FilesV1Api:
     ) -> RESTResponseType:
         """get_files_in_home_area_0
 
-        Returns all files from a path in the personal area (home folder) of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
+        Returns all files from the home area of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
 
         :param org_slug: (required)
         :type org_slug: str

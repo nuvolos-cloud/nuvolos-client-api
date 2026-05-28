@@ -26,6 +26,12 @@ class TestInstancesV1Api(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_create_instance(self) -> None:
+        """Test case for create_instance
+
+        """
+        pass
+
     def test_create_snapshot(self) -> None:
         """Test case for create_snapshot
 

@@ -1,6 +1,6 @@
 # nuvolos_client_api.SpacesV1Api
 
-All URIs are relative to *https://api.nuvolos.cloud*
+All URIs are relative to *https://api.eu1.nuvolos.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,7 +10,7 @@ Method | HTTP request | Description
 # **get_spaces**
 > List[Space] get_spaces(slug)
 
-Returns the spaces the user is affiliated with in the selected org
+Returns the spaces the user is affiliated with in the selected org. 
 
 ### Example
 
@@ -22,10 +22,10 @@ from nuvolos_client_api.models.space import Space
 from nuvolos_client_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuvolos.cloud
+# Defining the host is optional and defaults to https://api.eu1.nuvolos.cloud
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuvolos_client_api.Configuration(
-    host = "https://api.nuvolos.cloud"
+    host = "https://api.eu1.nuvolos.cloud"
 )
 
 # The client must configure the authentication and authorization parameters

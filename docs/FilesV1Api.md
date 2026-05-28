@@ -1,6 +1,6 @@
 # nuvolos_client_api.FilesV1Api
 
-All URIs are relative to *https://api.nuvolos.cloud*
+All URIs are relative to *https://api.eu1.nuvolos.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -25,10 +25,10 @@ from nuvolos_client_api.models.file_public import FilePublic
 from nuvolos_client_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuvolos.cloud
+# Defining the host is optional and defaults to https://api.eu1.nuvolos.cloud
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuvolos_client_api.Configuration(
-    host = "https://api.nuvolos.cloud"
+    host = "https://api.eu1.nuvolos.cloud"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 # **get_files_in_files_area_0**
 > List[FilePublic] get_files_in_files_area_0(org_slug, space_slug, instance_slug, snapshot_slug, local_path)
 
-Returns all files from a path in the files area (shared with all users of the instance) at the specified location in the specified snapshot. Performs a file system rescan upon invocation.
+Returns all files from the files area (shared with all users of the instance) at the specified location in the specified snapshot. Performs a file system rescan upon invocation.
 
 ### Example
 
@@ -114,10 +114,10 @@ from nuvolos_client_api.models.file_public import FilePublic
 from nuvolos_client_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuvolos.cloud
+# Defining the host is optional and defaults to https://api.eu1.nuvolos.cloud
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuvolos_client_api.Configuration(
-    host = "https://api.nuvolos.cloud"
+    host = "https://api.eu1.nuvolos.cloud"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
 # **get_files_in_home_area**
 > List[FilePublic] get_files_in_home_area(org_slug, space_slug, instance_slug, snapshot_slug)
 
-Returns all files from the personal area (home folder) of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
+Returns all files from the home area of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
 
 ### Example
 
@@ -205,10 +205,10 @@ from nuvolos_client_api.models.file_public import FilePublic
 from nuvolos_client_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuvolos.cloud
+# Defining the host is optional and defaults to https://api.eu1.nuvolos.cloud
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuvolos_client_api.Configuration(
-    host = "https://api.nuvolos.cloud"
+    host = "https://api.eu1.nuvolos.cloud"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 # **get_files_in_home_area_0**
 > List[FilePublic] get_files_in_home_area_0(org_slug, space_slug, instance_slug, snapshot_slug, local_path)
 
-Returns all files from a path in the personal area (home folder) of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
+Returns all files from the home area of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
 
 ### Example
 
@@ -294,10 +294,10 @@ from nuvolos_client_api.models.file_public import FilePublic
 from nuvolos_client_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuvolos.cloud
+# Defining the host is optional and defaults to https://api.eu1.nuvolos.cloud
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuvolos_client_api.Configuration(
-    host = "https://api.nuvolos.cloud"
+    host = "https://api.eu1.nuvolos.cloud"
 )
 
 # The client must configure the authentication and authorization parameters

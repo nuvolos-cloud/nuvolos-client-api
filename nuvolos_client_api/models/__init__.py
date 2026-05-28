@@ -12,19 +12,32 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from nuvolos_client_api.models.api_node_pool import APINodePool
+from nuvolos_client_api.models.app_create import AppCreate
+from nuvolos_client_api.models.app_created import AppCreated
 from nuvolos_client_api.models.application import Application
 from nuvolos_client_api.models.client_api_error import ClientApiError
 from nuvolos_client_api.models.column_public import ColumnPublic
 from nuvolos_client_api.models.ddl import DDL
+from nuvolos_client_api.models.derive_app import DeriveApp
 from nuvolos_client_api.models.distribution_request import DistributionRequest
 from nuvolos_client_api.models.execute_command import ExecuteCommand
 from nuvolos_client_api.models.execute_command_response import ExecuteCommandResponse
 from nuvolos_client_api.models.file_public import FilePublic
+from nuvolos_client_api.models.image import Image
+from nuvolos_client_api.models.image_create import ImageCreate
+from nuvolos_client_api.models.image_family import ImageFamily
+from nuvolos_client_api.models.image_family_create import ImageFamilyCreate
+from nuvolos_client_api.models.image_family_response import ImageFamilyResponse
+from nuvolos_client_api.models.image_link import ImageLink
+from nuvolos_client_api.models.image_response import ImageResponse
+from nuvolos_client_api.models.image_update import ImageUpdate
 from nuvolos_client_api.models.instance import Instance
+from nuvolos_client_api.models.instance_create_request import InstanceCreateRequest
+from nuvolos_client_api.models.instance_created import InstanceCreated
 from nuvolos_client_api.models.org import Org
+from nuvolos_client_api.models.session import Session
 from nuvolos_client_api.models.snapshot import Snapshot
 from nuvolos_client_api.models.snapshot_create_request import SnapshotCreateRequest
 from nuvolos_client_api.models.space import Space
@@ -34,3 +47,4 @@ from nuvolos_client_api.models.table_update import TableUpdate
 from nuvolos_client_api.models.task import Task
 from nuvolos_client_api.models.task1 import Task1
 from nuvolos_client_api.models.workload_detailed import WorkloadDetailed
+

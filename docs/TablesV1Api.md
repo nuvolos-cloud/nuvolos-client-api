@@ -1,6 +1,6 @@
 # nuvolos_client_api.TablesV1Api
 
-All URIs are relative to *https://api.nuvolos.cloud*
+All URIs are relative to *https://api.eu1.nuvolos.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -26,10 +26,10 @@ import nuvolos_client_api
 from nuvolos_client_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuvolos.cloud
+# Defining the host is optional and defaults to https://api.eu1.nuvolos.cloud
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuvolos_client_api.Configuration(
-    host = "https://api.nuvolos.cloud"
+    host = "https://api.eu1.nuvolos.cloud"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -102,7 +102,7 @@ void (empty response body)
 # **get_schema_ddl**
 > DDL get_schema_ddl(org_slug, space_slug, instance_slug, snapshot_slug)
 
-Returns the DDL of the database schema corresponding to the specified snapshot in Nuvolos.
+Returns the DDL of the database schema corresponding to the specified snapshot.
 
 ### Example
 
@@ -114,10 +114,10 @@ from nuvolos_client_api.models.ddl import DDL
 from nuvolos_client_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuvolos.cloud
+# Defining the host is optional and defaults to https://api.eu1.nuvolos.cloud
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuvolos_client_api.Configuration(
-    host = "https://api.nuvolos.cloud"
+    host = "https://api.eu1.nuvolos.cloud"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -203,10 +203,10 @@ from nuvolos_client_api.models.column_public import ColumnPublic
 from nuvolos_client_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuvolos.cloud
+# Defining the host is optional and defaults to https://api.eu1.nuvolos.cloud
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuvolos_client_api.Configuration(
-    host = "https://api.nuvolos.cloud"
+    host = "https://api.eu1.nuvolos.cloud"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -294,10 +294,10 @@ from nuvolos_client_api.models.ddl import DDL
 from nuvolos_client_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuvolos.cloud
+# Defining the host is optional and defaults to https://api.eu1.nuvolos.cloud
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuvolos_client_api.Configuration(
-    host = "https://api.nuvolos.cloud"
+    host = "https://api.eu1.nuvolos.cloud"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -385,10 +385,10 @@ from nuvolos_client_api.models.table import Table
 from nuvolos_client_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuvolos.cloud
+# Defining the host is optional and defaults to https://api.eu1.nuvolos.cloud
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuvolos_client_api.Configuration(
-    host = "https://api.nuvolos.cloud"
+    host = "https://api.eu1.nuvolos.cloud"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -475,10 +475,10 @@ from nuvolos_client_api.models.table_update import TableUpdate
 from nuvolos_client_api.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.nuvolos.cloud
+# Defining the host is optional and defaults to https://api.eu1.nuvolos.cloud
 # See configuration.py for a list of all supported configuration parameters.
 configuration = nuvolos_client_api.Configuration(
-    host = "https://api.nuvolos.cloud"
+    host = "https://api.eu1.nuvolos.cloud"
 )
 
 # The client must configure the authentication and authorization parameters

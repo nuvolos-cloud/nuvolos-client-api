@@ -17,11 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
+from pydantic_core import to_jsonable_python
 
 class Table(BaseModel):
     """
@@ -32,13 +33,15 @@ class Table(BaseModel):
     description: Optional[Annotated[str, Field(strict=True, max_length=32768)]] = None
     database: Optional[StrictStr] = None
     var_schema: Optional[StrictStr] = Field(default=None, alias="schema")
-    bytes: StrictInt
-    row_count: StrictInt
+    bytes: Optional[StrictInt] = None
+    row_count: Optional[StrictInt] = None
     delete_timestamp: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["slug", "name", "description", "database", "schema", "bytes", "row_count", "delete_timestamp"]
+    is_external: Optional[StrictBool] = None
+    __properties: ClassVar[List[str]] = ["slug", "name", "description", "database", "schema", "bytes", "row_count", "delete_timestamp", "is_external"]
 
     model_config = ConfigDict(
-        populate_by_name=True,
+        validate_by_name=True,
+        validate_by_alias=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,8 +53,7 @@ class Table(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
-        return json.dumps(self.to_dict())
+        return json.dumps(to_jsonable_python(self.to_dict()))
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -81,10 +83,25 @@ class Table(BaseModel):
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
+        # set to None if bytes (nullable) is None
+        # and model_fields_set contains the field
+        if self.bytes is None and "bytes" in self.model_fields_set:
+            _dict['bytes'] = None
+
+        # set to None if row_count (nullable) is None
+        # and model_fields_set contains the field
+        if self.row_count is None and "row_count" in self.model_fields_set:
+            _dict['row_count'] = None
+
         # set to None if delete_timestamp (nullable) is None
         # and model_fields_set contains the field
         if self.delete_timestamp is None and "delete_timestamp" in self.model_fields_set:
             _dict['delete_timestamp'] = None
+
+        # set to None if is_external (nullable) is None
+        # and model_fields_set contains the field
+        if self.is_external is None and "is_external" in self.model_fields_set:
+            _dict['is_external'] = None
 
         return _dict
 
@@ -105,7 +122,8 @@ class Table(BaseModel):
             "schema": obj.get("schema"),
             "bytes": obj.get("bytes"),
             "row_count": obj.get("row_count"),
-            "delete_timestamp": obj.get("delete_timestamp")
+            "delete_timestamp": obj.get("delete_timestamp"),
+            "is_external": obj.get("is_external")
         })
         return _obj
 

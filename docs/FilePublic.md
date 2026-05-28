@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **last_modified_timestamp** | **str** |  | [optional] 
 **status** | **Dict[str, object]** |  | [optional] 
 **history** | **Dict[str, object]** |  | [optional] 
+**collision_info** | **Dict[str, object]** |  | [optional] 
 
 ## Example
 
