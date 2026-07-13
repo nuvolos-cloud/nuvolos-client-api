@@ -17,21 +17,23 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class ClientApiError(BaseModel):
+class ImageFamilyUpdate(BaseModel):
     """
-    ClientApiError
+    ImageFamilyUpdate
     """ # noqa: E501
-    ctxid: Optional[Any] = None
-    err: Optional[Any] = None
-    incident_id: Optional[Any] = None
-    msg: Optional[Any] = None
-    __properties: ClassVar[List[str]] = ["ctxid", "err", "incident_id", "msg"]
+    description: Optional[StrictStr] = None
+    disabled_reason: Optional[StrictInt] = None
+    groups: Optional[List[StrictStr]] = None
+    icon_url: Optional[StrictStr] = None
+    name: Optional[StrictStr] = None
+    priority: Optional[Union[StrictFloat, StrictInt]] = None
+    __properties: ClassVar[List[str]] = ["description", "disabled_reason", "groups", "icon_url", "name", "priority"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -51,7 +53,7 @@ class ClientApiError(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ClientApiError from a JSON string"""
+        """Create an instance of ImageFamilyUpdate from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,31 +74,26 @@ class ClientApiError(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if ctxid (nullable) is None
+        # set to None if description (nullable) is None
         # and model_fields_set contains the field
-        if self.ctxid is None and "ctxid" in self.model_fields_set:
-            _dict['ctxid'] = None
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
 
-        # set to None if err (nullable) is None
+        # set to None if disabled_reason (nullable) is None
         # and model_fields_set contains the field
-        if self.err is None and "err" in self.model_fields_set:
-            _dict['err'] = None
+        if self.disabled_reason is None and "disabled_reason" in self.model_fields_set:
+            _dict['disabled_reason'] = None
 
-        # set to None if incident_id (nullable) is None
+        # set to None if groups (nullable) is None
         # and model_fields_set contains the field
-        if self.incident_id is None and "incident_id" in self.model_fields_set:
-            _dict['incident_id'] = None
-
-        # set to None if msg (nullable) is None
-        # and model_fields_set contains the field
-        if self.msg is None and "msg" in self.model_fields_set:
-            _dict['msg'] = None
+        if self.groups is None and "groups" in self.model_fields_set:
+            _dict['groups'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ClientApiError from a dict"""
+        """Create an instance of ImageFamilyUpdate from a dict"""
         if obj is None:
             return None
 
@@ -104,10 +101,12 @@ class ClientApiError(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "ctxid": obj.get("ctxid"),
-            "err": obj.get("err"),
-            "incident_id": obj.get("incident_id"),
-            "msg": obj.get("msg")
+            "description": obj.get("description"),
+            "disabled_reason": obj.get("disabled_reason"),
+            "groups": obj.get("groups"),
+            "icon_url": obj.get("icon_url"),
+            "name": obj.get("name"),
+            "priority": obj.get("priority")
         })
         return _obj
 

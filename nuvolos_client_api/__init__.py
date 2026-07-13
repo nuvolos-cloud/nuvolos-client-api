@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.4.0"
+__version__ = "1.5.0"
 
 # Define package exports
 __all__ = [
@@ -25,6 +25,7 @@ __all__ = [
     "ImageLinksV1Api",
     "ImagesV1Api",
     "InstancesV1Api",
+    "LFSV1Api",
     "OrganizationsV1Api",
     "SessionsV1Api",
     "SnapshotsV1Api",
@@ -58,12 +59,14 @@ __all__ = [
     "ImageFamily",
     "ImageFamilyCreate",
     "ImageFamilyResponse",
+    "ImageFamilyUpdate",
     "ImageLink",
     "ImageResponse",
     "ImageUpdate",
     "Instance",
     "InstanceCreateRequest",
     "InstanceCreated",
+    "LFSShare",
     "Org",
     "Session",
     "Snapshot",
@@ -85,6 +88,7 @@ from nuvolos_client_api.api.image_families_v1_api import ImageFamiliesV1Api as I
 from nuvolos_client_api.api.image_links_v1_api import ImageLinksV1Api as ImageLinksV1Api
 from nuvolos_client_api.api.images_v1_api import ImagesV1Api as ImagesV1Api
 from nuvolos_client_api.api.instances_v1_api import InstancesV1Api as InstancesV1Api
+from nuvolos_client_api.api.lfsv1_api import LFSV1Api as LFSV1Api
 from nuvolos_client_api.api.organizations_v1_api import OrganizationsV1Api as OrganizationsV1Api
 from nuvolos_client_api.api.sessions_v1_api import SessionsV1Api as SessionsV1Api
 from nuvolos_client_api.api.snapshots_v1_api import SnapshotsV1Api as SnapshotsV1Api
@@ -122,12 +126,14 @@ from nuvolos_client_api.models.image_create import ImageCreate as ImageCreate
 from nuvolos_client_api.models.image_family import ImageFamily as ImageFamily
 from nuvolos_client_api.models.image_family_create import ImageFamilyCreate as ImageFamilyCreate
 from nuvolos_client_api.models.image_family_response import ImageFamilyResponse as ImageFamilyResponse
+from nuvolos_client_api.models.image_family_update import ImageFamilyUpdate as ImageFamilyUpdate
 from nuvolos_client_api.models.image_link import ImageLink as ImageLink
 from nuvolos_client_api.models.image_response import ImageResponse as ImageResponse
 from nuvolos_client_api.models.image_update import ImageUpdate as ImageUpdate
 from nuvolos_client_api.models.instance import Instance as Instance
 from nuvolos_client_api.models.instance_create_request import InstanceCreateRequest as InstanceCreateRequest
 from nuvolos_client_api.models.instance_created import InstanceCreated as InstanceCreated
+from nuvolos_client_api.models.lfs_share import LFSShare as LFSShare
 from nuvolos_client_api.models.org import Org as Org
 from nuvolos_client_api.models.session import Session as Session
 from nuvolos_client_api.models.snapshot import Snapshot as Snapshot

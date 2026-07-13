@@ -14,10 +14,10 @@
 
 import unittest
 
-from nuvolos_client_api.models.api_node_pool import APINodePool
+from nuvolos_client_api.models.lfs_share import LFSShare
 
-class TestAPINodePool(unittest.TestCase):
-    """APINodePool unit test stubs"""
+class TestLFSShare(unittest.TestCase):
+    """LFSShare unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,36 +25,35 @@ class TestAPINodePool(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> APINodePool:
-        """Test APINodePool
+    def make_instance(self, include_optional) -> LFSShare:
+        """Test LFSShare
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `APINodePool`
+        # uncomment below to create an instance of `LFSShare`
         """
-        model = APINodePool()
+        model = LFSShare()
         if include_optional:
-            return APINodePool(
+            return LFSShare(
+                afsid = 56,
+                mount_path = '',
+                name = '',
+                quota_gib = 56,
+                read_only = True,
                 slug = '',
-                description = '',
-                credits_per_hour = 1.337,
-                cpu = 56,
-                memory = 56,
-                ssd = 56,
-                gpu_type = '',
-                vram = 56,
-                available_in_teaching_spaces = True,
-                cloud = '',
-                cluster_name = '',
-                region = ''
+                subresource = ''
             )
         else:
-            return APINodePool(
+            return LFSShare(
+                afsid = 56,
+                name = '',
+                quota_gib = 56,
+                subresource = '',
         )
         """
 
-    def testAPINodePool(self):
-        """Test APINodePool"""
+    def testLFSShare(self):
+        """Test LFSShare"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 

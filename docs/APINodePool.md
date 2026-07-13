@@ -14,6 +14,9 @@ Name | Type | Description | Notes
 **gpu_type** | **str** |  | [optional] 
 **vram** | **int** |  | [optional] 
 **available_in_teaching_spaces** | **bool** |  | [optional] 
+**cloud** | **str** |  | [optional] 
+**cluster_name** | **str** |  | [optional] 
+**region** | **str** |  | [optional] 
 
 ## Example
 
