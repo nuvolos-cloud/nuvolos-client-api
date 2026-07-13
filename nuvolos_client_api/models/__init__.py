@@ -30,12 +30,14 @@ from nuvolos_client_api.models.image_create import ImageCreate
 from nuvolos_client_api.models.image_family import ImageFamily
 from nuvolos_client_api.models.image_family_create import ImageFamilyCreate
 from nuvolos_client_api.models.image_family_response import ImageFamilyResponse
+from nuvolos_client_api.models.image_family_update import ImageFamilyUpdate
 from nuvolos_client_api.models.image_link import ImageLink
 from nuvolos_client_api.models.image_response import ImageResponse
 from nuvolos_client_api.models.image_update import ImageUpdate
 from nuvolos_client_api.models.instance import Instance
 from nuvolos_client_api.models.instance_create_request import InstanceCreateRequest
 from nuvolos_client_api.models.instance_created import InstanceCreated
+from nuvolos_client_api.models.lfs_share import LFSShare
 from nuvolos_client_api.models.org import Org
 from nuvolos_client_api.models.session import Session
 from nuvolos_client_api.models.snapshot import Snapshot

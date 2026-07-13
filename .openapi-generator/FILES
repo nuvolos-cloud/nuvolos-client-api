@@ -25,6 +25,7 @@ docs/ImageFamiliesV1Api.md
 docs/ImageFamily.md
 docs/ImageFamilyCreate.md
 docs/ImageFamilyResponse.md
+docs/ImageFamilyUpdate.md
 docs/ImageLink.md
 docs/ImageLinksV1Api.md
 docs/ImageResponse.md
@@ -34,6 +35,8 @@ docs/Instance.md
 docs/InstanceCreateRequest.md
 docs/InstanceCreated.md
 docs/InstancesV1Api.md
+docs/LFSShare.md
+docs/LFSV1Api.md
 docs/Org.md
 docs/OrganizationsV1Api.md
 docs/Session.md
@@ -62,6 +65,7 @@ nuvolos_client_api/api/image_families_v1_api.py
 nuvolos_client_api/api/image_links_v1_api.py
 nuvolos_client_api/api/images_v1_api.py
 nuvolos_client_api/api/instances_v1_api.py
+nuvolos_client_api/api/lfsv1_api.py
 nuvolos_client_api/api/organizations_v1_api.py
 nuvolos_client_api/api/sessions_v1_api.py
 nuvolos_client_api/api/snapshots_v1_api.py
@@ -91,12 +95,14 @@ nuvolos_client_api/models/image_create.py
 nuvolos_client_api/models/image_family.py
 nuvolos_client_api/models/image_family_create.py
 nuvolos_client_api/models/image_family_response.py
+nuvolos_client_api/models/image_family_update.py
 nuvolos_client_api/models/image_link.py
 nuvolos_client_api/models/image_response.py
 nuvolos_client_api/models/image_update.py
 nuvolos_client_api/models/instance.py
 nuvolos_client_api/models/instance_create_request.py
 nuvolos_client_api/models/instance_created.py
+nuvolos_client_api/models/lfs_share.py
 nuvolos_client_api/models/org.py
 nuvolos_client_api/models/session.py
 nuvolos_client_api/models/snapshot.py
@@ -137,6 +143,7 @@ test/test_image_families_v1_api.py
 test/test_image_family.py
 test/test_image_family_create.py
 test/test_image_family_response.py
+test/test_image_family_update.py
 test/test_image_link.py
 test/test_image_links_v1_api.py
 test/test_image_response.py
@@ -146,6 +153,8 @@ test/test_instance.py
 test/test_instance_create_request.py
 test/test_instance_created.py
 test/test_instances_v1_api.py
+test/test_lfs_share.py
+test/test_lfsv1_api.py
 test/test_org.py
 test/test_organizations_v1_api.py
 test/test_session.py

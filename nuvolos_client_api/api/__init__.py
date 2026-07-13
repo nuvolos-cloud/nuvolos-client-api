@@ -8,6 +8,7 @@ from nuvolos_client_api.api.image_families_v1_api import ImageFamiliesV1Api
 from nuvolos_client_api.api.image_links_v1_api import ImageLinksV1Api
 from nuvolos_client_api.api.images_v1_api import ImagesV1Api
 from nuvolos_client_api.api.instances_v1_api import InstancesV1Api
+from nuvolos_client_api.api.lfsv1_api import LFSV1Api
 from nuvolos_client_api.api.organizations_v1_api import OrganizationsV1Api
 from nuvolos_client_api.api.sessions_v1_api import SessionsV1Api
 from nuvolos_client_api.api.snapshots_v1_api import SnapshotsV1Api

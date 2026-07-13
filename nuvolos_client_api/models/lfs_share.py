@@ -17,21 +17,24 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class ClientApiError(BaseModel):
+class LFSShare(BaseModel):
     """
-    ClientApiError
+    LFSShare
     """ # noqa: E501
-    ctxid: Optional[Any] = None
-    err: Optional[Any] = None
-    incident_id: Optional[Any] = None
-    msg: Optional[Any] = None
-    __properties: ClassVar[List[str]] = ["ctxid", "err", "incident_id", "msg"]
+    afsid: StrictInt
+    mount_path: Optional[StrictStr] = None
+    name: StrictStr
+    quota_gib: StrictInt
+    read_only: Optional[StrictBool] = None
+    slug: Optional[StrictStr] = None
+    subresource: StrictStr
+    __properties: ClassVar[List[str]] = ["afsid", "mount_path", "name", "quota_gib", "read_only", "slug", "subresource"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -51,7 +54,7 @@ class ClientApiError(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of ClientApiError from a JSON string"""
+        """Create an instance of LFSShare from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,31 +75,26 @@ class ClientApiError(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if ctxid (nullable) is None
+        # set to None if mount_path (nullable) is None
         # and model_fields_set contains the field
-        if self.ctxid is None and "ctxid" in self.model_fields_set:
-            _dict['ctxid'] = None
+        if self.mount_path is None and "mount_path" in self.model_fields_set:
+            _dict['mount_path'] = None
 
-        # set to None if err (nullable) is None
+        # set to None if read_only (nullable) is None
         # and model_fields_set contains the field
-        if self.err is None and "err" in self.model_fields_set:
-            _dict['err'] = None
+        if self.read_only is None and "read_only" in self.model_fields_set:
+            _dict['read_only'] = None
 
-        # set to None if incident_id (nullable) is None
+        # set to None if slug (nullable) is None
         # and model_fields_set contains the field
-        if self.incident_id is None and "incident_id" in self.model_fields_set:
-            _dict['incident_id'] = None
-
-        # set to None if msg (nullable) is None
-        # and model_fields_set contains the field
-        if self.msg is None and "msg" in self.model_fields_set:
-            _dict['msg'] = None
+        if self.slug is None and "slug" in self.model_fields_set:
+            _dict['slug'] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of ClientApiError from a dict"""
+        """Create an instance of LFSShare from a dict"""
         if obj is None:
             return None
 
@@ -104,10 +102,13 @@ class ClientApiError(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "ctxid": obj.get("ctxid"),
-            "err": obj.get("err"),
-            "incident_id": obj.get("incident_id"),
-            "msg": obj.get("msg")
+            "afsid": obj.get("afsid"),
+            "mount_path": obj.get("mount_path"),
+            "name": obj.get("name"),
+            "quota_gib": obj.get("quota_gib"),
+            "read_only": obj.get("read_only"),
+            "slug": obj.get("slug"),
+            "subresource": obj.get("subresource")
         })
         return _obj
 

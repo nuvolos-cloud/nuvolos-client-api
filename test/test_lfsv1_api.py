@@ -14,32 +14,26 @@
 
 import unittest
 
-from nuvolos_client_api.api.image_families_v1_api import ImageFamiliesV1Api
+from nuvolos_client_api.api.lfsv1_api import LFSV1Api
 
 
-class TestImageFamiliesV1Api(unittest.TestCase):
-    """ImageFamiliesV1Api unit test stubs"""
+class TestLFSV1Api(unittest.TestCase):
+    """LFSV1Api unit test stubs"""
 
     def setUp(self) -> None:
-        self.api = ImageFamiliesV1Api()
+        self.api = LFSV1Api()
 
     def tearDown(self) -> None:
         pass
 
-    def test_create_image_family(self) -> None:
-        """Test case for create_image_family
+    def test_cleanup_lfs_share(self) -> None:
+        """Test case for cleanup_lfs_share
 
         """
         pass
 
-    def test_get_image_families(self) -> None:
-        """Test case for get_image_families
-
-        """
-        pass
-
-    def test_update_image_family(self) -> None:
-        """Test case for update_image_family
+    def test_list_lfs_shares(self) -> None:
+        """Test case for list_lfs_shares
 
         """
         pass

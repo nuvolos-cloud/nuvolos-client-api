@@ -84,8 +84,7 @@ paths:
         - Apps V1
   "/apps/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/applications":
     post:
-      description: Creates a new application in the development snapshot of the
-        specified instance.
+      description: Creates a new application in the development snapshot of the specified instance.
       operationId: create_app
       parameters:
         - in: path
@@ -231,8 +230,7 @@ paths:
         - Apps V1
   "/distribution/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}":
     post:
-      description: Distribute selected files, applications, and tables from a snapshot
-        to target instances.
+      description: Distribute selected files, applications, and tables from a snapshot to target instances.
       operationId: distribute_content
       parameters:
         - in: path
@@ -309,9 +307,7 @@ paths:
         - Distribution V1
   "/files/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/files":
     get:
-      description: Returns all files from the files area (shared with all users of the
-        instance) at the specified location in the specified snapshot. Performs
-        a file system rescan upon invocation.
+      description: Returns all files from the files area (shared with all users of the instance) at the specified location in the specified snapshot. Performs a file system rescan upon invocation.
       operationId: get_files_in_files_area
       parameters:
         - in: path
@@ -385,9 +381,7 @@ paths:
         - Files V1
   "/files/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/files/{local_path}":
     get:
-      description: Returns all files from the files area (shared with all users of the
-        instance) at the specified location in the specified snapshot. Performs
-        a file system rescan upon invocation.
+      description: Returns all files from the files area (shared with all users of the instance) at the specified location in the specified snapshot. Performs a file system rescan upon invocation.
       operationId: get_files_in_files_area
       parameters:
         - in: path
@@ -466,9 +460,7 @@ paths:
         - Files V1
   "/files/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/home":
     get:
-      description: Returns all files from the home area of the current user in the
-        specified folder in the specified snapshot. Performs a file system
-        rescan upon invocation.
+      description: Returns all files from the home area of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
       operationId: get_files_in_home_area
       parameters:
         - in: path
@@ -542,9 +534,7 @@ paths:
         - Files V1
   "/files/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/home/{local_path}":
     get:
-      description: Returns all files from the home area of the current user in the
-        specified folder in the specified snapshot. Performs a file system
-        rescan upon invocation.
+      description: Returns all files from the home area of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
       operationId: get_files_in_home_area
       parameters:
         - in: path
@@ -675,8 +665,7 @@ paths:
       tags:
         - Image Families V1
     put:
-      description: Creates a new image family record. Priority is automatically set to
-        max existing priority + 1.
+      description: Creates a new image family record. Priority is automatically set to max existing priority + 1.
       operationId: create_image_family
       requestBody:
         content:
@@ -730,12 +719,72 @@ paths:
                 $ref: "#/components/schemas/ClientApiError"
       tags:
         - Image Families V1
+  "/image_families/v1/{ifid}":
+    patch:
+      description: "Updates fields of an existing image family record. All fields are optional; only provided fields are updated. Updatable fields: name, description, icon_url, groups, disabled_reason, priority."
+      operationId: update_image_family
+      parameters:
+        - in: path
+          name: ifid
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ImageFamilyUpdate"
+      responses:
+        "200":
+          description: Image family updated
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ImageFamily"
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - Image Families V1
   /image_links/v1:
     get:
-      description: Lists image_link records accessible to the authenticated user.
-        Returns records where oid and sid are both NULL (globally available), or
-        the user has an active org_role for the org, or the user has an active
-        space_role for the space.
+      description: Lists image_link records accessible to the authenticated user. Returns records where oid and sid are both NULL (globally available), or the user has an active org_role for the org, or the user has an active space_role for the space.
       operationId: get_image_links
       responses:
         "200":
@@ -840,11 +889,7 @@ paths:
       tags:
         - Images V1
     put:
-      description: Creates a new image record along with image_link and
-        image_family_link records. org_slug and space_slug can be omitted only
-        for account managers (globally available image). If both are specified,
-        the space must belong to the org and the user must be a Space Admin. If
-        only org_slug is specified, the user must be an Org Admin for that org.
+      description: Creates a new image record along with image_link and image_family_link records. org_slug and space_slug can be omitted only for account managers (globally available image). If both are specified, the space must belong to the org and the user must be a Space Admin. If only org_slug is specified, the user must be an Org Admin for that org.
       operationId: create_image
       requestBody:
         content:
@@ -900,12 +945,7 @@ paths:
         - Images V1
   "/images/v1/{imid}":
     patch:
-      description: "Updates fields of an existing image record accessible to the
-        authenticated user. All fields are optional; only provided fields are
-        updated. release_date is always set to the current date on a successful
-        update. Updatable fields: name, description, docker_image_url,
-        configuration, app_type, description_md, complexity, tags, public,
-        public_description."
+      description: "Updates fields of an existing image record accessible to the authenticated user. All fields are optional; only provided fields are updated. release_date is always set to the current date on a successful update. Updatable fields: name, description, docker_image_url, configuration, app_type, description_md, complexity, tags, public, public_description."
       operationId: update_image
       parameters:
         - in: path
@@ -968,8 +1008,7 @@ paths:
         - Images V1
   "/instances/v1/org/{org_slug}/space/{space_slug}":
     get:
-      description: Returns the instances the user has access to in the selected org
-        and space.
+      description: Returns the instances the user has access to in the selected org and space.
       operationId: get_instances
       parameters:
         - in: path
@@ -1169,6 +1208,138 @@ paths:
                 $ref: "#/components/schemas/ClientApiError"
       tags:
         - Instances V1
+  "/lfs/v1/org/{org_slug}/space/{space_slug}/shares":
+    get:
+      description: List active LFS shares attached to a space.
+      operationId: list_lfs_shares
+      parameters:
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Operation succeeded
+          content:
+            "*/*":
+              schema:
+                items:
+                  $ref: "#/components/schemas/LFSShare"
+                type: array
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - LFS V1
+  "/lfs/v1/org/{org_slug}/space/{space_slug}/shares/{afsid}/cleanup":
+    post:
+      description: Remove incomplete multipart uploads to an LFS
+      operationId: cleanup_lfs_share
+      parameters:
+        - in: path
+          name: org_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: space_slug
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: afsid
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        "202":
+          description: Cleanup task accepted
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/Task"
+        "400":
+          description: Bad request
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "401":
+          description: Unauthorized
+        "403":
+          description: Access to Nuvolos resource is forbidden
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "404":
+          description: Nuvolos object not found
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "409":
+          description: Conflict with Nuvolos object
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "410":
+          description: Nuvolos object no longer available
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+        "500":
+          description: Internal server error
+          content:
+            "*/*":
+              schema:
+                $ref: "#/components/schemas/ClientApiError"
+      tags:
+        - LFS V1
   /orgs/v1:
     get:
       description: Lists all the Nuvolos organizations the user is affiliated with
@@ -1258,7 +1429,7 @@ paths:
           x-nullable: true
           schema:
             type: string
-            default: null
+            default:
         - in: query
           name: sort
           required: false
@@ -1355,7 +1526,7 @@ paths:
           schema:
             type: string
             format: date-time
-            default: null
+            default:
         - in: path
           name: session_id
           required: true
@@ -1409,8 +1580,7 @@ paths:
         - Sessions V1
   "/snapshots/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}":
     get:
-      description: Returns the snapshots the user has access to in the specified org,
-        space and instance.
+      description: Returns the snapshots the user has access to in the specified org, space and instance.
       operationId: get_snapshots
       parameters:
         - in: path
@@ -1682,8 +1852,7 @@ paths:
         - Tables V1
   "/tables/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/get_ddl":
     get:
-      description: Returns the DDL of the database schema corresponding to the
-        specified snapshot.
+      description: Returns the DDL of the database schema corresponding to the specified snapshot.
       operationId: get_schema_ddl
       parameters:
         - in: path
@@ -2063,8 +2232,7 @@ paths:
         - Tables V1
   "/tasks/v1/{tkid}":
     get:
-      description: Returns the task object with the specified id. Only callable by the
-        task submitter.
+      description: Returns the task object with the specified id. Only callable by the task submitter.
       operationId: get_task
       parameters:
         - in: path
@@ -2099,8 +2267,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/ClientApiError"
         "408":
-          description: Request Timeout - task not finished yet and only_finished=true was
-            specified
+          description: Request Timeout - task not finished yet and only_finished=true was specified
         "409":
           description: Conflict with Nuvolos object
           content:
@@ -2245,8 +2412,7 @@ paths:
       tags:
         - Workloads V1
     get:
-      description: Returns the workloads available for the user of a given Nuvolos
-        application.
+      description: Returns the workloads available for the user of a given Nuvolos application.
       operationId: get_workloads_for_app
       parameters:
         - in: path
@@ -2473,8 +2639,7 @@ paths:
         - Workloads V1
   "/workloads/v1/org/{org_slug}/space/{space_slug}/nodepools":
     get:
-      description: Returns the Virtual Machines available for scaled workloads in the
-        given org/space context.
+      description: Returns the Virtual Machines available for scaled workloads in the given org/space context.
       get_swagger_responses:
         "401":
           description: Unauthorized
@@ -2567,6 +2732,13 @@ components:
           type: integer
         available_in_teaching_spaces:
           type: boolean
+        cloud:
+          type: string
+        cluster_name:
+          type: string
+          nullable: true
+        region:
+          type: string
       type: object
     AppCreate:
       additionalProperties: false
@@ -2576,7 +2748,7 @@ components:
         long_id:
           type: string
         description:
-          default: null
+          default:
           type: string
           nullable: true
         pars:
@@ -2626,14 +2798,10 @@ components:
     ClientApiError:
       additionalProperties: false
       properties:
-        ctxid:
-          type: object
-        err:
-          type: object
-        incident_id:
-          type: object
-        msg:
-          type: object
+        ctxid: {}
+        err: {}
+        incident_id: {}
+        msg: {}
       type: object
     ColumnPublic:
       additionalProperties: false
@@ -2668,7 +2836,7 @@ components:
       additionalProperties: false
       properties:
         image_tag:
-          default: null
+          default:
           type: string
           nullable: true
         email_once_finished:
@@ -2679,9 +2847,7 @@ components:
       additionalProperties: false
       properties:
         target_instances:
-          description: List of target instances with org_slug, space_slug, instance_slug.
-            Objects will be distributed to the development snapshot of the
-            target instance.
+          description: List of target instances with org_slug, space_slug, instance_slug. Objects will be distributed to the development snapshot of the target instance.
           items:
             additionalProperties: {}
             type: object
@@ -2694,22 +2860,19 @@ components:
           type: array
         source_files:
           default: []
-          description: List of file OS paths to distribute. These are the actual paths in
-            the file system, not slugs.
+          description: List of file OS paths to distribute. These are the actual paths in the file system, not slugs.
           items:
             type: string
           type: array
         source_tables:
           default: []
-          description: List of table names to distribute. These are the actual table
-            names, not slugs.
+          description: List of table names to distribute. These are the actual table names, not slugs.
           items:
             type: string
           type: array
         auto_snapshot:
           default: false
-          description: Whether to create a snapshot of the target instance before
-            distributing.
+          description: Whether to create a snapshot of the target instance before distributing.
           type: boolean
         notify_target_users:
           default: false
@@ -2843,44 +3006,44 @@ components:
         ifid:
           type: integer
         description:
-          default: null
+          default:
           type: string
           nullable: true
         public:
           default: false
           type: boolean
         public_description:
-          default: null
+          default:
           type: string
           nullable: true
         org_slug:
-          default: null
+          default:
           type: string
           nullable: true
         space_slug:
-          default: null
+          default:
           type: string
           nullable: true
         app_type:
-          default: null
+          default:
           type: string
           nullable: true
         configuration:
           additionalProperties: {}
-          default: null
+          default:
           type: object
           nullable: true
         has_tables:
-          default: null
+          default:
           type: boolean
           nullable: true
         complexity:
-          default: null
+          default:
           type: integer
           nullable: true
         tags:
           additionalProperties: {}
-          default: null
+          default:
           type: object
           nullable: true
       required:
@@ -2925,11 +3088,11 @@ components:
         icon_url:
           type: string
         description:
-          default: null
+          default:
           type: string
           nullable: true
         groups:
-          default: null
+          default:
           items:
             type: string
           type: array
@@ -2945,6 +3108,33 @@ components:
           type: integer
       required:
         - ifid
+      type: object
+    ImageFamilyUpdate:
+      additionalProperties: false
+      properties:
+        description:
+          default:
+          type: string
+          nullable: true
+        disabled_reason:
+          default:
+          type: integer
+          nullable: true
+        groups:
+          default:
+          items:
+            type: string
+          type: array
+          nullable: true
+        icon_url:
+          default:
+          type: string
+        name:
+          default:
+          type: string
+        priority:
+          default:
+          type: number
       type: object
     ImageLink:
       additionalProperties: false
@@ -2984,43 +3174,43 @@ components:
       additionalProperties: false
       properties:
         name:
-          default: null
+          default:
           type: string
           nullable: true
         docker_image_url:
-          default: null
+          default:
           type: string
         description:
-          default: null
+          default:
           type: string
           nullable: true
         description_md:
-          default: null
+          default:
           type: string
           nullable: true
         public:
-          default: null
+          default:
           type: boolean
         public_description:
-          default: null
+          default:
           type: string
           nullable: true
         app_type:
-          default: null
+          default:
           type: string
           nullable: true
         configuration:
           additionalProperties: {}
-          default: null
+          default:
           type: object
           nullable: true
         complexity:
-          default: null
+          default:
           type: integer
           nullable: true
         tags:
           additionalProperties: {}
-          default: null
+          default:
           type: object
           nullable: true
       type: object
@@ -3056,7 +3246,7 @@ components:
         name:
           type: string
         description:
-          default: null
+          default:
           type: string
           nullable: true
       required:
@@ -3084,6 +3274,32 @@ components:
       required:
         - name
         - slug
+      type: object
+    LFSShare:
+      additionalProperties: false
+      properties:
+        afsid:
+          type: integer
+        mount_path:
+          type: string
+          nullable: true
+        name:
+          type: string
+        quota_gib:
+          type: integer
+        read_only:
+          type: boolean
+          nullable: true
+        slug:
+          type: string
+          nullable: true
+        subresource:
+          type: string
+      required:
+        - afsid
+        - name
+        - quota_gib
+        - subresource
       type: object
     Org:
       additionalProperties: false
@@ -3381,5 +3597,6 @@ components:
           type: string
         creation_timestamp:
           type: string
+      type: object
 security:
   - ApiKeyAuth: []

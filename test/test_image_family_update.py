@@ -14,10 +14,10 @@
 
 import unittest
 
-from nuvolos_client_api.models.api_node_pool import APINodePool
+from nuvolos_client_api.models.image_family_update import ImageFamilyUpdate
 
-class TestAPINodePool(unittest.TestCase):
-    """APINodePool unit test stubs"""
+class TestImageFamilyUpdate(unittest.TestCase):
+    """ImageFamilyUpdate unit test stubs"""
 
     def setUp(self):
         pass
@@ -25,36 +25,32 @@ class TestAPINodePool(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> APINodePool:
-        """Test APINodePool
+    def make_instance(self, include_optional) -> ImageFamilyUpdate:
+        """Test ImageFamilyUpdate
             include_optional is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `APINodePool`
+        # uncomment below to create an instance of `ImageFamilyUpdate`
         """
-        model = APINodePool()
+        model = ImageFamilyUpdate()
         if include_optional:
-            return APINodePool(
-                slug = '',
+            return ImageFamilyUpdate(
                 description = '',
-                credits_per_hour = 1.337,
-                cpu = 56,
-                memory = 56,
-                ssd = 56,
-                gpu_type = '',
-                vram = 56,
-                available_in_teaching_spaces = True,
-                cloud = '',
-                cluster_name = '',
-                region = ''
+                disabled_reason = 56,
+                groups = [
+                    ''
+                    ],
+                icon_url = '',
+                name = '',
+                priority = 1.337
             )
         else:
-            return APINodePool(
+            return ImageFamilyUpdate(
         )
         """
 
-    def testAPINodePool(self):
-        """Test APINodePool"""
+    def testImageFamilyUpdate(self):
+        """Test ImageFamilyUpdate"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
