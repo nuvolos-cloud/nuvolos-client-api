@@ -62,6 +62,20 @@ docs/_build/
 # PyBuilder
 target/
 
-# Ipython Notebook
+#Ipython Notebook
 .ipynb_checkpoints
-.idea
+
+# OSX hidden files
+.DS_Store
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+nuvolos-client-api.yml
+nuvolos-client-api.yaml

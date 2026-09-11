@@ -28,16 +28,16 @@ class ImageUpdate(BaseModel):
     ImageUpdate
     """ # noqa: E501
     name: Optional[StrictStr] = None
-    docker_image_url: Optional[StrictStr] = None
     description: Optional[StrictStr] = None
-    description_md: Optional[StrictStr] = None
-    public: Optional[StrictBool] = None
-    public_description: Optional[StrictStr] = None
-    app_type: Optional[StrictStr] = None
+    docker_image_url: Optional[StrictStr] = None
     configuration: Optional[Dict[str, Any]] = None
+    app_type: Optional[StrictStr] = None
+    description_md: Optional[StrictStr] = None
     complexity: Optional[StrictInt] = None
     tags: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["name", "docker_image_url", "description", "description_md", "public", "public_description", "app_type", "configuration", "complexity", "tags"]
+    public: Optional[StrictBool] = None
+    public_description: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["name", "description", "docker_image_url", "configuration", "app_type", "description_md", "complexity", "tags", "public", "public_description"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -88,25 +88,20 @@ class ImageUpdate(BaseModel):
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
-        # set to None if description_md (nullable) is None
+        # set to None if configuration (nullable) is None
         # and model_fields_set contains the field
-        if self.description_md is None and "description_md" in self.model_fields_set:
-            _dict['description_md'] = None
-
-        # set to None if public_description (nullable) is None
-        # and model_fields_set contains the field
-        if self.public_description is None and "public_description" in self.model_fields_set:
-            _dict['public_description'] = None
+        if self.configuration is None and "configuration" in self.model_fields_set:
+            _dict['configuration'] = None
 
         # set to None if app_type (nullable) is None
         # and model_fields_set contains the field
         if self.app_type is None and "app_type" in self.model_fields_set:
             _dict['app_type'] = None
 
-        # set to None if configuration (nullable) is None
+        # set to None if description_md (nullable) is None
         # and model_fields_set contains the field
-        if self.configuration is None and "configuration" in self.model_fields_set:
-            _dict['configuration'] = None
+        if self.description_md is None and "description_md" in self.model_fields_set:
+            _dict['description_md'] = None
 
         # set to None if complexity (nullable) is None
         # and model_fields_set contains the field
@@ -117,6 +112,11 @@ class ImageUpdate(BaseModel):
         # and model_fields_set contains the field
         if self.tags is None and "tags" in self.model_fields_set:
             _dict['tags'] = None
+
+        # set to None if public_description (nullable) is None
+        # and model_fields_set contains the field
+        if self.public_description is None and "public_description" in self.model_fields_set:
+            _dict['public_description'] = None
 
         return _dict
 
@@ -131,15 +131,15 @@ class ImageUpdate(BaseModel):
 
         _obj = cls.model_validate({
             "name": obj.get("name"),
-            "docker_image_url": obj.get("docker_image_url"),
             "description": obj.get("description"),
-            "description_md": obj.get("description_md"),
-            "public": obj.get("public"),
-            "public_description": obj.get("public_description"),
-            "app_type": obj.get("app_type"),
+            "docker_image_url": obj.get("docker_image_url"),
             "configuration": obj.get("configuration"),
+            "app_type": obj.get("app_type"),
+            "description_md": obj.get("description_md"),
             "complexity": obj.get("complexity"),
-            "tags": obj.get("tags")
+            "tags": obj.get("tags"),
+            "public": obj.get("public"),
+            "public_description": obj.get("public_description")
         })
         return _obj
 

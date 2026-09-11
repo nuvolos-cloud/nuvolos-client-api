@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | 
-**icon_url** | **str** |  | 
 **description** | **str** |  | [optional] 
+**icon_url** | **str** |  | 
 **groups** | **List[str]** |  | [optional] 
 
 ## Example

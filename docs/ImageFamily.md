@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **description** | **str** |  | [optional] 
 **icon_url** | **str** |  | [optional] 
 **groups** | **List[str]** |  | [optional] 
-**priority** | **float** |  | [optional] 
 **disabled_reason** | **int** |  | [optional] 
+**priority** | **float** |  | [optional] 
 
 ## Example
 

@@ -6,12 +6,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **afsid** | **int** |  | 
-**mount_path** | **str** |  | [optional] 
 **name** | **str** |  | 
 **quota_gib** | **int** |  | 
+**subresource** | **str** |  | 
+**mount_path** | **str** |  | [optional] 
 **read_only** | **bool** |  | [optional] 
 **slug** | **str** |  | [optional] 
-**subresource** | **str** |  | 
 
 ## Example
 

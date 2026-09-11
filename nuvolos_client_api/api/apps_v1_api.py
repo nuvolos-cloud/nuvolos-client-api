@@ -61,7 +61,7 @@ class AppsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> AppCreated:
-        """create_app
+        """Apps V1 Create App
 
         Creates a new application in the development snapshot of the specified instance.
 
@@ -108,13 +108,14 @@ class AppsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "AppCreated",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -147,7 +148,7 @@ class AppsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[AppCreated]:
-        """create_app
+        """Apps V1 Create App
 
         Creates a new application in the development snapshot of the specified instance.
 
@@ -194,13 +195,14 @@ class AppsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "AppCreated",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -233,7 +235,7 @@ class AppsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create_app
+        """Apps V1 Create App
 
         Creates a new application in the development snapshot of the specified instance.
 
@@ -280,13 +282,14 @@ class AppsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "AppCreated",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -340,7 +343,7 @@ class AppsV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -402,7 +405,7 @@ class AppsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Task:
-        """derive_app
+        """Apps V1 Derive App
 
         Creates a derived image from an existing Nuvolos application
 
@@ -452,13 +455,14 @@ class AppsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "Task",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -492,7 +496,7 @@ class AppsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Task]:
-        """derive_app
+        """Apps V1 Derive App
 
         Creates a derived image from an existing Nuvolos application
 
@@ -542,13 +546,14 @@ class AppsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "Task",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -582,7 +587,7 @@ class AppsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """derive_app
+        """Apps V1 Derive App
 
         Creates a derived image from an existing Nuvolos application
 
@@ -632,13 +637,14 @@ class AppsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "Task",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -695,7 +701,7 @@ class AppsV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -756,7 +762,7 @@ class AppsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Application]:
-        """get_apps
+        """Apps V1 List
 
         Returns the apps in the given snapshot.
 
@@ -803,13 +809,13 @@ class AppsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Application]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -842,7 +848,7 @@ class AppsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Application]]:
-        """get_apps
+        """Apps V1 List
 
         Returns the apps in the given snapshot.
 
@@ -889,13 +895,13 @@ class AppsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Application]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -928,7 +934,7 @@ class AppsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_apps
+        """Apps V1 List
 
         Returns the apps in the given snapshot.
 
@@ -975,13 +981,13 @@ class AppsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Application]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1035,7 +1041,7 @@ class AppsV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 

@@ -27,14 +27,14 @@ class ImageLink(BaseModel):
     """
     ImageLink
     """ # noqa: E501
-    imid: StrictInt
     linkid: StrictInt
+    imid: StrictInt
     org_slug: Optional[StrictStr] = None
     space_slug: Optional[StrictStr] = None
-    priority: Optional[StrictInt] = None
     space_type: Optional[StrictInt] = None
     comment: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["imid", "linkid", "org_slug", "space_slug", "priority", "space_type", "comment"]
+    priority: Optional[StrictInt] = None
+    __properties: ClassVar[List[str]] = ["linkid", "imid", "org_slug", "space_slug", "space_type", "comment", "priority"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -85,11 +85,6 @@ class ImageLink(BaseModel):
         if self.space_slug is None and "space_slug" in self.model_fields_set:
             _dict['space_slug'] = None
 
-        # set to None if priority (nullable) is None
-        # and model_fields_set contains the field
-        if self.priority is None and "priority" in self.model_fields_set:
-            _dict['priority'] = None
-
         # set to None if space_type (nullable) is None
         # and model_fields_set contains the field
         if self.space_type is None and "space_type" in self.model_fields_set:
@@ -99,6 +94,11 @@ class ImageLink(BaseModel):
         # and model_fields_set contains the field
         if self.comment is None and "comment" in self.model_fields_set:
             _dict['comment'] = None
+
+        # set to None if priority (nullable) is None
+        # and model_fields_set contains the field
+        if self.priority is None and "priority" in self.model_fields_set:
+            _dict['priority'] = None
 
         return _dict
 
@@ -112,13 +112,13 @@ class ImageLink(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "imid": obj.get("imid"),
             "linkid": obj.get("linkid"),
+            "imid": obj.get("imid"),
             "org_slug": obj.get("org_slug"),
             "space_slug": obj.get("space_slug"),
-            "priority": obj.get("priority"),
             "space_type": obj.get("space_type"),
-            "comment": obj.get("comment")
+            "comment": obj.get("comment"),
+            "priority": obj.get("priority")
         })
         return _obj
 

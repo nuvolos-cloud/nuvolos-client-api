@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**description** | **str** |  | [optional] 
-**disabled_reason** | **int** |  | [optional] 
-**groups** | **List[str]** |  | [optional] 
-**icon_url** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
+**description** | **str** |  | [optional] 
+**icon_url** | **str** |  | [optional] 
+**groups** | **List[str]** |  | [optional] 
+**disabled_reason** | **int** |  | [optional] 
 **priority** | **float** |  | [optional] 
 
 ## Example

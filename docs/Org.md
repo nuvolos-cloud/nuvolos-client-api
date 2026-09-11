@@ -7,12 +7,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **slug** | **str** |  | 
 **name** | **str** |  | 
-**description** | **str** |  | [optional] 
 **role** | **str** |  | [optional] 
-**hpc_enabled** | **bool** |  | [optional] 
+**description** | **str** |  | [optional] 
 **tables_enabled** | **bool** |  | [optional] 
-**video_library_enabled** | **bool** |  | [optional] 
+**hpc_enabled** | **bool** |  | [optional] 
 **creation_timestamp** | **datetime** |  | [optional] 
+**video_library_enabled** | **bool** |  | [optional] 
 
 ## Example
 

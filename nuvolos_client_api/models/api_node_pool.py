@@ -33,13 +33,13 @@ class APINodePool(BaseModel):
     cpu: Optional[StrictInt] = None
     memory: Optional[StrictInt] = None
     ssd: Optional[StrictInt] = None
-    gpu_type: Optional[StrictStr] = None
     vram: Optional[StrictInt] = None
-    available_in_teaching_spaces: Optional[StrictBool] = None
+    gpu_type: Optional[StrictStr] = None
     cloud: Optional[StrictStr] = None
-    cluster_name: Optional[StrictStr] = None
     region: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["slug", "description", "credits_per_hour", "cpu", "memory", "ssd", "gpu_type", "vram", "available_in_teaching_spaces", "cloud", "cluster_name", "region"]
+    cluster_name: Optional[StrictStr] = None
+    available_in_teaching_spaces: Optional[StrictBool] = None
+    __properties: ClassVar[List[str]] = ["slug", "description", "credits_per_hour", "cpu", "memory", "ssd", "vram", "gpu_type", "cloud", "region", "cluster_name", "available_in_teaching_spaces"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -103,12 +103,12 @@ class APINodePool(BaseModel):
             "cpu": obj.get("cpu"),
             "memory": obj.get("memory"),
             "ssd": obj.get("ssd"),
-            "gpu_type": obj.get("gpu_type"),
             "vram": obj.get("vram"),
-            "available_in_teaching_spaces": obj.get("available_in_teaching_spaces"),
+            "gpu_type": obj.get("gpu_type"),
             "cloud": obj.get("cloud"),
+            "region": obj.get("region"),
             "cluster_name": obj.get("cluster_name"),
-            "region": obj.get("region")
+            "available_in_teaching_spaces": obj.get("available_in_teaching_spaces")
         })
         return _obj
 

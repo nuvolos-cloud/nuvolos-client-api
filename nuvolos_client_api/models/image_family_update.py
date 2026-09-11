@@ -27,13 +27,13 @@ class ImageFamilyUpdate(BaseModel):
     """
     ImageFamilyUpdate
     """ # noqa: E501
-    description: Optional[StrictStr] = None
-    disabled_reason: Optional[StrictInt] = None
-    groups: Optional[List[StrictStr]] = None
-    icon_url: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
+    description: Optional[StrictStr] = None
+    icon_url: Optional[StrictStr] = None
+    groups: Optional[List[StrictStr]] = None
+    disabled_reason: Optional[StrictInt] = None
     priority: Optional[Union[StrictFloat, StrictInt]] = None
-    __properties: ClassVar[List[str]] = ["description", "disabled_reason", "groups", "icon_url", "name", "priority"]
+    __properties: ClassVar[List[str]] = ["name", "description", "icon_url", "groups", "disabled_reason", "priority"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -79,15 +79,15 @@ class ImageFamilyUpdate(BaseModel):
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
-        # set to None if disabled_reason (nullable) is None
-        # and model_fields_set contains the field
-        if self.disabled_reason is None and "disabled_reason" in self.model_fields_set:
-            _dict['disabled_reason'] = None
-
         # set to None if groups (nullable) is None
         # and model_fields_set contains the field
         if self.groups is None and "groups" in self.model_fields_set:
             _dict['groups'] = None
+
+        # set to None if disabled_reason (nullable) is None
+        # and model_fields_set contains the field
+        if self.disabled_reason is None and "disabled_reason" in self.model_fields_set:
+            _dict['disabled_reason'] = None
 
         return _dict
 
@@ -101,11 +101,11 @@ class ImageFamilyUpdate(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "description": obj.get("description"),
-            "disabled_reason": obj.get("disabled_reason"),
-            "groups": obj.get("groups"),
-            "icon_url": obj.get("icon_url"),
             "name": obj.get("name"),
+            "description": obj.get("description"),
+            "icon_url": obj.get("icon_url"),
+            "groups": obj.get("groups"),
+            "disabled_reason": obj.get("disabled_reason"),
             "priority": obj.get("priority")
         })
         return _obj

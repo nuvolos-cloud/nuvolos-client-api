@@ -28,20 +28,20 @@ class ImageCreate(BaseModel):
     ImageCreate
     """ # noqa: E501
     name: StrictStr
-    docker_image_url: StrictStr
-    description_md: StrictStr
-    ifid: StrictInt
     description: Optional[StrictStr] = None
-    public: Optional[StrictBool] = False
-    public_description: Optional[StrictStr] = None
-    org_slug: Optional[StrictStr] = None
-    space_slug: Optional[StrictStr] = None
-    app_type: Optional[StrictStr] = None
+    docker_image_url: StrictStr
     configuration: Optional[Dict[str, Any]] = None
+    app_type: Optional[StrictStr] = None
     has_tables: Optional[StrictBool] = None
+    description_md: StrictStr
     complexity: Optional[StrictInt] = None
     tags: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["name", "docker_image_url", "description_md", "ifid", "description", "public", "public_description", "org_slug", "space_slug", "app_type", "configuration", "has_tables", "complexity", "tags"]
+    public: Optional[StrictBool] = False
+    public_description: Optional[StrictStr] = None
+    ifid: StrictInt
+    org_slug: Optional[StrictStr] = None
+    space_slug: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["name", "description", "docker_image_url", "configuration", "app_type", "has_tables", "description_md", "complexity", "tags", "public", "public_description", "ifid", "org_slug", "space_slug"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -87,30 +87,15 @@ class ImageCreate(BaseModel):
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
-        # set to None if public_description (nullable) is None
+        # set to None if configuration (nullable) is None
         # and model_fields_set contains the field
-        if self.public_description is None and "public_description" in self.model_fields_set:
-            _dict['public_description'] = None
-
-        # set to None if org_slug (nullable) is None
-        # and model_fields_set contains the field
-        if self.org_slug is None and "org_slug" in self.model_fields_set:
-            _dict['org_slug'] = None
-
-        # set to None if space_slug (nullable) is None
-        # and model_fields_set contains the field
-        if self.space_slug is None and "space_slug" in self.model_fields_set:
-            _dict['space_slug'] = None
+        if self.configuration is None and "configuration" in self.model_fields_set:
+            _dict['configuration'] = None
 
         # set to None if app_type (nullable) is None
         # and model_fields_set contains the field
         if self.app_type is None and "app_type" in self.model_fields_set:
             _dict['app_type'] = None
-
-        # set to None if configuration (nullable) is None
-        # and model_fields_set contains the field
-        if self.configuration is None and "configuration" in self.model_fields_set:
-            _dict['configuration'] = None
 
         # set to None if has_tables (nullable) is None
         # and model_fields_set contains the field
@@ -127,6 +112,21 @@ class ImageCreate(BaseModel):
         if self.tags is None and "tags" in self.model_fields_set:
             _dict['tags'] = None
 
+        # set to None if public_description (nullable) is None
+        # and model_fields_set contains the field
+        if self.public_description is None and "public_description" in self.model_fields_set:
+            _dict['public_description'] = None
+
+        # set to None if org_slug (nullable) is None
+        # and model_fields_set contains the field
+        if self.org_slug is None and "org_slug" in self.model_fields_set:
+            _dict['org_slug'] = None
+
+        # set to None if space_slug (nullable) is None
+        # and model_fields_set contains the field
+        if self.space_slug is None and "space_slug" in self.model_fields_set:
+            _dict['space_slug'] = None
+
         return _dict
 
     @classmethod
@@ -140,19 +140,19 @@ class ImageCreate(BaseModel):
 
         _obj = cls.model_validate({
             "name": obj.get("name"),
-            "docker_image_url": obj.get("docker_image_url"),
-            "description_md": obj.get("description_md"),
-            "ifid": obj.get("ifid"),
             "description": obj.get("description"),
+            "docker_image_url": obj.get("docker_image_url"),
+            "configuration": obj.get("configuration"),
+            "app_type": obj.get("app_type"),
+            "has_tables": obj.get("has_tables"),
+            "description_md": obj.get("description_md"),
+            "complexity": obj.get("complexity"),
+            "tags": obj.get("tags"),
             "public": obj.get("public") if obj.get("public") is not None else False,
             "public_description": obj.get("public_description"),
+            "ifid": obj.get("ifid"),
             "org_slug": obj.get("org_slug"),
-            "space_slug": obj.get("space_slug"),
-            "app_type": obj.get("app_type"),
-            "configuration": obj.get("configuration"),
-            "has_tables": obj.get("has_tables"),
-            "complexity": obj.get("complexity"),
-            "tags": obj.get("tags")
+            "space_slug": obj.get("space_slug")
         })
         return _obj
 

@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**table_slug** | **str** |  | [optional] 
 **short_id** | **str** |  | 
 **long_id** | **str** |  | 
-**coltype** | **str** |  | 
 **description** | **str** |  | [optional] 
+**coltype** | **str** |  | 
+**table_slug** | **str** |  | [optional] 
 
 ## Example
 

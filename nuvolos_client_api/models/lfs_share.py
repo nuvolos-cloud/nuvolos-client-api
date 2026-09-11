@@ -28,13 +28,13 @@ class LFSShare(BaseModel):
     LFSShare
     """ # noqa: E501
     afsid: StrictInt
-    mount_path: Optional[StrictStr] = None
     name: StrictStr
     quota_gib: StrictInt
+    subresource: StrictStr
+    mount_path: Optional[StrictStr] = None
     read_only: Optional[StrictBool] = None
     slug: Optional[StrictStr] = None
-    subresource: StrictStr
-    __properties: ClassVar[List[str]] = ["afsid", "mount_path", "name", "quota_gib", "read_only", "slug", "subresource"]
+    __properties: ClassVar[List[str]] = ["afsid", "name", "quota_gib", "subresource", "mount_path", "read_only", "slug"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -103,12 +103,12 @@ class LFSShare(BaseModel):
 
         _obj = cls.model_validate({
             "afsid": obj.get("afsid"),
-            "mount_path": obj.get("mount_path"),
             "name": obj.get("name"),
             "quota_gib": obj.get("quota_gib"),
+            "subresource": obj.get("subresource"),
+            "mount_path": obj.get("mount_path"),
             "read_only": obj.get("read_only"),
-            "slug": obj.get("slug"),
-            "subresource": obj.get("subresource")
+            "slug": obj.get("slug")
         })
         return _obj
 

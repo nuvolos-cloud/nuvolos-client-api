@@ -29,19 +29,19 @@ class FilePublic(BaseModel):
     """ # noqa: E501
     fid: StrictStr
     short_id: StrictStr
-    local_path: StrictStr
-    os_path: Optional[StrictStr] = None
-    area: StrictStr
-    type: StrictStr
-    size: Optional[StrictInt] = None
-    is_video: Optional[StrictBool] = None
-    snapshot_slug: Optional[StrictStr] = None
     creation_timestamp: Optional[StrictStr] = None
     last_modified_timestamp: Optional[StrictStr] = None
-    status: Optional[Dict[str, Any]] = None
+    type: StrictStr
+    size: Optional[StrictInt] = None
+    area: StrictStr
+    local_path: StrictStr
     history: Optional[Dict[str, Any]] = None
+    is_video: Optional[StrictBool] = None
+    status: Optional[Dict[str, Any]] = None
     collision_info: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["fid", "short_id", "local_path", "os_path", "area", "type", "size", "is_video", "snapshot_slug", "creation_timestamp", "last_modified_timestamp", "status", "history", "collision_info"]
+    snapshot_slug: Optional[StrictStr] = None
+    os_path: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["fid", "short_id", "creation_timestamp", "last_modified_timestamp", "type", "size", "area", "local_path", "history", "is_video", "status", "collision_info", "snapshot_slug", "os_path"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -96,18 +96,18 @@ class FilePublic(BaseModel):
         _obj = cls.model_validate({
             "fid": obj.get("fid"),
             "short_id": obj.get("short_id"),
-            "local_path": obj.get("local_path"),
-            "os_path": obj.get("os_path"),
-            "area": obj.get("area"),
-            "type": obj.get("type"),
-            "size": obj.get("size"),
-            "is_video": obj.get("is_video"),
-            "snapshot_slug": obj.get("snapshot_slug"),
             "creation_timestamp": obj.get("creation_timestamp"),
             "last_modified_timestamp": obj.get("last_modified_timestamp"),
-            "status": obj.get("status"),
+            "type": obj.get("type"),
+            "size": obj.get("size"),
+            "area": obj.get("area"),
+            "local_path": obj.get("local_path"),
             "history": obj.get("history"),
-            "collision_info": obj.get("collision_info")
+            "is_video": obj.get("is_video"),
+            "status": obj.get("status"),
+            "collision_info": obj.get("collision_info"),
+            "snapshot_slug": obj.get("snapshot_slug"),
+            "os_path": obj.get("os_path")
         })
         return _obj
 

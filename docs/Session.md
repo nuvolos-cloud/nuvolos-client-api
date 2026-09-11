@@ -8,19 +8,20 @@ Name | Type | Description | Notes
 **session_id** | **str** |  | 
 **start_time** | **datetime** |  | 
 **stop_time** | **datetime** |  | [optional] 
+**runtime_seconds** | **int** |  | [optional] 
+**ncu** | **int** |  | [optional] 
+**ncu_sidecars_total** | **float** |  | [optional] 
+**ncu_hours_used** | **float** |  | [optional] 
+**node_pool** | **str** |  | [optional] 
+**worker_node_name** | **str** |  | [optional] 
 **start_uid** | **int** |  | 
 **start_uid_full_name** | **str** |  | 
 **stop_uid** | **int** |  | [optional] 
 **stop_uid_full_name** | **str** |  | [optional] 
-**runtime_seconds** | **int** |  | [optional] 
-**ncu** | **int** |  | [optional] 
-**ncu_hours_used** | **float** |  | [optional] 
-**ncu_sidecars_total** | **float** |  | [optional] 
+**logging_containers** | **List[str]** |  | [optional] 
 **credits_spent** | **float** |  | [optional] 
-**node_pool** | **str** |  | [optional] 
 **active_resource** | **str** |  | [optional] 
 **can_read_logs** | **bool** |  | [optional] 
-**logging_containers** | **List[str]** |  | [optional] 
 
 ## Example
 

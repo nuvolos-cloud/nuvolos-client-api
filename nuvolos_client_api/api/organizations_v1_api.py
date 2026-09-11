@@ -52,7 +52,7 @@ class OrganizationsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Org]:
-        """get_orgs
+        """Orgs V1 List Orgs
 
         Lists all the Nuvolos organizations the user is affiliated with
 
@@ -88,12 +88,12 @@ class OrganizationsV1Api:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Org]",
             '400': "ClientApiError",
-            '401': None,
             '403': "ClientApiError",
             '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -122,7 +122,7 @@ class OrganizationsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Org]]:
-        """get_orgs
+        """Orgs V1 List Orgs
 
         Lists all the Nuvolos organizations the user is affiliated with
 
@@ -158,12 +158,12 @@ class OrganizationsV1Api:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Org]",
             '400': "ClientApiError",
-            '401': None,
             '403': "ClientApiError",
             '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -192,7 +192,7 @@ class OrganizationsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_orgs
+        """Orgs V1 List Orgs
 
         Lists all the Nuvolos organizations the user is affiliated with
 
@@ -228,12 +228,12 @@ class OrganizationsV1Api:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Org]",
             '400': "ClientApiError",
-            '401': None,
             '403': "ClientApiError",
             '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -275,7 +275,7 @@ class OrganizationsV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 

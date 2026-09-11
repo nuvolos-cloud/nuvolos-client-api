@@ -4,11 +4,13 @@ All URIs are relative to *https://api.eu1.nuvolos.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_orgs**](OrganizationsV1Api.md#get_orgs) | **GET** /orgs/v1 | 
+[**get_orgs**](OrganizationsV1Api.md#get_orgs) | **GET** /orgs/v1 | Orgs V1 List Orgs
 
 
 # **get_orgs**
 > List[Org] get_orgs()
+
+Orgs V1 List Orgs
 
 Lists all the Nuvolos organizations the user is affiliated with
 
@@ -45,6 +47,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     api_instance = nuvolos_client_api.OrganizationsV1Api(api_client)
 
     try:
+        # Orgs V1 List Orgs
         api_response = api_instance.get_orgs()
         print("The response of OrganizationsV1Api->get_orgs:\n")
         pprint(api_response)
@@ -69,7 +72,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -77,12 +80,12 @@ This endpoint does not need any parameter.
 |-------------|-------------|------------------|
 **200** | Operation succeeded |  -  |
 **400** | Bad request |  -  |
-**401** | Unauthorized |  -  |
 **403** | Access to Nuvolos resource is forbidden |  -  |
 **404** | Nuvolos object not found |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
 **500** | Internal server error |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

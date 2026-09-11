@@ -30,12 +30,12 @@ class Instance(BaseModel):
     """ # noqa: E501
     slug: StrictStr
     name: StrictStr
-    description: Optional[StrictStr] = None
     role: Optional[StrictStr] = None
+    description: Optional[StrictStr] = None
     creation_timestamp: Optional[datetime] = None
     archival_timestamp: Optional[datetime] = None
     rearchive_after_timestamp: Optional[datetime] = None
-    __properties: ClassVar[List[str]] = ["slug", "name", "description", "role", "creation_timestamp", "archival_timestamp", "rearchive_after_timestamp"]
+    __properties: ClassVar[List[str]] = ["slug", "name", "role", "description", "creation_timestamp", "archival_timestamp", "rearchive_after_timestamp"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -90,8 +90,8 @@ class Instance(BaseModel):
         _obj = cls.model_validate({
             "slug": obj.get("slug"),
             "name": obj.get("name"),
-            "description": obj.get("description"),
             "role": obj.get("role"),
+            "description": obj.get("description"),
             "creation_timestamp": obj.get("creation_timestamp"),
             "archival_timestamp": obj.get("archival_timestamp"),
             "rearchive_after_timestamp": obj.get("rearchive_after_timestamp")

@@ -7,16 +7,16 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **slug** | **str** |  | 
 **name** | **str** |  | 
-**description** | **str** |  | [optional] 
-**type** | **str** |  | 
 **role** | **str** |  | [optional] 
+**type** | **str** |  | 
 **visibility_type** | **str** |  | 
+**description** | **str** |  | [optional] 
 **database_tables_enabled** | **bool** |  | [optional] 
-**video_library_enabled** | **bool** |  | 
+**archival_timestamp** | **datetime** |  | [optional] 
 **archive_by_date** | **date** |  | [optional] 
 **creation_timestamp** | **datetime** |  | [optional] 
+**video_library_enabled** | **bool** |  | 
 **last_modified_timestamp** | **datetime** |  | [optional] 
-**archival_timestamp** | **datetime** |  | [optional] 
 
 ## Example
 

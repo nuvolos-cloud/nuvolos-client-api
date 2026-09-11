@@ -6,9 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **dpi** | **int** |  | [optional] [default to 96]
-**node_pool** | **str** |  | [optional] 
-**screen_height** | **int** |  | [optional] [default to 768]
 **screen_width** | **int** |  | [optional] [default to 1024]
+**screen_height** | **int** |  | [optional] [default to 768]
+**node_pool** | **str** |  | [optional] 
 
 ## Example
 

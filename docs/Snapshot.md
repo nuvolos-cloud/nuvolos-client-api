@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 **slug** | **str** |  | 
 **name** | **str** |  | 
 **description** | **str** |  | [optional] 
-**snapshot_type** | **str** |  | [optional] 
-**database_tables_enabled** | **bool** |  | [optional] 
 **snapshot_timestamp** | **datetime** |  | [optional] 
+**database_tables_enabled** | **bool** |  | [optional] 
+**snapshot_type** | **str** |  | [optional] 
 **archival_timestamp** | **datetime** |  | [optional] 
 
 ## Example

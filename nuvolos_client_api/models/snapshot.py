@@ -31,11 +31,11 @@ class Snapshot(BaseModel):
     slug: StrictStr
     name: StrictStr
     description: Optional[StrictStr] = None
-    snapshot_type: Optional[StrictStr] = None
-    database_tables_enabled: Optional[StrictBool] = None
     snapshot_timestamp: Optional[datetime] = None
+    database_tables_enabled: Optional[StrictBool] = None
+    snapshot_type: Optional[StrictStr] = None
     archival_timestamp: Optional[datetime] = None
-    __properties: ClassVar[List[str]] = ["slug", "name", "description", "snapshot_type", "database_tables_enabled", "snapshot_timestamp", "archival_timestamp"]
+    __properties: ClassVar[List[str]] = ["slug", "name", "description", "snapshot_timestamp", "database_tables_enabled", "snapshot_type", "archival_timestamp"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -91,9 +91,9 @@ class Snapshot(BaseModel):
             "slug": obj.get("slug"),
             "name": obj.get("name"),
             "description": obj.get("description"),
-            "snapshot_type": obj.get("snapshot_type"),
-            "database_tables_enabled": obj.get("database_tables_enabled"),
             "snapshot_timestamp": obj.get("snapshot_timestamp"),
+            "database_tables_enabled": obj.get("database_tables_enabled"),
+            "snapshot_type": obj.get("snapshot_type"),
             "archival_timestamp": obj.get("archival_timestamp")
         })
         return _obj

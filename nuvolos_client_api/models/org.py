@@ -30,13 +30,13 @@ class Org(BaseModel):
     """ # noqa: E501
     slug: StrictStr
     name: StrictStr
-    description: Optional[StrictStr] = None
     role: Optional[StrictStr] = None
-    hpc_enabled: Optional[StrictBool] = None
+    description: Optional[StrictStr] = None
     tables_enabled: Optional[StrictBool] = None
-    video_library_enabled: Optional[StrictBool] = None
+    hpc_enabled: Optional[StrictBool] = None
     creation_timestamp: Optional[datetime] = None
-    __properties: ClassVar[List[str]] = ["slug", "name", "description", "role", "hpc_enabled", "tables_enabled", "video_library_enabled", "creation_timestamp"]
+    video_library_enabled: Optional[StrictBool] = None
+    __properties: ClassVar[List[str]] = ["slug", "name", "role", "description", "tables_enabled", "hpc_enabled", "creation_timestamp", "video_library_enabled"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -91,12 +91,12 @@ class Org(BaseModel):
         _obj = cls.model_validate({
             "slug": obj.get("slug"),
             "name": obj.get("name"),
-            "description": obj.get("description"),
             "role": obj.get("role"),
-            "hpc_enabled": obj.get("hpc_enabled"),
+            "description": obj.get("description"),
             "tables_enabled": obj.get("tables_enabled"),
-            "video_library_enabled": obj.get("video_library_enabled"),
-            "creation_timestamp": obj.get("creation_timestamp")
+            "hpc_enabled": obj.get("hpc_enabled"),
+            "creation_timestamp": obj.get("creation_timestamp"),
+            "video_library_enabled": obj.get("video_library_enabled")
         })
         return _obj
 

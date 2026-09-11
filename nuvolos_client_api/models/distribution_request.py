@@ -28,13 +28,13 @@ class DistributionRequest(BaseModel):
     DistributionRequest
     """ # noqa: E501
     target_instances: List[Dict[str, Any]] = Field(description="List of target instances with org_slug, space_slug, instance_slug. Objects will be distributed to the development snapshot of the target instance.")
-    source_applications: Optional[List[StrictStr]] = Field(default=None, description="List of application slugs to distribute.")
-    source_files: Optional[List[StrictStr]] = Field(default=None, description="List of file OS paths to distribute. These are the actual paths in the file system, not slugs.")
-    source_tables: Optional[List[StrictStr]] = Field(default=None, description="List of table names to distribute. These are the actual table names, not slugs.")
     auto_snapshot: Optional[StrictBool] = Field(default=False, description="Whether to create a snapshot of the target instance before distributing.")
     notify_target_users: Optional[StrictBool] = Field(default=False, description="Whether to notify target users when the distribution is complete.")
     custom_email_message: Optional[StrictStr] = Field(default=None, description="Message to send when the distribution is complete.")
-    __properties: ClassVar[List[str]] = ["target_instances", "source_applications", "source_files", "source_tables", "auto_snapshot", "notify_target_users", "custom_email_message"]
+    source_files: Optional[List[StrictStr]] = Field(default=None, description="List of file OS paths to distribute. These are the actual paths in the file system, not slugs.")
+    source_applications: Optional[List[StrictStr]] = Field(default=None, description="List of application slugs to distribute.")
+    source_tables: Optional[List[StrictStr]] = Field(default=None, description="List of table names to distribute. These are the actual table names, not slugs.")
+    __properties: ClassVar[List[str]] = ["target_instances", "auto_snapshot", "notify_target_users", "custom_email_message", "source_files", "source_applications", "source_tables"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -88,12 +88,12 @@ class DistributionRequest(BaseModel):
 
         _obj = cls.model_validate({
             "target_instances": obj.get("target_instances"),
-            "source_applications": obj.get("source_applications"),
-            "source_files": obj.get("source_files"),
-            "source_tables": obj.get("source_tables"),
             "auto_snapshot": obj.get("auto_snapshot") if obj.get("auto_snapshot") is not None else False,
             "notify_target_users": obj.get("notify_target_users") if obj.get("notify_target_users") is not None else False,
-            "custom_email_message": obj.get("custom_email_message")
+            "custom_email_message": obj.get("custom_email_message"),
+            "source_files": obj.get("source_files"),
+            "source_applications": obj.get("source_applications"),
+            "source_tables": obj.get("source_tables")
         })
         return _obj
 

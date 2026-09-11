@@ -58,7 +58,7 @@ class SnapshotsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Task:
-        """delete_snapshot
+        """Snapshots V1 Delete Snapshot
 
         Deletes a snapshot in the specified instance asynchronously
 
@@ -105,9 +105,9 @@ class SnapshotsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Task",
+            '404': "ClientApiError",
             '400': "ClientApiError",
             '403': "ClientApiError",
-            '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
@@ -143,7 +143,7 @@ class SnapshotsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Task]:
-        """delete_snapshot
+        """Snapshots V1 Delete Snapshot
 
         Deletes a snapshot in the specified instance asynchronously
 
@@ -190,9 +190,9 @@ class SnapshotsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Task",
+            '404': "ClientApiError",
             '400': "ClientApiError",
             '403': "ClientApiError",
-            '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
@@ -228,7 +228,7 @@ class SnapshotsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete_snapshot
+        """Snapshots V1 Delete Snapshot
 
         Deletes a snapshot in the specified instance asynchronously
 
@@ -275,9 +275,9 @@ class SnapshotsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "Task",
+            '404': "ClientApiError",
             '400': "ClientApiError",
             '403': "ClientApiError",
-            '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
@@ -334,7 +334,7 @@ class SnapshotsV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -381,7 +381,7 @@ class SnapshotsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Snapshot]:
-        """get_snapshots
+        """Snapshots V1 List Snapshots
 
         Returns the snapshots the user has access to in the specified org, space and instance.
 
@@ -425,13 +425,13 @@ class SnapshotsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Snapshot]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -463,7 +463,7 @@ class SnapshotsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Snapshot]]:
-        """get_snapshots
+        """Snapshots V1 List Snapshots
 
         Returns the snapshots the user has access to in the specified org, space and instance.
 
@@ -507,13 +507,13 @@ class SnapshotsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Snapshot]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -545,7 +545,7 @@ class SnapshotsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_snapshots
+        """Snapshots V1 List Snapshots
 
         Returns the snapshots the user has access to in the specified org, space and instance.
 
@@ -589,13 +589,13 @@ class SnapshotsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Snapshot]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -646,7 +646,7 @@ class SnapshotsV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 

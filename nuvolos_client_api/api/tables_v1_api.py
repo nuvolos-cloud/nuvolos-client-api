@@ -61,7 +61,7 @@ class TablesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete_table
+        """Tables V1 Delete Table
 
         Deletes a table in the specified snapshot.
 
@@ -110,13 +110,13 @@ class TablesV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
+            '404': "ClientApiError",
             '400': "ClientApiError",
             '403': "ClientApiError",
-            '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '204': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -150,7 +150,7 @@ class TablesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete_table
+        """Tables V1 Delete Table
 
         Deletes a table in the specified snapshot.
 
@@ -199,13 +199,13 @@ class TablesV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
+            '404': "ClientApiError",
             '400': "ClientApiError",
             '403': "ClientApiError",
-            '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '204': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -239,7 +239,7 @@ class TablesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete_table
+        """Tables V1 Delete Table
 
         Deletes a table in the specified snapshot.
 
@@ -288,13 +288,13 @@ class TablesV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
+            '404': "ClientApiError",
             '400': "ClientApiError",
             '403': "ClientApiError",
-            '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '204': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -351,7 +351,7 @@ class TablesV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -399,7 +399,7 @@ class TablesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DDL:
-        """get_schema_ddl
+        """Tables V1 Get Schema Ddl
 
         Returns the DDL of the database schema corresponding to the specified snapshot.
 
@@ -446,13 +446,13 @@ class TablesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DDL",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -485,7 +485,7 @@ class TablesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DDL]:
-        """get_schema_ddl
+        """Tables V1 Get Schema Ddl
 
         Returns the DDL of the database schema corresponding to the specified snapshot.
 
@@ -532,13 +532,13 @@ class TablesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DDL",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -571,7 +571,7 @@ class TablesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_schema_ddl
+        """Tables V1 Get Schema Ddl
 
         Returns the DDL of the database schema corresponding to the specified snapshot.
 
@@ -618,13 +618,13 @@ class TablesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DDL",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -678,7 +678,7 @@ class TablesV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -727,7 +727,7 @@ class TablesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ColumnPublic]:
-        """get_table_columns
+        """Tables V1 List Columns
 
         Returns the columns of a table in the specified snapshot.
 
@@ -777,13 +777,13 @@ class TablesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ColumnPublic]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -817,7 +817,7 @@ class TablesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ColumnPublic]]:
-        """get_table_columns
+        """Tables V1 List Columns
 
         Returns the columns of a table in the specified snapshot.
 
@@ -867,13 +867,13 @@ class TablesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ColumnPublic]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -907,7 +907,7 @@ class TablesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_table_columns
+        """Tables V1 List Columns
 
         Returns the columns of a table in the specified snapshot.
 
@@ -957,13 +957,13 @@ class TablesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ColumnPublic]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1020,7 +1020,7 @@ class TablesV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -1069,7 +1069,7 @@ class TablesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> DDL:
-        """get_table_ddl
+        """Tables V1 Get Table Ddl
 
         Returns the DDL of a table in the specified snapshot.
 
@@ -1119,13 +1119,13 @@ class TablesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DDL",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1159,7 +1159,7 @@ class TablesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[DDL]:
-        """get_table_ddl
+        """Tables V1 Get Table Ddl
 
         Returns the DDL of a table in the specified snapshot.
 
@@ -1209,13 +1209,13 @@ class TablesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DDL",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1249,7 +1249,7 @@ class TablesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_table_ddl
+        """Tables V1 Get Table Ddl
 
         Returns the DDL of a table in the specified snapshot.
 
@@ -1299,13 +1299,13 @@ class TablesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "DDL",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1362,7 +1362,7 @@ class TablesV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -1410,7 +1410,7 @@ class TablesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Table]:
-        """get_tables
+        """Tables V1 List Tables
 
         Returns the tables in the specified snapshot.
 
@@ -1457,13 +1457,13 @@ class TablesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Table]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1496,7 +1496,7 @@ class TablesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Table]]:
-        """get_tables
+        """Tables V1 List Tables
 
         Returns the tables in the specified snapshot.
 
@@ -1543,13 +1543,13 @@ class TablesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Table]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1582,7 +1582,7 @@ class TablesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_tables
+        """Tables V1 List Tables
 
         Returns the tables in the specified snapshot.
 
@@ -1629,13 +1629,13 @@ class TablesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Table]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1689,7 +1689,7 @@ class TablesV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -1739,7 +1739,7 @@ class TablesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Table:
-        """rename_table
+        """Tables V1 Rename Table
 
         Renames a table in the specified snapshot.
 
@@ -1792,13 +1792,14 @@ class TablesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Table",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1833,7 +1834,7 @@ class TablesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Table]:
-        """rename_table
+        """Tables V1 Rename Table
 
         Renames a table in the specified snapshot.
 
@@ -1886,13 +1887,14 @@ class TablesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Table",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1927,7 +1929,7 @@ class TablesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """rename_table
+        """Tables V1 Rename Table
 
         Renames a table in the specified snapshot.
 
@@ -1980,13 +1982,14 @@ class TablesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Table",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -2046,7 +2049,7 @@ class TablesV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 

@@ -63,7 +63,7 @@ class WorkloadsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Task:
-        """create_workload
+        """Workloads V1 Start App
 
         Creates a new workload by starting a Nuvolos application.
 
@@ -113,13 +113,14 @@ class WorkloadsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "Task",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -153,7 +154,7 @@ class WorkloadsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Task]:
-        """create_workload
+        """Workloads V1 Start App
 
         Creates a new workload by starting a Nuvolos application.
 
@@ -203,13 +204,14 @@ class WorkloadsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "Task",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -243,7 +245,7 @@ class WorkloadsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create_workload
+        """Workloads V1 Start App
 
         Creates a new workload by starting a Nuvolos application.
 
@@ -293,13 +295,14 @@ class WorkloadsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "Task",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -356,7 +359,7 @@ class WorkloadsV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -417,7 +420,7 @@ class WorkloadsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """delete_workload
+        """Workloads V1 Stop App
 
         Deletes a workload by stopping a Nuvolos application.
 
@@ -463,14 +466,14 @@ class WorkloadsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '204': None,
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -503,7 +506,7 @@ class WorkloadsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """delete_workload
+        """Workloads V1 Stop App
 
         Deletes a workload by stopping a Nuvolos application.
 
@@ -549,14 +552,14 @@ class WorkloadsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '204': None,
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -589,7 +592,7 @@ class WorkloadsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """delete_workload
+        """Workloads V1 Stop App
 
         Deletes a workload by stopping a Nuvolos application.
 
@@ -635,14 +638,14 @@ class WorkloadsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '204': None,
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '204': None,
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -696,7 +699,7 @@ class WorkloadsV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -745,7 +748,7 @@ class WorkloadsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ExecuteCommandResponse:
-        """execute_command
+        """Workloads V1 Execute Command
 
         Executes a custom command in a selected workload.
 
@@ -795,13 +798,14 @@ class WorkloadsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "ExecuteCommandResponse",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -835,7 +839,7 @@ class WorkloadsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ExecuteCommandResponse]:
-        """execute_command
+        """Workloads V1 Execute Command
 
         Executes a custom command in a selected workload.
 
@@ -885,13 +889,14 @@ class WorkloadsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "ExecuteCommandResponse",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -925,7 +930,7 @@ class WorkloadsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """execute_command
+        """Workloads V1 Execute Command
 
         Executes a custom command in a selected workload.
 
@@ -975,13 +980,14 @@ class WorkloadsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "ExecuteCommandResponse",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1038,7 +1044,7 @@ class WorkloadsV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -1097,7 +1103,7 @@ class WorkloadsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[APINodePool]:
-        """get_nodepools
+        """Workloads V1 List Nodepools
 
         Returns the Virtual Machines available for scaled workloads in the given org/space context.
 
@@ -1138,12 +1144,13 @@ class WorkloadsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[APINodePool]",
+            '404': "ClientApiError",
             '400': "ClientApiError",
             '403': "ClientApiError",
-            '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1174,7 +1181,7 @@ class WorkloadsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[APINodePool]]:
-        """get_nodepools
+        """Workloads V1 List Nodepools
 
         Returns the Virtual Machines available for scaled workloads in the given org/space context.
 
@@ -1215,12 +1222,13 @@ class WorkloadsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[APINodePool]",
+            '404': "ClientApiError",
             '400': "ClientApiError",
             '403': "ClientApiError",
-            '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1251,7 +1259,7 @@ class WorkloadsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_nodepools
+        """Workloads V1 List Nodepools
 
         Returns the Virtual Machines available for scaled workloads in the given org/space context.
 
@@ -1292,12 +1300,13 @@ class WorkloadsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[APINodePool]",
+            '404': "ClientApiError",
             '400': "ClientApiError",
             '403': "ClientApiError",
-            '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1345,7 +1354,7 @@ class WorkloadsV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -1389,7 +1398,7 @@ class WorkloadsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[WorkloadDetailed]:
-        """get_workloads
+        """Workloads V1 List All Running
 
         Returns the workloads currently run by the user.
 
@@ -1425,12 +1434,12 @@ class WorkloadsV1Api:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[WorkloadDetailed]",
             '400': "ClientApiError",
-            '401': None,
             '403': "ClientApiError",
             '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1459,7 +1468,7 @@ class WorkloadsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[WorkloadDetailed]]:
-        """get_workloads
+        """Workloads V1 List All Running
 
         Returns the workloads currently run by the user.
 
@@ -1495,12 +1504,12 @@ class WorkloadsV1Api:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[WorkloadDetailed]",
             '400': "ClientApiError",
-            '401': None,
             '403': "ClientApiError",
             '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1529,7 +1538,7 @@ class WorkloadsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_workloads
+        """Workloads V1 List All Running
 
         Returns the workloads currently run by the user.
 
@@ -1565,12 +1574,12 @@ class WorkloadsV1Api:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[WorkloadDetailed]",
             '400': "ClientApiError",
-            '401': None,
             '403': "ClientApiError",
             '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1612,7 +1621,7 @@ class WorkloadsV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -1660,7 +1669,7 @@ class WorkloadsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[WorkloadDetailed]:
-        """get_workloads_for_app
+        """Workloads V1 List Workloads For App
 
         Returns the workloads available for the user of a given Nuvolos application.
 
@@ -1707,13 +1716,13 @@ class WorkloadsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[WorkloadDetailed]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1746,7 +1755,7 @@ class WorkloadsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[WorkloadDetailed]]:
-        """get_workloads_for_app
+        """Workloads V1 List Workloads For App
 
         Returns the workloads available for the user of a given Nuvolos application.
 
@@ -1793,13 +1802,13 @@ class WorkloadsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[WorkloadDetailed]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1832,7 +1841,7 @@ class WorkloadsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_workloads_for_app
+        """Workloads V1 List Workloads For App
 
         Returns the workloads available for the user of a given Nuvolos application.
 
@@ -1879,13 +1888,13 @@ class WorkloadsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[WorkloadDetailed]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1939,7 +1948,7 @@ class WorkloadsV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 

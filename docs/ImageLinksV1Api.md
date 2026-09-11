@@ -4,11 +4,13 @@ All URIs are relative to *https://api.eu1.nuvolos.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_image_links**](ImageLinksV1Api.md#get_image_links) | **GET** /image_links/v1 | 
+[**get_image_links**](ImageLinksV1Api.md#get_image_links) | **GET** /image_links/v1 | Image Links V1 List
 
 
 # **get_image_links**
 > List[ImageLink] get_image_links()
+
+Image Links V1 List
 
 Lists image_link records accessible to the authenticated user. Returns records where oid and sid are both NULL (globally available), or the user has an active org_role for the org, or the user has an active space_role for the space.
 
@@ -45,6 +47,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     api_instance = nuvolos_client_api.ImageLinksV1Api(api_client)
 
     try:
+        # Image Links V1 List
         api_response = api_instance.get_image_links()
         print("The response of ImageLinksV1Api->get_image_links:\n")
         pprint(api_response)
@@ -69,7 +72,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -77,12 +80,12 @@ This endpoint does not need any parameter.
 |-------------|-------------|------------------|
 **200** | Operation succeeded |  -  |
 **400** | Bad request |  -  |
-**401** | Unauthorized |  -  |
 **403** | Access to Nuvolos resource is forbidden |  -  |
 **404** | Nuvolos object not found |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
 **500** | Internal server error |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

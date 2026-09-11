@@ -4,14 +4,16 @@ All URIs are relative to *https://api.eu1.nuvolos.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cleanup_lfs_share**](LFSV1Api.md#cleanup_lfs_share) | **POST** /lfs/v1/org/{org_slug}/space/{space_slug}/shares/{afsid}/cleanup | 
-[**list_lfs_shares**](LFSV1Api.md#list_lfs_shares) | **GET** /lfs/v1/org/{org_slug}/space/{space_slug}/shares | 
+[**cleanup_lfs_share**](LFSV1Api.md#cleanup_lfs_share) | **POST** /lfs/v1/org/{org_slug}/space/{space_slug}/shares/{afsid}/cleanup | Schedule cleanup of a Ceph-backed LFS bucket.
+[**list_lfs_shares**](LFSV1Api.md#list_lfs_shares) | **GET** /lfs/v1/org/{org_slug}/space/{space_slug}/shares | List all active LFS shares mounted in a space.
 
 
 # **cleanup_lfs_share**
-> Task cleanup_lfs_share(org_slug, space_slug, afsid)
+> Task cleanup_lfs_share(org_slug, space_slug, afsid, max_age=max_age)
 
-Remove incomplete multipart uploads to an LFS
+Schedule cleanup of a Ceph-backed LFS bucket.
+
+Remove incomplete multipart uploads to an LFS. Optional ?max_age= query param (rclone duration string, e.g. '30m', '2h'; defaults to '1h') only aborts uploads incomplete for longer than this.
 
 ### Example
 
@@ -47,9 +49,11 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     org_slug = 'org_slug_example' # str | 
     space_slug = 'space_slug_example' # str | 
     afsid = 56 # int | 
+    max_age = '1h' # str |  (optional) (default to '1h')
 
     try:
-        api_response = api_instance.cleanup_lfs_share(org_slug, space_slug, afsid)
+        # Schedule cleanup of a Ceph-backed LFS bucket.
+        api_response = api_instance.cleanup_lfs_share(org_slug, space_slug, afsid, max_age=max_age)
         print("The response of LFSV1Api->cleanup_lfs_share:\n")
         pprint(api_response)
     except Exception as e:
@@ -66,6 +70,7 @@ Name | Type | Description  | Notes
  **org_slug** | **str**|  | 
  **space_slug** | **str**|  | 
  **afsid** | **int**|  | 
+ **max_age** | **str**|  | [optional] [default to &#39;1h&#39;]
 
 ### Return type
 
@@ -78,25 +83,28 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **202** | Cleanup task accepted |  -  |
-**400** | Bad request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Access to Nuvolos resource is forbidden |  -  |
+**422** | Validation error |  -  |
 **404** | Nuvolos object not found |  -  |
+**400** | Bad request |  -  |
+**403** | Access to Nuvolos resource is forbidden |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
 **500** | Internal server error |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_lfs_shares**
 > List[LFSShare] list_lfs_shares(org_slug, space_slug)
+
+List all active LFS shares mounted in a space.
 
 List active LFS shares attached to a space.
 
@@ -135,6 +143,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     space_slug = 'space_slug_example' # str | 
 
     try:
+        # List all active LFS shares mounted in a space.
         api_response = api_instance.list_lfs_shares(org_slug, space_slug)
         print("The response of LFSV1Api->list_lfs_shares:\n")
         pprint(api_response)
@@ -163,20 +172,20 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Operation succeeded |  -  |
-**400** | Bad request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Access to Nuvolos resource is forbidden |  -  |
 **404** | Nuvolos object not found |  -  |
+**400** | Bad request |  -  |
+**403** | Access to Nuvolos resource is forbidden |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
 **500** | Internal server error |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

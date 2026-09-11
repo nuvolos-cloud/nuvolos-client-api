@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **slug** | **str** |  | 
 **name** | **str** |  | 
-**description** | **str** |  | [optional] 
 **role** | **str** |  | [optional] 
+**description** | **str** |  | [optional] 
 **creation_timestamp** | **datetime** |  | [optional] 
 **archival_timestamp** | **datetime** |  | [optional] 
 **rearchive_after_timestamp** | **datetime** |  | [optional] 

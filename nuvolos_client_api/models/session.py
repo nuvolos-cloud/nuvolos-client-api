@@ -31,20 +31,21 @@ class Session(BaseModel):
     session_id: StrictStr
     start_time: datetime
     stop_time: Optional[datetime] = None
+    runtime_seconds: Optional[StrictInt] = None
+    ncu: Optional[StrictInt] = None
+    ncu_sidecars_total: Optional[Union[StrictFloat, StrictInt]] = None
+    ncu_hours_used: Optional[Union[StrictFloat, StrictInt]] = None
+    node_pool: Optional[StrictStr] = None
+    worker_node_name: Optional[StrictStr] = None
     start_uid: StrictInt
     start_uid_full_name: StrictStr
     stop_uid: Optional[StrictInt] = None
     stop_uid_full_name: Optional[StrictStr] = None
-    runtime_seconds: Optional[StrictInt] = None
-    ncu: Optional[StrictInt] = None
-    ncu_hours_used: Optional[Union[StrictFloat, StrictInt]] = None
-    ncu_sidecars_total: Optional[Union[StrictFloat, StrictInt]] = None
+    logging_containers: Optional[List[StrictStr]] = None
     credits_spent: Optional[Union[StrictFloat, StrictInt]] = None
-    node_pool: Optional[StrictStr] = None
     active_resource: Optional[StrictStr] = None
     can_read_logs: Optional[StrictBool] = None
-    logging_containers: Optional[List[StrictStr]] = None
-    __properties: ClassVar[List[str]] = ["session_id", "start_time", "stop_time", "start_uid", "start_uid_full_name", "stop_uid", "stop_uid_full_name", "runtime_seconds", "ncu", "ncu_hours_used", "ncu_sidecars_total", "credits_spent", "node_pool", "active_resource", "can_read_logs", "logging_containers"]
+    __properties: ClassVar[List[str]] = ["session_id", "start_time", "stop_time", "runtime_seconds", "ncu", "ncu_sidecars_total", "ncu_hours_used", "node_pool", "worker_node_name", "start_uid", "start_uid_full_name", "stop_uid", "stop_uid_full_name", "logging_containers", "credits_spent", "active_resource", "can_read_logs"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -90,16 +91,6 @@ class Session(BaseModel):
         if self.stop_time is None and "stop_time" in self.model_fields_set:
             _dict['stop_time'] = None
 
-        # set to None if stop_uid (nullable) is None
-        # and model_fields_set contains the field
-        if self.stop_uid is None and "stop_uid" in self.model_fields_set:
-            _dict['stop_uid'] = None
-
-        # set to None if stop_uid_full_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.stop_uid_full_name is None and "stop_uid_full_name" in self.model_fields_set:
-            _dict['stop_uid_full_name'] = None
-
         # set to None if runtime_seconds (nullable) is None
         # and model_fields_set contains the field
         if self.runtime_seconds is None and "runtime_seconds" in self.model_fields_set:
@@ -110,25 +101,45 @@ class Session(BaseModel):
         if self.ncu is None and "ncu" in self.model_fields_set:
             _dict['ncu'] = None
 
-        # set to None if ncu_hours_used (nullable) is None
-        # and model_fields_set contains the field
-        if self.ncu_hours_used is None and "ncu_hours_used" in self.model_fields_set:
-            _dict['ncu_hours_used'] = None
-
         # set to None if ncu_sidecars_total (nullable) is None
         # and model_fields_set contains the field
         if self.ncu_sidecars_total is None and "ncu_sidecars_total" in self.model_fields_set:
             _dict['ncu_sidecars_total'] = None
 
-        # set to None if credits_spent (nullable) is None
+        # set to None if ncu_hours_used (nullable) is None
         # and model_fields_set contains the field
-        if self.credits_spent is None and "credits_spent" in self.model_fields_set:
-            _dict['credits_spent'] = None
+        if self.ncu_hours_used is None and "ncu_hours_used" in self.model_fields_set:
+            _dict['ncu_hours_used'] = None
 
         # set to None if node_pool (nullable) is None
         # and model_fields_set contains the field
         if self.node_pool is None and "node_pool" in self.model_fields_set:
             _dict['node_pool'] = None
+
+        # set to None if worker_node_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.worker_node_name is None and "worker_node_name" in self.model_fields_set:
+            _dict['worker_node_name'] = None
+
+        # set to None if stop_uid (nullable) is None
+        # and model_fields_set contains the field
+        if self.stop_uid is None and "stop_uid" in self.model_fields_set:
+            _dict['stop_uid'] = None
+
+        # set to None if stop_uid_full_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.stop_uid_full_name is None and "stop_uid_full_name" in self.model_fields_set:
+            _dict['stop_uid_full_name'] = None
+
+        # set to None if logging_containers (nullable) is None
+        # and model_fields_set contains the field
+        if self.logging_containers is None and "logging_containers" in self.model_fields_set:
+            _dict['logging_containers'] = None
+
+        # set to None if credits_spent (nullable) is None
+        # and model_fields_set contains the field
+        if self.credits_spent is None and "credits_spent" in self.model_fields_set:
+            _dict['credits_spent'] = None
 
         # set to None if active_resource (nullable) is None
         # and model_fields_set contains the field
@@ -139,11 +150,6 @@ class Session(BaseModel):
         # and model_fields_set contains the field
         if self.can_read_logs is None and "can_read_logs" in self.model_fields_set:
             _dict['can_read_logs'] = None
-
-        # set to None if logging_containers (nullable) is None
-        # and model_fields_set contains the field
-        if self.logging_containers is None and "logging_containers" in self.model_fields_set:
-            _dict['logging_containers'] = None
 
         return _dict
 
@@ -160,19 +166,20 @@ class Session(BaseModel):
             "session_id": obj.get("session_id"),
             "start_time": obj.get("start_time"),
             "stop_time": obj.get("stop_time"),
+            "runtime_seconds": obj.get("runtime_seconds"),
+            "ncu": obj.get("ncu"),
+            "ncu_sidecars_total": obj.get("ncu_sidecars_total"),
+            "ncu_hours_used": obj.get("ncu_hours_used"),
+            "node_pool": obj.get("node_pool"),
+            "worker_node_name": obj.get("worker_node_name"),
             "start_uid": obj.get("start_uid"),
             "start_uid_full_name": obj.get("start_uid_full_name"),
             "stop_uid": obj.get("stop_uid"),
             "stop_uid_full_name": obj.get("stop_uid_full_name"),
-            "runtime_seconds": obj.get("runtime_seconds"),
-            "ncu": obj.get("ncu"),
-            "ncu_hours_used": obj.get("ncu_hours_used"),
-            "ncu_sidecars_total": obj.get("ncu_sidecars_total"),
+            "logging_containers": obj.get("logging_containers"),
             "credits_spent": obj.get("credits_spent"),
-            "node_pool": obj.get("node_pool"),
             "active_resource": obj.get("active_resource"),
-            "can_read_logs": obj.get("can_read_logs"),
-            "logging_containers": obj.get("logging_containers")
+            "can_read_logs": obj.get("can_read_logs")
         })
         return _obj
 

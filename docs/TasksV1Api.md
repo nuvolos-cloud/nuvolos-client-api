@@ -4,11 +4,13 @@ All URIs are relative to *https://api.eu1.nuvolos.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_task**](TasksV1Api.md#get_task) | **GET** /tasks/v1/{tkid} | 
+[**get_task**](TasksV1Api.md#get_task) | **GET** /tasks/v1/{tkid} | Tasks V1 Get Task
 
 
 # **get_task**
 > Task1 get_task(tkid)
+
+Tasks V1 Get Task
 
 Returns the task object with the specified id. Only callable by the task submitter.
 
@@ -46,6 +48,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     tkid = 56 # int | 
 
     try:
+        # Tasks V1 Get Task
         api_response = api_instance.get_task(tkid)
         print("The response of TasksV1Api->get_task:\n")
         pprint(api_response)
@@ -73,21 +76,21 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Operation succeeded |  -  |
+**418** | Task failed |  -  |
+**404** | Not Found - task does not exist |  -  |
 **400** | Bad request |  -  |
 **403** | Access to Nuvolos resource is forbidden |  -  |
-**404** | Nuvolos object not found |  -  |
-**408** | Request Timeout - task not finished yet and only_finished&#x3D;true was specified |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
-**418** | I&#39;m a teapot - task failed |  -  |
 **500** | Internal server error |  -  |
+**200** | Operation succeeded |  -  |
+**408** | Task not finished yet |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

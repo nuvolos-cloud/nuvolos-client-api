@@ -8,12 +8,12 @@ Name | Type | Description | Notes
 **slug** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
+**row_count** | **int** |  | [optional] 
+**bytes** | **int** |  | [optional] 
+**is_external** | **bool** |  | [optional] 
+**delete_timestamp** | **str** |  | [optional] 
 **database** | **str** |  | [optional] 
 **var_schema** | **str** |  | [optional] 
-**bytes** | **int** |  | [optional] 
-**row_count** | **int** |  | [optional] 
-**delete_timestamp** | **str** |  | [optional] 
-**is_external** | **bool** |  | [optional] 
 
 ## Example
 

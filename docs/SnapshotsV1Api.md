@@ -4,12 +4,14 @@ All URIs are relative to *https://api.eu1.nuvolos.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_snapshot**](SnapshotsV1Api.md#delete_snapshot) | **DELETE** /snapshots/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug} | 
-[**get_snapshots**](SnapshotsV1Api.md#get_snapshots) | **GET** /snapshots/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug} | 
+[**delete_snapshot**](SnapshotsV1Api.md#delete_snapshot) | **DELETE** /snapshots/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug} | Snapshots V1 Delete Snapshot
+[**get_snapshots**](SnapshotsV1Api.md#get_snapshots) | **GET** /snapshots/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug} | Snapshots V1 List Snapshots
 
 
 # **delete_snapshot**
 > Task delete_snapshot(org_slug, space_slug, instance_slug, snapshot_slug)
+
+Snapshots V1 Delete Snapshot
 
 Deletes a snapshot in the specified instance asynchronously
 
@@ -50,6 +52,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     snapshot_slug = 'snapshot_slug_example' # str | 
 
     try:
+        # Snapshots V1 Delete Snapshot
         api_response = api_instance.delete_snapshot(org_slug, space_slug, instance_slug, snapshot_slug)
         print("The response of SnapshotsV1Api->delete_snapshot:\n")
         pprint(api_response)
@@ -80,24 +83,26 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Deletion initiated |  -  |
+**404** | Not Found - snapshot does not exist |  -  |
 **400** | Bad request |  -  |
-**403** | Access to Nuvolos resource is forbidden |  -  |
-**404** | Nuvolos object not found |  -  |
+**403** | Forbidden - not authorized to delete the snapshot |  -  |
 **409** | Conflict with Nuvolos object |  -  |
-**410** | Nuvolos object no longer available |  -  |
+**410** | Gone - snapshot already deleted |  -  |
 **500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_snapshots**
 > List[Snapshot] get_snapshots(org_slug, space_slug, instance_slug)
+
+Snapshots V1 List Snapshots
 
 Returns the snapshots the user has access to in the specified org, space and instance.
 
@@ -137,6 +142,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     instance_slug = 'instance_slug_example' # str | 
 
     try:
+        # Snapshots V1 List Snapshots
         api_response = api_instance.get_snapshots(org_slug, space_slug, instance_slug)
         print("The response of SnapshotsV1Api->get_snapshots:\n")
         pprint(api_response)
@@ -166,20 +172,20 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Operation succeeded |  -  |
-**400** | Bad request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Access to Nuvolos resource is forbidden |  -  |
 **404** | Nuvolos object not found |  -  |
+**400** | Bad request |  -  |
+**403** | Access to Nuvolos resource is forbidden |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
 **500** | Internal server error |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

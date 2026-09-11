@@ -5,23 +5,23 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**session_id** | **str** |  | [optional] 
 **slug** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
 **status** | **str** |  | [optional] 
-**shared** | **str** |  | [optional] 
 **org_slug** | **str** |  | [optional] 
 **space_slug** | **str** |  | [optional] 
 **instance_slug** | **str** |  | [optional] 
-**node_pool** | **str** |  | [optional] 
+**session_id** | **str** |  | [optional] 
+**creation_timestamp** | **str** |  | [optional] 
+**shared** | **str** |  | [optional] 
+**compute_units** | **str** |  | [optional] 
+**addons_compute_units** | **str** |  | [optional] 
+**gpu** | **str** |  | [optional] 
 **current_cpu** | **str** |  | [optional] 
 **current_memory** | **str** |  | [optional] 
-**compute_units** | **str** |  | [optional] 
-**gpu** | **str** |  | [optional] 
+**node_pool** | **str** |  | [optional] 
 **max_cpu** | **str** |  | [optional] 
 **max_memory** | **str** |  | [optional] 
-**addons_compute_units** | **str** |  | [optional] 
-**creation_timestamp** | **str** |  | [optional] 
 
 ## Example
 

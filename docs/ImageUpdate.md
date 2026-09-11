@@ -6,15 +6,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
-**docker_image_url** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
-**description_md** | **str** |  | [optional] 
-**public** | **bool** |  | [optional] 
-**public_description** | **str** |  | [optional] 
-**app_type** | **str** |  | [optional] 
+**docker_image_url** | **str** |  | [optional] 
 **configuration** | **Dict[str, object]** |  | [optional] 
+**app_type** | **str** |  | [optional] 
+**description_md** | **str** |  | [optional] 
 **complexity** | **int** |  | [optional] 
 **tags** | **Dict[str, object]** |  | [optional] 
+**public** | **bool** |  | [optional] 
+**public_description** | **str** |  | [optional] 
 
 ## Example
 

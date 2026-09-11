@@ -52,7 +52,7 @@ class ImageLinksV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ImageLink]:
-        """get_image_links
+        """Image Links V1 List
 
         Lists image_link records accessible to the authenticated user. Returns records where oid and sid are both NULL (globally available), or the user has an active org_role for the org, or the user has an active space_role for the space.
 
@@ -88,12 +88,12 @@ class ImageLinksV1Api:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ImageLink]",
             '400': "ClientApiError",
-            '401': None,
             '403': "ClientApiError",
             '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -122,7 +122,7 @@ class ImageLinksV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ImageLink]]:
-        """get_image_links
+        """Image Links V1 List
 
         Lists image_link records accessible to the authenticated user. Returns records where oid and sid are both NULL (globally available), or the user has an active org_role for the org, or the user has an active space_role for the space.
 
@@ -158,12 +158,12 @@ class ImageLinksV1Api:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ImageLink]",
             '400': "ClientApiError",
-            '401': None,
             '403': "ClientApiError",
             '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -192,7 +192,7 @@ class ImageLinksV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_image_links
+        """Image Links V1 List
 
         Lists image_link records accessible to the authenticated user. Returns records where oid and sid are both NULL (globally available), or the user has an active org_role for the org, or the user has an active space_role for the space.
 
@@ -228,12 +228,12 @@ class ImageLinksV1Api:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ImageLink]",
             '400': "ClientApiError",
-            '401': None,
             '403': "ClientApiError",
             '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -275,7 +275,7 @@ class ImageLinksV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 

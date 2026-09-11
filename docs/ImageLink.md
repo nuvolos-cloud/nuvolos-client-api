@@ -5,13 +5,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**imid** | **int** |  | 
 **linkid** | **int** |  | 
+**imid** | **int** |  | 
 **org_slug** | **str** |  | [optional] 
 **space_slug** | **str** |  | [optional] 
-**priority** | **int** |  | [optional] 
 **space_type** | **int** |  | [optional] 
 **comment** | **str** |  | [optional] 
+**priority** | **int** |  | [optional] 
 
 ## Example
 

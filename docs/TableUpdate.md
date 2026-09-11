@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **slug** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
-**bytes** | **int** |  | [optional] 
 **row_count** | **int** |  | [optional] 
+**bytes** | **int** |  | [optional] 
 **delete_timestamp** | **str** |  | [optional] 
 
 ## Example

@@ -30,12 +30,12 @@ class Application(BaseModel):
     slug: StrictStr
     name: StrictStr
     description: StrictStr
-    status: StrictStr
     storage_used: StrictInt
     shared: StrictBool
     exportable: StrictBool
+    status: StrictStr
     aoid: StrictInt
-    __properties: ClassVar[List[str]] = ["slug", "name", "description", "status", "storage_used", "shared", "exportable", "aoid"]
+    __properties: ClassVar[List[str]] = ["slug", "name", "description", "storage_used", "shared", "exportable", "status", "aoid"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -91,10 +91,10 @@ class Application(BaseModel):
             "slug": obj.get("slug"),
             "name": obj.get("name"),
             "description": obj.get("description"),
-            "status": obj.get("status"),
             "storage_used": obj.get("storage_used"),
             "shared": obj.get("shared"),
             "exportable": obj.get("exportable"),
+            "status": obj.get("status"),
             "aoid": obj.get("aoid")
         })
         return _obj

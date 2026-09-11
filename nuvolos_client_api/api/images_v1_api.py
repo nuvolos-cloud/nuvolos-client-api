@@ -57,7 +57,7 @@ class ImagesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ImageResponse:
-        """create_image
+        """Images V1 Create
 
         Creates a new image record along with image_link and image_family_link records. org_slug and space_slug can be omitted only for account managers (globally available image). If both are specified, the space must belong to the org and the user must be a Space Admin. If only org_slug is specified, the user must be an Org Admin for that org.
 
@@ -95,13 +95,14 @@ class ImagesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "ImageResponse",
+            '422': "ValidationError",
             '400': "ClientApiError",
-            '401': None,
             '403': "ClientApiError",
             '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -131,7 +132,7 @@ class ImagesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ImageResponse]:
-        """create_image
+        """Images V1 Create
 
         Creates a new image record along with image_link and image_family_link records. org_slug and space_slug can be omitted only for account managers (globally available image). If both are specified, the space must belong to the org and the user must be a Space Admin. If only org_slug is specified, the user must be an Org Admin for that org.
 
@@ -169,13 +170,14 @@ class ImagesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "ImageResponse",
+            '422': "ValidationError",
             '400': "ClientApiError",
-            '401': None,
             '403': "ClientApiError",
             '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -205,7 +207,7 @@ class ImagesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create_image
+        """Images V1 Create
 
         Creates a new image record along with image_link and image_family_link records. org_slug and space_slug can be omitted only for account managers (globally available image). If both are specified, the space must belong to the org and the user must be a Space Admin. If only org_slug is specified, the user must be an Org Admin for that org.
 
@@ -243,13 +245,14 @@ class ImagesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "ImageResponse",
+            '422': "ValidationError",
             '400': "ClientApiError",
-            '401': None,
             '403': "ClientApiError",
             '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -294,7 +297,7 @@ class ImagesV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -351,7 +354,7 @@ class ImagesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Image]:
-        """get_images
+        """Images V1 List
 
         Lists image records accessible to the authenticated user.
 
@@ -387,12 +390,12 @@ class ImagesV1Api:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Image]",
             '400': "ClientApiError",
-            '401': None,
             '403': "ClientApiError",
             '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -421,7 +424,7 @@ class ImagesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Image]]:
-        """get_images
+        """Images V1 List
 
         Lists image records accessible to the authenticated user.
 
@@ -457,12 +460,12 @@ class ImagesV1Api:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Image]",
             '400': "ClientApiError",
-            '401': None,
             '403': "ClientApiError",
             '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -491,7 +494,7 @@ class ImagesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_images
+        """Images V1 List
 
         Lists image records accessible to the authenticated user.
 
@@ -527,12 +530,12 @@ class ImagesV1Api:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Image]",
             '400': "ClientApiError",
-            '401': None,
             '403': "ClientApiError",
             '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -574,7 +577,7 @@ class ImagesV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -620,7 +623,7 @@ class ImagesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Image:
-        """update_image
+        """Images V1 Update
 
         Updates fields of an existing image record accessible to the authenticated user. All fields are optional; only provided fields are updated. release_date is always set to the current date on a successful update. Updatable fields: name, description, docker_image_url, configuration, app_type, description_md, complexity, tags, public, public_description.
 
@@ -661,13 +664,14 @@ class ImagesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Image",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -698,7 +702,7 @@ class ImagesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Image]:
-        """update_image
+        """Images V1 Update
 
         Updates fields of an existing image record accessible to the authenticated user. All fields are optional; only provided fields are updated. release_date is always set to the current date on a successful update. Updatable fields: name, description, docker_image_url, configuration, app_type, description_md, complexity, tags, public, public_description.
 
@@ -739,13 +743,14 @@ class ImagesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Image",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -776,7 +781,7 @@ class ImagesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update_image
+        """Images V1 Update
 
         Updates fields of an existing image record accessible to the authenticated user. All fields are optional; only provided fields are updated. release_date is always set to the current date on a successful update. Updatable fields: name, description, docker_image_url, configuration, app_type, description_md, complexity, tags, public, public_description.
 
@@ -817,13 +822,14 @@ class ImagesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "Image",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -871,7 +877,7 @@ class ImagesV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 
