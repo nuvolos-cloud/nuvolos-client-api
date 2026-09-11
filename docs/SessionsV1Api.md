@@ -138,7 +138,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     metadata = False # bool |  (optional) (default to False)
     order_by = 'order_by_example' # str |  (optional)
     session_id = 'session_id_example' # str |  (optional)
-    sort = desc # str |  (optional) (default to desc)
+    sort = 'desc' # str |  (optional) (default to 'desc')
 
     try:
         api_response = api_instance.get_sessions(org_slug, space_slug, instance_slug, app_slug, page=page, per_page=per_page, metadata=metadata, order_by=order_by, session_id=session_id, sort=sort)
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
  **metadata** | **bool**|  | [optional] [default to False]
  **order_by** | **str**|  | [optional] 
  **session_id** | **str**|  | [optional] 
- **sort** | **str**|  | [optional] [default to desc]
+ **sort** | **str**|  | [optional] [default to &#39;desc&#39;]
 
 ### Return type
 
