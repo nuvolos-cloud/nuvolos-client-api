@@ -57,7 +57,7 @@ class ImageFamiliesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ImageFamilyResponse:
-        """create_image_family
+        """Image Families V1 Create
 
         Creates a new image family record. Priority is automatically set to max existing priority + 1.
 
@@ -95,13 +95,14 @@ class ImageFamiliesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "ImageFamilyResponse",
+            '422': "ValidationError",
             '400': "ClientApiError",
-            '401': None,
             '403': "ClientApiError",
             '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -131,7 +132,7 @@ class ImageFamiliesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ImageFamilyResponse]:
-        """create_image_family
+        """Image Families V1 Create
 
         Creates a new image family record. Priority is automatically set to max existing priority + 1.
 
@@ -169,13 +170,14 @@ class ImageFamiliesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "ImageFamilyResponse",
+            '422': "ValidationError",
             '400': "ClientApiError",
-            '401': None,
             '403': "ClientApiError",
             '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -205,7 +207,7 @@ class ImageFamiliesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """create_image_family
+        """Image Families V1 Create
 
         Creates a new image family record. Priority is automatically set to max existing priority + 1.
 
@@ -243,13 +245,14 @@ class ImageFamiliesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '201': "ImageFamilyResponse",
+            '422': "ValidationError",
             '400': "ClientApiError",
-            '401': None,
             '403': "ClientApiError",
             '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -294,7 +297,7 @@ class ImageFamiliesV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -351,7 +354,7 @@ class ImageFamiliesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[ImageFamily]:
-        """get_image_families
+        """Image Families V1 List
 
         Lists all image family records.
 
@@ -387,12 +390,12 @@ class ImageFamiliesV1Api:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ImageFamily]",
             '400': "ClientApiError",
-            '401': None,
             '403': "ClientApiError",
             '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -421,7 +424,7 @@ class ImageFamiliesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[ImageFamily]]:
-        """get_image_families
+        """Image Families V1 List
 
         Lists all image family records.
 
@@ -457,12 +460,12 @@ class ImageFamiliesV1Api:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ImageFamily]",
             '400': "ClientApiError",
-            '401': None,
             '403': "ClientApiError",
             '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -491,7 +494,7 @@ class ImageFamiliesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_image_families
+        """Image Families V1 List
 
         Lists all image family records.
 
@@ -527,12 +530,12 @@ class ImageFamiliesV1Api:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[ImageFamily]",
             '400': "ClientApiError",
-            '401': None,
             '403': "ClientApiError",
             '404': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -574,7 +577,7 @@ class ImageFamiliesV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -620,7 +623,7 @@ class ImageFamiliesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ImageFamily:
-        """update_image_family
+        """Image Families V1 Update
 
         Updates fields of an existing image family record. All fields are optional; only provided fields are updated. Updatable fields: name, description, icon_url, groups, disabled_reason, priority.
 
@@ -661,13 +664,14 @@ class ImageFamiliesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ImageFamily",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -698,7 +702,7 @@ class ImageFamiliesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ImageFamily]:
-        """update_image_family
+        """Image Families V1 Update
 
         Updates fields of an existing image family record. All fields are optional; only provided fields are updated. Updatable fields: name, description, icon_url, groups, disabled_reason, priority.
 
@@ -739,13 +743,14 @@ class ImageFamiliesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ImageFamily",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -776,7 +781,7 @@ class ImageFamiliesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """update_image_family
+        """Image Families V1 Update
 
         Updates fields of an existing image family record. All fields are optional; only provided fields are updated. Updatable fields: name, description, icon_url, groups, disabled_reason, priority.
 
@@ -817,13 +822,14 @@ class ImageFamiliesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ImageFamily",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -871,7 +877,7 @@ class ImageFamiliesV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 

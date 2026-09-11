@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**slug** | **str** |  | 
 **name** | **str** |  | 
+**slug** | **str** |  | 
 **description** | **str** |  | [optional] 
 **email_once_finished** | **bool** |  | [optional] [default to False]
 

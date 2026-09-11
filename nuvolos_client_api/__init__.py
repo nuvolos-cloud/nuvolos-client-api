@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.6.0"
+__version__ = "1.7.0"
 
 # Define package exports
 __all__ = [
@@ -54,6 +54,7 @@ __all__ = [
     "ExecuteCommand",
     "ExecuteCommandResponse",
     "FilePublic",
+    "GroupInstanceCreateRequest",
     "Image",
     "ImageCreate",
     "ImageFamily",
@@ -66,17 +67,27 @@ __all__ = [
     "Instance",
     "InstanceCreateRequest",
     "InstanceCreated",
+    "InstanceInvitationRequest",
+    "InstanceMember",
+    "InvitationSummary",
     "LFSShare",
     "Org",
     "Session",
     "Snapshot",
     "SnapshotCreateRequest",
     "Space",
+    "SpaceInstanceRole",
+    "SpaceInvitationRequest",
+    "SpaceInvitationSummary",
+    "SpaceMember",
     "StartApp",
     "Table",
     "TableUpdate",
     "Task",
     "Task1",
+    "ValidationError",
+    "ValidationErrorDetail",
+    "ValidationErrorDetailLocation",
     "WorkloadDetailed",
 ]
 
@@ -121,6 +132,7 @@ from nuvolos_client_api.models.distribution_request import DistributionRequest a
 from nuvolos_client_api.models.execute_command import ExecuteCommand as ExecuteCommand
 from nuvolos_client_api.models.execute_command_response import ExecuteCommandResponse as ExecuteCommandResponse
 from nuvolos_client_api.models.file_public import FilePublic as FilePublic
+from nuvolos_client_api.models.group_instance_create_request import GroupInstanceCreateRequest as GroupInstanceCreateRequest
 from nuvolos_client_api.models.image import Image as Image
 from nuvolos_client_api.models.image_create import ImageCreate as ImageCreate
 from nuvolos_client_api.models.image_family import ImageFamily as ImageFamily
@@ -133,16 +145,26 @@ from nuvolos_client_api.models.image_update import ImageUpdate as ImageUpdate
 from nuvolos_client_api.models.instance import Instance as Instance
 from nuvolos_client_api.models.instance_create_request import InstanceCreateRequest as InstanceCreateRequest
 from nuvolos_client_api.models.instance_created import InstanceCreated as InstanceCreated
+from nuvolos_client_api.models.instance_invitation_request import InstanceInvitationRequest as InstanceInvitationRequest
+from nuvolos_client_api.models.instance_member import InstanceMember as InstanceMember
+from nuvolos_client_api.models.invitation_summary import InvitationSummary as InvitationSummary
 from nuvolos_client_api.models.lfs_share import LFSShare as LFSShare
 from nuvolos_client_api.models.org import Org as Org
 from nuvolos_client_api.models.session import Session as Session
 from nuvolos_client_api.models.snapshot import Snapshot as Snapshot
 from nuvolos_client_api.models.snapshot_create_request import SnapshotCreateRequest as SnapshotCreateRequest
 from nuvolos_client_api.models.space import Space as Space
+from nuvolos_client_api.models.space_instance_role import SpaceInstanceRole as SpaceInstanceRole
+from nuvolos_client_api.models.space_invitation_request import SpaceInvitationRequest as SpaceInvitationRequest
+from nuvolos_client_api.models.space_invitation_summary import SpaceInvitationSummary as SpaceInvitationSummary
+from nuvolos_client_api.models.space_member import SpaceMember as SpaceMember
 from nuvolos_client_api.models.start_app import StartApp as StartApp
 from nuvolos_client_api.models.table import Table as Table
 from nuvolos_client_api.models.table_update import TableUpdate as TableUpdate
 from nuvolos_client_api.models.task import Task as Task
 from nuvolos_client_api.models.task1 import Task1 as Task1
+from nuvolos_client_api.models.validation_error import ValidationError as ValidationError
+from nuvolos_client_api.models.validation_error_detail import ValidationErrorDetail as ValidationErrorDetail
+from nuvolos_client_api.models.validation_error_detail_location import ValidationErrorDetailLocation as ValidationErrorDetailLocation
 from nuvolos_client_api.models.workload_detailed import WorkloadDetailed as WorkloadDetailed
 

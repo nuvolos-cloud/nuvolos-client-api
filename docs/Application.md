@@ -8,10 +8,10 @@ Name | Type | Description | Notes
 **slug** | **str** |  | 
 **name** | **str** |  | 
 **description** | **str** |  | 
-**status** | **str** |  | 
 **storage_used** | **int** |  | 
 **shared** | **bool** |  | 
 **exportable** | **bool** |  | 
+**status** | **str** |  | 
 **aoid** | **int** |  | 
 
 ## Example

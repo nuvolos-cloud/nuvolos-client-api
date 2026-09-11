@@ -30,12 +30,13 @@ class Task1(BaseModel):
     """ # noqa: E501
     id: Optional[StrictInt] = None
     description: Optional[StrictStr] = None
+    parent_tkid: Optional[StrictInt] = None
     status: Optional[StrictStr] = None
     result: Optional[StrictStr] = None
     created: Optional[datetime] = None
     started: Optional[datetime] = None
     finished: Optional[datetime] = None
-    __properties: ClassVar[List[str]] = ["id", "description", "status", "result", "created", "started", "finished"]
+    __properties: ClassVar[List[str]] = ["id", "description", "parent_tkid", "status", "result", "created", "started", "finished"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -76,6 +77,11 @@ class Task1(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if parent_tkid (nullable) is None
+        # and model_fields_set contains the field
+        if self.parent_tkid is None and "parent_tkid" in self.model_fields_set:
+            _dict['parent_tkid'] = None
+
         return _dict
 
     @classmethod
@@ -90,6 +96,7 @@ class Task1(BaseModel):
         _obj = cls.model_validate({
             "id": obj.get("id"),
             "description": obj.get("description"),
+            "parent_tkid": obj.get("parent_tkid"),
             "status": obj.get("status"),
             "result": obj.get("result"),
             "created": obj.get("created"),

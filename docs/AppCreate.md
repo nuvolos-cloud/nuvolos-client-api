@@ -5,10 +5,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**imid** | **int** |  | 
 **long_id** | **str** |  | 
-**description** | **str** |  | [optional] 
+**imid** | **int** |  | 
 **pars** | **str** |  | [optional] [default to '{}']
+**description** | **str** |  | [optional] 
 
 ## Example
 

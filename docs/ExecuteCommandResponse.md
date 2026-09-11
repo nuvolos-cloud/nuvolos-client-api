@@ -6,9 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reqid** | **str** |  | [optional] 
+**metadata_path** | **str** |  | [optional] 
 **output_path** | **str** |  | [optional] 
 **error_path** | **str** |  | [optional] 
-**metadata_path** | **str** |  | [optional] 
 
 ## Example
 

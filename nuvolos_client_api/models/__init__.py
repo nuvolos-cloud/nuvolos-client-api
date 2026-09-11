@@ -25,6 +25,7 @@ from nuvolos_client_api.models.distribution_request import DistributionRequest
 from nuvolos_client_api.models.execute_command import ExecuteCommand
 from nuvolos_client_api.models.execute_command_response import ExecuteCommandResponse
 from nuvolos_client_api.models.file_public import FilePublic
+from nuvolos_client_api.models.group_instance_create_request import GroupInstanceCreateRequest
 from nuvolos_client_api.models.image import Image
 from nuvolos_client_api.models.image_create import ImageCreate
 from nuvolos_client_api.models.image_family import ImageFamily
@@ -37,16 +38,26 @@ from nuvolos_client_api.models.image_update import ImageUpdate
 from nuvolos_client_api.models.instance import Instance
 from nuvolos_client_api.models.instance_create_request import InstanceCreateRequest
 from nuvolos_client_api.models.instance_created import InstanceCreated
+from nuvolos_client_api.models.instance_invitation_request import InstanceInvitationRequest
+from nuvolos_client_api.models.instance_member import InstanceMember
+from nuvolos_client_api.models.invitation_summary import InvitationSummary
 from nuvolos_client_api.models.lfs_share import LFSShare
 from nuvolos_client_api.models.org import Org
 from nuvolos_client_api.models.session import Session
 from nuvolos_client_api.models.snapshot import Snapshot
 from nuvolos_client_api.models.snapshot_create_request import SnapshotCreateRequest
 from nuvolos_client_api.models.space import Space
+from nuvolos_client_api.models.space_instance_role import SpaceInstanceRole
+from nuvolos_client_api.models.space_invitation_request import SpaceInvitationRequest
+from nuvolos_client_api.models.space_invitation_summary import SpaceInvitationSummary
+from nuvolos_client_api.models.space_member import SpaceMember
 from nuvolos_client_api.models.start_app import StartApp
 from nuvolos_client_api.models.table import Table
 from nuvolos_client_api.models.table_update import TableUpdate
 from nuvolos_client_api.models.task import Task
 from nuvolos_client_api.models.task1 import Task1
+from nuvolos_client_api.models.validation_error import ValidationError
+from nuvolos_client_api.models.validation_error_detail import ValidationErrorDetail
+from nuvolos_client_api.models.validation_error_detail_location import ValidationErrorDetailLocation
 from nuvolos_client_api.models.workload_detailed import WorkloadDetailed
 

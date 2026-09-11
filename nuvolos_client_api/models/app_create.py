@@ -27,11 +27,11 @@ class AppCreate(BaseModel):
     """
     AppCreate
     """ # noqa: E501
-    imid: StrictInt
     long_id: StrictStr
-    description: Optional[StrictStr] = None
+    imid: StrictInt
     pars: Optional[StrictStr] = '{}'
-    __properties: ClassVar[List[str]] = ["imid", "long_id", "description", "pars"]
+    description: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["long_id", "imid", "pars", "description"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -89,10 +89,10 @@ class AppCreate(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "imid": obj.get("imid"),
             "long_id": obj.get("long_id"),
-            "description": obj.get("description"),
-            "pars": obj.get("pars") if obj.get("pars") is not None else '{}'
+            "imid": obj.get("imid"),
+            "pars": obj.get("pars") if obj.get("pars") is not None else '{}',
+            "description": obj.get("description")
         })
         return _obj
 

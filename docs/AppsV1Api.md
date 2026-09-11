@@ -4,13 +4,15 @@ All URIs are relative to *https://api.eu1.nuvolos.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_app**](AppsV1Api.md#create_app) | **POST** /apps/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/applications | 
-[**derive_app**](AppsV1Api.md#derive_app) | **POST** /apps/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/app/{app_slug}/derived_images | 
-[**get_apps**](AppsV1Api.md#get_apps) | **GET** /apps/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug} | 
+[**create_app**](AppsV1Api.md#create_app) | **POST** /apps/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/applications | Apps V1 Create App
+[**derive_app**](AppsV1Api.md#derive_app) | **POST** /apps/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/app/{app_slug}/derived_images | Apps V1 Derive App
+[**get_apps**](AppsV1Api.md#get_apps) | **GET** /apps/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug} | Apps V1 List
 
 
 # **create_app**
 > AppCreated create_app(org_slug, space_slug, instance_slug, app_create=app_create)
+
+Apps V1 Create App
 
 Creates a new application in the development snapshot of the specified instance.
 
@@ -52,6 +54,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     app_create = nuvolos_client_api.AppCreate() # AppCreate |  (optional)
 
     try:
+        # Apps V1 Create App
         api_response = api_instance.create_app(org_slug, space_slug, instance_slug, app_create=app_create)
         print("The response of AppsV1Api->create_app:\n")
         pprint(api_response)
@@ -82,25 +85,28 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Application created |  -  |
-**400** | Bad request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Access to Nuvolos resource is forbidden |  -  |
+**422** | Validation error |  -  |
 **404** | Nuvolos object not found |  -  |
+**400** | Bad request |  -  |
+**403** | Access to Nuvolos resource is forbidden |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
 **500** | Internal server error |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **derive_app**
 > Task derive_app(org_slug, space_slug, instance_slug, app_slug, derive_app=derive_app)
+
+Apps V1 Derive App
 
 Creates a derived image from an existing Nuvolos application
 
@@ -143,6 +149,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     derive_app = nuvolos_client_api.DeriveApp() # DeriveApp |  (optional)
 
     try:
+        # Apps V1 Derive App
         api_response = api_instance.derive_app(org_slug, space_slug, instance_slug, app_slug, derive_app=derive_app)
         print("The response of AppsV1Api->derive_app:\n")
         pprint(api_response)
@@ -174,25 +181,28 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **202** | Request accepted |  -  |
-**400** | Bad request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Access to Nuvolos resource is forbidden |  -  |
+**422** | Validation error |  -  |
 **404** | Nuvolos object not found |  -  |
+**400** | Bad request |  -  |
+**403** | Access to Nuvolos resource is forbidden |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
 **500** | Internal server error |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_apps**
 > List[Application] get_apps(org_slug, space_slug, instance_slug, snapshot_slug)
+
+Apps V1 List
 
 Returns the apps in the given snapshot.
 
@@ -233,6 +243,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     snapshot_slug = 'snapshot_slug_example' # str | 
 
     try:
+        # Apps V1 List
         api_response = api_instance.get_apps(org_slug, space_slug, instance_slug, snapshot_slug)
         print("The response of AppsV1Api->get_apps:\n")
         pprint(api_response)
@@ -263,20 +274,20 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Operation succeeded |  -  |
-**400** | Bad request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Access to Nuvolos resource is forbidden |  -  |
 **404** | Nuvolos object not found |  -  |
+**400** | Bad request |  -  |
+**403** | Access to Nuvolos resource is forbidden |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
 **500** | Internal server error |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

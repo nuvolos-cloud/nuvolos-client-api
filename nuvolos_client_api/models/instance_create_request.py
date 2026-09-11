@@ -27,10 +27,10 @@ class InstanceCreateRequest(BaseModel):
     """
     InstanceCreateRequest
     """ # noqa: E501
-    slug: StrictStr
     name: StrictStr
+    slug: StrictStr
     description: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["slug", "name", "description"]
+    __properties: ClassVar[List[str]] = ["name", "slug", "description"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -88,8 +88,8 @@ class InstanceCreateRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "slug": obj.get("slug"),
             "name": obj.get("name"),
+            "slug": obj.get("slug"),
             "description": obj.get("description")
         })
         return _obj

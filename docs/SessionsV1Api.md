@@ -4,12 +4,14 @@ All URIs are relative to *https://api.eu1.nuvolos.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_session_logs**](SessionsV1Api.md#get_session_logs) | **GET** /sessions/v1/{session_id}/container/{container_name}/logs | 
-[**get_sessions**](SessionsV1Api.md#get_sessions) | **GET** /sessions/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/app/{app_slug} | 
+[**get_session_logs**](SessionsV1Api.md#get_session_logs) | **GET** /sessions/v1/{session_id}/container/{container_name}/logs | Sessions V1 Get Logs
+[**get_sessions**](SessionsV1Api.md#get_sessions) | **GET** /sessions/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/app/{app_slug} | Sessions V1 List Sessions
 
 
 # **get_session_logs**
 > get_session_logs(session_id, container_name, max_lines=max_lines, from_start=from_start)
+
+Sessions V1 Get Logs
 
 Returns logs for the given session and container.
 
@@ -49,6 +51,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     from_start = '2013-10-20T19:20:30+01:00' # datetime |  (optional)
 
     try:
+        # Sessions V1 Get Logs
         api_instance.get_session_logs(session_id, container_name, max_lines=max_lines, from_start=from_start)
     except Exception as e:
         print("Exception when calling SessionsV1Api->get_session_logs: %s\n" % e)
@@ -77,24 +80,27 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**400** | Bad request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Access to Nuvolos resource is forbidden |  -  |
+**422** | Validation error |  -  |
 **404** | Nuvolos object not found |  -  |
+**400** | Bad request |  -  |
+**403** | Access to Nuvolos resource is forbidden |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
 **500** | Internal server error |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_sessions**
 > List[Session] get_sessions(org_slug, space_slug, instance_slug, app_slug, page=page, per_page=per_page, metadata=metadata, order_by=order_by, session_id=session_id, sort=sort)
+
+Sessions V1 List Sessions
 
 Returns sessions for the given Nuvolos application.
 
@@ -141,6 +147,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     sort = 'desc' # str |  (optional) (default to 'desc')
 
     try:
+        # Sessions V1 List Sessions
         api_response = api_instance.get_sessions(org_slug, space_slug, instance_slug, app_slug, page=page, per_page=per_page, metadata=metadata, order_by=order_by, session_id=session_id, sort=sort)
         print("The response of SessionsV1Api->get_sessions:\n")
         pprint(api_response)
@@ -177,20 +184,21 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Operation succeeded |  -  |
-**400** | Bad request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Access to Nuvolos resource is forbidden |  -  |
+**422** | Validation error |  -  |
 **404** | Nuvolos object not found |  -  |
+**400** | Bad request |  -  |
+**403** | Access to Nuvolos resource is forbidden |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
 **500** | Internal server error |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

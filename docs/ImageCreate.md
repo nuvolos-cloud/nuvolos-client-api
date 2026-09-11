@@ -6,19 +6,19 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | 
-**docker_image_url** | **str** |  | 
-**description_md** | **str** |  | 
-**ifid** | **int** |  | 
 **description** | **str** |  | [optional] 
-**public** | **bool** |  | [optional] [default to False]
-**public_description** | **str** |  | [optional] 
-**org_slug** | **str** |  | [optional] 
-**space_slug** | **str** |  | [optional] 
-**app_type** | **str** |  | [optional] 
+**docker_image_url** | **str** |  | 
 **configuration** | **Dict[str, object]** |  | [optional] 
+**app_type** | **str** |  | [optional] 
 **has_tables** | **bool** |  | [optional] 
+**description_md** | **str** |  | 
 **complexity** | **int** |  | [optional] 
 **tags** | **Dict[str, object]** |  | [optional] 
+**public** | **bool** |  | [optional] [default to False]
+**public_description** | **str** |  | [optional] 
+**ifid** | **int** |  | 
+**org_slug** | **str** |  | [optional] 
+**space_slug** | **str** |  | [optional] 
 
 ## Example
 

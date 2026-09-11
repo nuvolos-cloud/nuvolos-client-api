@@ -31,10 +31,10 @@ class TableUpdate(BaseModel):
     slug: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
     description: Optional[Annotated[str, Field(strict=True, max_length=32768)]] = None
-    bytes: Optional[StrictInt] = None
     row_count: Optional[StrictInt] = None
+    bytes: Optional[StrictInt] = None
     delete_timestamp: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["slug", "name", "description", "bytes", "row_count", "delete_timestamp"]
+    __properties: ClassVar[List[str]] = ["slug", "name", "description", "row_count", "bytes", "delete_timestamp"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -80,15 +80,15 @@ class TableUpdate(BaseModel):
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
-        # set to None if bytes (nullable) is None
-        # and model_fields_set contains the field
-        if self.bytes is None and "bytes" in self.model_fields_set:
-            _dict['bytes'] = None
-
         # set to None if row_count (nullable) is None
         # and model_fields_set contains the field
         if self.row_count is None and "row_count" in self.model_fields_set:
             _dict['row_count'] = None
+
+        # set to None if bytes (nullable) is None
+        # and model_fields_set contains the field
+        if self.bytes is None and "bytes" in self.model_fields_set:
+            _dict['bytes'] = None
 
         # set to None if delete_timestamp (nullable) is None
         # and model_fields_set contains the field
@@ -110,8 +110,8 @@ class TableUpdate(BaseModel):
             "slug": obj.get("slug"),
             "name": obj.get("name"),
             "description": obj.get("description"),
-            "bytes": obj.get("bytes"),
             "row_count": obj.get("row_count"),
+            "bytes": obj.get("bytes"),
             "delete_timestamp": obj.get("delete_timestamp")
         })
         return _obj

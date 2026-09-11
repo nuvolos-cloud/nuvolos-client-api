@@ -28,10 +28,10 @@ class StartApp(BaseModel):
     StartApp
     """ # noqa: E501
     dpi: Optional[StrictInt] = 96
-    node_pool: Optional[StrictStr] = None
-    screen_height: Optional[StrictInt] = 768
     screen_width: Optional[StrictInt] = 1024
-    __properties: ClassVar[List[str]] = ["dpi", "node_pool", "screen_height", "screen_width"]
+    screen_height: Optional[StrictInt] = 768
+    node_pool: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["dpi", "screen_width", "screen_height", "node_pool"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -85,9 +85,9 @@ class StartApp(BaseModel):
 
         _obj = cls.model_validate({
             "dpi": obj.get("dpi") if obj.get("dpi") is not None else 96,
-            "node_pool": obj.get("node_pool"),
+            "screen_width": obj.get("screen_width") if obj.get("screen_width") is not None else 1024,
             "screen_height": obj.get("screen_height") if obj.get("screen_height") is not None else 768,
-            "screen_width": obj.get("screen_width") if obj.get("screen_width") is not None else 1024
+            "node_pool": obj.get("node_pool")
         })
         return _obj
 

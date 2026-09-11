@@ -27,24 +27,24 @@ class WorkloadDetailed(BaseModel):
     """
     WorkloadDetailed
     """ # noqa: E501
-    session_id: Optional[StrictStr] = None
     slug: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
     status: Optional[StrictStr] = None
-    shared: Optional[StrictStr] = None
     org_slug: Optional[StrictStr] = None
     space_slug: Optional[StrictStr] = None
     instance_slug: Optional[StrictStr] = None
-    node_pool: Optional[StrictStr] = None
+    session_id: Optional[StrictStr] = None
+    creation_timestamp: Optional[StrictStr] = None
+    shared: Optional[StrictStr] = None
+    compute_units: Optional[StrictStr] = None
+    addons_compute_units: Optional[StrictStr] = None
+    gpu: Optional[StrictStr] = None
     current_cpu: Optional[StrictStr] = None
     current_memory: Optional[StrictStr] = None
-    compute_units: Optional[StrictStr] = None
-    gpu: Optional[StrictStr] = None
+    node_pool: Optional[StrictStr] = None
     max_cpu: Optional[StrictStr] = None
     max_memory: Optional[StrictStr] = None
-    addons_compute_units: Optional[StrictStr] = None
-    creation_timestamp: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["session_id", "slug", "name", "status", "shared", "org_slug", "space_slug", "instance_slug", "node_pool", "current_cpu", "current_memory", "compute_units", "gpu", "max_cpu", "max_memory", "addons_compute_units", "creation_timestamp"]
+    __properties: ClassVar[List[str]] = ["slug", "name", "status", "org_slug", "space_slug", "instance_slug", "session_id", "creation_timestamp", "shared", "compute_units", "addons_compute_units", "gpu", "current_cpu", "current_memory", "node_pool", "max_cpu", "max_memory"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -97,23 +97,23 @@ class WorkloadDetailed(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "session_id": obj.get("session_id"),
             "slug": obj.get("slug"),
             "name": obj.get("name"),
             "status": obj.get("status"),
-            "shared": obj.get("shared"),
             "org_slug": obj.get("org_slug"),
             "space_slug": obj.get("space_slug"),
             "instance_slug": obj.get("instance_slug"),
-            "node_pool": obj.get("node_pool"),
+            "session_id": obj.get("session_id"),
+            "creation_timestamp": obj.get("creation_timestamp"),
+            "shared": obj.get("shared"),
+            "compute_units": obj.get("compute_units"),
+            "addons_compute_units": obj.get("addons_compute_units"),
+            "gpu": obj.get("gpu"),
             "current_cpu": obj.get("current_cpu"),
             "current_memory": obj.get("current_memory"),
-            "compute_units": obj.get("compute_units"),
-            "gpu": obj.get("gpu"),
+            "node_pool": obj.get("node_pool"),
             "max_cpu": obj.get("max_cpu"),
-            "max_memory": obj.get("max_memory"),
-            "addons_compute_units": obj.get("addons_compute_units"),
-            "creation_timestamp": obj.get("creation_timestamp")
+            "max_memory": obj.get("max_memory")
         })
         return _obj
 

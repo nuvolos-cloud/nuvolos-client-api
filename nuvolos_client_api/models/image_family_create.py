@@ -28,10 +28,10 @@ class ImageFamilyCreate(BaseModel):
     ImageFamilyCreate
     """ # noqa: E501
     name: StrictStr
-    icon_url: StrictStr
     description: Optional[StrictStr] = None
+    icon_url: StrictStr
     groups: Optional[List[StrictStr]] = None
-    __properties: ClassVar[List[str]] = ["name", "icon_url", "description", "groups"]
+    __properties: ClassVar[List[str]] = ["name", "description", "icon_url", "groups"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -95,8 +95,8 @@ class ImageFamilyCreate(BaseModel):
 
         _obj = cls.model_validate({
             "name": obj.get("name"),
-            "icon_url": obj.get("icon_url"),
             "description": obj.get("description"),
+            "icon_url": obj.get("icon_url"),
             "groups": obj.get("groups")
         })
         return _obj

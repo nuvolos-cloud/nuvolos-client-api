@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
 **description** | **str** |  | [optional] 
+**parent_tkid** | **int** |  | [optional] 
 **status** | **str** |  | [optional] 
 **result** | **str** |  | [optional] 
 **created** | **datetime** |  | [optional] 

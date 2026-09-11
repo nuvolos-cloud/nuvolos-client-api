@@ -4,11 +4,13 @@ All URIs are relative to *https://api.eu1.nuvolos.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**distribute_content**](DistributionV1Api.md#distribute_content) | **POST** /distribution/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug} | 
+[**distribute_content**](DistributionV1Api.md#distribute_content) | **POST** /distribution/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug} | Distribution V1 Distribute
 
 
 # **distribute_content**
-> Task distribute_content(org_slug, space_slug, snapshot_slug, instance_slug, distribution_request=distribution_request)
+> Task distribute_content(org_slug, space_slug, instance_slug, snapshot_slug, distribution_request=distribution_request)
+
+Distribution V1 Distribute
 
 Distribute selected files, applications, and tables from a snapshot to target instances.
 
@@ -46,12 +48,13 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     api_instance = nuvolos_client_api.DistributionV1Api(api_client)
     org_slug = 'org_slug_example' # str | 
     space_slug = 'space_slug_example' # str | 
-    snapshot_slug = 'snapshot_slug_example' # str | 
     instance_slug = 'instance_slug_example' # str | 
+    snapshot_slug = 'snapshot_slug_example' # str | 
     distribution_request = nuvolos_client_api.DistributionRequest() # DistributionRequest |  (optional)
 
     try:
-        api_response = api_instance.distribute_content(org_slug, space_slug, snapshot_slug, instance_slug, distribution_request=distribution_request)
+        # Distribution V1 Distribute
+        api_response = api_instance.distribute_content(org_slug, space_slug, instance_slug, snapshot_slug, distribution_request=distribution_request)
         print("The response of DistributionV1Api->distribute_content:\n")
         pprint(api_response)
     except Exception as e:
@@ -67,8 +70,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **org_slug** | **str**|  | 
  **space_slug** | **str**|  | 
- **snapshot_slug** | **str**|  | 
  **instance_slug** | **str**|  | 
+ **snapshot_slug** | **str**|  | 
  **distribution_request** | [**DistributionRequest**](DistributionRequest.md)|  | [optional] 
 
 ### Return type
@@ -82,20 +85,21 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **202** | Distribution task created successfully |  -  |
-**400** | Bad request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Access to Nuvolos resource is forbidden |  -  |
+**422** | Validation error |  -  |
 **404** | Nuvolos object not found |  -  |
+**400** | Bad request |  -  |
+**403** | Access to Nuvolos resource is forbidden |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
 **500** | Internal server error |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

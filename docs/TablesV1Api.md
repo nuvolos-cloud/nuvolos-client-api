@@ -4,16 +4,18 @@ All URIs are relative to *https://api.eu1.nuvolos.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**delete_table**](TablesV1Api.md#delete_table) | **DELETE** /tables/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/table/{table_slug} | 
-[**get_schema_ddl**](TablesV1Api.md#get_schema_ddl) | **GET** /tables/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/get_ddl | 
-[**get_table_columns**](TablesV1Api.md#get_table_columns) | **GET** /tables/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/table/{table_slug}/columns | 
-[**get_table_ddl**](TablesV1Api.md#get_table_ddl) | **GET** /tables/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/table/{table_slug}/get_ddl | 
-[**get_tables**](TablesV1Api.md#get_tables) | **GET** /tables/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug} | 
-[**rename_table**](TablesV1Api.md#rename_table) | **PATCH** /tables/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/table/{table_slug} | 
+[**delete_table**](TablesV1Api.md#delete_table) | **DELETE** /tables/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/table/{table_slug} | Tables V1 Delete Table
+[**get_schema_ddl**](TablesV1Api.md#get_schema_ddl) | **GET** /tables/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/get_ddl | Tables V1 Get Schema Ddl
+[**get_table_columns**](TablesV1Api.md#get_table_columns) | **GET** /tables/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/table/{table_slug}/columns | Tables V1 List Columns
+[**get_table_ddl**](TablesV1Api.md#get_table_ddl) | **GET** /tables/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/table/{table_slug}/get_ddl | Tables V1 Get Table Ddl
+[**get_tables**](TablesV1Api.md#get_tables) | **GET** /tables/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug} | Tables V1 List Tables
+[**rename_table**](TablesV1Api.md#rename_table) | **PATCH** /tables/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/table/{table_slug} | Tables V1 Rename Table
 
 
 # **delete_table**
 > delete_table(org_slug, space_slug, instance_slug, snapshot_slug, table_slug)
+
+Tables V1 Delete Table
 
 Deletes a table in the specified snapshot.
 
@@ -54,6 +56,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     table_slug = 'table_slug_example' # str | 
 
     try:
+        # Tables V1 Delete Table
         api_instance.delete_table(org_slug, space_slug, instance_slug, snapshot_slug, table_slug)
     except Exception as e:
         print("Exception when calling TablesV1Api->delete_table: %s\n" % e)
@@ -83,24 +86,26 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**204** | Deletion succeeded |  -  |
+**404** | Nuvolos object not found |  -  |
 **400** | Bad request |  -  |
 **403** | Access to Nuvolos resource is forbidden |  -  |
-**404** | Nuvolos object not found |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
 **500** | Internal server error |  -  |
+**204** | Deletion succeeded |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_schema_ddl**
 > DDL get_schema_ddl(org_slug, space_slug, instance_slug, snapshot_slug)
+
+Tables V1 Get Schema Ddl
 
 Returns the DDL of the database schema corresponding to the specified snapshot.
 
@@ -141,6 +146,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     snapshot_slug = 'snapshot_slug_example' # str | 
 
     try:
+        # Tables V1 Get Schema Ddl
         api_response = api_instance.get_schema_ddl(org_slug, space_slug, instance_slug, snapshot_slug)
         print("The response of TablesV1Api->get_schema_ddl:\n")
         pprint(api_response)
@@ -171,25 +177,27 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Operation succeeded |  -  |
-**400** | Bad request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Access to Nuvolos resource is forbidden |  -  |
 **404** | Nuvolos object not found |  -  |
+**400** | Bad request |  -  |
+**403** | Access to Nuvolos resource is forbidden |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
 **500** | Internal server error |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_table_columns**
 > List[ColumnPublic] get_table_columns(org_slug, space_slug, instance_slug, snapshot_slug, table_slug)
+
+Tables V1 List Columns
 
 Returns the columns of a table in the specified snapshot.
 
@@ -231,6 +239,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     table_slug = 'table_slug_example' # str | 
 
     try:
+        # Tables V1 List Columns
         api_response = api_instance.get_table_columns(org_slug, space_slug, instance_slug, snapshot_slug, table_slug)
         print("The response of TablesV1Api->get_table_columns:\n")
         pprint(api_response)
@@ -262,25 +271,27 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Operation succeeded |  -  |
-**400** | Bad request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Access to Nuvolos resource is forbidden |  -  |
 **404** | Nuvolos object not found |  -  |
+**400** | Bad request |  -  |
+**403** | Access to Nuvolos resource is forbidden |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
 **500** | Internal server error |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_table_ddl**
 > DDL get_table_ddl(org_slug, space_slug, instance_slug, snapshot_slug, table_slug)
+
+Tables V1 Get Table Ddl
 
 Returns the DDL of a table in the specified snapshot.
 
@@ -322,6 +333,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     table_slug = 'table_slug_example' # str | 
 
     try:
+        # Tables V1 Get Table Ddl
         api_response = api_instance.get_table_ddl(org_slug, space_slug, instance_slug, snapshot_slug, table_slug)
         print("The response of TablesV1Api->get_table_ddl:\n")
         pprint(api_response)
@@ -353,25 +365,27 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Operation succeeded |  -  |
-**400** | Bad request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Access to Nuvolos resource is forbidden |  -  |
 **404** | Nuvolos object not found |  -  |
+**400** | Bad request |  -  |
+**403** | Access to Nuvolos resource is forbidden |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
 **500** | Internal server error |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_tables**
 > List[Table] get_tables(org_slug, space_slug, instance_slug, snapshot_slug)
+
+Tables V1 List Tables
 
 Returns the tables in the specified snapshot.
 
@@ -412,6 +426,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     snapshot_slug = 'snapshot_slug_example' # str | 
 
     try:
+        # Tables V1 List Tables
         api_response = api_instance.get_tables(org_slug, space_slug, instance_slug, snapshot_slug)
         print("The response of TablesV1Api->get_tables:\n")
         pprint(api_response)
@@ -442,25 +457,27 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Operation succeeded |  -  |
-**400** | Bad request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Access to Nuvolos resource is forbidden |  -  |
 **404** | Nuvolos object not found |  -  |
+**400** | Bad request |  -  |
+**403** | Access to Nuvolos resource is forbidden |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
 **500** | Internal server error |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **rename_table**
 > Table rename_table(org_slug, space_slug, instance_slug, snapshot_slug, table_slug, table_update=table_update)
+
+Tables V1 Rename Table
 
 Renames a table in the specified snapshot.
 
@@ -504,6 +521,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     table_update = nuvolos_client_api.TableUpdate() # TableUpdate |  (optional)
 
     try:
+        # Tables V1 Rename Table
         api_response = api_instance.rename_table(org_slug, space_slug, instance_slug, snapshot_slug, table_slug, table_update=table_update)
         print("The response of TablesV1Api->rename_table:\n")
         pprint(api_response)
@@ -536,20 +554,21 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Update succeeded |  -  |
-**400** | Bad request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Access to Nuvolos resource is forbidden |  -  |
+**422** | Validation error |  -  |
 **404** | Nuvolos object not found |  -  |
+**400** | Bad request |  -  |
+**403** | Access to Nuvolos resource is forbidden |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
 **500** | Internal server error |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

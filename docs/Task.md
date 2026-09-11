@@ -5,8 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**operation** | **str** |  | [optional] 
 **tkid** | **int** |  | 
+**parent_tkid** | **int** |  | [optional] 
+**operation** | **str** |  | [optional] 
 
 ## Example
 

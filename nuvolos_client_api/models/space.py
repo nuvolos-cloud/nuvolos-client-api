@@ -30,17 +30,17 @@ class Space(BaseModel):
     """ # noqa: E501
     slug: StrictStr
     name: StrictStr
-    description: Optional[StrictStr] = None
-    type: StrictStr
     role: Optional[StrictStr] = None
+    type: StrictStr
     visibility_type: StrictStr
+    description: Optional[StrictStr] = None
     database_tables_enabled: Optional[StrictBool] = None
-    video_library_enabled: StrictBool
+    archival_timestamp: Optional[datetime] = None
     archive_by_date: Optional[date] = None
     creation_timestamp: Optional[datetime] = None
+    video_library_enabled: StrictBool
     last_modified_timestamp: Optional[datetime] = None
-    archival_timestamp: Optional[datetime] = None
-    __properties: ClassVar[List[str]] = ["slug", "name", "description", "type", "role", "visibility_type", "database_tables_enabled", "video_library_enabled", "archive_by_date", "creation_timestamp", "last_modified_timestamp", "archival_timestamp"]
+    __properties: ClassVar[List[str]] = ["slug", "name", "role", "type", "visibility_type", "description", "database_tables_enabled", "archival_timestamp", "archive_by_date", "creation_timestamp", "video_library_enabled", "last_modified_timestamp"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -91,6 +91,11 @@ class Space(BaseModel):
         if self.database_tables_enabled is None and "database_tables_enabled" in self.model_fields_set:
             _dict['database_tables_enabled'] = None
 
+        # set to None if archival_timestamp (nullable) is None
+        # and model_fields_set contains the field
+        if self.archival_timestamp is None and "archival_timestamp" in self.model_fields_set:
+            _dict['archival_timestamp'] = None
+
         # set to None if archive_by_date (nullable) is None
         # and model_fields_set contains the field
         if self.archive_by_date is None and "archive_by_date" in self.model_fields_set:
@@ -106,11 +111,6 @@ class Space(BaseModel):
         if self.last_modified_timestamp is None and "last_modified_timestamp" in self.model_fields_set:
             _dict['last_modified_timestamp'] = None
 
-        # set to None if archival_timestamp (nullable) is None
-        # and model_fields_set contains the field
-        if self.archival_timestamp is None and "archival_timestamp" in self.model_fields_set:
-            _dict['archival_timestamp'] = None
-
         return _dict
 
     @classmethod
@@ -125,16 +125,16 @@ class Space(BaseModel):
         _obj = cls.model_validate({
             "slug": obj.get("slug"),
             "name": obj.get("name"),
-            "description": obj.get("description"),
-            "type": obj.get("type"),
             "role": obj.get("role"),
+            "type": obj.get("type"),
             "visibility_type": obj.get("visibility_type"),
+            "description": obj.get("description"),
             "database_tables_enabled": obj.get("database_tables_enabled"),
-            "video_library_enabled": obj.get("video_library_enabled"),
+            "archival_timestamp": obj.get("archival_timestamp"),
             "archive_by_date": obj.get("archive_by_date"),
             "creation_timestamp": obj.get("creation_timestamp"),
-            "last_modified_timestamp": obj.get("last_modified_timestamp"),
-            "archival_timestamp": obj.get("archival_timestamp")
+            "video_library_enabled": obj.get("video_library_enabled"),
+            "last_modified_timestamp": obj.get("last_modified_timestamp")
         })
         return _obj
 

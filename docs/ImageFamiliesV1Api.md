@@ -4,13 +4,15 @@ All URIs are relative to *https://api.eu1.nuvolos.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_image_family**](ImageFamiliesV1Api.md#create_image_family) | **PUT** /image_families/v1 | 
-[**get_image_families**](ImageFamiliesV1Api.md#get_image_families) | **GET** /image_families/v1 | 
-[**update_image_family**](ImageFamiliesV1Api.md#update_image_family) | **PATCH** /image_families/v1/{ifid} | 
+[**create_image_family**](ImageFamiliesV1Api.md#create_image_family) | **PUT** /image_families/v1 | Image Families V1 Create
+[**get_image_families**](ImageFamiliesV1Api.md#get_image_families) | **GET** /image_families/v1 | Image Families V1 List
+[**update_image_family**](ImageFamiliesV1Api.md#update_image_family) | **PATCH** /image_families/v1/{ifid} | Image Families V1 Update
 
 
 # **create_image_family**
 > ImageFamilyResponse create_image_family(image_family_create=image_family_create)
+
+Image Families V1 Create
 
 Creates a new image family record. Priority is automatically set to max existing priority + 1.
 
@@ -49,6 +51,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     image_family_create = nuvolos_client_api.ImageFamilyCreate() # ImageFamilyCreate |  (optional)
 
     try:
+        # Image Families V1 Create
         api_response = api_instance.create_image_family(image_family_create=image_family_create)
         print("The response of ImageFamiliesV1Api->create_image_family:\n")
         pprint(api_response)
@@ -76,25 +79,28 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Image family created |  -  |
+**422** | Validation error |  -  |
 **400** | Bad request |  -  |
-**401** | Unauthorized |  -  |
 **403** | Access to Nuvolos resource is forbidden |  -  |
 **404** | Nuvolos object not found |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
 **500** | Internal server error |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_image_families**
 > List[ImageFamily] get_image_families()
+
+Image Families V1 List
 
 Lists all image family records.
 
@@ -131,6 +137,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     api_instance = nuvolos_client_api.ImageFamiliesV1Api(api_client)
 
     try:
+        # Image Families V1 List
         api_response = api_instance.get_image_families()
         print("The response of ImageFamiliesV1Api->get_image_families:\n")
         pprint(api_response)
@@ -155,7 +162,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -163,17 +170,19 @@ This endpoint does not need any parameter.
 |-------------|-------------|------------------|
 **200** | Operation succeeded |  -  |
 **400** | Bad request |  -  |
-**401** | Unauthorized |  -  |
 **403** | Access to Nuvolos resource is forbidden |  -  |
 **404** | Nuvolos object not found |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
 **500** | Internal server error |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_image_family**
 > ImageFamily update_image_family(ifid, image_family_update=image_family_update)
+
+Image Families V1 Update
 
 Updates fields of an existing image family record. All fields are optional; only provided fields are updated. Updatable fields: name, description, icon_url, groups, disabled_reason, priority.
 
@@ -213,6 +222,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     image_family_update = nuvolos_client_api.ImageFamilyUpdate() # ImageFamilyUpdate |  (optional)
 
     try:
+        # Image Families V1 Update
         api_response = api_instance.update_image_family(ifid, image_family_update=image_family_update)
         print("The response of ImageFamiliesV1Api->update_image_family:\n")
         pprint(api_response)
@@ -241,20 +251,21 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Image family updated |  -  |
-**400** | Bad request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Access to Nuvolos resource is forbidden |  -  |
+**422** | Validation error |  -  |
 **404** | Nuvolos object not found |  -  |
+**400** | Bad request |  -  |
+**403** | Access to Nuvolos resource is forbidden |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
 **500** | Internal server error |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

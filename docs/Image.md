@@ -7,18 +7,18 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **imid** | **int** |  | 
 **name** | **str** |  | [optional] 
-**docker_image_url** | **str** |  | 
 **description** | **str** |  | [optional] 
-**description_md** | **str** |  | [optional] 
-**public** | **bool** |  | 
-**public_description** | **str** |  | [optional] 
-**app_type** | **str** |  | [optional] 
+**docker_image_url** | **str** |  | 
 **configuration** | **str** |  | [optional] 
+**app_type** | **str** |  | [optional] 
 **has_tables** | **bool** |  | [optional] 
+**description_md** | **str** |  | [optional] 
+**disabled_reason** | **int** |  | [optional] 
 **complexity** | **int** |  | [optional] 
 **tags** | **Dict[str, object]** |  | [optional] 
 **release_date** | **date** |  | [optional] 
-**disabled_reason** | **int** |  | [optional] 
+**public** | **bool** |  | 
+**public_description** | **str** |  | [optional] 
 
 ## Example
 

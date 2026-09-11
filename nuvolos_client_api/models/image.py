@@ -30,19 +30,19 @@ class Image(BaseModel):
     """ # noqa: E501
     imid: StrictInt
     name: Optional[StrictStr] = None
-    docker_image_url: StrictStr
     description: Optional[StrictStr] = None
-    description_md: Optional[StrictStr] = None
-    public: StrictBool
-    public_description: Optional[StrictStr] = None
-    app_type: Optional[StrictStr] = None
+    docker_image_url: StrictStr
     configuration: Optional[StrictStr] = None
+    app_type: Optional[StrictStr] = None
     has_tables: Optional[StrictBool] = None
+    description_md: Optional[StrictStr] = None
+    disabled_reason: Optional[StrictInt] = None
     complexity: Optional[StrictInt] = None
     tags: Optional[Dict[str, Any]] = None
     release_date: Optional[date] = None
-    disabled_reason: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["imid", "name", "docker_image_url", "description", "description_md", "public", "public_description", "app_type", "configuration", "has_tables", "complexity", "tags", "release_date", "disabled_reason"]
+    public: StrictBool
+    public_description: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["imid", "name", "description", "docker_image_url", "configuration", "app_type", "has_tables", "description_md", "disabled_reason", "complexity", "tags", "release_date", "public", "public_description"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -93,30 +93,30 @@ class Image(BaseModel):
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
-        # set to None if description_md (nullable) is None
+        # set to None if configuration (nullable) is None
         # and model_fields_set contains the field
-        if self.description_md is None and "description_md" in self.model_fields_set:
-            _dict['description_md'] = None
-
-        # set to None if public_description (nullable) is None
-        # and model_fields_set contains the field
-        if self.public_description is None and "public_description" in self.model_fields_set:
-            _dict['public_description'] = None
+        if self.configuration is None and "configuration" in self.model_fields_set:
+            _dict['configuration'] = None
 
         # set to None if app_type (nullable) is None
         # and model_fields_set contains the field
         if self.app_type is None and "app_type" in self.model_fields_set:
             _dict['app_type'] = None
 
-        # set to None if configuration (nullable) is None
-        # and model_fields_set contains the field
-        if self.configuration is None and "configuration" in self.model_fields_set:
-            _dict['configuration'] = None
-
         # set to None if has_tables (nullable) is None
         # and model_fields_set contains the field
         if self.has_tables is None and "has_tables" in self.model_fields_set:
             _dict['has_tables'] = None
+
+        # set to None if description_md (nullable) is None
+        # and model_fields_set contains the field
+        if self.description_md is None and "description_md" in self.model_fields_set:
+            _dict['description_md'] = None
+
+        # set to None if disabled_reason (nullable) is None
+        # and model_fields_set contains the field
+        if self.disabled_reason is None and "disabled_reason" in self.model_fields_set:
+            _dict['disabled_reason'] = None
 
         # set to None if complexity (nullable) is None
         # and model_fields_set contains the field
@@ -133,10 +133,10 @@ class Image(BaseModel):
         if self.release_date is None and "release_date" in self.model_fields_set:
             _dict['release_date'] = None
 
-        # set to None if disabled_reason (nullable) is None
+        # set to None if public_description (nullable) is None
         # and model_fields_set contains the field
-        if self.disabled_reason is None and "disabled_reason" in self.model_fields_set:
-            _dict['disabled_reason'] = None
+        if self.public_description is None and "public_description" in self.model_fields_set:
+            _dict['public_description'] = None
 
         return _dict
 
@@ -152,18 +152,18 @@ class Image(BaseModel):
         _obj = cls.model_validate({
             "imid": obj.get("imid"),
             "name": obj.get("name"),
-            "docker_image_url": obj.get("docker_image_url"),
             "description": obj.get("description"),
-            "description_md": obj.get("description_md"),
-            "public": obj.get("public"),
-            "public_description": obj.get("public_description"),
-            "app_type": obj.get("app_type"),
+            "docker_image_url": obj.get("docker_image_url"),
             "configuration": obj.get("configuration"),
+            "app_type": obj.get("app_type"),
             "has_tables": obj.get("has_tables"),
+            "description_md": obj.get("description_md"),
+            "disabled_reason": obj.get("disabled_reason"),
             "complexity": obj.get("complexity"),
             "tags": obj.get("tags"),
             "release_date": obj.get("release_date"),
-            "disabled_reason": obj.get("disabled_reason")
+            "public": obj.get("public"),
+            "public_description": obj.get("public_description")
         })
         return _obj
 

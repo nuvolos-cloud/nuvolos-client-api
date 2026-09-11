@@ -57,7 +57,7 @@ class FilesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[FilePublic]:
-        """get_files_in_files_area
+        """Files V1 List Files Area
 
         Returns all files from the files area (shared with all users of the instance) at the specified location in the specified snapshot. Performs a file system rescan upon invocation.
 
@@ -104,13 +104,13 @@ class FilesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[FilePublic]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -143,7 +143,7 @@ class FilesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[FilePublic]]:
-        """get_files_in_files_area
+        """Files V1 List Files Area
 
         Returns all files from the files area (shared with all users of the instance) at the specified location in the specified snapshot. Performs a file system rescan upon invocation.
 
@@ -190,13 +190,13 @@ class FilesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[FilePublic]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -229,7 +229,7 @@ class FilesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_files_in_files_area
+        """Files V1 List Files Area
 
         Returns all files from the files area (shared with all users of the instance) at the specified location in the specified snapshot. Performs a file system rescan upon invocation.
 
@@ -276,13 +276,13 @@ class FilesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[FilePublic]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -336,7 +336,7 @@ class FilesV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -385,7 +385,7 @@ class FilesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[FilePublic]:
-        """get_files_in_files_area_0
+        """Files V1 List Files Area
 
         Returns all files from the files area (shared with all users of the instance) at the specified location in the specified snapshot. Performs a file system rescan upon invocation.
 
@@ -435,13 +435,13 @@ class FilesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[FilePublic]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -475,7 +475,7 @@ class FilesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[FilePublic]]:
-        """get_files_in_files_area_0
+        """Files V1 List Files Area
 
         Returns all files from the files area (shared with all users of the instance) at the specified location in the specified snapshot. Performs a file system rescan upon invocation.
 
@@ -525,13 +525,13 @@ class FilesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[FilePublic]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -565,7 +565,7 @@ class FilesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_files_in_files_area_0
+        """Files V1 List Files Area
 
         Returns all files from the files area (shared with all users of the instance) at the specified location in the specified snapshot. Performs a file system rescan upon invocation.
 
@@ -615,13 +615,13 @@ class FilesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[FilePublic]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -678,7 +678,7 @@ class FilesV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -726,7 +726,7 @@ class FilesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[FilePublic]:
-        """get_files_in_home_area
+        """Files V1 List Home Area
 
         Returns all files from the home area of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
 
@@ -773,13 +773,13 @@ class FilesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[FilePublic]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -812,7 +812,7 @@ class FilesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[FilePublic]]:
-        """get_files_in_home_area
+        """Files V1 List Home Area
 
         Returns all files from the home area of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
 
@@ -859,13 +859,13 @@ class FilesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[FilePublic]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -898,7 +898,7 @@ class FilesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_files_in_home_area
+        """Files V1 List Home Area
 
         Returns all files from the home area of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
 
@@ -945,13 +945,13 @@ class FilesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[FilePublic]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1005,7 +1005,7 @@ class FilesV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -1054,7 +1054,7 @@ class FilesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[FilePublic]:
-        """get_files_in_home_area_0
+        """Files V1 List Home Area
 
         Returns all files from the home area of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
 
@@ -1104,13 +1104,13 @@ class FilesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[FilePublic]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1144,7 +1144,7 @@ class FilesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[FilePublic]]:
-        """get_files_in_home_area_0
+        """Files V1 List Home Area
 
         Returns all files from the home area of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
 
@@ -1194,13 +1194,13 @@ class FilesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[FilePublic]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1234,7 +1234,7 @@ class FilesV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_files_in_home_area_0
+        """Files V1 List Home Area
 
         Returns all files from the home area of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
 
@@ -1284,13 +1284,13 @@ class FilesV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[FilePublic]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -1347,7 +1347,7 @@ class FilesV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 

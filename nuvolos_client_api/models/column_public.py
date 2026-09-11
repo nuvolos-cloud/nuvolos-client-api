@@ -28,12 +28,12 @@ class ColumnPublic(BaseModel):
     """
     ColumnPublic
     """ # noqa: E501
-    table_slug: Optional[StrictStr] = None
     short_id: Annotated[str, Field(strict=True, max_length=255)]
     long_id: Annotated[str, Field(strict=True, max_length=1023)]
-    coltype: Annotated[str, Field(strict=True, max_length=1023)]
     description: Optional[Annotated[str, Field(strict=True, max_length=32768)]] = None
-    __properties: ClassVar[List[str]] = ["table_slug", "short_id", "long_id", "coltype", "description"]
+    coltype: Annotated[str, Field(strict=True, max_length=1023)]
+    table_slug: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["short_id", "long_id", "description", "coltype", "table_slug"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -91,11 +91,11 @@ class ColumnPublic(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "table_slug": obj.get("table_slug"),
             "short_id": obj.get("short_id"),
             "long_id": obj.get("long_id"),
+            "description": obj.get("description"),
             "coltype": obj.get("coltype"),
-            "description": obj.get("description")
+            "table_slug": obj.get("table_slug")
         })
         return _obj
 

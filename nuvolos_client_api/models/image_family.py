@@ -32,9 +32,9 @@ class ImageFamily(BaseModel):
     description: Optional[StrictStr] = None
     icon_url: Optional[StrictStr] = None
     groups: Optional[List[StrictStr]] = None
-    priority: Optional[Union[StrictFloat, StrictInt]] = None
     disabled_reason: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["ifid", "name", "description", "icon_url", "groups", "priority", "disabled_reason"]
+    priority: Optional[Union[StrictFloat, StrictInt]] = None
+    __properties: ClassVar[List[str]] = ["ifid", "name", "description", "icon_url", "groups", "disabled_reason", "priority"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -90,15 +90,15 @@ class ImageFamily(BaseModel):
         if self.groups is None and "groups" in self.model_fields_set:
             _dict['groups'] = None
 
-        # set to None if priority (nullable) is None
-        # and model_fields_set contains the field
-        if self.priority is None and "priority" in self.model_fields_set:
-            _dict['priority'] = None
-
         # set to None if disabled_reason (nullable) is None
         # and model_fields_set contains the field
         if self.disabled_reason is None and "disabled_reason" in self.model_fields_set:
             _dict['disabled_reason'] = None
+
+        # set to None if priority (nullable) is None
+        # and model_fields_set contains the field
+        if self.priority is None and "priority" in self.model_fields_set:
+            _dict['priority'] = None
 
         return _dict
 
@@ -117,8 +117,8 @@ class ImageFamily(BaseModel):
             "description": obj.get("description"),
             "icon_url": obj.get("icon_url"),
             "groups": obj.get("groups"),
-            "priority": obj.get("priority"),
-            "disabled_reason": obj.get("disabled_reason")
+            "disabled_reason": obj.get("disabled_reason"),
+            "priority": obj.get("priority")
         })
         return _obj
 

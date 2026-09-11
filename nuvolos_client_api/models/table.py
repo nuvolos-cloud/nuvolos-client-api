@@ -31,13 +31,13 @@ class Table(BaseModel):
     slug: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
     description: Optional[Annotated[str, Field(strict=True, max_length=32768)]] = None
+    row_count: Optional[StrictInt] = None
+    bytes: Optional[StrictInt] = None
+    is_external: Optional[StrictBool] = None
+    delete_timestamp: Optional[StrictStr] = None
     database: Optional[StrictStr] = None
     var_schema: Optional[StrictStr] = Field(default=None, alias="schema")
-    bytes: Optional[StrictInt] = None
-    row_count: Optional[StrictInt] = None
-    delete_timestamp: Optional[StrictStr] = None
-    is_external: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = ["slug", "name", "description", "database", "schema", "bytes", "row_count", "delete_timestamp", "is_external"]
+    __properties: ClassVar[List[str]] = ["slug", "name", "description", "row_count", "bytes", "is_external", "delete_timestamp", "database", "schema"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -83,25 +83,25 @@ class Table(BaseModel):
         if self.description is None and "description" in self.model_fields_set:
             _dict['description'] = None
 
-        # set to None if bytes (nullable) is None
-        # and model_fields_set contains the field
-        if self.bytes is None and "bytes" in self.model_fields_set:
-            _dict['bytes'] = None
-
         # set to None if row_count (nullable) is None
         # and model_fields_set contains the field
         if self.row_count is None and "row_count" in self.model_fields_set:
             _dict['row_count'] = None
 
-        # set to None if delete_timestamp (nullable) is None
+        # set to None if bytes (nullable) is None
         # and model_fields_set contains the field
-        if self.delete_timestamp is None and "delete_timestamp" in self.model_fields_set:
-            _dict['delete_timestamp'] = None
+        if self.bytes is None and "bytes" in self.model_fields_set:
+            _dict['bytes'] = None
 
         # set to None if is_external (nullable) is None
         # and model_fields_set contains the field
         if self.is_external is None and "is_external" in self.model_fields_set:
             _dict['is_external'] = None
+
+        # set to None if delete_timestamp (nullable) is None
+        # and model_fields_set contains the field
+        if self.delete_timestamp is None and "delete_timestamp" in self.model_fields_set:
+            _dict['delete_timestamp'] = None
 
         return _dict
 
@@ -118,12 +118,12 @@ class Table(BaseModel):
             "slug": obj.get("slug"),
             "name": obj.get("name"),
             "description": obj.get("description"),
-            "database": obj.get("database"),
-            "schema": obj.get("schema"),
-            "bytes": obj.get("bytes"),
             "row_count": obj.get("row_count"),
+            "bytes": obj.get("bytes"),
+            "is_external": obj.get("is_external"),
             "delete_timestamp": obj.get("delete_timestamp"),
-            "is_external": obj.get("is_external")
+            "database": obj.get("database"),
+            "schema": obj.get("schema")
         })
         return _obj
 

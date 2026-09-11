@@ -7,18 +7,18 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **fid** | **str** |  | 
 **short_id** | **str** |  | 
-**local_path** | **str** |  | 
-**os_path** | **str** |  | [optional] 
-**area** | **str** |  | 
-**type** | **str** |  | 
-**size** | **int** |  | [optional] 
-**is_video** | **bool** |  | [optional] 
-**snapshot_slug** | **str** |  | [optional] 
 **creation_timestamp** | **str** |  | [optional] 
 **last_modified_timestamp** | **str** |  | [optional] 
-**status** | **Dict[str, object]** |  | [optional] 
+**type** | **str** |  | 
+**size** | **int** |  | [optional] 
+**area** | **str** |  | 
+**local_path** | **str** |  | 
 **history** | **Dict[str, object]** |  | [optional] 
+**is_video** | **bool** |  | [optional] 
+**status** | **Dict[str, object]** |  | [optional] 
 **collision_info** | **Dict[str, object]** |  | [optional] 
+**snapshot_slug** | **str** |  | [optional] 
+**os_path** | **str** |  | [optional] 
 
 ## Example
 

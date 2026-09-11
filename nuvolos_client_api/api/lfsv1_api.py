@@ -15,8 +15,9 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictInt, StrictStr
-from typing import List
+from pydantic import Field, StrictInt, StrictStr, field_validator
+from typing import List, Optional
+from typing_extensions import Annotated
 from nuvolos_client_api.models.lfs_share import LFSShare
 from nuvolos_client_api.models.task import Task
 
@@ -44,6 +45,7 @@ class LFSV1Api:
         org_slug: StrictStr,
         space_slug: StrictStr,
         afsid: StrictInt,
+        max_age: Optional[Annotated[str, Field(strict=True)]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -57,9 +59,9 @@ class LFSV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Task:
-        """cleanup_lfs_share
+        """Schedule cleanup of a Ceph-backed LFS bucket.
 
-        Remove incomplete multipart uploads to an LFS
+        Remove incomplete multipart uploads to an LFS. Optional ?max_age= query param (rclone duration string, e.g. '30m', '2h'; defaults to '1h') only aborts uploads incomplete for longer than this.
 
         :param org_slug: (required)
         :type org_slug: str
@@ -67,6 +69,8 @@ class LFSV1Api:
         :type space_slug: str
         :param afsid: (required)
         :type afsid: int
+        :param max_age:
+        :type max_age: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -93,6 +97,7 @@ class LFSV1Api:
             org_slug=org_slug,
             space_slug=space_slug,
             afsid=afsid,
+            max_age=max_age,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -101,13 +106,14 @@ class LFSV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "Task",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -126,6 +132,7 @@ class LFSV1Api:
         org_slug: StrictStr,
         space_slug: StrictStr,
         afsid: StrictInt,
+        max_age: Optional[Annotated[str, Field(strict=True)]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -139,9 +146,9 @@ class LFSV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Task]:
-        """cleanup_lfs_share
+        """Schedule cleanup of a Ceph-backed LFS bucket.
 
-        Remove incomplete multipart uploads to an LFS
+        Remove incomplete multipart uploads to an LFS. Optional ?max_age= query param (rclone duration string, e.g. '30m', '2h'; defaults to '1h') only aborts uploads incomplete for longer than this.
 
         :param org_slug: (required)
         :type org_slug: str
@@ -149,6 +156,8 @@ class LFSV1Api:
         :type space_slug: str
         :param afsid: (required)
         :type afsid: int
+        :param max_age:
+        :type max_age: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -175,6 +184,7 @@ class LFSV1Api:
             org_slug=org_slug,
             space_slug=space_slug,
             afsid=afsid,
+            max_age=max_age,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -183,13 +193,14 @@ class LFSV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "Task",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -208,6 +219,7 @@ class LFSV1Api:
         org_slug: StrictStr,
         space_slug: StrictStr,
         afsid: StrictInt,
+        max_age: Optional[Annotated[str, Field(strict=True)]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -221,9 +233,9 @@ class LFSV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """cleanup_lfs_share
+        """Schedule cleanup of a Ceph-backed LFS bucket.
 
-        Remove incomplete multipart uploads to an LFS
+        Remove incomplete multipart uploads to an LFS. Optional ?max_age= query param (rclone duration string, e.g. '30m', '2h'; defaults to '1h') only aborts uploads incomplete for longer than this.
 
         :param org_slug: (required)
         :type org_slug: str
@@ -231,6 +243,8 @@ class LFSV1Api:
         :type space_slug: str
         :param afsid: (required)
         :type afsid: int
+        :param max_age:
+        :type max_age: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -257,6 +271,7 @@ class LFSV1Api:
             org_slug=org_slug,
             space_slug=space_slug,
             afsid=afsid,
+            max_age=max_age,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -265,13 +280,14 @@ class LFSV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "Task",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -285,6 +301,7 @@ class LFSV1Api:
         org_slug,
         space_slug,
         afsid,
+        max_age,
         _request_auth,
         _content_type,
         _headers,
@@ -313,6 +330,10 @@ class LFSV1Api:
         if afsid is not None:
             _path_params['afsid'] = afsid
         # process the query parameters
+        if max_age is not None:
+            
+            _query_params.append(('max_age', max_age))
+            
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -322,7 +343,7 @@ class LFSV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -368,7 +389,7 @@ class LFSV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[LFSShare]:
-        """list_lfs_shares
+        """List all active LFS shares mounted in a space.
 
         List active LFS shares attached to a space.
 
@@ -409,13 +430,13 @@ class LFSV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[LFSShare]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -446,7 +467,7 @@ class LFSV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[LFSShare]]:
-        """list_lfs_shares
+        """List all active LFS shares mounted in a space.
 
         List active LFS shares attached to a space.
 
@@ -487,13 +508,13 @@ class LFSV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[LFSShare]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -524,7 +545,7 @@ class LFSV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """list_lfs_shares
+        """List all active LFS shares mounted in a space.
 
         List active LFS shares attached to a space.
 
@@ -565,13 +586,13 @@ class LFSV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[LFSShare]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -619,7 +640,7 @@ class LFSV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 

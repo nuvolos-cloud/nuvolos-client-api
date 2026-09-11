@@ -58,7 +58,7 @@ class SessionsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> None:
-        """get_session_logs
+        """Sessions V1 Get Logs
 
         Returns logs for the given session and container.
 
@@ -104,13 +104,14 @@ class SessionsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -143,7 +144,7 @@ class SessionsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[None]:
-        """get_session_logs
+        """Sessions V1 Get Logs
 
         Returns logs for the given session and container.
 
@@ -189,13 +190,14 @@ class SessionsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -228,7 +230,7 @@ class SessionsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_session_logs
+        """Sessions V1 Get Logs
 
         Returns logs for the given session and container.
 
@@ -274,13 +276,14 @@ class SessionsV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -347,7 +350,7 @@ class SessionsV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 
@@ -401,7 +404,7 @@ class SessionsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> List[Session]:
-        """get_sessions
+        """Sessions V1 List Sessions
 
         Returns sessions for the given Nuvolos application.
 
@@ -466,13 +469,14 @@ class SessionsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Session]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -511,7 +515,7 @@ class SessionsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[List[Session]]:
-        """get_sessions
+        """Sessions V1 List Sessions
 
         Returns sessions for the given Nuvolos application.
 
@@ -576,13 +580,14 @@ class SessionsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Session]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -621,7 +626,7 @@ class SessionsV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_sessions
+        """Sessions V1 List Sessions
 
         Returns sessions for the given Nuvolos application.
 
@@ -686,13 +691,14 @@ class SessionsV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "List[Session]",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -776,7 +782,7 @@ class SessionsV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 

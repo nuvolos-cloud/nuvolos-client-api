@@ -53,7 +53,7 @@ class TasksV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Task1:
-        """get_task
+        """Tasks V1 Get Task
 
         Returns the task object with the specified id. Only callable by the task submitter.
 
@@ -90,15 +90,15 @@ class TasksV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Task1",
+            '418': "Task1",
+            '404': "ClientApiError",
             '400': "ClientApiError",
             '403': "ClientApiError",
-            '404': "ClientApiError",
-            '408': None,
             '409': "ClientApiError",
             '410': "ClientApiError",
-            '418': None,
             '500': "ClientApiError",
+            '200': "Task1",
+            '408': "Task1",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -128,7 +128,7 @@ class TasksV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Task1]:
-        """get_task
+        """Tasks V1 Get Task
 
         Returns the task object with the specified id. Only callable by the task submitter.
 
@@ -165,15 +165,15 @@ class TasksV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Task1",
+            '418': "Task1",
+            '404': "ClientApiError",
             '400': "ClientApiError",
             '403': "ClientApiError",
-            '404': "ClientApiError",
-            '408': None,
             '409': "ClientApiError",
             '410': "ClientApiError",
-            '418': None,
             '500': "ClientApiError",
+            '200': "Task1",
+            '408': "Task1",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -203,7 +203,7 @@ class TasksV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """get_task
+        """Tasks V1 Get Task
 
         Returns the task object with the specified id. Only callable by the task submitter.
 
@@ -240,15 +240,15 @@ class TasksV1Api:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '200': "Task1",
+            '418': "Task1",
+            '404': "ClientApiError",
             '400': "ClientApiError",
             '403': "ClientApiError",
-            '404': "ClientApiError",
-            '408': None,
             '409': "ClientApiError",
             '410': "ClientApiError",
-            '418': None,
             '500': "ClientApiError",
+            '200': "Task1",
+            '408': "Task1",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -293,7 +293,7 @@ class TasksV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 

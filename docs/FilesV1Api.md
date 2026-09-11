@@ -4,14 +4,16 @@ All URIs are relative to *https://api.eu1.nuvolos.cloud*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_files_in_files_area**](FilesV1Api.md#get_files_in_files_area) | **GET** /files/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/files | 
-[**get_files_in_files_area_0**](FilesV1Api.md#get_files_in_files_area_0) | **GET** /files/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/files/{local_path} | 
-[**get_files_in_home_area**](FilesV1Api.md#get_files_in_home_area) | **GET** /files/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/home | 
-[**get_files_in_home_area_0**](FilesV1Api.md#get_files_in_home_area_0) | **GET** /files/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/home/{local_path} | 
+[**get_files_in_files_area**](FilesV1Api.md#get_files_in_files_area) | **GET** /files/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/files | Files V1 List Files Area
+[**get_files_in_files_area_0**](FilesV1Api.md#get_files_in_files_area_0) | **GET** /files/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/files/{local_path} | Files V1 List Files Area
+[**get_files_in_home_area**](FilesV1Api.md#get_files_in_home_area) | **GET** /files/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/home | Files V1 List Home Area
+[**get_files_in_home_area_0**](FilesV1Api.md#get_files_in_home_area_0) | **GET** /files/v1/org/{org_slug}/space/{space_slug}/instance/{instance_slug}/snapshot/{snapshot_slug}/home/{local_path} | Files V1 List Home Area
 
 
 # **get_files_in_files_area**
 > List[FilePublic] get_files_in_files_area(org_slug, space_slug, instance_slug, snapshot_slug)
+
+Files V1 List Files Area
 
 Returns all files from the files area (shared with all users of the instance) at the specified location in the specified snapshot. Performs a file system rescan upon invocation.
 
@@ -52,6 +54,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     snapshot_slug = 'snapshot_slug_example' # str | 
 
     try:
+        # Files V1 List Files Area
         api_response = api_instance.get_files_in_files_area(org_slug, space_slug, instance_slug, snapshot_slug)
         print("The response of FilesV1Api->get_files_in_files_area:\n")
         pprint(api_response)
@@ -82,25 +85,27 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Operation succeeded |  -  |
-**400** | Bad request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Access to Nuvolos resource is forbidden |  -  |
 **404** | Nuvolos object not found |  -  |
+**400** | Bad request |  -  |
+**403** | Access to Nuvolos resource is forbidden |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
 **500** | Internal server error |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_files_in_files_area_0**
 > List[FilePublic] get_files_in_files_area_0(org_slug, space_slug, instance_slug, snapshot_slug, local_path)
+
+Files V1 List Files Area
 
 Returns all files from the files area (shared with all users of the instance) at the specified location in the specified snapshot. Performs a file system rescan upon invocation.
 
@@ -142,6 +147,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     local_path = 'local_path_example' # str | 
 
     try:
+        # Files V1 List Files Area
         api_response = api_instance.get_files_in_files_area_0(org_slug, space_slug, instance_slug, snapshot_slug, local_path)
         print("The response of FilesV1Api->get_files_in_files_area_0:\n")
         pprint(api_response)
@@ -173,25 +179,27 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Operation succeeded |  -  |
-**400** | Bad request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Access to Nuvolos resource is forbidden |  -  |
 **404** | Nuvolos object not found |  -  |
+**400** | Bad request |  -  |
+**403** | Access to Nuvolos resource is forbidden |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
 **500** | Internal server error |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_files_in_home_area**
 > List[FilePublic] get_files_in_home_area(org_slug, space_slug, instance_slug, snapshot_slug)
+
+Files V1 List Home Area
 
 Returns all files from the home area of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
 
@@ -232,6 +240,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     snapshot_slug = 'snapshot_slug_example' # str | 
 
     try:
+        # Files V1 List Home Area
         api_response = api_instance.get_files_in_home_area(org_slug, space_slug, instance_slug, snapshot_slug)
         print("The response of FilesV1Api->get_files_in_home_area:\n")
         pprint(api_response)
@@ -262,25 +271,27 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Operation succeeded |  -  |
-**400** | Bad request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Access to Nuvolos resource is forbidden |  -  |
 **404** | Nuvolos object not found |  -  |
+**400** | Bad request |  -  |
+**403** | Access to Nuvolos resource is forbidden |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
 **500** | Internal server error |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_files_in_home_area_0**
 > List[FilePublic] get_files_in_home_area_0(org_slug, space_slug, instance_slug, snapshot_slug, local_path)
+
+Files V1 List Home Area
 
 Returns all files from the home area of the current user in the specified folder in the specified snapshot. Performs a file system rescan upon invocation.
 
@@ -322,6 +333,7 @@ with nuvolos_client_api.ApiClient(configuration) as api_client:
     local_path = 'local_path_example' # str | 
 
     try:
+        # Files V1 List Home Area
         api_response = api_instance.get_files_in_home_area_0(org_slug, space_slug, instance_slug, snapshot_slug, local_path)
         print("The response of FilesV1Api->get_files_in_home_area_0:\n")
         pprint(api_response)
@@ -353,20 +365,20 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Operation succeeded |  -  |
-**400** | Bad request |  -  |
-**401** | Unauthorized |  -  |
-**403** | Access to Nuvolos resource is forbidden |  -  |
 **404** | Nuvolos object not found |  -  |
+**400** | Bad request |  -  |
+**403** | Access to Nuvolos resource is forbidden |  -  |
 **409** | Conflict with Nuvolos object |  -  |
 **410** | Nuvolos object no longer available |  -  |
 **500** | Internal server error |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

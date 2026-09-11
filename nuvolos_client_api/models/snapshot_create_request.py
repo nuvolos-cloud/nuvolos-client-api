@@ -27,11 +27,11 @@ class SnapshotCreateRequest(BaseModel):
     """
     SnapshotCreateRequest
     """ # noqa: E501
-    slug: StrictStr
     name: StrictStr
+    slug: StrictStr
     description: Optional[StrictStr] = None
     email_once_finished: Optional[StrictBool] = False
-    __properties: ClassVar[List[str]] = ["slug", "name", "description", "email_once_finished"]
+    __properties: ClassVar[List[str]] = ["name", "slug", "description", "email_once_finished"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -84,8 +84,8 @@ class SnapshotCreateRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "slug": obj.get("slug"),
             "name": obj.get("name"),
+            "slug": obj.get("slug"),
             "description": obj.get("description"),
             "email_once_finished": obj.get("email_once_finished") if obj.get("email_once_finished") is not None else False
         })

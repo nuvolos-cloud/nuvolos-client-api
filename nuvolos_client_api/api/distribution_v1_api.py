@@ -43,8 +43,8 @@ class DistributionV1Api:
         self,
         org_slug: StrictStr,
         space_slug: StrictStr,
-        snapshot_slug: StrictStr,
         instance_slug: StrictStr,
+        snapshot_slug: StrictStr,
         distribution_request: Optional[DistributionRequest] = None,
         _request_timeout: Union[
             None,
@@ -59,7 +59,7 @@ class DistributionV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> Task:
-        """distribute_content
+        """Distribution V1 Distribute
 
         Distribute selected files, applications, and tables from a snapshot to target instances.
 
@@ -67,10 +67,10 @@ class DistributionV1Api:
         :type org_slug: str
         :param space_slug: (required)
         :type space_slug: str
-        :param snapshot_slug: (required)
-        :type snapshot_slug: str
         :param instance_slug: (required)
         :type instance_slug: str
+        :param snapshot_slug: (required)
+        :type snapshot_slug: str
         :param distribution_request:
         :type distribution_request: DistributionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -98,8 +98,8 @@ class DistributionV1Api:
         _param = self._distribute_content_serialize(
             org_slug=org_slug,
             space_slug=space_slug,
-            snapshot_slug=snapshot_slug,
             instance_slug=instance_slug,
+            snapshot_slug=snapshot_slug,
             distribution_request=distribution_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -109,13 +109,14 @@ class DistributionV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "Task",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -133,8 +134,8 @@ class DistributionV1Api:
         self,
         org_slug: StrictStr,
         space_slug: StrictStr,
-        snapshot_slug: StrictStr,
         instance_slug: StrictStr,
+        snapshot_slug: StrictStr,
         distribution_request: Optional[DistributionRequest] = None,
         _request_timeout: Union[
             None,
@@ -149,7 +150,7 @@ class DistributionV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[Task]:
-        """distribute_content
+        """Distribution V1 Distribute
 
         Distribute selected files, applications, and tables from a snapshot to target instances.
 
@@ -157,10 +158,10 @@ class DistributionV1Api:
         :type org_slug: str
         :param space_slug: (required)
         :type space_slug: str
-        :param snapshot_slug: (required)
-        :type snapshot_slug: str
         :param instance_slug: (required)
         :type instance_slug: str
+        :param snapshot_slug: (required)
+        :type snapshot_slug: str
         :param distribution_request:
         :type distribution_request: DistributionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -188,8 +189,8 @@ class DistributionV1Api:
         _param = self._distribute_content_serialize(
             org_slug=org_slug,
             space_slug=space_slug,
-            snapshot_slug=snapshot_slug,
             instance_slug=instance_slug,
+            snapshot_slug=snapshot_slug,
             distribution_request=distribution_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -199,13 +200,14 @@ class DistributionV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "Task",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -223,8 +225,8 @@ class DistributionV1Api:
         self,
         org_slug: StrictStr,
         space_slug: StrictStr,
-        snapshot_slug: StrictStr,
         instance_slug: StrictStr,
+        snapshot_slug: StrictStr,
         distribution_request: Optional[DistributionRequest] = None,
         _request_timeout: Union[
             None,
@@ -239,7 +241,7 @@ class DistributionV1Api:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """distribute_content
+        """Distribution V1 Distribute
 
         Distribute selected files, applications, and tables from a snapshot to target instances.
 
@@ -247,10 +249,10 @@ class DistributionV1Api:
         :type org_slug: str
         :param space_slug: (required)
         :type space_slug: str
-        :param snapshot_slug: (required)
-        :type snapshot_slug: str
         :param instance_slug: (required)
         :type instance_slug: str
+        :param snapshot_slug: (required)
+        :type snapshot_slug: str
         :param distribution_request:
         :type distribution_request: DistributionRequest
         :param _request_timeout: timeout setting for this request. If one
@@ -278,8 +280,8 @@ class DistributionV1Api:
         _param = self._distribute_content_serialize(
             org_slug=org_slug,
             space_slug=space_slug,
-            snapshot_slug=snapshot_slug,
             instance_slug=instance_slug,
+            snapshot_slug=snapshot_slug,
             distribution_request=distribution_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -289,13 +291,14 @@ class DistributionV1Api:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '202': "Task",
-            '400': "ClientApiError",
-            '401': None,
-            '403': "ClientApiError",
+            '422': "ValidationError",
             '404': "ClientApiError",
+            '400': "ClientApiError",
+            '403': "ClientApiError",
             '409': "ClientApiError",
             '410': "ClientApiError",
             '500': "ClientApiError",
+            '401': "ClientApiError",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -308,8 +311,8 @@ class DistributionV1Api:
         self,
         org_slug,
         space_slug,
-        snapshot_slug,
         instance_slug,
+        snapshot_slug,
         distribution_request,
         _request_auth,
         _content_type,
@@ -336,10 +339,10 @@ class DistributionV1Api:
             _path_params['org_slug'] = org_slug
         if space_slug is not None:
             _path_params['space_slug'] = space_slug
-        if snapshot_slug is not None:
-            _path_params['snapshot_slug'] = snapshot_slug
         if instance_slug is not None:
             _path_params['instance_slug'] = instance_slug
+        if snapshot_slug is not None:
+            _path_params['snapshot_slug'] = snapshot_slug
         # process the query parameters
         # process the header parameters
         # process the form parameters
@@ -352,7 +355,7 @@ class DistributionV1Api:
         if 'Accept' not in _header_params:
             _header_params['Accept'] = self.api_client.select_header_accept(
                 [
-                    '*/*'
+                    'application/json'
                 ]
             )
 
