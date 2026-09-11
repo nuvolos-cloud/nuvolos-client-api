@@ -3,7 +3,7 @@ name = "nuvolos_client_api"
 version = "1.5.0"
 description = "Nuvolos"
 authors = [
-  {name = "OpenAPI Generator Community",email = "team@openapitools.org"},
+  {name = "Alphacruncher", email = "support@nuvolos.cloud"},
 ]
 readme = "README.md"
 keywords = ["OpenAPI", "OpenAPI-Generator", "Nuvolos"]
@@ -17,7 +17,7 @@ dependencies = [
 ]
 
 [project.urls]
-Repository = "https://github.com/GIT_USER_ID/GIT_REPO_ID"
+Repository = "https://github.com/nuvolos-cloud/nuvolos-client-api"
 
 [tool.poetry]
 requires-poetry = ">=2.0"
